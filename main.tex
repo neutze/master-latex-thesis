@@ -25,6 +25,9 @@
 
 \mainmatter{}
 
+\glsaddall{} % add all defined terms to glossary, even if not referenced in text
+\printglossaries{}
+
 \input{chapters/1-introduction-0}
 \input{chapters/2-foundation-0}
 \input{chapters/3-luckypatcher}
@@ -33,8 +36,7 @@
 
 \appendix{}
 
-\glsaddall{} % add all defined terms to glossary, even if not referenced in text
-\printglossaries{}
+
 
 \microtypesetup{protrusion=false}
 \listoffigures{}

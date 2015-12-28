@@ -10,4 +10,5 @@ scahden für entwickler (ad id klau,)\newline
 \subsection{Risks to Users}\label{subsection:piracy-users}
 malware, bad user experience\newline
 \subsection{Piracy on Android}\label{subsection:piracy-android}
+Poor model, since self-signed certificates are allowed, 27 \url{http://newandroidbook.com/files/Andevcon-Sec.pdf}\newline
 \url{http://www.fiercedeveloper.com/story/preventing-android-applications-piracy-possible-requires-diligence-planning/2012-08-14} piracy umfrage on android\newline

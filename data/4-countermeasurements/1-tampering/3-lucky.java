@@ -32,10 +32,9 @@ public class LuckyPatcher {
         };
 
         for (String string : luckypatcher) {
-          if(checkInstallerName(context, string)){
-
-          }
-            result = checkInstallerName(context, string);
+            if(checkInstallerName(context, string)){
+                result = true;
+            }
 
             if (result) {
                 android.os.Process.killProcess(android.os.Process.myPid());

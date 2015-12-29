@@ -1,0 +1,24 @@
+\subsubsection{Pangxie}
+\url{https://youtu.be/6vFcEJ2jgOw?t=1982}\newline
+anti-debug\newline
+anti-tamper\newline
+appears to be defunct product\newline
+little usage/samples ITW\newline
+FUNCTION\newline
+\url{https://youtu.be/6vFcEJ2jgOw?t=2040}\newline
+encrypts dex file and bundles as asset in APK\newline
+very easy to find, logcat has to much information\newline
+dalvik calls JNI layer to verify and decrypt\newline
+easy to reverse, both dalvik and native, excellent for beginners to Android and packers\newline
+aes used only for digest verification\newline
+easily automated, 0x54 always the key\newline
+or dynamically grab app\_dex folder\newline
+slightly increase file size\newline
+prevents static analysis - though easy to identify\newline
+uses static 1 byte key for encryption\newline
+easily automated to unpack\newline
+very easy to reverse, good for learning\newline
+good example of an unobfuscated packer stub for cloning\newline
+hacker protection faktor 1.5\newline
+only working till <4.4\newline
+simple packer, increase encryption with key, do not just dump on filesystem\newline

@@ -1,0 +1,24 @@
+\subsection{BANGCLE}
+anti-debugging\newline
+anti-tamper\newline
+anti-decompilation\newline
+anti-runtime injection\newline
+online only service, apk checked for malware\newline
+detected by some anti virus due to malware\newline
+cost 10k\newline
+no one has done it before...\newline
+stopped working on 4.4\newline
+FUNCTION\newline
+dalvik execution talks launched JNI\newline
+JNI launches secondary process\newline
+chatter over PTRACE between the two processes\newline
+newest process decrypts dex into memory\newline
+original dalvik code proxies everything to the decrypted dex\newline
+RESULT\newline
+well written, lots of anti-* tricks\newline
+seems to be well supported and active on development\newline
+does a decent job on online screening - no tool released for download (though things clearly to slip through)\newline
+not impossible to reverse and re-bundle packages\newline
+current weakness (for easy runtime unpacking) is having a predictable unpacked memory location\newline
+hacker protect faktor 5\newline
+probably best tool out there but lag when updating since online approval\newline

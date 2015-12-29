@@ -1,0 +1,22 @@
+\subsubsection{hosedex2jar}
+\url{https://youtu.be/6vFcEJ2jgOw?t=1776}\newline
+PoC packer\newline
+not available for real use\newline
+appears defunct\newline
+near zero ITW samples\newline
+mimics dexception attack from dex education 101\newline
+FUNCTION\newline
+encrypts and injects dexfile into dex header (deception)\newline
+very easy to spot\newline
+very easy to decrypt, just use dex2jar\newline
+static analysis does not work since it sees the encrypted file\newline
+on execution loader stub decrypts in memory and dumps to file system\newline
+loader stub acts as proxy and passes events to the dex file on system using a dexClassLoader\newline
+RESULT\newline
+simple PoC\newline
+slight file size increase\newline
+attempts to prevent static analysis - kind of works\newline
+lots of crashing\newline
+easily automated to unpack\newline
+easy to reverse, good for learning\newline
+hacker protection factor 0.5

@@ -1,6 +1,6 @@
 \subsubsection{Allatori}\label{subsubsection:counter-reengineering-optobf-allatori}
 \url{http://www.allatori.com/clients/index.php}\newline
-\url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}\newline
+
 WHAT DOES IT\newline
 name obfuscation\newline
 control flow flattening/obfuscation\newline
@@ -14,3 +14,16 @@ Proguard+string encryption\newline
 easily reversed\newline
 hacker protection factor 0.5\newline
 \url{https://youtu.be/6vFcEJ2jgOw}
+
+
+\url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}\newline
+Allatori [6] is a commercial product from Smardec. Besides the same obfuscation techniques
+like ProGuard, shown in section 2.1, Allatori also provides methods to modify the
+program code. Loop constructions are dissected in a way that reverse engineering tools
+cannot recognize them. This is an approach to make algorithms less readable and add
+length to otherwise compact code fragments. Additionally, strings are obfuscated and decoded
+at runtime. This includes messages and names that are normally human readable
+and would give good suggestions to analysts.
+The obfuscation methods used in Allatori are a superset of ProGuards so it is more
+powerful but does not prevent an analyst from disassembling an Android application\newline
+Allatori. Allatori obfuscator. Visited: May, 2012. [Online]. Available: \url{http://www.allatori.com/doc.html}

@@ -1,0 +1,4 @@
+dexfile = {
+  Magic
+  checksum
+}

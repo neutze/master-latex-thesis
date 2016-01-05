@@ -1,11 +1,21 @@
-reengineering mit forensik vergleichen und dass man im grunde das selbe wie so eine app machen kann dann\newline
+In order to understand how a Cracking Tool is working, a deeper look into the modified data has to be done. This is done using static analysis tools. The aim is to get an accurate overview of how the circumventing of the license verification mechanism is achieved. This knowledge is later used to find counter measurements to prevent the specific Cracking Tool from succeeding.\newline
+The reengineering has to be done by using different layers of abstraction because of two reasons:
+\begin{itemize}
+\item it is very difficult to conclude from the altered bytecode, which is not human-readable, to the new behaviour of the application
+\item the changes in the Java code are interpreted by the decompiler, which might not reflect the exact behaviour of the code or even worse, cannot be translated at all
+\end{itemize}
+These problems are encountered by analysing the different types of decompiled code.
 
+\url{https://mobilesecuritywiki.com/}\newline
 \url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}\newline
+
+
+
+The Cracking Tool can only alter an application's behaviour by applying patches to the \gls{apk} file, since it is the only source of code on the phone.\newline
+deswegen ist dies startpunkt
+
+
+apk wurde mit cracking tool erstellt und dann auf den pc gezogen, tools werden modifizierte apk angewendet
 
 main tools\newline
 \url{https://mobilesecuritywiki.com/}\newline \url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}\newline
-
-used to detect how the crackign tool modifies content in order to copy protext umgehen\newline
-
-
-can also be used to learn the code --> was nacher das allgemeine problem ist\newline

@@ -4,8 +4,10 @@ WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? 
 
 \url{http://www.allatori.com/clients/index.php}\newline
 
-Allatori is a commercial product from Smardec.
+Allatori is a commercial product from Smardec.\newline
+Besides the same obfuscation techniques like ProGuard, shown in section 2.1, Allatori also provides methods to modify the program code. Loop constructions are dissected in a way that reverse engineering tools cannot recognize them. This is an approach to make algorithms less readable and add length to otherwise compact code fragments. Additionally, strings are obfuscated and decoded at runtime. This includes messages and names that are normally human readable and would give good suggestions to analysts.\newline
 
+cannot recognize them.
 WHAT DOES IT\newline
 name obfuscation\newline
 control flow flattening/obfuscation\newline
@@ -32,3 +34,6 @@ and would give good suggestions to analysts.
 The obfuscation methods used in Allatori are a superset of ProGuards so it is more
 powerful but does not prevent an analyst from disassembling an Android application\newline
 Allatori. Allatori obfuscator. Visited: May, 2012. [Online]. Available: \url{http://www.allatori.com/doc.html}
+
+
+RESULT -> UNTERSCHIED ZU DEN VORHERIGEN -> The obfuscation methods used in Allatori are a superset of ProGuards so it is more powerful but does not prevent an analyst from disassembling an Android application.

@@ -4,8 +4,28 @@ This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
 
+%
+The applications for Android are written using the Java programming language.
 
+stack abstraction is the Dalvik Virtual Machine (DVM)\newline
+DVM is highly tailored to work according to the specifications of the Android platform\newline
+optimized for a slower CPU in comparison with a stationary machine andworks with relatively little RAM memory (• limited processor speed
+• limited RAM
+• no swap space
+• battery powered
+• diverse set of devices
+• sandboxed application runtime)\cite{ehringerDalvik}\newline
+DVM is register-based, differing from the standard Java Virtual Machine (JVM) which is stack-based, register-based architectures require fewer executed instructions than stack-based architectures, register-based code is approximately 25 percent larger than the stack-based, the increase in the instructions fetching time is negligible: 1.07 percent extra real machine loads\cite{ehringerDalvik}\newline
+the Android OS has no swap space imposing that the virtual machine works without swap. Finally, mobile devices are powered by a battery thus the DVM is optimized to be as energy preserving as possible, Except being highly efficient, the DVM is also designed to be replicated quickly because each application runs within a “sandbox”: a context containing its own instance of the virtual machine assigned a unique Unix user ID\newline
 
+wie der build process funktioniert wird später gesondert beschrieben, hier sagen wir einfach das ergebnis ist die dex datei\newline
+\cite{kovachevaMaster}
+%
+
+%
+\url{http://davidehringer.com/software/android/The_Dalvik_Virtual_Machine.pdf}
+\cite{ehringerDalvik}
+%
 
 
 
@@ -25,28 +45,3 @@ The Dalvik bytecode consists of opcodes and is thus hard to read for humans. The
 
 .odex file
 Dalvik bytecode of an application is normally not optimized, because it is executed by a DVM which can run under different architectures\newline
-
-\begin{table}[]
-\centering
-\caption{Dex File Format}
-\label{table:foundation-forensic-dex}
-\begin{tabular}{|l|l|l|l}
-\hline
-\multicolumn{2}{|c|}{Magic}             & checksum        & \multicolumn{1}{c|}{}                   \\ \cline{1-3}
-\multicolumn{4}{|c|}{signature}                                                                     \\ \hline
-File size         & Header size         & Endian Tag      & \multicolumn{1}{l|}{Link size}          \\ \hline
-Link offset       & Map offset          & String IDs Size & \multicolumn{1}{l|}{String IDs offeset} \\ \hline
-Type IDs Size     & Type IDs offset     & Proto IDs Size  & \multicolumn{1}{l|}{Proto IDs offset}   \\ \hline
-Field IDs Size    & Field IDs offset    & Method IDs Size & \multicolumn{1}{l|}{MethodIDs offset}   \\ \hline
-Classdef IDs Size & Classdef IDs offset & Data Size       & \multicolumn{1}{l|}{Data offset}        \\ \hline
-\end{tabular}
-\end{table}
-
-dex format \url{http://source.android.com/devices/tech/dalvik/dalvik-bytecode.html}\newline
-
-ablauf starten von app\newline
-When an Android application is executed, the process consists of the following four parts:
-• Dalvik bytecode, which is located in the dex file
-• Dalvik Virtual Machine [13], which executes the Dalvik bytecode
-• Native Code, like shared objects, which is executed by the processor
-• Android Application Framework, which provides services for the application\newline

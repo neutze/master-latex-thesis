@@ -3,6 +3,10 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+stichwort mnemonics, eine seite dex und auf der anderen seite smali, dex bytecode vs smali, Only a few pieces of information are usually not included like the addresses of instructions\newline
+unintuitive representation, deswegen smali mit corresponding mnemonics\newline
+mnemonics and vice versa is available due to the bijective mapping\newline
+correct startaddress and offset can be challenging. There are two major approaches: linear sweep disassembling and recursive traversal disassembling, The linear sweep algorithm is prone to producing wrong mnemonics e.g. when a assembler inlines data so that instructions and data are interleaved. The recursive traversal algorithm is not prone to this but can be attacked by obfuscation techniques like junkbyte insertion as discussed in section 4.4. So for obfuscation, a valuable attack vector on disassembling is to attack the address finding step of these algorithms\newline
 
 https://github.com/JesusFreke/smali
 

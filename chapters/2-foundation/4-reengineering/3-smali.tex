@@ -3,6 +3,11 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+%
+smali, most popular Dalvik bytecode decompilers (used by multiple reverse engineering tools as a base disassembler, amongst which is the also well-known apktool)
+\cite{kovachevaMaster}
+%
+
 stichwort mnemonics, eine seite dex und auf der anderen seite smali, dex bytecode vs smali, Only a few pieces of information are usually not included like the addresses of instructions\newline
 unintuitive representation, deswegen smali mit corresponding mnemonics\newline
 mnemonics and vice versa is available due to the bijective mapping\newline
@@ -17,13 +22,14 @@ can be used to unpack, modify, and repack Android applications\newline
 interesting part for obfuscation and reverse engineering is baksmali. baksmali is similar to dexdump but uses a recursive traversal approach to find instructions\newline
 vorteil? -> So in this approach the next instruction will be expected at the address where the current instruction can jump to, e.g. for the "goto" instruction. This minimizes some problems connected to the linear sweep approach. baksmali is also used by other reverse engineering tools as a basic disassembler\newline
 
-selbe wie dex, jedoch human readable, no big difference
+RESULT OUTPUT:
+selbe wie dex, jedoch human readable, no big difference, nebeneinanderstellung dex/smali
 
-wo findet man es?\newline
-wie ist es erstellt?\newline
-informationsverlust?\newline
-vorteil\newline
-blabla aus dem internet\newline
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+%java -jar ~/Google\ Drive/master_thesis/sourcefiles/_tools/baksmali.jar -x ~/Google\ Drive/master_thesis/sourcefiles/_originalAPKs/apk-amazon-runtasticpro/amazon-runtasticpro.apk -o ~/workspace/master-code-applications/code-amazon-runtasticpro/smali/baksmali/
+
+
+
 
 jedes tool:\newline
 woher kommt es?\newline
@@ -34,9 +40,7 @@ wozu benutze ich es?\newline
 welches abstrahierungslevel\newline
 beispiel\newline
 additional features?\newline
-ggf bezug zu DALVIK/buildprocess\newline
-%java -jar ~/Google\ Drive/master_thesis/sourcefiles/_tools/baksmali.jar -x ~/Google\ Drive/master_thesis/sourcefiles/_originalAPKs/apk-amazon-runtasticpro/amazon-runtasticpro.apk -o ~/workspace/master-code-applications/code-amazon-runtasticpro/smali/baksmali/
-
+WARUM SCHAUEN WIR ES UNS AN?\newline
 wo findet man es?\newline
 welches level?\newline
 vorteil\newline

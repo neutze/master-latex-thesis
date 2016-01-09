@@ -3,12 +3,34 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
-%
-DVM is register based. Registers are considered 32 bits wide to store values such as integers or floating point numbers. Adjacent register pairs are used to store 64-bit values\newline
-dest-then-source ordering for its arguments\newline
-there are 218 used valid opcodes in Dalvik bytecode -> QUELLE \newline
-\cite{kovachevaMaster} \cite{ehringerDalvik}
-%
+
+
+
+code wie er vorliegt, wenn was geändert wird wird es hier geändert
+
+RESULT OUTPUT
+
+\begin{lstlisting}[
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  caption={[Name, Quelle]Quelle},
+  label={lst:dalvik}
+]
+  a6 8e 15 00 bd 8e 15 00  d5 8e 15 00 f0 8e 15 00  |................|
+\end{lstlisting}
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+%mkdir ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/
+%cp ~/Google\ Drive/master_thesis/sourcefiles/lvl/auto/apk-runtasticpro/runtasticpro.apk ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/runtasticpro.zip
+%unzip ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/runtasticpro.zip -d ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/tmp
+%mv ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/tmp/classes.dex ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/classes.dex
+%rm -rf ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/tmp/
+%rm -rf ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/runtasticpro.zip
+%rm -rf ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/classes.txt
+%hexdump -C ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/classes.dex >> ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/classes.txt
+%rm -rf ~/workspace/master-code-applications/code-runtasticpro-lvl-auto/dex/classes.dex
 
 
 
@@ -26,22 +48,3 @@ wo findet man es?\newline
 welches level?\newline
 vorteil\newline
 blabla aus dem internet\newline
-für menschen unintuitiv
-
-hexadeximal value, represent exactly one instruction\newline
-unintuitiv, instruction set well defined\newline
-ggf bezug zu DALVIK/buildprocess
-The Dalvik Virtual Machine (DVM) provides also the ability to call native functions within shared objects out of the Dalvik bytecode. When speaking of reverse engineering an Android application we mostly mean to reverse engineer the bytecode located in the dex file of this application.\newline
-
-\begin{lstlisting}[
-  basicstyle=\footnotesize,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  caption={[Name, Quelle]Quelle},
-  label={lst:dalvik}
-]
-  a6 8e 15 00 bd 8e 15 00  d5 8e 15 00 f0 8e 15 00  |................|
-\end{lstlisting}
-
-mein custom script erklären\newline

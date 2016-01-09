@@ -19,12 +19,14 @@ DVM is register-based, differing from the standard Java Virtual Machine (JVM) wh
 the Android OS has no swap space imposing that the virtual machine works without swap. Finally, mobile devices are powered by a battery thus the DVM is optimized to be as energy preserving as possible, Except being highly efficient, the DVM is also designed to be replicated quickly because each application runs within a “sandbox”: a context containing its own instance of the virtual machine assigned a unique Unix user ID\newline
 
 wie der build process funktioniert wird später gesondert beschrieben, hier sagen wir einfach das ergebnis ist die dex datei\newline
-\cite{kovachevaMaster}
-%
 
-%
-\url{http://davidehringer.com/software/android/The_Dalvik_Virtual_Machine.pdf}
-\cite{ehringerDalvik}
+AUFBAU DEX
+DVM is register based. Registers are considered 32 bits wide to store values such as integers or floating point numbers. Adjacent register pairs are used to store 64-bit values\newline
+dest-then-source ordering for its arguments\newline
+there are 218 used valid opcodes in Dalvik bytecode -> QUELLE \newline
+
+Due to its simplicity over bytecode for other architectures as well as the little protection applied in practice, Dalvik bytecode is currently an easy target for the reverse engineer.
+\cite{kovachevaMaster} \cite{ehringerDalvik}
 %
 
 

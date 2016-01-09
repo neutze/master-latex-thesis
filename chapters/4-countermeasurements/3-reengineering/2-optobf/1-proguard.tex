@@ -1,5 +1,15 @@
-\subsubsection{Proguard}\label{subsubsection:counter-reengineering-optobf-proguard}
+\subsubsection{Proguard} \label{subsubsection:counter-reengineering-optobf-proguard}
+
 \url{https://youtu.be/6vFcEJ2jgOw?t=419}\newline
+
+WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
+
+ProGuard is an open source tool which is also integrated in the Android SDK
+\url{http://proguard.sourceforge.net/}
+\url{http://developer.android.com/sdk/index.html}\newline
+was ist proguard? was macht er? -> ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields\newline
+was kann er noch? -> Besides these protection mechanisms it can also identify and highlight dead code so it can be removed in a second, manual step. Unused classes can be removed automatically by ProGuard.\newline
+easy integration -> how\newline
 
 \url{http://developer.android.com/tools/help/proguard.html}\newline
 optimizes, shrinks, (barely) obfuscates --> free, reduces size, faster\newline
@@ -14,19 +24,6 @@ removes linenumbers --> stacktrace annoying\newline
 \url{https://youtu.be/6vFcEJ2jgOw?t=470}\newline
 -->hacker factor 0\newline
 does not really help\newline
-googles commentar \url{http://android-developers.blogspot.de/2010/09/proguard-android-and-licensing-server.html}
+googles commentar \url{http://android-developers.blogspot.de/2010/09/proguard-android-and-licensing-server.html}\newline
 
-\url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}
-ProGuard [4] is an open source tool which is also integrated in the Android SDK [5]. It can
-be easily used within the development process. ProGuard is basically a Java obfuscator
-but can also be used for Android applications because they are usually written in Java.
-The feature set includes identifier obfuscation for packages, classes, methods, and fields.
-Besides these protection mechanisms it can also identify and highlight dead code so it can
-be removed in a second, manual step. Unused classes can be removed automatically by
-ProGuard.
-Without proper naming of classes and methods it is much harder to reverse engineer
-an application, because in most cases the identifier enables an analyst to directly guess
-the purpose of the particular part. The program code itself will not be changed heavily,
-so the obfuscation by this tool is very limited.\newline
-E. Lafortune. Proguard. Visited: May, 2012. [Online]. Available: \url{http:
-//proguard.sourceforge.net/}
+eine art result bzw zusammenfassung -> Without proper naming of classes and methods it is much harder to reverse engineer an application, because in most cases the identifier enables an analyst to directly guess the purpose of the particular part. The program code itself will not be changed heavily, so the obfuscation by this tool is very limited.

@@ -1,8 +1,9 @@
-\subsubsection{Dalvik Virtual Machine} \label{subsubsection:android-evolution-dvm}
+\subsection{Dalvik Virtual Machine} \label{subsection:android-dalvik}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+Flow what is dalvik, what is different to java, what is dex (build process), VGL \url{http://newandroidbook.com/files/ArtOfDalvik.pdf}\newline
 
 %
 The applications for Android are written using the Java programming language.
@@ -20,30 +21,25 @@ the Android OS has no swap space imposing that the virtual machine works without
 
 wie der build process funktioniert wird später gesondert beschrieben, hier sagen wir einfach das ergebnis ist die dex datei\newline
 
-AUFBAU DEX
-DVM is register based. Registers are considered 32 bits wide to store values such as integers or floating point numbers. Adjacent register pairs are used to store 64-bit values\newline
-dest-then-source ordering for its arguments\newline
-there are 218 used valid opcodes in Dalvik bytecode -> QUELLE \newline
-
-Due to its simplicity over bytecode for other architectures as well as the little protection applied in practice, Dalvik bytecode is currently an easy target for the reverse engineer.
 \cite{kovachevaMaster} \cite{ehringerDalvik}
 %
 
+%
+DVM is
+- Customized optimized JVM based on Apache Harmony,
+- Not fully J2SE or J2ME compatible -> Java compiles into DEX code -> 16-bit opcodes & Register, rather than stack-based\newline
+History, Dalvík was introduced along with Android, created by Created by Dan Bornstein, Named after an Icelandic town, 2.2 brought current just in time compilation (ERKLÄREN)\newline
+Dalvik vs Java
+- Dalvík is a virtual machine implementation, Based on Apache Harmony, Borrows heavily from Java
+- Brings significant improvements over Java, in particular J2ME, Virtual Machine architecture is optimized for memory sharing, Reference counts/bitmaps stored separately from objects, Dalvik VM startup is optimized through Zygote
+- Java .class files are further compiled into DEX.\newline
+\cite{andevconDalvikART}
+%
 
 
 
 AUFBAU/HERKUNFT DALVIK MACHIEN\newline
 difference to JVM -> JVM is a stack based machine whereas DVM is register based -> warum, vorteile/nachteile, hisotrie\newline
 developed for Android to be more efficient and smaller due to the limited resources on mobile devices -> quelle\newline
-AUFBAU DALVIK BYTECODE\newline
-The program code of an Android application is delivered in form of Dalvik bytecode\newline
-It will be executed by the Dalvik Virtual Machine and is comparable to Java bytecode. So there is a separate
-optimizing step while installing an application, where the bytecode gets optimized for the underlaying architecture. The optimized form is also called ”odex”. The optimization is done by a program called ”dexopt” which is part of the Android platform. The DVM can execute optimized as well as not optimized Dalvik bytecode\newline
 
 unterschied \url{http://newandroidbook.com/files/Andevcon-DEX.pdf}\newline
-
-.dex file
-The Dalvik bytecode consists of opcodes and is thus hard to read for humans. The Cracking Tool has to modify the opcodes in order to alter the behaviour of the application. Since it is directly read by the Dalvik virtual machine, it is the single point of truth.\newline
-
-.odex file
-Dalvik bytecode of an application is normally not optimized, because it is executed by a DVM which can run under different architectures\newline

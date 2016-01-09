@@ -31,17 +31,12 @@ Standard Java environment compiles each separate class in the .java source code 
 On the Android platform, the build process differs after the point when the .class files have been generated. Once having the latter, they are forwarded to the “dx” tool which is part of the standard Android SDK. This tool compresses all .class files into a single classes.dex file i.e. the .dex file is the sole bytecode container for all the application’s classes. After it has been created, the classes.dex is forwarded to the ApkBuilder tool altogether with the application resources and shared object (.so) files which, if present, contain native code. As a result, the APK archive is created and the final compulsory step is its signing. Figure 1.2 shows the APK build process and the
 possible obfuscation manipulations which are optional during the build stages\newline
 
-VERGLEICHSBILD JAVA---DEX\cite{ehringerDalvik}\newline
-Each .class file has its own heterogeneous constant pool which may contain duplicating data, BEISPIEL, memory efficiency of a .dex file comes primarily from the type-specific constant pools used to store the data, BEISPIEL,\newline
-significantly more references within a .dex file compared to a .class file\cite{ehringerDalvik}\newline
-compression as efficiently as up to 44 percent of the size of an equivalent .jar archive\cite{ehringerDalvik}\newline
-hier noch einfach dex, später erst opcode nennen, the exact dex format will be explained in 2.4.2\newline
 
 \cite{kovachevaMaster} \cite{ehringerDalvik}
 %
 
 für 4.1 erklären, bild
-\url{http://developer.android.com/tools/building/index.html}\newline
+\url{http://developer.android.com/tools/building/index.html} \url{http://newandroidbook.com/files/ArtOfDalvik.pdf} seite 10\newline
 
 Aufbau APK erklären\newline
 

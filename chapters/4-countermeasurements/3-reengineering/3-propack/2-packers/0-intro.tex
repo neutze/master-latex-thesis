@@ -5,6 +5,30 @@ This is my real text! Rest might be copied or not be checked!
 ERWÄHNEN WO IM PROZESS ANGEWENDET\newline
 
 
+%
+dynamic code loading
+best would be an application is transformed by obfuscator that it does not contain any meta information or directly interpretable bytecode, not possible because DVM would not be able to read -> packing, often used in malware \cite{packerProblemSolution}\newline
+packer transforms code that a reverse engineer cannot directly extract information, e.g. by encrypting programm data no information can be extracted without decrypting, would be bad for programm as well that is why packer uses loader stub to decrypt in runtime, soultion decrypt by hand or dynamic analysis\newline
+in general two components are created, loader stub and encrypted app, on android the encrypted dex file, easier to create as the loader stub\newline
+BILD WIE ER FUNKTIONIERT
+BASIC WENN MAN SELBER NACHBAUEN WILL
+step 1 load encrypted app into memory (download from server, extract from data structure, plain file available)
+step 2 app file is decrypted -> original dex, can be any encryption from simple to hard, speed may slow down
+step 3 load decrypted dex into DVM from a bytearray, see \cite{schulzCodeProtection}
+step 4 execute\newline
+
+\cite{schulzCodeProtection} stellt hier basic version vor, bessere versionen ist das im folgenden
+
+result: protection makes it hard to analyze the target application, because its bytecode is only available encrypted, decrypted version the unpacking stub has to be analyzed, great slow down, other obfuscations can be applied on stub
+%
+
+%
+EVALUTAION\newline
+soultion decrypt by hand or dynamic analysis\newline
+generell: angriff nur nach 2 wenn decrypted, einfach aus memory lesen da es ja iwo hingelegt werden muss um es widerum zu laden, man muss herausfinden wo stub es herläd\newline
+nachteil BASIC: The publicly accessible functions can only operate on dex files stored on the file system, which means that our decrypted dex file has to be saved to the file system before loading. In this case an analyst can easily copy it from there and the considered protection scheme becomes useless. Another problem with this mode of operation is the transformation of the loaded dex file into an optimized equivalent that in turn is stored on the file system. The optimized dex file is secured by file system permissions so that our application cannot delete them to prevent leakage of the decrypted file. \newline
+%
+
 break static analysis tools, you ahve to do runtime analysis\newline
 like UPX, stub application unpacks, decrypts, loads into memory which is normally hidden from static analysis\newline
 \url{http://www.fortiguard.com/uploads/general/Area41Public.pdf}\newline

@@ -9,6 +9,15 @@ für 4.1 erklären, bild
 
 Aufbau APK erklären\newline
 
+many steps and tools until the APK is build and ready to be deployed\newline
+applications are written in the Java programming language by the developer, code is available in \gls{classg} files\newline
+step 1:  Java files which will be compiled into \gls{classg} files by a Java Compiler,  similar to a Java program build process, class files contain Java bytecode representing the compiled application, optional step apply a Java Obfuscator\newline
+step 2: transformation from Java bytecode into Dalvik bytecode, see oben, dx programm from android sdk (due to it is necessity for building an application for the Android platform), output saved in singel \gls{dexg} file, included in an APK in next step, possible to apply a further obfuscator operating
+on Dalvik bytecode(ERKLÄRUNG)\newline
+step 3: packing and signing the APK, ApkBuilder constructs an apk file out of the "classes.dex" file and adds further resources like images and ".so" files, ”.so” files are shared objects which contains native functions that can be called from within the DVM, jarsigner adds developers signature to APK(ERKLÄREN WARUM SIGNATURE NÖTIG UND WO GEPRÜFT), now the app can be installed
+
+
+
 Android applications are written in the Java [11] programming language and deployed as files with an ”.apk” suffix, later called APK. It is basically a ZIP-compressed file and contains resources of the application like pictures and layouts as well as a dex file\newline
 This dex file, saved as ”classes.dex”, contains the program code in form of Dalvik bytecode. Further explanations on this bytecode format are given in section 3.2. The content of the APK is also cryptographically signed, which yields no security improvement but helps to distinguish and confirm authenticity of different developers of Android applications.\newline
 DIe apk kann dann per adb, market oder direkt installiert werden\newline

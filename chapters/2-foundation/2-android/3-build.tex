@@ -1,3 +1,15 @@
-\subsection{Build Process of Android Applications}\label{subsection:foundation-android-build}
+\subsection{Build Process of Android Applications} \label{subsection:foundation-android-build}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
 für 4.1 erklären, bild
 \url{http://developer.android.com/tools/building/index.html}\newline
+
+Aufbau APK erklären\newline
+
+Android applications are written in the Java [11] programming language and deployed as files with an ”.apk” suffix, later called APK. It is basically a ZIP-compressed file and contains resources of the application like pictures and layouts as well as a dex file\newline
+This dex file, saved as ”classes.dex”, contains the program code in form of Dalvik bytecode. Further explanations on this bytecode format are given in section 3.2. The content of the APK is also cryptographically signed, which yields no security improvement but helps to distinguish and confirm authenticity of different developers of Android applications.\newline
+DIe apk kann dann per adb, market oder direkt installiert werden\newline
+Within the installation process, every installed application gets its own unique user ID (UID) by default. This means that every application will be executed as a separate system user. -> QUELLE/SINN?\newline

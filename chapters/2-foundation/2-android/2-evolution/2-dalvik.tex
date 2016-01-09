@@ -1,10 +1,28 @@
 \subsubsection{Dalvik Virtual Machine} \label{subsubsection:android-evolution-dvm}
-sis is text
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
 
 
+
+
+
+
+
+
+AUFBAU/HERKUNFT DALVIK MACHIEN\newline
+difference to JVM -> JVM is a stack based machine whereas DVM is register based -> warum, vorteile/nachteile, hisotrie\newline
+developed for Android to be more efficient and smaller due to the limited resources on mobile devices -> quelle\newline
+AUFBAU DALVIK BYTECODE\newline
+The program code of an Android application is delivered in form of Dalvik bytecode\newline
+It will be executed by the Dalvik Virtual Machine and is comparable to Java bytecode. So there is a separate
+optimizing step while installing an application, where the bytecode gets optimized for the underlaying architecture. The optimized form is also called ”odex”. The optimization is done by a program called ”dexopt” which is part of the Android platform. The DVM can execute optimized as well as not optimized Dalvik bytecode\newline
 
 .dex file
 The Dalvik bytecode consists of opcodes and is thus hard to read for humans. The Cracking Tool has to modify the opcodes in order to alter the behaviour of the application. Since it is directly read by the Dalvik virtual machine, it is the single point of truth.\newline
+
+.odex file
+Dalvik bytecode of an application is normally not optimized, because it is executed by a DVM which can run under different architectures\newline
 
 \begin{table}[]
 \centering
@@ -21,3 +39,10 @@ Field IDs Size    & Field IDs offset    & Method IDs Size & \multicolumn{1}{l|}{
 Classdef IDs Size & Classdef IDs offset & Data Size       & \multicolumn{1}{l|}{Data offset}        \\ \hline
 \end{tabular}
 \end{table}
+
+ablauf starten von app\newline
+When an Android application is executed, the process consists of the following four parts:
+• Dalvik bytecode, which is located in the dex file
+• Dalvik Virtual Machine [13], which executes the Dalvik bytecode
+• Native Code, like shared objects, which is executed by the processor
+• Android Application Framework, which provides services for the application\newline

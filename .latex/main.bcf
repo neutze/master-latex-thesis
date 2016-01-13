@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bcf:controlfile version="2.7" xmlns:bcf="https://sourceforge.net/projects/biblatex">
-  <!-- BIBER OPTIONS -->
+  <!-- BIBER OPTIONS --see-
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
       <bcf:key>output_encoding</bcf:key>
@@ -31,8 +31,8 @@
       <bcf:value>1</bcf:value>
     </bcf:option>
   </bcf:options>
-  <!-- BIBLATEX OPTIONS -->
-  <!-- GLOBAL -->
+  <!-- BIBLATEX OPTIONS --see-
+  <!-- GLOBAL --see-
   <bcf:options component="biblatex" type="global">
     <bcf:option type="singlevalued">
       <bcf:key>alphaothers</bcf:key>
@@ -208,7 +208,7 @@
       <bcf:value>1</bcf:value>
     </bcf:option>
   </bcf:options>
-  <!-- BIBLATEX OPTION SCOPE -->
+  <!-- BIBLATEX OPTION SCOPE --see-
   <bcf:optionscope type="GLOBAL">
     <bcf:option>alphaothers</bcf:option>
     <bcf:option>sortalphaothers</bcf:option>
@@ -414,7 +414,7 @@
     <bcf:option>skiplab</bcf:option>
     <bcf:option>dataonly</bcf:option>
   </bcf:optionscope>
-  <!-- SOURCEMAP -->
+  <!-- SOURCEMAP --see-
   <bcf:sourcemap>
     <bcf:maps datatype="bibtex" level="driver">
       <bcf:map>
@@ -729,7 +729,7 @@
       </bcf:map>
     </bcf:maps>
   </bcf:sourcemap>
-  <!-- LABELALPHA TEMPLATE -->
+  <!-- LABELALPHA TEMPLATE --see-
   <bcf:labelalphatemplate type="global">
     <bcf:labelelement order="1">
       <bcf:labelpart final="1">shorthand</bcf:labelpart>
@@ -741,7 +741,7 @@
       <bcf:labelpart substring_width="2" substring_side="right">year</bcf:labelpart>
     </bcf:labelelement>
   </bcf:labelalphatemplate>
-  <!-- INHERITANCE -->
+  <!-- INHERITANCE --see-
   <bcf:inheritance>
     <bcf:defaults inherit_all="true" override_target="false">
     </bcf:defaults>
@@ -865,7 +865,7 @@
       <bcf:field source="sortkey" skip="true"/>
     </bcf:inherit>
   </bcf:inheritance>
-  <!-- SORTING -->
+  <!-- SORTING --see-
   <bcf:sorting>
     <bcf:presort>mm</bcf:presort>
     <bcf:sort order="1">
@@ -898,7 +898,7 @@
       <bcf:sortitem order="2">0000</bcf:sortitem>
     </bcf:sort>
   </bcf:sorting>
-  <!-- DATA MODEL -->
+  <!-- DATA MODEL --see-
   <bcf:datamodel>
     <bcf:entrytypes>
       <bcf:entrytype>article</bcf:entrytype>
@@ -2231,8 +2231,8 @@
       </bcf:constraint>
     </bcf:constraints>
   </bcf:datamodel>
-  <!-- CITATION DATA -->
-  <!-- SECTION 0 -->
+  <!-- CITATION DATA --see-
+  <!-- SECTION 0 --see-
   <bcf:bibdata section="0">
     <bcf:datasource type="file" datatype="bibtex">bibliography/literature.bib</bcf:datasource>
   </bcf:bibdata>

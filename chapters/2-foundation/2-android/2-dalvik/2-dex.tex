@@ -7,7 +7,7 @@ This is my real text! Rest might be copied or not be checked!
 AUFBAU DEX
 DVM is register based. Registers are considered 32 bits wide to store values such as integers or floating point numbers. Adjacent register pairs are used to store 64-bit values\newline
 dest-then-source ordering for its arguments\newline
-there are 218 used valid opcodes in Dalvik bytecode -> QUELLE \newline
+there are 218 used valid opcodes in Dalvik bytecode -see- QUELLE \newline
 
 Due to its simplicity over bytecode for other architectures as well as the little protection applied in practice, Dalvik bytecode is currently an easy target for the reverse engineer.
 
@@ -18,6 +18,34 @@ compression as efficiently as up to 44 percent of the size of an equivalent .jar
 hier noch einfach dex, später erst opcode nennen, the exact dex format will be explained in 2.4.2\newline
 
 \cite{kovachevaMaster} \cite{ehringerDalvik}
+%
+
+%
+dx utility converts multilple class files to classes.dex, java bytecode is converted to dex bytecode, dex instructions 16bit mltiples, java 8bit
+constant, string,type and method pools are merged, significant savings for strings, types and methods in multiple calsses
+overall memory footprint diminished by about 50%
+dex file format specified in android dcomentation -see- SOURCE\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/dex1.png}
+    \caption{Awesome Image}
+    \label{fig:awesome_image1}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/dex2.png}
+    \caption{Awesome Image}
+    \label{fig:awesome_image2}
+\end{figure}
+dex instructions refer to indexes (in pools)\newline
+de bytecode is striktly similar to java bytecode, allows for ease de/re compilation back and forth to/from java\newline
+
+dex vs java\newline
+java vm is stack based, dex is register based
+java bytecode is actually more compact than dex
+dex bytecode is more suited to arm architectures, mapping from dex registers to arm registers
+dex supports bytecode optimizations, java no, apk's calsses.dex are optimized before install, on device\newline
+\cite{andevconDalvikART}
 %
 
 AUFBAU DALVIK BYTECODE\newline

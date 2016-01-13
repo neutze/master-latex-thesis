@@ -7,12 +7,12 @@ ERWÄHNEN WO IM PROZESS ANGEWENDET\newline
 
 %
 dynamic code loading
-best would be an application is transformed by obfuscator that it does not contain any meta information or directly interpretable bytecode, not possible because DVM would not be able to read -> packing, often used in malware \cite{packerProblemSolution}\newline
+best would be an application is transformed by obfuscator that it does not contain any meta information or directly interpretable bytecode, not possible because DVM would not be able to read -see- packing, often used in malware \cite{packerProblemSolution}\newline
 packer transforms code that a reverse engineer cannot directly extract information, e.g. by encrypting programm data no information can be extracted without decrypting, would be bad for programm as well that is why packer uses loader stub to decrypt in runtime, soultion decrypt by hand or dynamic analysis\newline
 in general two components are created, loader stub and encrypted app, on android the encrypted dex file, easier to create as the loader stub\newline
 BILD WIE ER FUNKTIONIERT
 step 1 load encrypted app into memory (download from server, extract from data structure, plain file available)
-step 2 app file is decrypted -> original dex, can be any encryption from simple to hard, speed may slow down
+step 2 app file is decrypted -see- original dex, can be any encryption from simple to hard, speed may slow down
 step 3 load decrypted dex into DVM from a bytearray, see \cite{schulzLabCourse}
 step 4 execute\newline
 

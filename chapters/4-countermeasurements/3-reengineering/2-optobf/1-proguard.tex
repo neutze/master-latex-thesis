@@ -18,7 +18,7 @@ WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? 
 
 %
 identifier mangling, ProGuard uses a similar approach. It uses minimal
-lexical-sorted strings like {a, b, c, ..., aa, ab}, original identifiers give information about interesting parts of a program, Reverse engineering methods can use these information to reduce the amount of program code that has to be manually analyzed ->  neutralizing these information
+lexical-sorted strings like {a, b, c, ..., aa, ab}, original identifiers give information about interesting parts of a program, Reverse engineering methods can use these information to reduce the amount of program code that has to be manually analyzed -see-  neutralizing these information
 in order to prevent this reduction,  remove any meta information about the behavior, meaningless string representation holdin respect to consistence means identifiers for the same object must be replaced by the same string,
 advantage of minimizing the memory usage, e development process in step ”a” or step ”b” \newline
 string obfuscationa, string must be available at runtime because a user cannot
@@ -32,12 +32,12 @@ EVALUATION:  dynamic analysis beats this and read directly from memory\newline
 ProGuard is an open source tool which is also integrated in the Android SDK
 \url{http://proguard.sourceforge.net/}
 \url{http://developer.android.com/sdk/index.html}\newline
-was ist proguard? was macht er? -> ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields\newline
-was kann er noch? -> Besides these protection mechanisms it can also identify and highlight dead code so it can be removed in a second, manual step. Unused classes can be removed automatically by ProGuard.\newline
-easy integration -> how\newline
+was ist proguard? was macht er? -see- ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields\newline
+was kann er noch? -see- Besides these protection mechanisms it can also identify and highlight dead code so it can be removed in a second, manual step. Unused classes can be removed automatically by ProGuard.\newline
+easy integration -see- how\newline
 
 \url{http://developer.android.com/tools/help/proguard.html}\newline
-optimizes, shrinks, (barely) obfuscates --> free, reduces size, faster\newline
+optimizes, shrinks, (barely) obfuscates --see- free, reduces size, faster\newline
 gutes bild \url{https://youtu.be/TNnccRimhsI?t=1360}\newline
 removes unnecessary/unused code\newline
 merges identical code blocks\newline
@@ -45,10 +45,10 @@ performs optimiztations\newline
 removes debug information\newline
 renames objects\newline
 restructures code\newline
-removes linenumbers --> stacktrace annoying\newline
+removes linenumbers --see- stacktrace annoying\newline
 \url{https://youtu.be/6vFcEJ2jgOw?t=470}\newline
--->hacker factor 0\newline
+--see-hacker factor 0\newline
 does not really help\newline
 googles commentar \url{http://android-developers.blogspot.de/2010/09/proguard-android-and-licensing-server.html}\newline
 
-eine art result bzw zusammenfassung -> Without proper naming of classes and methods it is much harder to reverse engineer an application, because in most cases the identifier enables an analyst to directly guess the purpose of the particular part. The program code itself will not be changed heavily, so the obfuscation by this tool is very limited.
+eine art result bzw zusammenfassung -see- Without proper naming of classes and methods it is much harder to reverse engineer an application, because in most cases the identifier enables an analyst to directly guess the purpose of the particular part. The program code itself will not be changed heavily, so the obfuscation by this tool is very limited.

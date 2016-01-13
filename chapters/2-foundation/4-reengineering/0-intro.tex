@@ -17,6 +17,28 @@ The classes.dex file is a crucial component regarding the application’s code s
 \cite{kovachevaMaster}
 %
 
+%
+dex to java
+.dex and .class are isomorphic
+dex debug items map dex offsets to java line numbers
+tools like dex2jar can easily decomile from dex to a jar
+extremly useful for reverse engineering, even more so useful for malice\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/re1.png}
+    \caption{Awesome Image}
+    \label{fig:awesome_image}
+\end{figure}
+flow from dex to java is bidirectional, decompile code back to java, remove annoyances like ads, registration, uncover sensitive data (app logic, secrets), replace certain classes with others (malicuous ones), recompile back to jar, then dex, put cloned/trojaned version of your app on play or other market\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/dex2.png}
+    \caption{Awesome Image}
+    \label{fig:awesome_image}
+\end{figure}
+\cite{andevconDalvikART}
+%
+
 
 gaining information about a program and its implementation
 details, process aims at enabling an analyst to understand the concrete
@@ -32,7 +54,7 @@ reverse engineering process makes use of a whole range of different analysis
 methodologies and tools.\newline
 only consider static analysis tools\newline
 
-IN ORDER TO GET FULL OVERVIEW DEX/SMALI/JAVA -> WARUM?\newline
+IN ORDER TO GET FULL OVERVIEW DEX/SMALI/JAVA -see- WARUM?\newline
 
 WAS MACHEN DIE TOOLS IM ALLGEMEINEN? WOZU BENUTZEN WIR SIE?\newline
 

@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * http://stackoverflow.com/questions/10585961/way-to-protect-from-lucky-patcher-play-licensing
  *
- * http://forum.xda-developers.com/showthread.php?t=2279813 --> might change name
+ * http://forum.xda-developers.com/showthread.php?t=2279813 --see- might change name
  */
 
 

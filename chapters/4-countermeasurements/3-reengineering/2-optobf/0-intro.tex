@@ -8,6 +8,22 @@ Java code is architecture-independent giving freedom to design generic code tran
 \cite{kovachevaMaster}
 %
 
+%
+a few dex obfuscators exist, with different approaches
+proguard or sdex, rename methods, field and calss names -- break down string operations so as to chop hard coded strings or encrypt -- can use dynamic class loading (dexloader classes to impede static analysis)
+can add dead code and dummy lopps (minor impact of performance)
+can also use goto into other onstructions
+EVAULATIOn
+in practice quite limited due to:
+reliance on android framework apis (remain unobfuscated)
+jdwp and application debuggability at the java lvl
+if dalvik can execute it, so can a proper analysis tool (e.g. IDA, dextra)
+popular enough obfuscators (dexguard) have deobfuscators
+this is why JNI is so popular
+
+\cite{andevconDalvikART}
+%
+
 
 ERWÄHNEN WO IM PROZESS ANGEWENDET\newline
 

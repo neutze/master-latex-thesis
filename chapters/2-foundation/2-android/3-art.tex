@@ -24,69 +24,60 @@ art files is a proprietary format, poorly documented, changed format internally 
 art file maps in memory right before oat, which links with it
 contains pre-initilited classes, objects and support structures\newline
 ART/OAT files are created (on device or on host) by dex2oat
+art still optimizes dex but uses dex2oat instead, odex files are actually oat files (elf shared objects WAS IST DAS), actual dex payload buried deep inside
 command line saved inside oat file's key value store
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/oat.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image123}
+    \caption{oat}
+    \label{fig:oat}
 \end{figure}
 \newline
+
 art file format
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/art.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image1223}
+    \caption{art}
+    \label{fig:art}
 \end{figure}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/art2.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image12223}
-\end{figure}
-\newline
-
-OAT and ELF
-oat are actully embedded in ELF object files (was ist elf?)
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/elf.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image12223}
+    \caption{art2}
+    \label{fig:art2}
 \end{figure}
 
-\newline
+
 the oat dexfile header
 oat headers are 1...n dex files, actual value given by dexfilecount field in header
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/oatdex.png}
-    \caption{Awesome Image}
+    \caption{oatdex}
     \label{fig:awesome_image122223}
 \end{figure}
 
-\newline
+
 finding dex in oat
 odex files will usually have only one (=original) dex embedded
 booat.oat is something else entirely, some 14 dex files the best of the android framework jars, each dex contains potentilly hundres of classes
 
-\newline
 art code generation
 oat method headers point to offset of native code
 each method has a quick or portable method header, contains mapping from virtual register to underlying machine registers
 each method has a quick or protable frame info, provides frame size in bytes, core register spill mask, fp register spill mask
 generated code uses unusual registers, especially fond of using lr as call register, still saves/restores registers so as not to violate arm conventions
 \newline
+
 art supports mutliple architectures(x86,arm/64,mips)
 compiler is layered architecture, using portable (llvm) adds another lvl with llvm bitcode (not in this scope)
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/artarch.png}
-    \caption{Awesome Image}
-    \label{fig:awesome_image122223}
+    \caption{artarch}
+    \label{fig:artarch}
 \end{figure}
-\newline
 
 vergleich java/dex/odex(art) code
 \newline

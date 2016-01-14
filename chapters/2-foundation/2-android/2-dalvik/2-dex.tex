@@ -11,7 +11,13 @@ there are 218 used valid opcodes in Dalvik bytecode -see- QUELLE \newline
 
 Due to its simplicity over bytecode for other architectures as well as the little protection applied in practice, Dalvik bytecode is currently an easy target for the reverse engineer.
 
-VERGLEICHSBILD JAVA---DEX\cite{ehringerDalvik}\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/java.png}
+    \caption{java}
+    \label{fig:java}
+\end{figure}
+
 Each .class file has its own heterogeneous constant pool which may contain duplicating data, BEISPIEL, memory efficiency of a .dex file comes primarily from the type-specific constant pools used to store the data, BEISPIEL,\newline
 significantly more references within a .dex file compared to a .class file\cite{ehringerDalvik}\newline
 compression as efficiently as up to 44 percent of the size of an equivalent .jar archive\cite{ehringerDalvik}\newline

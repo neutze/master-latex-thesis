@@ -12,8 +12,6 @@ dynamic analysis during runtime, static raw code, done by automatic tools using 
 When speaking of reverse engineering an Android application we mostly mean to reverse engineer the bytecode located in the dex file of this application.
 
 The classes.dex file is a crucial component regarding the application’s code security because a reverse engineering attempt is considered successful when the targeted source code has been recovered from the bytecode analysis. Hence studying the DEX file format together with the Dalvik opcode structure is tightly related to both designing a powerful obfuscation technique or an efficient bytecode analysis tool.
-
-
 \cite{kovachevaMaster}
 %
 
@@ -39,6 +37,13 @@ flow from dex to java is bidirectional, decompile code back to java, remove anno
 \cite{andevconDalvikART}
 %
 
+%
+android vulnerability of app is reverse engineering the source code, patching security mechanism and recompiling the app
+best case scenario is obtaining one to one copy of original source code since reading and understanding high level code is easiest so will the patching be
+reality often not possible due various protecting of source code, also unnecessary since lower level representation of source code mgiht be enough to reveal mechanism
+patch and compile low level code tools and documentation have matured
+
+many tools and techniques
 
 gaining information about a program and its implementation
 details, process aims at enabling an analyst to understand the concrete

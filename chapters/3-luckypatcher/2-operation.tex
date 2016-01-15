@@ -3,6 +3,36 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+%
+analysis done by looking at patched applications since luckypatcher has done a lot of obfuscation etc which makes it almost impossible to undertand (tools crash, junkbyte injection, only a few giant classes in java which do not make sense, some classes not decompiled since crash, dex/smali not very useful since no names etc), poor decompilation result
+hard to analyze since of obfuscationa nd anti-decompilation measure
+
+so look at cracked application in order to udnerstand how lucky aoptcher works
+diff between code of unpatched and patched version of application which have lvl included
+first it was tested with a simple app which was created and implemented lvl
+also for apps from app store to see behaviour
+diff tool to compare code base and see positions lucky patcher attacks
+
+multiple tools used to reverse engineer the license verification circumvention by lucky patcher (see tools from reengineering)
+first look at java code (higher representation, human readable), to understand what/where class/function have been modified
+smali for having names for the bytecode executions
+dex to see exactly how it was modified
+document intended change by luckypatcher
+
+luckypatcher works by patching dex (patching based not call intercept)
+
+most patching options target googles lvl, but also available for amazon and samsung
+
+information if lvl is contained can be pulled from manifest because of com.android.vending.CHECK\_LICENSE permission, only to show user and can circumvent anyway since solely for user to flag in market (ist das noch so?), trying to trick and not declare would break violate permissions and be stopped by andorid
+
+luckypatcher extracts original classes.dex from apk and patches it
+patching is doen on binary level and done by using different patterns which are dependent on the modus (see patterns/modi)
+the result is either used to substitude the optimized classes.dex of attacked app with the patched .odex in dalvik cache (/data/dalvik-cache/), or can be output as an apk
+
+works on most applications but has few problems on custom modified lvl libraries (liste der apps wo es funzt aus gdrive tabelle)
+
+\cite{munteanLicense}
+%
 
 wo arbeitet er?\newline
 warum dex und nicht odex anschauen?\newline
@@ -11,3 +41,5 @@ patterns und patching modes grob erklären (modi von luckypatcher die verschiede
 Since the code is modified directly a static analysis is sufficient.\newline
 
 UM ES EINFACHER ZU MACHEN, KEINE ODEX (WARUM), APK CREATEN UND AUF EINEM NORMALEN HANDY INSTALLIEREN(dann sieht man dass man die app wem anders gecracked geben kann - ringschluss blackmarket)\newline
+
+after modification the dex is signed again in order to work on the phone (see installation und signature)

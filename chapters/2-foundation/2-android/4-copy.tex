@@ -25,6 +25,10 @@ unauthorized usage of an app through copy protection
 apk was installed in a location on the phone /data/app user could not access
 useless if single user can get apk and redistribute, gained by root
 successful as long as root was not easy for everyone -see- samsung rooting odin QUELLE, did not have too big impact as today, oneclick root kits QUELLE, standard for nexus
+
+on install app's classes.dex is copies an optimized version (odex) to dalvik cache /data/dalvik-cache/, for faster startup (contains system apps and frameworks as well)
+odex erklären, byteswapping, structure realigning and memory-mapping
+when app is started optimized code from dalvik cache will be executed instead of apk
 \cite{munteanLicense}
 %
 

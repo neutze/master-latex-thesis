@@ -5,12 +5,31 @@ This is my real text! Rest might be copied or not be checked!
 
 
 %
-A Java source code obfuscator [30]. ProGuard performs variable identifiers name scrambling for packages, classes, methods and fields. It shrinks the code size by automatically removing unused classes, detects and highlights dead code, but leaves the developer to remove it manually
+A Java source code obfuscator. ProGuard performs variable identifiers name scrambling for packages, classes, methods and fields. It shrinks the code size by automatically removing unused classes, detects and highlights dead code, but leaves the developer to remove it manually
 \cite{kovachevaMaster}
 %
 
 %
-layout obfuscation
+open source tool
+shrinks, optimizes and obfuscates java .class files
+result
+- smaller apk files (use rprofits download and less space)
+- obfuscated code, especially layout obfuscation, harder to reverse engineer
+- small performance increase ddue to optimizations
+integrated into android build system, thus easy use
+default turned off
+minifyEnabled true
+proguardFiles getDefaultProguardFile('proguard-android.txt), 'proguard-rules.pro'
+
+additional step in build process, right after java compiler compiled to class files, Proguard performs transformation on files
+removes unusaed classes, fields, methods and attributes which got past javac
+optimization step methods are inlined, unused parameters removed, classes and methods made private/static/final as possible
+obfuscation step name and identifiers mangled, data obfuscation is performed, packages flattened, methods renamed to same name and overloading differentiates them
+
+after proguard is finished dx converts to classes.dex
+
+
+BILD VORHER NACHER
 \cite{munteanLicense}
 %
 

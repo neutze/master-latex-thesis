@@ -10,12 +10,12 @@ on respond google app passes response to the callback
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/lvl.png}
-    \caption{lvl \cite{developersLicensing}}
+    \caption{lvl \cite{developersLicensingBlog}}
     \label{fig:lvl}
 \end{figure}
 
 determine license status of an app, licensing service needs two informaiton:
-- package name of app, a nince that has to be present in every server response to esnure attacker security, callback for async handling of server respone, implemented in initial license check - user
+- package name of app, a nunce that has to be present in every server response to esnure attacker security, callback for async handling of server respone, implemented in initial license check - user
 - specific info user and device such as primary google acc and imsi, collected and provided by google play - google play
 
 security of response important
@@ -24,6 +24,17 @@ public key is embedded into app
 google play licensing server signes response with app private key
 public key used to check signature of response, effective mechanism is established to ensure origin and detect tampering
 \cite{munteanLicense}
+%
+
+The information about the application, the device and the user goes off to Google's servers.
+Google then checks your name against the list of people it knows have paid for the application on Google Play. (It could also check the name of the application against a list of applications it knows that you've downloaded from Google Play)
+If it can see that you have downloaded (and paid for) the application from Google Play it sends back that you have a license, if not then it tells the app you don't.
+
+%
+request starts when app initiates to service on Google Play client application
+Google Play sends request to licensign server and receives result
+google play passes it to app and app decides what happens
+\cite{developersLicensingOverview}
 %
 
 %

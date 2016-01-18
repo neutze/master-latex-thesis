@@ -1,0 +1,51 @@
+\subsubsection{Implementation}\label{subsection:license-google-implementation}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
+
+%
+run time, set of libraries provided by google
+app can query Google Play licensing Server to determine the license status of user
+returns information on whether your user is authorized to use the app based on stored sales revords
+real time over network
+\cite{developersLicensing}
+%
+
+
+
+\url{https://developer.android.com/google/play/licensing/setting-up.html}
+
+\url{https://developer.android.com/google/play/licensing/adding-licensing.html}
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={57-64},
+  firstnumber=57,
+  caption={Calling the LVL},
+  label={lst:lvlcall}
+]{data/lvl.java}
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={136-149},
+  firstnumber=57,
+  caption={Callback},
+  label={lst:lvlcallback}
+]{data/lvl.java}
+
+\cite{developersLicensingAdding}
+\url{https://developer.android.com/google/play/licensing/adding-licensing.html}

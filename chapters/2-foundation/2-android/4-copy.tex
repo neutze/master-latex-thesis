@@ -32,6 +32,18 @@ when app is started optimized code from dalvik cache will be executed instead of
 \cite{munteanLicense}
 %
 
+%
+The Android operating system is a multi-user Linux system in which each app is a different user.
+By default, the system assigns each app a unique Linux user ID (the ID is used only by the system and is unknown to the app). The system sets permissions for all the files in an app so that only the user ID assigned to that app can access them
+Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps.
+By default, every app runs in its own Linux process. Android starts the process when any of the app's components need to be executed, then shuts down the process when it's no longer needed or when the system must recover memory for other apps
+
+\cite{developerFundamentals}
+%
+
+old system was to put APK in folder user cannot access, unless you root
+weak, almost non-existant, anyone who can copy it can distribute it
+
 
 It replaces the old system copy protection system, wherein your APKs would be put in a folder that you can't access. Unless you root. Oh, and anyone who can copy that APK off can then give it to someone else to put on their device, too. It was so weak, it was almost non-existant.\newline
 kann mit root umgangen werden

@@ -37,19 +37,20 @@ google play passes it to app and app decides what happens
 \cite{developersLicensingOverview}
 %
 
+
 %
-what you need
+network based service lets query trusted Google Play licensign server, determine whether application is licensed for current user based on buyers database
+when, and how often, you want your application to check its license
+control over how it handles the response, verifies the signed response data, and enforces access controls
 
-google publisher account on google play
-google play developer console at Services \& API, app specific public key for licensing, implement it into the application
-copy it later into the app
+need internet, Google account (else you werent able to buy the applciations), google play installed
+addng licensing to app does not affect way the app functions when run on a device that does not offer GOogle Play
 
-
-how does google license check work \url{http://android.stackexchange.com/questions/22545/how-does-google-plays-market-license-check-work}\newline
-sis is text
-
-was sind voraussetzungen? googel acc auf dem smartphone welcher die app gekauft hat\newline
-
-bild \url{http://android-developers.blogspot.de/2010/07/licensing-service-for-android.html}
-
-\url{https://developer.android.com/google/play/licensing/licensing-reference.html}
+replace as copy protection
+flexible, secure mechanism for controlling access to applciation
+replaces copy protection mechanism which is no longer supported that was previously offered on Google play
+license based model that is enforceable on all devices that have acces to google play
+access is not bound to characteristics of host device, but google play and licensing policy definded
+can be installed, manages on any device and any storage, even SD card
+\cite{developersLicensingOverview}
+%

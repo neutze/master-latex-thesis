@@ -14,7 +14,17 @@ real time over network
 %
 
 %
-Adding the licensing permission your application's manifest
+what you need
+
+google publisher account on google play
+google play developer console at Services \& API, app specific public key for licensing, implement it into the application
+copy it later into the app
+
+\cite{developersLicensingAdding}
+%
+
+%
+- Adding the licensing permission your application's manifest
 \lstinputlisting[
   basicstyle=\footnotesize,
   breakatwhitespace=false,
@@ -28,9 +38,10 @@ Adding the licensing permission your application's manifest
   caption={Calling the LVL},
   label={lst:lvlcall}
 ]{data/permission.xml}
-Implementing a Policy, provided by LVL or own
-Implementing an Obfuscator, if Policy caches any license response data. \ref{lvlcall} line 59, cannot be reused or manipulated by a root user
-adding code to check license in application main activity_main
+
+- Implementing a Policy, provided by LVL or own
+- Implementing an Obfuscator, if Policy caches any license response data. \ref{lvlcall} line 59, cannot be reused or manipulated by a root user
+- adding code to check license in application main activity\_main
 \cite{developersLicensingAdding}
 %
 \url{https://developer.android.com/google/play/licensing/setting-up.html}
@@ -64,6 +75,3 @@ adding code to check license in application main activity_main
   caption={Callback},
   label={lst:lvlcallback}
 ]{data/lvl.java}
-
-\cite{developersLicensingAdding}
-\url{https://developer.android.com/google/play/licensing/adding-licensing.html}

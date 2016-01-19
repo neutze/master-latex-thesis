@@ -90,10 +90,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        
+
         @Override
         public void licenseCheckedAsInvalid() {
-            Log.d("ZirconiaTest", "License is invalid");
             mHandler.post(new Runnable() {
                 public void run() {
                   ...

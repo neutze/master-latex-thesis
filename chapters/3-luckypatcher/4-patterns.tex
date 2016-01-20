@@ -4,13 +4,46 @@ This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
 In order to identify the single patterns, the information from the output of cracking \ref{luckyInapp} right, of the apps was matched with the changes in the code. the changes in the code were inspected on dex, smali and java level with the tools explained in Section~\ref{section:reengineering}. in case of LVL, from the information where in the package the change was done, conclusion to the original class from in the lvl could be done
+
+diff for original app and modified app
+
+example code taken from an app which was inspected, modification happens for all at the same spot/manner
+
+dex == smali, smali better readable but dex to see how easy change
+since the translation from java to dex does some optimizations/logik, dex and java do not express the same, but it is how it is in the decompiled code, java is also an abstraction of the actual code, sometimes java also a little confusing since changes happened in dex code and cannot be decompiled to java in a good manner, very messy, it is included for better understanding anyways since humanreadable
 \newline
 \newline
 \textbf{Pattern N1} \newline
-
 classes it attacks
-com/amazon/android/licensing/b
-com/amazon/android/o/d
+LicenseValidator, responsible for decrypting and verifying the response from the licensing server
+
+one Pattern
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N1 pattern},
+  label={lst:n1DiffDex}
+]{data/n1.diff}
+
+values are swapped
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={5-9},
+  caption={Diff on Smali level for N1 pattern},
+  label={lst:n1DiffSmali}
+]{data/n1.diff}
+
+switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
 
 \lstinputlisting[
   basicstyle=\footnotesize,
@@ -18,131 +51,169 @@ com/amazon/android/o/d
   breaklines=true,
   captionpos=b,
   frame=single,
-  numbers=left,
-  language=Java,
-  linerange={16-37},
-  firstnumber=16,
-  caption={Partial Listing},
-  label={lst: luckycode}
-]{data/amazon.diff}
-
-simple explanation
-
-impact
-
-comment
+  linerange={11-15},
+  language=diff,
+  caption={Diff on Java level for N1 pattern},
+  label={lst:n1DiffJava}
+]{data/n1.diff}
+old code when license code not licensed return in case not licensed with error
+after patching when not licensed return as old license key
 \newline
 \newline
-\textbf{Pattern N2} \newline
-
+\textbf{Pattern N2}\newline
 classes it attacks
-com/amazon/android/licensing/b
-com/amazon/android/o/d
-
-\lstinputlisting[
-  basicstyle=\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=Java,
-  linerange={16-37},
-  firstnumber=16,
-  caption={Partial Listing},
-  label={lst: luckycode}
-]{data/amazon.diff}
-
-simple explanation
-
-impact
-
-comment
 \newline
 \newline
 \textbf{Pattern N3}\newline
-a
+classes it attacks
 \newline
 \newline
 \textbf{Pattern N3i}\newline
-inverse version of pattern N3
+inverse version of pattern N
 \newline
 \newline
 \textbf{Pattern N4}\newline
-a
+classes it attacks
 \newline
 \newline
 \textbf{Pattern N5}\newline
-ali
+classes it attacks
 \newline
 \newline
 \textbf{Pattern N6}\newline
-ali
+classes it attacks
 \newline
 \newline
 \textbf{Pattern N7}\newline
-a
-\newline
-\newline
-\textbf{Pattern N7}\newline
-a
-\newline
-\newline
-\textbf{Pattern N7}\newline
-a
+classes it attacks
 \newline
 \newline
 \textbf{Amazon}\newline
 also applies pattern N2
 
-classes it attacks
+classes it attacks, inside zirconia logic
 com/amazon/android/licensing/b
 com/amazon/android/o/d
 
+one pattern, used on both
+
 \lstinputlisting[
-  basicstyle=\ttfamily,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={1-2},
-  caption={Partial Listing},
-  label={lst: luckycode}
+  linerange={1-3},
+  caption={Diff on Dex level for Amazon patch},
+  label={lst:amazonDiffDex}
 ]{data/amazon.diff}
 
+if-eqz is repalces by if-ne
 
 \lstinputlisting[
-  basicstyle=\ttfamily,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={4-5},
-  caption={Partial Listing},
-  label={lst: luckycode}
+  linerange={5-7},
+  caption={Diff on Smali level for Amazon patch},
+  label={lst:amazonDiffSmali}
 ]{data/amazon.diff}
-
+in the original code variable v0 is compared for not equality with zero
+after it is patched it is always compared with itself which returns always true and the condition is always called
 
 \lstinputlisting[
-  basicstyle=\ttfamily,
+  basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={7-9},
-  caption={Partial Listing},
-  label={lst: luckycode}
+  linerange={9-11},
+  language=diff,
+  caption={Diff on Java level for Amazon patch},
+  label={lst:amazonDiffJava}
 ]{data/amazon.diff}
 
-simple explanation
+in the original code the result from the server is tested whether it is "LICENSED"
+after patching the response is always evalauted and the result is compared with itself which is always true
 
-impact
-
-comment
+result
+never the less what the check for "LICENSED" returns, the condition for "LICENSED" is always called
 \newline
 \newline
 \textbf{Samsung Pattern N2}\newline
 also applies pattern N2
+
+classes it attacks, inside zirconia logic
+com/samsung/zirconia/LicenseRetriever
+com/samsung/zirconia/Zirconia
+
+two patterns, first used on both, second used twice on zirconia
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-7},
+  caption={Diff on Dex level for Samsung patch},
+  label={lst:samsungDiffDex}
+]{data/samsung.diff}
+
+pattern 1
+input for if-eq is modified
+pattern 2
+move-result is replaced by move const
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={9-15},
+  caption={Diff on Smali level for Samsung patch},
+  label={lst:samsungDiffSmali}
+]{data/samsung.diff}
+pattern1
+in the original code checks whether to different variables are equal
+after patching the check is done with the same variables and thus always returns true
+
+pattern2
+in the original code the result of a function is moved to v0 and returned
+after patching true/1 is always moved to v0 and returned
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={17-23},
+  language=diff,
+  caption={Diff on Java level for Samsung patch},
+  label={lst:samsungDiffJava}
+]{data/samsung.diff}
+
+pattern1
+in the original code
+after patching
+
+pattern2
+in the original code
+after patching
+
+result
+com/samsung/zirconia/LicenseRetriever
+always starts condition, even though input is not "12" as supposed to start
+com/samsung/zirconia/Zirconia
+pattern1
+always returns true for checkLicenseFile and checkLicenseFilePhase2, does not check anything which is done normally
+pattern2
+always starts condition, even though input is not as supposed to start
+com/samsung/zirconia/Zirconia
 \newline
 asd
 \begin{table}[h]
@@ -184,16 +255,8 @@ allowAccess() -see- was amcht sie
 %
 
 classes it works on
-\url{https://developer.android.com/google/play/licensing/licensing-reference.html}
-
-was greift jedes pattern an? wie wird der mechanismus ausgeklingt? was ist das result?
-
-bild vorher nacher (diff)
 
 
-AMAZON
-
-samsung
 \cite{samsungZirconia} 4. appendix
 
 

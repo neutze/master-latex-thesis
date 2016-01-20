@@ -16,7 +16,12 @@
   uniquename=init]{biblatex} % TODO: adapt bibliography style
 \usepackage{graphicx}
 \usepackage{scrhack} % necessary for listings package
-\usepackage{listings}
+\usepackage{listings} \lstdefinelanguage{diff}{
+    basicstyle=\ttfamily\small,
+    morecomment=[f][\color{Grey}]{@@},
+    morecomment=[f][\color{Green}]{+\ },
+    morecomment=[f][\color{Red}]{-\ },
+  }
 \usepackage{lstautogobble}
 \usepackage{tikz}
 \usepackage{pgfplots}

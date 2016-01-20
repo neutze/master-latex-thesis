@@ -1,9 +1,12 @@
-- 0a 00 38 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..8...b.V ..NIn |
-+ 0a 00 33 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..3...b.V ..NIn |
+*@@ Pattern 1 @@*
+- 0a 00 !!38!! 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..8...b.V ..NIn |
++ 0a 00 ??33?? 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..3...b.V ..NIn |
 
-- if-eqz v0, :cond_1f
-+ if-ne v0, v0, :cond_1f
+*@@ Pattern 1 @@*
+- if-!!eqz!! v0, :cond_1f
++ if-??ne?? v0, v0, :cond_1f
 
-- if( foo() )
-+ x = foo()
-+ if( x == x )
+@@ Pattern 1 @@
+- if(v0.equals("LICENSED"))
++ b = v0.equals("LICENSED")
++ if( b == b )

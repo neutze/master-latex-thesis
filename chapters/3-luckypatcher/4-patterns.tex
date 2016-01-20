@@ -1,7 +1,168 @@
-\section{What patterns are there and what do they do?} \label{section:luckypatcher-patterns}
+\section{Patterns applied by LuckyPatcher} \label{section:luckypatcher-patterns}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
+
+In order to identify the single patterns, the information from the output of cracking \ref{luckyInapp} right, of the apps was matched with the changes in the code. the changes in the code were inspected on dex, smali and java level with the tools explained in Section~\ref{section:reengineering}. in case of LVL, from the information where in the package the change was done, conclusion to the original class from in the lvl could be done
+\newline
+\newline
+\textbf{Pattern N1} \newline
+
+classes it attacks
+com/amazon/android/licensing/b
+com/amazon/android/o/d
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={16-37},
+  firstnumber=16,
+  caption={Partial Listing},
+  label={lst: luckycode}
+]{data/amazon.diff}
+
+simple explanation
+
+impact
+
+comment
+\newline
+\newline
+\textbf{Pattern N2} \newline
+
+classes it attacks
+com/amazon/android/licensing/b
+com/amazon/android/o/d
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={16-37},
+  firstnumber=16,
+  caption={Partial Listing},
+  label={lst: luckycode}
+]{data/amazon.diff}
+
+simple explanation
+
+impact
+
+comment
+\newline
+\newline
+\textbf{Pattern N3}\newline
+a
+\newline
+\newline
+\textbf{Pattern N3i}\newline
+inverse version of pattern N3
+\newline
+\newline
+\textbf{Pattern N4}\newline
+a
+\newline
+\newline
+\textbf{Pattern N5}\newline
+ali
+\newline
+\newline
+\textbf{Pattern N6}\newline
+ali
+\newline
+\newline
+\textbf{Pattern N7}\newline
+a
+\newline
+\newline
+\textbf{Pattern N7}\newline
+a
+\newline
+\newline
+\textbf{Pattern N7}\newline
+a
+\newline
+\newline
+\textbf{Amazon}\newline
+also applies pattern N2
+
+classes it attacks
+com/amazon/android/licensing/b
+com/amazon/android/o/d
+
+\lstinputlisting[
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-2},
+  caption={Partial Listing},
+  label={lst: luckycode}
+]{data/amazon.diff}
+
+
+\lstinputlisting[
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={4-5},
+  caption={Partial Listing},
+  label={lst: luckycode}
+]{data/amazon.diff}
+
+
+\lstinputlisting[
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={7-9},
+  caption={Partial Listing},
+  label={lst: luckycode}
+]{data/amazon.diff}
+
+simple explanation
+
+impact
+
+comment
+\newline
+\newline
+\textbf{Samsung Pattern N2}\newline
+also applies pattern N2
+\newline
+asd
+\begin{table}[h]
+\centering
+\begin{tabular}{l|cccccccc}
+                           & \multicolumn{8}{c}{Patterns}           \\
+\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
+Auto                       & X  & X  & X  &     & X  &    &    &    \\
+Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
+Extreme                    &    &    &    &     &    & X  & X  & X  \\
+Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
+Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
+\end{tabular}
+\caption{Overview of patterns applied by each modus}
+\label{table:patterns}
+\end{table}
+
+ZUSAMMENFASSUNG WAS JETZT ALSO JEDER MODI MACHT!
+
+
 
 %
 when  not modified large bytecode sections are identical and patched automatically, else pattern search and overwriting original bytes and therby efecctively patching application
@@ -34,3 +195,7 @@ AMAZON
 
 samsung
 \cite{samsungZirconia} 4. appendix
+
+
+
+!!! kann man das excel sheet in die datein machen und nicht als appendix, da manche apps ihre ergebnisse nicht öffentlich sehen wollen !!!

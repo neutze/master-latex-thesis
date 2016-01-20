@@ -62,6 +62,51 @@ after patching when not licensed return as old license key
 \newline
 \textbf{Pattern N2}\newline
 classes it attacks
+
+LicenseValidator, responsible for decrypting and verifying the response from the licensing server
+
+one Pattern
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N2 pattern},
+  label={lst:n2DiffDex}
+]{data/n2.diff}
+
+move-result is replaced by move const
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={5-7},
+  caption={Diff on Smali level for N2 pattern},
+  label={lst:n2DiffSmali}
+]{data/n2.diff}
+
+instead of moving the result from a function to v3, it is initiated with true/1
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={8-11},
+  language=diff,
+  caption={Diff on Java level for N2 pattern},
+  label={lst:n2DiffJava}
+]{data/n2.diff}
+
+old code: signature was verified, if true it is continued
+after patching the verification is treated as always true and so it is continued
 \newline
 \newline
 \textbf{Pattern N3}\newline

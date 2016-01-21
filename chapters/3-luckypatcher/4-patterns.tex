@@ -15,9 +15,8 @@ since the translation from java to dex does some optimizations/logik, dex and ja
 \newline
 \textbf{Pattern N1} \newline
 classes it attacks
-LicenseValidator, responsible for decrypting and verifying the response from the licensing server
-
-one Pattern
+com/google/android/vending/licensing/LicenseValidator
+LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
 
 \lstinputlisting[
   style=diff,
@@ -53,7 +52,7 @@ switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
   frame=single,
   linerange={11-15},
   language=diff,
-  caption={Diff on Java level for N1 pattern},
+  caption={Diff on Java level for N1 pattern (abstracted)},
   label={lst:n1DiffJava}
 ]{data/n1.diff}
 old code when license code not licensed return in case not licensed with error
@@ -62,9 +61,9 @@ after patching when not licensed return as old license key
 \newline
 \textbf{Pattern N2}\newline
 classes it attacks
-
-LicenseValidator, responsible for decrypting and verifying the response from the licensing server
-
+com/google/android/vending/licensing/LicenseValidator
+LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
+greift auch zB. google maps api (com/google/android/gms) oder in app billing (com/android/iab/v3) an, collateral schaden
 one Pattern
 
 \lstinputlisting[
@@ -87,7 +86,7 @@ move-result is replaced by move const
   captionpos=b,
   frame=single,
   linerange={5-7},
-  caption={Diff on Smali level for N2 pattern},
+  caption={Diff on Smali level for n2 pattern},
   label={lst:n2DiffSmali}
 ]{data/n2.diff}
 
@@ -101,7 +100,7 @@ instead of moving the result from a function to v3, it is initiated with true/1
   frame=single,
   linerange={8-11},
   language=diff,
-  caption={Diff on Java level for N2 pattern},
+  caption={Diff on Java level for N2 pattern (abstracted)},
   label={lst:n2DiffJava}
 ]{data/n2.diff}
 
@@ -111,36 +110,171 @@ after patching the verification is treated as always true and so it is continued
 \newline
 \textbf{Pattern N3}\newline
 classes it attacks
-\newline
-\newline
-\textbf{Pattern N3i}\newline
-inverse version of pattern N
+com/google/android/vending/licensing/APKExpansionPolicy
+com/google/android/vending/licensing/ServerManagedPolicy
+Policy integration of License Verification Library, those are the two examples offered by Google\cite{developersLicensingReference}
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-7},
+  caption={Diff on Dex level for N3 pattern},
+  label={lst:n3DiffDex}
+]{data/n3.diff}
+
+for forward value 0x0 is switched with 0x1 and for inverse...inversed
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={9-15},
+  caption={Diff on Smali level for N3 pattern},
+  label={lst:n3DiffSmali}
+]{data/n3.diff}
+
+variable is initiated with opposite of what they were initiated before
+
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={17-23},
+  caption={Diff on Java level for N3 pattern (abstracted)},
+  label={lst:n3DiffJava}
+]{data/n3.diff}
+
+old code variable is initiated false and true for inversed as basic return value
+after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
 \newline
 \newline
 \textbf{Pattern N4}\newline
 classes it attacks
+com/google/android/vending/licensing/LicenseChecker
+LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N4 patch},
+  label={lst:n4DiffDex}
+]{data/n4.diff}
+
+if-eqz is repalces by if-ne
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={5-7},
+  caption={Diff on Smali level for N4 patch},
+  label={lst:n4DiffSmali}
+]{data/n4.diff}
+in the original code variable v0 is compared for not equality with zero
+after it is patched it is always compared with itself which returns always true and the condition is always called
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={9-12},
+  language=diff,
+  caption={Diff on Java level for N4 patch (abstracted)},
+  label={lst:n4DiffJava}
+]{data/n4.diff}
+
+in the original code it is checked whether the license is already cached, fi yes, condition is called
+after patching the result of the check is always compared to itself, and thus  the condition is always called
 \newline
 \newline
 \textbf{Pattern N5}\newline
 classes it attacks
+com/google/android/vending/licensing/LicenseValidator
+
+works the same way as pattern N2
+
+im gegensatz zu N2 wird jetzt die condition nie aufgeraufen anstatt sie immer aufzurufen wie in N5
+result is that the check for the result code given to the function and extracted from the server response is disabled since the result of the check is set to always false
 \newline
 \newline
 \textbf{Pattern N6}\newline
 classes it attacks
+com/google/android/vending/licensing/LicenseValidator
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N6 patch},
+  label={lst:n6DiffDex}
+]{data/n6.diff}
+
+if-eqz is replaced by move constant, variables for if-eq are changed
+
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={5-12},
+  caption={Diff on Smali level for N6 patch},
+  label={lst:n6DiffSmali}
+]{data/n6.diff}
+
+instead of testing for zero and then calling a condition, the to test variable is changed and the condition removed
+the second equal check is done by comparing a variable with itself thus always true and the conidition is called
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={14-17},
+  language=diff,
+  caption={Diff on Java level for N6 patch (abstracted)},
+  label={lst:n6DiffJava}
+]{data/n6.diff}
+
+instead checking two variables for a case, the condition is just always called
 \newline
 \newline
 \textbf{Pattern N7}\newline
 classes it attacks
+com/google/android/vending/licensing/ILicenseResultListener
+ILicenseResultListener, IPC callback implementation, receives async response from server\cite{developersLicensingReference}
+einfach auf alles was in com/android ist
+
 \newline
 \newline
 \textbf{Amazon}\newline
 also applies pattern N2
 
-classes it attacks, inside zirconia logic
+classes it attacks, inside kiwi logic
 com/amazon/android/licensing/b
 com/amazon/android/o/d
 
-one pattern, used on both
+one pattern, used on both, similar like pattern N4
 
 \lstinputlisting[
   style=diff,
@@ -174,9 +308,9 @@ after it is patched it is always compared with itself which returns always true 
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={9-11},
+  linerange={9-12},
   language=diff,
-  caption={Diff on Java level for Amazon patch},
+  caption={Diff on Java level for Amazon patch (abstracted)},
   label={lst:amazonDiffJava}
 ]{data/amazon.diff}
 
@@ -187,7 +321,7 @@ result
 never the less what the check for "LICENSED" returns, the condition for "LICENSED" is always called
 \newline
 \newline
-\textbf{Samsung Pattern N2}\newline
+\textbf{Samsung Pattern}\newline
 also applies pattern N2
 
 classes it attacks, inside zirconia logic
@@ -226,37 +360,27 @@ pattern1
 in the original code checks whether to different variables are equal
 after patching the check is done with the same variables and thus always returns true
 
-pattern2
+pattern3
 in the original code the result of a function is moved to v0 and returned
 after patching true/1 is always moved to v0 and returned
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={17-23},
-  language=diff,
-  caption={Diff on Java level for Samsung patch},
+  caption={Diff on Java level for Samsung patch (abstracted)},
   label={lst:samsungDiffJava}
 ]{data/samsung.diff}
 
-pattern1
-in the original code
-after patching
-
-pattern2
-in the original code
-after patching
-
-result
 com/samsung/zirconia/LicenseRetriever
 always starts condition, even though input is not "12" as supposed to start
 com/samsung/zirconia/Zirconia
 pattern1
 always returns true for checkLicenseFile and checkLicenseFilePhase2, does not check anything which is done normally
-pattern2
+pattern3
 always starts condition, even though input is not as supposed to start
 com/samsung/zirconia/Zirconia
 \newline
@@ -265,7 +389,7 @@ asd
 \centering
 \begin{tabular}{l|cccccccc}
                            & \multicolumn{8}{c}{Patterns}           \\
-\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
+\multicolumn{1}{c|}{Modus} & N1 & n3 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
 Auto                       & X  & X  & X  &     & X  &    &    &    \\
 Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
 Extreme                    &    &    &    &     &    & X  & X  & X  \\

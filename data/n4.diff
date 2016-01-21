@@ -1,0 +1,12 @@
+*@@ Pattern N4 @@*
+- d5 70 00 00 0a 00 !!38!! 00  0e 00 1a 00 5a 20 1a 01  |.p....8.....Z ..|
++ d5 70 00 00 0a 00 ??33?? 00  0e 00 1a 00 5a 20 1a 01  |.p....3.....Z ..|
+
+*@@ Pattern N4 @@*
+- if-!!eqz!! v0, :cond_15
++ if-??ne?? v0, ??v0,?? :cond_15
+
+*@@ Pattern N4 @@*
+!!- if(licenseCached())!!
+??+ b = licenseCached()??
+??+ if(b == b)??

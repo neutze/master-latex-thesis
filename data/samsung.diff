@@ -1,23 +1,23 @@
-*@@ Pattern 1 @@*
+*@@ Pattern S1 @@*
 - 08 00 0c 08 6e 10 66 4a  08 00 0a 06 32 !!d6!! 0a 00  |....n.fJ....2...|
 + 08 00 0c 08 6e 10 66 4a  08 00 0a 06 32 ??00?? 0a 00  |....n.fJ....2...|
 
-*@@ Pattern 2 @@*
+*@@ Pattern S2 @@*
 - 10 02 !!0a!! 00 0f 00 00 00  03 00 01 00 02 00 00 00  |................|
 + 10 02 ??12?? 10 0f 00 00 00  03 00 01 00 02 00 00 00  |................|
 
-*@@ Pattern 1 @@*
+*@@ Pattern S1 @@*
 - if-eq !!v6!!, !!v13!!, :cond_52
 + if-eq ??v0??, ??v0??, :cond_52
 
-*@@ Pattern 2 @@*
+*@@ Pattern S2 @@*
 !!- move-result v0!!
 ??+ const/4 v0, 0x1??
 
-@@ Pattern 1 @@
-- if (v6 == 12)
-+ if (v0 == v0)
+@@ Pattern S1 @@
+- if (!!v6!! == !!12!!)
++ if (??v0?? == ??v0??)
 
-@@ Pattern 2 @@
-- return foo()
-+ return 1
+@@ Pattern S2 @@
+- return !!foo()!!
++ return ??1??

@@ -1,13 +1,11 @@
-*@@ Pattern 1 @@*
+*@@ Pattern N2 @@*
 - 0c 05 6e 20 9d 4a 53 00  !!0a!! 05 39 05 2d 00 1a 05  |..n .JS...9.-...|
 + 0c 05 6e 20 9d 4a 53 00  ??12?? 15 39 05 2d 00 1a 05  |..n .JS...9.-...|
 
-*@@ Pattern 1 @@*
--    move-result v5
-+    const/4 v5, 0x1
+*@@ Pattern N2 @@*
+!!-    move-result v5!!
+??+    const/4 v5, 0x1??
 
-@@ Pattern 1 @@
-- case LICENSED_OLD_KEY: handleResponse();
-- case NOT_LICENSED: handleError();
-+ case NOT_LICENSED: handleResponse();
-+ case LICENSED_OLD_KEY: handleError();
+@@ Pattern N2 @@
+- if (sig.verify(Base64.decode(signature)))
++ sig.verify(Base64.decode(signature)

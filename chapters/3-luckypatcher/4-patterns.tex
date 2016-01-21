@@ -15,7 +15,7 @@ since the translation from java to dex does some optimizations/logik, dex and ja
 \newline
 \textbf{Pattern N1} \newline
 classes it attacks
-com/google/android/vending/licensing/LicenseValidator
+\url{com/google/android/vending/licensing/LicenseValidator}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
 
 \lstinputlisting[
@@ -61,9 +61,9 @@ after patching when not licensed return as old license key
 \newline
 \textbf{Pattern N2}\newline
 classes it attacks
-com/google/android/vending/licensing/LicenseValidator
+\url{com/google/android/vending/licensing/LicenseValidator.java}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
-greift auch zB. google maps api (com/google/android/gms) oder in app billing (com/android/iab/v3) an, collateral schaden
+greift auch zB. google maps api (\url{com/google/android/gms/}) oder in app billing (\url{com/android/iab/v3/}) an, collateral schaden
 one Pattern
 
 \lstinputlisting[
@@ -98,7 +98,7 @@ instead of moving the result from a function to v3, it is initiated with true/1
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={8-11},
+  linerange={9-11},
   language=diff,
   caption={Diff on Java level for N2 pattern (abstracted)},
   label={lst:n2DiffJava}
@@ -110,8 +110,8 @@ after patching the verification is treated as always true and so it is continued
 \newline
 \textbf{Pattern N3}\newline
 classes it attacks
-com/google/android/vending/licensing/APKExpansionPolicy
-com/google/android/vending/licensing/ServerManagedPolicy
+\url{com/google/android/vending/licensing/APKExpansionPolicy.java}
+\url{com/google/android/vending/licensing/ServerManagedPolicy.java}
 Policy integration of License Verification Library, those are the two examples offered by Google\cite{developersLicensingReference}
 
 \lstinputlisting[
@@ -158,7 +158,7 @@ after patching the return is the opposite, meaning all true results are now fals
 \newline
 \textbf{Pattern N4}\newline
 classes it attacks
-com/google/android/vending/licensing/LicenseChecker
+\url{com/google/android/vending/licensing/LicenseChecker.java}
 LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
 
 \lstinputlisting[
@@ -205,7 +205,7 @@ after patching the result of the check is always compared to itself, and thus  t
 \newline
 \textbf{Pattern N5}\newline
 classes it attacks
-com/google/android/vending/licensing/LicenseValidator
+\url{com/google/android/vending/licensing/LicenseValidator.java}
 
 works the same way as pattern N2
 
@@ -215,7 +215,7 @@ result is that the check for the result code given to the function and extracted
 \newline
 \textbf{Pattern N6}\newline
 classes it attacks
-com/google/android/vending/licensing/LicenseValidator
+\url{com/google/android/vending/licensing/LicenseValidator.java}
 
 \lstinputlisting[
   style=diff,
@@ -261,20 +261,37 @@ instead checking two variables for a case, the condition is just always called
 \newline
 \textbf{Pattern N7}\newline
 classes it attacks
-com/google/android/vending/licensing/ILicenseResultListener
+\url{com/google/android/vending/licensing/ILicenseResultListener.java}
 ILicenseResultListener, IPC callback implementation, receives async response from server\cite{developersLicensingReference}
-einfach auf alles was in com/android ist
+einfach auf alles was in \url{com/android/} ist, some kind of bruteforce
 
+similar to N2, but Java result is more generic
+
+\lstinputlisting[
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={13-15},
+  language=diff,
+  caption={Diff on Java level for N7 patch (abstracted)},
+  label={lst:n7DiffJava}
+]{data/n2.diff}
+
+instead of initializing variable with result from function, it is always initialized with false / 0
 \newline
 \newline
 \textbf{Amazon}\newline
 also applies pattern N2
 
 classes it attacks, inside kiwi logic
-com/amazon/android/licensing/b
-com/amazon/android/o/d
+\url{com/amazon/android/licensing/b.java}
+\url{com/amazon/android/o/d.java}
 
-one pattern, used on both, similar like pattern N4
+see, obfuscated
+
+similar like pattern N4
 
 \lstinputlisting[
   style=diff,
@@ -325,10 +342,12 @@ never the less what the check for "LICENSED" returns, the condition for "LICENSE
 also applies pattern N2
 
 classes it attacks, inside zirconia logic
-com/samsung/zirconia/LicenseRetriever
-com/samsung/zirconia/Zirconia
+\url{com/samsung/zirconia/LicenseRetriever.java}
+\url{com/samsung/zirconia/Zirconia.java}
 
-two patterns, first used on both, second used twice on zirconia
+not obfuscated
+
+two patterns, lets call it S1 and S2, S1 used on both, S2 used twice on zirconia
 
 \lstinputlisting[
   style=diff,
@@ -341,9 +360,9 @@ two patterns, first used on both, second used twice on zirconia
   label={lst:samsungDiffDex}
 ]{data/samsung.diff}
 
-pattern 1
+S1
 input for if-eq is modified
-pattern 2
+S2
 move-result is replaced by move const
 
 \lstinputlisting[
@@ -356,11 +375,11 @@ move-result is replaced by move const
   caption={Diff on Smali level for Samsung patch},
   label={lst:samsungDiffSmali}
 ]{data/samsung.diff}
-pattern1
+S1
 in the original code checks whether to different variables are equal
 after patching the check is done with the same variables and thus always returns true
 
-pattern3
+S3
 in the original code the result of a function is moved to v0 and returned
 after patching true/1 is always moved to v0 and returned
 
@@ -375,16 +394,14 @@ style=diff,
   label={lst:samsungDiffJava}
 ]{data/samsung.diff}
 
-com/samsung/zirconia/LicenseRetriever
+\url{com/samsung/zirconia/LicenseRetriever.java}
 always starts condition, even though input is not "12" as supposed to start
-com/samsung/zirconia/Zirconia
-pattern1
+\url{com/samsung/zirconia/Zirconia.java}
+S1
 always returns true for checkLicenseFile and checkLicenseFilePhase2, does not check anything which is done normally
-pattern3
+S2
 always starts condition, even though input is not as supposed to start
-com/samsung/zirconia/Zirconia
-\newline
-asd
+\url{com/samsung/zirconia/Zirconia.java}
 \begin{table}[h]
 \centering
 \begin{tabular}{l|cccccccc}
@@ -400,33 +417,15 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
 \label{table:patterns}
 \end{table}
 
-ZUSAMMENFASSUNG WAS JETZT ALSO JEDER MODI MACHT!
 
+summarizing what patterns each modus applies Table~\ref{table:patterns}
 
+auto: just applies minimum patches, N1 swaps switch cases so not licensed is treated here as old license key in the LicenseValidator, N2 skips the signature verification in the LicenseValidator, N3 inverts the return boolean for the policy checks in the implemented Policy class by initializing with 0/false, and N4 skips, in the only case occured in the test set, the check whether download is allowed and allows it always
+auto inverse: does the same as auto but initializes the policy check with 1/true instead of false
+extreme:
+auto+extreme: applies auto and extreme patches
+auto inverse+extreme: applies auto and extreme patches
 
-%
-when  not modified large bytecode sections are identical and patched automatically, else pattern search and overwriting original bytes and therby efecctively patching application
-
-
-
-com.google.android.vending.licensing.LicenseValidator
-method verify(...) -see- was macht sie?
-switch method is altered
-was wird getauscht?
-
-
-ServerManagedPolicy/APKExpansionPolicy
-allowAccess() -see- was amcht sie
-
-
-
-\cite{munteanLicense}
-%
-
-classes it works on
-
-
-\cite{samsungZirconia} 4. appendix
 
 
 

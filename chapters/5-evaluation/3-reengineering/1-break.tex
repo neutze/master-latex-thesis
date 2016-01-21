@@ -1,8 +1,33 @@
-\subsection{Basic Breaks for Common Tools}
+\subsection{Break Common Reengineering Tools}
 \label{subsection:evaluation-reengineering-break}
-\input{chapters/5-evaluation/3-reengineering/1-break/0-intro}
-\input{chapters/5-evaluation/3-reengineering/1-break/1-filesystem}
-\input{chapters/5-evaluation/3-reengineering/1-break/2-inject}
-\input{chapters/5-evaluation/3-reengineering/1-break/3-difference}
-\input{chapters/5-evaluation/3-reengineering/1-break/4-header}
-\input{chapters/5-evaluation/3-reengineering/1-break/5-endian}
+\newline
+\newline
+\textbf{Too long filenames} \newline
+easy to detect and work araound, when name >255chars alert, thus not very useful on the long run, but can slow the reengineering down if it is unexpected
+\newline
+\newline
+\textbf{Inject bad op code} \newline
+%EVALUATION
+funktioniert nicht mehr
+This is not expected to work. The bytecode verifier explicitly checks all branches for validity. The question of whether or not an address is an instruction or data is determined by a linear walk through the method. Data chunks are essentially very large instructions, so they get stepped over.
+
+You can make this work if you modify the .odex output, and set the "pre-verified" flag on the class so the verifier doesn't examine it again -- but you can't distribute an APK that way.
+
+This "obfuscation" technique worked due to an issue in dalvik. This issue was fixed somewhere around the 4.3 timeframe, although I'm not sure the first released version that contained the fix. And lollipop uses ART, which never had this issue.
+
+Here is the change that fixed this issue: \url{https://android-review.googlesource.com/#/c/57985/}
+\url{http://stackoverflow.com/questions/33110538/junk-byte-injection-in-android}
+%
+\newline
+\newline
+\textbf{Abuse differences between Dalvik and Java} \newline
+ugly java decompiled code, sometimes only bytecode in decompiler returned since it cannot handle/decompile it
+no information gain for "hacker", thus
+\newline
+\newline
+\textbf{Increase header size} \newline
+a lot of work since every offset given in the dex file is not a relative offset but an offset from the bigging of the file, else pointers in the dex file will be wrong and the programm will be bugged if it even starts at all
+overall nice stuff but has to be implemented by hand, you need knowledge of what to change and if you change something what else has to be changed thus timeconsuming
+these things might be fixed already since when such edgecase gets public it is very likely that the tool includes it thats why it has also be a lot of time to be spend to come up with a fancy idea and then time again to implement it
+
+only good if you are interested in breaking stuff

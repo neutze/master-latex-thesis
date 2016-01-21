@@ -3,25 +3,9 @@
 \input{chapters/4-countermeasurements/4-external/1-service}
 \input{chapters/4-countermeasurements/4-external/2-art}
 \input{chapters/4-countermeasurements/4-external/3-se}
+\input{chapters/4-countermeasurements/4-external/34-tee}
 
-%
-take away:
-dex is dangerous executable format
-risks to app developers are significant with no clear solutions
 
-zu ART.
-dex isnt dead yet, even with art
-still buried deep inside those oat files
-far easier to reverse engineer embedded dex than do so for oat
-
-art is a far more advanced runtime architecture, brings android closer to ios native level performance
-vestiges of dex still remain to haunt performance, dex code is still 32bit
-very much still a shifting landscape, internal structures keep on changing, google isnt afraid to break compatibility, llvm integration likely to only increas eand improve
-for most users the change is smooth, better performance and power consumption, negligible cost binary size increase, minor limitations on dex obfuscation remain, for optimal performance and obfuscation nothing beats JNI
-\cite{andevconDalvikART}
-%
-
-sis is text
 \subsection{Service-managed Accounts}
 \subsection{ART}
 \subsection{Secure Elements}
@@ -29,16 +13,9 @@ Jetzt waere interessant, ob du dies mal mit SE vergleichen kannst bzw. gibt es i
 
 
 
-nachdem du dich mit Secure Elements befasst, moechte ich dich auch auf TEEs hinweisen, die ebenfalls (und nach Aussage von Atredis) fuer DRM genutzt werden. Speziell dortiges QSEE hatte jedoch schwerwiegende Luecken.
-%\url{https://usmile.at/symposium/program/2015/thomas-holmes​}
-
-DAP Verification .... normalerweise muss jede Applet, die auf so ein Secure Element/Smartcard etc. kommt mit ner Signatur unterschrieben sein ...
-%\url{http://www.win.tue.nl/pinpasjc/docs/Card%20Spec%20v2.1.1%20v0303.pdf}
 
 
-Waehrend ich Exploits finden konnte, die Dir erw. Zugriff geben, wenn du Applets installieren kannst, u.a.
-%\url{https://www.cs.ru.nl/E.Poll/papers/cardis08.pdf}
-%\url{http://www.uclouvain.be/crypto/wissec2009/static/13.pdf}​
+
 
 
 

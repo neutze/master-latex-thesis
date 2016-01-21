@@ -2,6 +2,8 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+applied when compiling
+
 %
 (a) at source code and (b) bytecode level, Most existing open-source and commercial tools work on source code level\newline
 Java code is architecture-independent giving freedom to design generic code transformations. Lowering the obfuscation level to bytecode requires the algorithms applied to be tuned accordingly to the underlying architecture\newline
@@ -13,13 +15,6 @@ a few dex obfuscators exist, with different approaches
 proguard or sdex, rename methods, field and calss names -- break down string operations so as to chop hard coded strings or encrypt -- can use dynamic class loading (dexloader classes to impede static analysis)
 can add dead code and dummy lopps (minor impact of performance)
 can also use goto into other onstructions
-EVAULATIOn
-in practice quite limited due to:
-reliance on android framework apis (remain unobfuscated)
-jdwp and application debuggability at the java lvl
-if dalvik can execute it, so can a proper analysis tool (e.g. IDA, dextra)
-popular enough obfuscators (dexguard) have deobfuscators
-this is why JNI is so popular
 
 \cite{andevconDalvikART}
 %
@@ -42,7 +37,7 @@ only complicates but does not stop
 will not protect against autoamted attack, does not alter flow of program
 makes more difficult for attackers to write initial attack
 removing symbols that would quickly reveal original structure
-number of commercial and open-source obfuscators available for Java that will work with Android 
+number of commercial and open-source obfuscators available for Java that will work with Android
 \cite{developersSecuring}
 %
 
@@ -63,7 +58,7 @@ potentially encrypt/obfuscate/hide via reflection\newline
 definition obfuscation, was macht es, wie funktioniert es, wer hat es erfunden, wie wendet man es an\newline
 
 "hard to reverse engineer" but without changing the behavior of this
-application, was heißt hardto reverse\newline
+application, was heißt hard to reverse\newline
 
 parallele zu disassembler ziehen\newline
 

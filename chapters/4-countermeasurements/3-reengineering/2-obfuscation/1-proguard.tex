@@ -33,9 +33,6 @@ after proguard is finished dx converts to classes.dex
 
 
 
-\url{https://youtu.be/6vFcEJ2jgOw?t=419}\newline
-
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
 
 %
 identifier mangling, ProGuard uses a similar approach. It uses minimal
@@ -48,27 +45,20 @@ understand an obfuscated or encrypted message dialog, information is context, ot
 %
 
 
-ProGuard is an open source tool which is also integrated in the Android SDK
-\url{http://proguard.sourceforge.net/}
-\url{http://developer.android.com/sdk/index.html}\newline
-was ist proguard? was macht er? -see- ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields\newline
-was kann er noch? -see- Besides these protection mechanisms it can also identify and highlight dead code so it can be removed in a second, manual step. Unused classes can be removed automatically by ProGuard.\newline
-easy integration -see- how\newline
+ProGuard is an open source tool which is also integrated in the Android SDK, free
+ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields
+was kann er noch? -see- Besides these protection mechanisms it can also
+identify and highlight dead code and removed in a second, manual step
+Unused classes removed automatically by ProGuard.
+easy integration\cite{proguard}
 
-\url{http://developer.android.com/tools/help/proguard.html}\newline
-optimizes, shrinks, (barely) obfuscates --see- free, reduces size, faster\newline
-gutes bild \url{https://youtu.be/TNnccRimhsI?t=1360}\newline
-removes unnecessary/unused code\newline
-merges identical code blocks\newline
-performs optimiztations\newline
-removes debug information\newline
-renames objects\newline
-restructures code\newline
-removes linenumbers --see- stacktrace annoying\newline
-\url{https://youtu.be/6vFcEJ2jgOw?t=470}\newline
---see-hacker factor 0\newline
-does not really help\newline
-googles commentar \url{http://android-developers.blogspot.de/2010/09/proguard-android-and-licensing-server.html}\newline
+optimizes, shrinks, (barely) obfuscates, , reduces size, faster
+removes unnecessary/unused code
+merges identical code blocks
+performs optimiztations
+removes debug information
+renames objects
+restructures code
+removes linenumbers, stacktrace annoying
+\cite{proguardLicensing}
 \cite{strazzareLevel0}
-
-eine art result bzw zusammenfassung -see- Without proper naming of classes and methods it is much harder to reverse engineer an application, because in most cases the identifier enables an analyst to directly guess the purpose of the particular part. The program code itself will not be changed heavily, so the obfuscation by this tool is very limited.

@@ -5,9 +5,9 @@ This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
 %
-goal of packers it to protect the code from modifications or attacks, good or bad nature, often used by malware as well
+goal of packers it to protect the code from modifications or attacks, good or bad nature, often used by malware as well\cite{packersMalware}
 
-stub application unpacks and/or decrypts zipped code
+launch stub application which unpacks and/or decrypts zipped code
 works at runtime, the 'outer' stub application unpacks content of 'inner' executable into memory and executes, example for x86 platform, UPX \cite{sourceforgeUpx}, since works at runtime hidden from static analysis
 
 %
@@ -20,6 +20,8 @@ step 1 load encrypted app into memory (download from server, extract from data s
 step 2 app file is decrypted -see- original dex, can be any encryption from simple to hard, speed may slow down
 step 3 load decrypted dex into DVM from a bytearray, see \cite{schulzLabCourse}
 step 4 execute\newline
+\cite{blackhatPackers}\cite{yuPackers}
+
 
 \cite{schulzLabCourse} stellt hier basic version vor, bessere versionen ist das im folgenden
 
@@ -31,142 +33,38 @@ program delivered to end user should be transformed, no direct link between it a
 
 \cite{munteanLicense}
 %
-
-
-\url{https://books.google.de/books?id=ACjUCgAAQBAJ\&pg=PA372\&lpg=PA372\&dq=ijiami+integrity\&source=bl\&ots=NTf7YaqJiZ\&sig=M5GKDCcQB5dcwXR3hjtIv8pMlAA\&hl=de\&sa=X\&ved=0ahUKEwjH3umt1b3JAhXGLA8KHYhwDGsQ6AEIMDAC\#v=onepage\&q=ijiami%20integrity\&f=false}\newline
-\url{https://www.blackhat.com/docs/asia-15/materials/asia-15-Park-We-Can-Still-Crack-You-General-Unpacking-Method-For-Android-Packer-No-Root.pdf}\newline
-\url{https://www.virusbtn.com/conference/vb2014/abstracts/Yu.xml}\newline
-\url{https://www.virusbtn.com/pdf/conference_slides/2014/Yu-VB2014.pdf}\newline
-\url{https://www.youtube.com/watch?v=6vFcEJ2jgOw}\newline
-\url{https://books.google.de/books?id=ACjUCgAAQBAJ&pg=PA372&lpg=PA372&dq=ijiami+integrity&source=bl&ots=NTf7YaqJiZ&sig=M5GKDCcQB5dcwXR3hjtIv8pMlAA&hl=de&sa=X&ved=0ahUKEwjH3umt1b3JAhXGLA8KHYhwDGsQ6AEIMDAC#v=onepage&q=ijiami%20integrity&f=false}\newline
-
-concept erklären und dann die beispiele nennen, nicht mehr aktiv/gecracked aber prinzip ist gut\newline
-
-examples for packers are
 \newline
 \newline
 \textbf{HoseDex2Jar} \newline
-
 HoseDex2Jar is a prototype/proof of concept of a service which obfuscates, mangles and mungs APK files
-goal it to prevent decompilation and thus analysis
+goal it to prevent easy decompilation and thus analysis
 
 original dex file is packed into a compressed container, encrypted and injects into the dalvik header, dexception\cite{safedexSlides}, easy to spot since dex header is not normal
-static analysis will not work since encrypted file will be ignored
+static analysis will not work since encrypted file will be ignored, which contents the actual code
+
+on execution loader stub decrypts the dex file in memory and dumps to file system
+loader stub acts as proxy and passes events to the dex file on system using a dexClassLoader
+since the stub is added slight file size increase, but no big impact
 not available for real use, website taken down
+further developed projects are bangcle or IJIAMI, often for malware\cite{packersMalware}\cite{yuPackers}
 
-near zero ITW samples\newline
-mimics dexception attack from dex education 101\newline
-FUNCTION\newline
-encrypts and injects dexfile into dex header (deception)\newline
-very easy to spot\newline
-very easy to decrypt, just use dex2jar\newline
-static analysis does not work since it sees the encrypted file\newline
-on execution loader stub decrypts in memory and dumps to file system\newline
-loader stub acts as proxy and passes events to the dex file on system using a dexClassLoader\newline
-RESULT\newline
-simple PoC\newline
-slight file size increase\newline
-attempts to prevent static analysis - kind of works\newline
-lots of crashing\newline
-easily automated to unpack\newline
-easy to reverse, good for learning\newline
-hacker protection factor 0.5
-\newline\newline\textbf{\textcolor{gray}{Pangxie}}\newline
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
+\cite{area41}\cite{githubDehoser}\cite{strazzareLevel0}
+
+\newline
+\newline
+\textbf{ApkProtect} \newline
+also known as dexcrypt, appears to be active but no website, there might be clones
+slightly different than a packer, stub fixes broken code which is normally not translated by tools and makes it as it should be
+features anti-debug, anti-decompile, almost like a packer, string encryption
 
 
+tool mangles code original code
+-modifies entrypoint to loader stub
+-prevents static analysis
+on intall dalvik optimizes the dex file into memory ignoring bad parts\newline
 
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
+when executed the 'original' dalvik code is executed, during runtime loader stub from the 'original' code fixes the odex in memory, then it is executed as normal
+results in slight file size increase and prevents easily static analysis
 
-\url{https://youtu.be/6vFcEJ2jgOw?t=1982}\newline
-anti-debug\newline
-anti-tamper\newline
-appears to be defunct product\newline
-little usage/samples ITW\newline
-FUNCTION\newline
-\url{https://youtu.be/6vFcEJ2jgOw?t=2040}\newline
-encrypts dex file and bundles as asset in APK\newline
-very easy to find, logcat has to much information\newline
-dalvik calls JNI layer to verify and decrypt\newline
-easy to reverse, both dalvik and native, excellent for beginners to Android and packers\newline
-aes used only for digest verification\newline
-easily automated, 0x54 always the key\newline
-or dynamically grab app\_dex folder\newline
-slightly increase file size\newline
-prevents static analysis - though easy to identify\newline
-uses static 1 byte key for encryption\newline
-easily automated to unpack\newline
-very easy to reverse, good for learning\newline
-good example of an unobfuscated packer stub for cloning\newline
-hacker protection faktor 1.5\newline
-only working till <4.4\newline
-simple packer, increase encryption with key, do not just dump on filesystem
-\newline\newline\textbf{\textcolor{gray}{BANGCLE}}\newline
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-anti-debugging\newline
-anti-tamper\newline
-anti-decompilation\newline
-anti-runtime injection\newline
-online only service, apk checked for malware\newline
-detected by some anti virus due to malware\newline
-cost 10k\newline
-no one has done it before...\newline
-stopped working on 4.4\newline
-FUNCTION\newline
-dalvik execution talks launched JNI\newline
-JNI launches secondary process\newline
-chatter over PTRACE between the two processes\newline
-newest process decrypts dex into memory\newline
-original dalvik code proxies everything to the decrypted dex\newline
-RESULT\newline
-well written, lots of anti-* tricks\newline
-seems to be well supported and active on development\newline
-does a decent job on online screening - no tool released for download (though things clearly to slip through)\newline
-not impossible to reverse and re-bundle packages\newline
-current weakness (for easy runtime unpacking) is having a predictable unpacked memory location\newline
-hacker protect faktor 5\newline
-probably best tool out there but lag when updating since online approval\newline
-\newline\newline\textbf{\textcolor{gray}{APKprotect}}\newline
-
-bisschen anders als packer
-
-
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-stub fixes broken code which is normally not translated by tools, breaks static analysis \newline
-\url{https://youtu.be/6vFcEJ2jgOw?t=347}\newline
-\url{https://youtu.be/6vFcEJ2jgOw}\newline
-chinese protector\newline
-also known as dexcrypt, appears active but site down, clones might be available\newline
-anti-debug, anti-decompile, almost like a packer\newline
-string encryption\newline
-cost ???\newline
-tool mangles code original code\newline
--modifies entrypoint to loader stub\newline
--prevents static analysis\newline
-during runtime loader stub is executed\newline
--performs anti-emulation\newline
--performs anti-debugging\newline
--fixes broken code in memory\newline
-FUNCTION\newline
-dalvik optimizes the dex file into momory ignoring bad parts\newline
-upon execution dalvik code initiates, calls the native code\newline
-native code fixes odex code in memory\newline
-execution continues as normal\newline
-RESULT\newline
-slight file size increase\newline
-prevents easily static analysis\newline
-hard once, easy afterwards\newline
-easily automated to unprotect\newline
-still has string encryption (like DexGuard, Allatori) afterwards\newline
-not much iteration in the last time, do not knwo if still alive\newline
-hacker protection factor 3, no public documentation, but every app is the same\newline
+still has string encryption (like DexGuard, Allatori) afterwards
+\cite{strazzareLevel0}\cite{blackhatPackers}\cite{yuPackers}

@@ -5,39 +5,17 @@ This is my real text! Rest might be copied or not be checked!
 
 
 %
-A commercial Android obfuscator [37] working both on bytecode and source code level (should not be mistaken with dexguard analysis tool). Performs various techniques including strings encryprion, encrypting app resources, tamper detection, removing logging code.
+commercial Android obfuscator for bytecode and source code
+various techniques including strings encryprion, encrypting app resources, tamper detection, removing logging code
 \cite{kovachevaMaster}
 %
 
 
-ERWÄHNEN WO IM PROZESS ANGEWENDET\newline
+son of proguard, does everything that proguard does
+its a optimizer and shrinekr, obfuscator/encrypter, does not stop reverse engineering
+automatic reflection, string encryption, asset/library encryption, class encryption(packing), applciation tamper protection, removes debug information
+may increase dex size, memory size; decrease speed
+\cite{strazzareLevel0}
 
-
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-OVERVIEW\newline
-son of proguard\newline
-the \"standard\" protection\newline
-optimizer\newline
-shrinekr\newline
-obfuscator/encrypter, does not stop reverse engineering\newline
-\url{https://youtu.be/6vFcEJ2jgOw?t=643}\newline
-WHAT DOES IT DO\newline
-everything that proguard does\newline
-automatic reflection\newline
-strign encryption\newline
-asset/library encryption\newline
-class encryption(packign)\newline
-applciation tamper protection\newline
-file-see-automatic reflection-see-string encryption-see-file\newline
-\url{https://youtu.be/6vFcEJ2jgOw?t=745}\newline
-class encryption= packer, unpackers do it most of the time in few seconds, aber aufwand auf handy, nicht so einfach wie pattern in luckypatcher\newline
-CONS\newline
-may increase dex size, memory size; decrease speed\newline
-removes debug information\newline
-string, etc encryption\newline
-best feature: automatic reflection with string encryption\newline
-reversible with moderate effort\newline
-hacker protection factor 1\newline
-
-ESULT -see- UNTERSCHIED ZU DEN VORHERIGEN -see- The obfuscation methods used in Allatori(dexguard) are a superset of ProGuards so it is more powerful but does not prevent an analyst from disassembling an Android application.
+obfuscation methods are a superset of ProGuards
+more powerful but also does not protect from disassembling the code

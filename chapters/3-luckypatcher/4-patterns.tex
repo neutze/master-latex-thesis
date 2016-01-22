@@ -45,13 +45,12 @@ values are swapped
 switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={11-15},
-  language=diff,
   caption={Diff on Java level for N1 pattern (abstracted)},
   label={lst:n1DiffJava}
 ]{data/n1.diff}
@@ -93,13 +92,12 @@ move-result is replaced by move const
 instead of moving the result from a function to v3, it is initiated with true/1
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={9-11},
-  language=diff,
   caption={Diff on Java level for N2 pattern (abstracted)},
   label={lst:n2DiffJava}
 ]{data/n2.diff}
@@ -188,13 +186,12 @@ in the original code variable v0 is compared for not equality with zero
 after it is patched it is always compared with itself which returns always true and the condition is always called
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={9-12},
-  language=diff,
   caption={Diff on Java level for N4 patch (abstracted)},
   label={lst:n4DiffJava}
 ]{data/n4.diff}
@@ -245,13 +242,12 @@ instead of testing for zero and then calling a condition, the to test variable i
 the second equal check is done by comparing a variable with itself thus always true and the conidition is called
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={14-17},
-  language=diff,
   caption={Diff on Java level for N6 patch (abstracted)},
   label={lst:n6DiffJava}
 ]{data/n6.diff}
@@ -268,13 +264,12 @@ einfach auf alles was in \url{com/android/} ist, some kind of bruteforce
 similar to N2, but Java result is more generic
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={13-15},
-  language=diff,
   caption={Diff on Java level for N7 patch (abstracted)},
   label={lst:n7DiffJava}
 ]{data/n2.diff}
@@ -320,13 +315,12 @@ in the original code variable v0 is compared for not equality with zero
 after it is patched it is always compared with itself which returns always true and the condition is always called
 
 \lstinputlisting[
-  basicstyle=\footnotesize,
+style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
   linerange={9-12},
-  language=diff,
   caption={Diff on Java level for Amazon patch (abstracted)},
   label={lst:amazonDiffJava}
 ]{data/amazon.diff}

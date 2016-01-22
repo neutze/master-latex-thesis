@@ -1,15 +1,15 @@
 *@@ Pattern N2 @@*
-- 0c 05 6e 20 9d 4a 53 00  !!0a!! 05 39 05 2d 00 1a 05  |..n .JS...9.-...|
-+ 0c 05 6e 20 9d 4a 53 00  ??12?? 15 39 05 2d 00 1a 05  |..n .JS...9.-...|
+!!-!! 0c 05 6e 20 9d 4a 53 00  !!0a!! 05 39 05 2d 00 1a 05  |..n .JS...9.-...|
+??+?? 0c 05 6e 20 9d 4a 53 00  ??12?? 15 39 05 2d 00 1a 05  |..n .JS...9.-...|
 
 *@@ Pattern N2 @@*
 !!-    move-result v5!!
 ??+    const/4 v5, 0x1??
 
 @@ Pattern N2 @@
-- if (sig.verify(Base64.decode(signature))) {...;}
-+ sig.verify(Base64.decode(signature); ...;
+!!- if (!!sig.verify(Base64.decode(signature))!!)!! {...;}
+??+?? sig.verify(Base64.decode(signature); ...;
 
 @@ Pattern N7 @@
-- x = foo();
-+ x = false;
+!!-!! x = !!foo()!!;
+??+?? x = ??false??;

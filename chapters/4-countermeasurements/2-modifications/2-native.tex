@@ -1,24 +1,10 @@
-\subsection{Native Implementierung} \label{subsection:counter-modifications-dynamic}
+\subsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
-%
-impose strict native-to-native interaction
-not usable from java code, but only indirectly through native code library
-does need two things
-- users do not custimize library so a heavily obfuscated version could be needed
-- use encryption and dynamic code loading, updated and ecery-changing state that an app would not be stuck with a version until update
-dynamic code generation, automatically custimize itself for every app and ever time its loaded
-\cite{munteanLicense}
-%
+luckypatcher automatic patching works on dex, why not remove the key license verification code from from java and move it to native code, this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
 
-VORTEILE VON NATIVE?
+native code can be executed using two thinks, android ndk a toolset to implement native-code languages, e.g. c or c++, and  \gls{jni} used by java to execute native code
 
-
-Library native\newline
-native ist nicht in dex -see- besser?\newline
-so nur schnittstelle? dann einfach sozusagen die schnittstelle faken\newline
-
-luckypatcher tauscht so ganz aus bzw modifizeirt dex\newline
-ggf einfach .so library austauschen, aber großer aufwand zu kompilieren davor\newline
+native code is difficult to be decompiled, can be checked for tampering when loading it

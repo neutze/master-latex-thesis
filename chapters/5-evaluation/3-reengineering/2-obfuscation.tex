@@ -1,12 +1,10 @@
 \subsection{Obfuscation}
 \label{subsection:evaluation-reengineering-optobf}
 
-EVAULATIOn
-in practice quite limited due to:
+in theory a good addition to the security of the application, but against luckypatcher directly since it works on java level in order to disguise the way the code works
+it enforces increased initial effort an attacker has to spend in order to understand the code and thus reduces the likelihood of attackers to being motivated to crack the application
+in practice obfuscators are limited due to:
 reliance on android framework apis (remain unobfuscated)
-jdwp and application debuggability at the java lvl
-if dalvik can execute it, so can a proper analysis tool (e.g. IDA, dextra)
+applications can be debugged
+jdwp and application debuggability at the java lvl can reveal information about the software
 popular enough obfuscators (dexguard) have deobfuscators
-this is why JNI is so popular
-
-dexguard EVALUATION:  dynamic analysis beats this and read directly from memory

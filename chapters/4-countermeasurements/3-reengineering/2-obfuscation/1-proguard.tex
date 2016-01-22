@@ -15,21 +15,19 @@ shrinks, optimizes and obfuscates java .class files
 result
 - smaller apk files (use rprofits download and less space)
 - obfuscated code, especially layout obfuscation, harder to reverse engineer
-- small performance increase ddue to optimizations
+- small performance increase due to optimizations
 integrated into android build system, thus easy use
 default turned off
 minifyEnabled true
 proguardFiles getDefaultProguardFile('proguard-android.txt), 'proguard-rules.pro'
 
 additional step in build process, right after java compiler compiled to class files, Proguard performs transformation on files
-removes unusaed classes, fields, methods and attributes which got past javac
+removes unused classes, fields, methods and attributes which got past javac
 optimization step methods are inlined, unused parameters removed, classes and methods made private/static/final as possible
 obfuscation step name and identifiers mangled, data obfuscation is performed, packages flattened, methods renamed to same name and overloading differentiates them
 
 after proguard is finished dx converts to classes.dex
 
-
-BILD VORHER NACHER
 \cite{munteanLicense}
 %
 

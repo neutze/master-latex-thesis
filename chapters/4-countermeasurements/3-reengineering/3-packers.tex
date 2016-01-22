@@ -4,7 +4,11 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
-ERWÄHNEN WO IM PROZESS ANGEWENDET\newline
+%
+goal of packers it to protect the code from modifications or attacks, good or bad nature, often used by malware as well
+
+stub application unpacks and/or decrypts zipped code
+works at runtime, the 'outer' stub application unpacks content of 'inner' executable into memory and executes, example for x86 platform, UPX \cite{sourceforgeUpx}, since works at runtime hidden from static analysis
 
 %
 dynamic code loading
@@ -26,11 +30,9 @@ result: protection makes it hard to analyze the target application, because its 
 program delivered to end user should be transformed, no direct link between it and original source code, attackers cannot reengineer code and find vulnerability
 
 \cite{munteanLicense}
+%
 
 
-break static analysis tools, you ahve to do runtime analysis\newline
-like UPX, stub application unpacks, decrypts, loads into memory which is normally hidden from static analysis\newline
-\url{http://www.fortiguard.com/uploads/general/Area41Public.pdf}\newline
 \url{https://books.google.de/books?id=ACjUCgAAQBAJ\&pg=PA372\&lpg=PA372\&dq=ijiami+integrity\&source=bl\&ots=NTf7YaqJiZ\&sig=M5GKDCcQB5dcwXR3hjtIv8pMlAA\&hl=de\&sa=X\&ved=0ahUKEwjH3umt1b3JAhXGLA8KHYhwDGsQ6AEIMDAC\#v=onepage\&q=ijiami%20integrity\&f=false}\newline
 \url{https://www.blackhat.com/docs/asia-15/materials/asia-15-Park-We-Can-Still-Crack-You-General-Unpacking-Method-For-Android-Packer-No-Root.pdf}\newline
 \url{https://www.virusbtn.com/conference/vb2014/abstracts/Yu.xml}\newline
@@ -41,20 +43,17 @@ like UPX, stub application unpacks, decrypts, loads into memory which is normall
 concept erklären und dann die beispiele nennen, nicht mehr aktiv/gecracked aber prinzip ist gut\newline
 
 examples for packers are
-\newline\newline\textbf{\textcolor{gray}{hosedex2jar}}\newline
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
+\newline
+\newline
+\textbf{HoseDex2Jar} \newline
 
+HoseDex2Jar is a prototype/proof of concept of a service which obfuscates, mangles and mungs APK files
+goal it to prevent decompilation and thus analysis
 
+original dex file is packed into a compressed container, encrypted and injects into the dalvik header, dexception\cite{safedexSlides}, easy to spot since dex header is not normal
+static analysis will not work since encrypted file will be ignored
+not available for real use, website taken down
 
-WER HAT ES HERGESTELLT? WAS IST ES? WAS SIND DIE FEATURES? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-\url{https://youtu.be/6vFcEJ2jgOw?t=1776}\newline
-PoC packer\newline
-\url{https://github.com/strazzere/dehoser/}\newline
-not available for real use\newline
-appears defunct\newline
 near zero ITW samples\newline
 mimics dexception attack from dex education 101\newline
 FUNCTION\newline

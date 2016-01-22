@@ -1,19 +1,18 @@
 \subsection{Packers}
 \label{subsection:evaluation-reengineering-packers}
+since luckypatcher 
+at the moment there is no commercial packer available for public right now
+so this is just an idea to start with
 
-good tools, but not very public, hard to recreate
+only a proof of concept, e.g. uses simple encryption methods, but the idea can be extended, needs knowledge and time
+if implemented in a good way it protect from static analysis, in case the decryption cannot be broken the analysis has to be after the stub loads the decrypted dex file into the memory since it has to be loaded here to be executed, no real protection from reading directly from the memory
+when applied to many small parts with different stubs it can make the analysis even harder
 
+for HoseDex2Jar there is already a depacker \cite{githubDehoser}
 
-%
-EVALUTAION\newline
-soultion decrypt by hand or dynamic analysis\newline
-generell: angriff nur nach 2 wenn decrypted, einfach aus memory lesen da es ja iwo hingelegt werden muss um es widerum zu laden, man muss herausfinden wo stub es herläd\newline
-
-ggf auch nur die eine library so laden, aber dazu muss man sie so schreiben, aber auch der cracker muss aufwand betreiben\newline
-
-aber aufwendig
-%
-
-\newline\newline\textbf{\textcolor{gray}{hosedex2jar}}\newline
-\newline\newline\textbf{\textcolor{gray}{Pangxie}}\newline
-\newline\newline\textbf{\textcolor{gray}{BANGCLE}}\newline
+\newline
+\newline
+\textbf{Pangxie} \newline
+\newline
+\newline
+\textbf{BANGCLE} \newline

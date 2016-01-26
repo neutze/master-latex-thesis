@@ -3,18 +3,22 @@
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 
+most developers include the LVL unchanged without modifying it, attacks can always be done the same wayso this is very easy for luckypatcher
+for own security and the security of other developers try to create a unique implementation,
+ideal would be that no patterns can be applied to you and that in case the implementation gets racked no pattern of yours can be applied to others
+
+this is a list of ideas of how to modify versus each pattern,
+
+pattern 1,7 attacks the switch, the idea is to replace the switch with an if statemant or shuffle the cases
+move it to a function and implement it somewhere as well thus the code might no longer be together with the rest of the class and the attacker has to specific search for it
+
+pattern 2,4,5 skips using the outcome of a function and setting it always to true, this is a bit harder since it is already in a function, fitting bulk code around can make it harder to detect, especially for patterns, also checking inside again can help with detecting whether the fucntion is tampered, in case it is tampered the app can be killed or elements could not be loaded
+
+pattern 3 modifies the return values on initialization, idea to alter the return value, changing it to e.g. int, thus all the ifs have to be modified to fit the needs
 
 
-beispiel für jeden patch
-
-switch:
-replace switch statement with if
-
-
-
-
-general
+general ideas
 move the lvl into own application folder
 replace functions with inline code when possible
-
-WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
+test again inside the function and e.g. kill the app on tampering
+best would be to really make it different, e.g. recreate classes

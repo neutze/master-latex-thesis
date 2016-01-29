@@ -1,4 +1,12 @@
-\subsection{ART} \label{subsection:android-art}
+\subsection{Android Runtime} \label{subsection:android-art}
+
+In Android version 4.4 "Kitkat" Google introduced \gls{art} which was optional and only available through the developer options.
+With the release of verison 5.0 "Lollipop" \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
+
+
+JIT is slow, consuming both cycles and battery power
+gabage collection causes hangs/jitters
+dalvik is 32bit, cannot beneift from 64bit architecture
 
 %
 art introduced in kitkat 4.4, available only through developer options,  declared to be preview release, own risk, very little documentation, if any

@@ -1,4 +1,4 @@
-\subsubsection{Smali Code}\label{subsubsection:tools-baksmali}
+\subsection{Smali Analysis} \label{subsubsection:tools-baksmali}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
@@ -27,10 +27,45 @@ RESULT OUTPUT:
 selbe wie dex, jedoch human readable, no big difference, nebeneinanderstellung dex/smali
 
 SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
-%java -jar ~/Google\ Drive/master_thesis/sourcefiles/_tools/baksmali.jar -x ~/Google\ Drive/master_thesis/sourcefiles/_originalAPKs/apk-amazon-runtasticpro/amazon-runtasticpro.apk -o ~/workspace/master-code-applications/code-amazon-runtasticpro/smali/baksmali/
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={19-21},
+  firstnumber=1,
+  caption={Script to generate the corresponding smali code for a given \gls{apk}},
+  label={CodeSnippet:smaliScript}
+]{data/extractScript.sh}
 
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  caption={smali example},
+  label={CodeSnippet:smaliOutput}
+]
+.method protected onDestroy()V
+    .registers 2
 
+    .prologue
+    .line 77
+    invoke-super {p0}, Landroid/support/v7/app/AppCompatActivity;->onDestroy()V
 
+    .line 78
+    iget-object v0, p0, Lme/neutze/licensetest/MainActivity;->mChecker:Lcom/google/android/vending/licensing/LicenseChecker;
+
+    invoke-virtual {v0}, Lcom/google/android/vending/licensing/LicenseChecker;->onDestroy()V
+
+    .line 79
+    return-void
+.end method
+\end{lstlisting}
+EXAMPLE BESCHREIBEN code snippet~\ref{CodeSnippet:smaliOutput}
 
 jedes tool:\newline
 woher kommt es?\newline

@@ -1,4 +1,4 @@
-\newline\newline\textbf{\textcolor{gray}{Androguard}}\newline
+\subsubsection{androguard} \label{subsubsection:forensics-tools-java-androguard}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
@@ -30,6 +30,41 @@ code Listing
 
 SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
 %python ~/Google\ Drive/master_thesis/sourcefiles/_tools/androdd.py -i ~/Google\ Drive/master_thesis/sourcefiles/lvl/auto/apk-fkupdater/fkupdater.apk -o ~/workspace/master-code-applications/code-fkupdater-lvl-auto/java/androguard/
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={7-9},
+  firstnumber=1,
+  caption={Script to decompile to Java using androguard},
+  label={CodeSnippet:androguardScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  language=Java,
+  frame=single,
+  caption={Java code example using androguard},
+  label={CodeSnippet:androguardOutput}
+]
+private void doCheck()
+{
+    this.mCheckLicenseButton.setEnabled(0);
+    this.setProgressBarIndeterminateVisibility(1);
+    this.mStatusText.setText(2131099673);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+    return;
+}
+\end{lstlisting}
+EXAMPLE BESCHREIBEN code snippet~\ref{CodeSnippet:androguardOutput}
 
 
 jedes tool:\newline

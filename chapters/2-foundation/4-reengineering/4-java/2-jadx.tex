@@ -1,4 +1,4 @@
-\newline\newline\textbf{\textcolor{gray}{jadx}}\newline
+\subsubsection{JADX} \label{subsubsection:forensics-tools-java-jadx}
 %START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
@@ -7,7 +7,37 @@ RESULT OUTPUT
 code Listing
 
 SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
-%~/Google\ Drive/master_thesis/sourcefiles/_tools/_jadx-0.6.1-dev-build221/bin/jadx -d ~/workspace/master-code-applications/code-fkupdater-lvl-auto/java/jadx --deobf --show-bad-code ~/Google\ Drive/master_thesis/sourcefiles/lvl/auto/apk-fkupdater/fkupdater.apk
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={28-30},
+  firstnumber=1,
+  caption={Script to decompile to Java using JADX},
+  label={CodeSnippet:jadxScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  language=Java,
+  captionpos=b,
+  frame=single,
+  caption={Java code example using JADX},
+  label={CodeSnippet:jadxOutput}
+]
+private void doCheck() {
+    this.mCheckLicenseButton.setEnabled(false);
+    setProgressBarIndeterminateVisibility(true);
+    this.mStatusText.setText(C0213R.string.checking_license);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+}
+\end{lstlisting}
+EXAMPLE BESCHREIBEN code snippet~\ref{CodeSnippet:jadxOutput}
 
 
 https://github.com/skylot/jadx

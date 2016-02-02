@@ -11,9 +11,7 @@ example code taken from an app which was inspected, modification happens for all
 
 dex == smali, smali better readable but dex to see how easy change
 since the translation from java to dex does some optimizations/logik, dex and java do not express the same, but it is how it is in the decompiled code, java is also an abstraction of the actual code, sometimes java also a little confusing since changes happened in dex code and cannot be decompiled to java in a good manner, very messy, it is included for better understanding anyways since humanreadable
-\newline
-\newline
-\textbf{Pattern N1} \newline
+\subsubsection{Pattern N1}
 classes it attacks
 \url{com/google/android/vending/licensing/LicenseValidator}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
@@ -45,7 +43,7 @@ values are swapped
 switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -56,9 +54,7 @@ style=diff,
 ]{data/n1.diff}
 old code when license code not licensed return in case not licensed with error
 after patching when not licensed return as old license key
-\newline
-\newline
-\textbf{Pattern N2}\newline
+\subsubsection{Pattern N2}
 classes it attacks
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
@@ -92,7 +88,7 @@ move-result is replaced by move const
 instead of moving the result from a function to v3, it is initiated with true/1
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -104,9 +100,7 @@ style=diff,
 
 old code: signature was verified, if true it is continued
 after patching the verification is treated as always true and so it is continued
-\newline
-\newline
-\textbf{Pattern N3}\newline
+\subsubsection{Pattern N3}
 classes it attacks
 \url{com/google/android/vending/licensing/APKExpansionPolicy.java}
 \url{com/google/android/vending/licensing/ServerManagedPolicy.java}
@@ -152,9 +146,7 @@ variable is initiated with opposite of what they were initiated before
 
 old code variable is initiated false and true for inversed as basic return value
 after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
-\newline
-\newline
-\textbf{Pattern N4}\newline
+\subsubsection{Pattern N4}
 classes it attacks
 \url{com/google/android/vending/licensing/LicenseChecker.java}
 LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
@@ -186,7 +178,7 @@ in the original code variable v0 is compared for not equality with zero
 after it is patched it is always compared with itself which returns always true and the condition is always called
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -198,9 +190,7 @@ style=diff,
 
 in the original code it is checked whether the license is already cached, fi yes, condition is called
 after patching the result of the check is always compared to itself, and thus  the condition is always called
-\newline
-\newline
-\textbf{Pattern N5}\newline
+\subsubsection{Pattern N5}
 classes it attacks
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 
@@ -208,9 +198,7 @@ works the same way as pattern N2
 
 im gegensatz zu N2 wird jetzt die condition nie aufgeraufen anstatt sie immer aufzurufen wie in N5
 result is that the check for the result code given to the function and extracted from the server response is disabled since the result of the check is set to always false
-\newline
-\newline
-\textbf{Pattern N6}\newline
+\subsubsection{Pattern N6}
 classes it attacks
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 
@@ -242,7 +230,7 @@ instead of testing for zero and then calling a condition, the to test variable i
 the second equal check is done by comparing a variable with itself thus always true and the conidition is called
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -253,9 +241,7 @@ style=diff,
 ]{data/n6.diff}
 
 instead checking two variables for a case, the condition is just always called
-\newline
-\newline
-\textbf{Pattern N7}\newline
+\subsubsection{Pattern N7}
 classes it attacks
 \url{com/google/android/vending/licensing/ILicenseResultListener.java}
 ILicenseResultListener, IPC callback implementation, receives async response from server\cite{developersLicensingReference}
@@ -264,7 +250,7 @@ einfach auf alles was in \url{com/android/} ist, some kind of bruteforce
 similar to N2, but Java result is more generic
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -275,9 +261,7 @@ style=diff,
 ]{data/n2.diff}
 
 instead of initializing variable with result from function, it is always initialized with false / 0
-\newline
-\newline
-\textbf{Amazon}\newline
+\subsubsection{Amazon}
 also applies pattern N2
 
 classes it attacks, inside kiwi logic
@@ -315,7 +299,7 @@ in the original code variable v0 is compared for not equality with zero
 after it is patched it is always compared with itself which returns always true and the condition is always called
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -330,9 +314,7 @@ after patching the response is always evalauted and the result is compared with 
 
 result
 never the less what the check for "LICENSED" returns, the condition for "LICENSED" is always called
-\newline
-\newline
-\textbf{Samsung Pattern}\newline
+\subsubsection{Samsung Pattern}
 also applies pattern N2
 
 classes it attacks, inside zirconia logic
@@ -378,7 +360,7 @@ in the original code the result of a function is moved to v0 and returned
 after patching true/1 is always moved to v0 and returned
 
 \lstinputlisting[
-style=diff,
+  style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,

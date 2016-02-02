@@ -17,6 +17,7 @@ drm logic not interweaved with app logic, could only be done by a human develope
 
 
 \lstinputlisting[
+  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -26,8 +27,8 @@ drm logic not interweaved with app logic, could only be done by a human develope
   language=Java,
   linerange={77-80},
   firstnumber=77,
-  caption={Callback},
-  label={lst:lvlcallback}
+  caption={Amazon's onCreate() injection to call Kiwi license verification as well},
+  label={lst:amazonCreate}
 ]{data/amazon.java}
 
 rename onCreate to onCreateMainActivity

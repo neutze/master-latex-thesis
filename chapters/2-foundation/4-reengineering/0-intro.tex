@@ -24,14 +24,14 @@ extremly useful for reverse engineering, even more so useful for malice\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/re1.png}
-    \caption{re1}
+    \caption{Java .class and .dex can be transformed bidirectional \cite{andevconDalvikART}}
     \label{fig:re1}
 \end{figure}
 flow from dex to java is bidirectional, decompile code back to java, remove annoyances like ads, registration, uncover sensitive data (app logic, secrets), replace certain classes with others (malicuous ones), recompile back to jar, then dex, put cloned/trojaned version of your app on play or other market\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/re2.png}
-    \caption{re2}
+    \caption{Overview of build and reverse engineering of an \gls{apk} \cite{andevconDalvikART}}
     \label{fig:re2}
 \end{figure}
 \cite{andevconDalvikART}
@@ -62,6 +62,21 @@ only consider static analysis tools\newline
 IN ORDER TO GET FULL OVERVIEW DEX/SMALI/JAVA -see- WARUM?\newline
 
 WAS MACHEN DIE TOOLS IM ALLGEMEINEN? WOZU BENUTZEN WIR SIE?\newline
+
+• It comes as no surprise that .dex and .class are isomorphic
+• DEX debug items map DEX offsets to Java line numbers
+• Dex2jar tool can easily “decompile” from .dex back to a .jar
+•  Extremely useful for reverse engineering – Evenmoresousefulformaliceandmischief
+
+• Flow from DEX to JAVA is bidirectional, meaning that an attacker can:
+• Decompile your code back to Java
+• Remove annoyances like ads, registration
+• Uncover sensitive data (app logic, or poorly guarded secrets)
+• Replace certain classes with others, potentially malicious ones
+• Recompile back to JAR, then DEX
+• Put cloned/trojaned version of your app on Play or another market
+• ASEC/OBB “solutions” for this fail miserably when target device is rooted.
+
 
 \url{https://mobilesecuritywiki.com/}\newline
 \url{https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf}\newline

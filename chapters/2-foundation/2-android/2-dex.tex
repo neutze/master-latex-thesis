@@ -13,8 +13,15 @@ The \gls{dex} bytecode supports 218 valid opcodes which have a dest-sort orderin
 The instructions refer to indexes in pools.
 \begin{figure}[h]
     \centering
+    \includegraphics[width=0.5\textwidth]{data/java.png}
+    \caption{\gls{jar} to \gls{apk} transformation \cite{googleDalvik}}
+    \label{fig:java}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
     \includegraphics[width=0.8\textwidth]{data/dex.png}
-    \caption{dex \cite{andevconDalvikART}}
+    \caption{\gls{dex} file format \cite{andevconDalvikART}}
     \label{fig:dex}
 \end{figure}
 
@@ -34,12 +41,7 @@ This results in figure~\ref{fig:java}
 This is most effective for string and this action results in a memory footprint which is up to 44\% lower than the one of the \gls{jar}.
 The result is that the \gls{dex} file has significant more references than the \gls{jar} file.
 The \gls{dex} file is stored as classes.\cite{ehringerDalvik}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{data/java.png}
-    \caption{java}
-    \label{fig:java}
-\end{figure}
+
 Like Java bytecode \gls{dex} bytecode allows easy decompilation to Java.
 Also since the bytecode is in contrast to other architectures pretty simple and only in rare cases protection is applied, it is an easy target for reverse engineering.
 

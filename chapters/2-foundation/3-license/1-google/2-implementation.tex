@@ -26,6 +26,7 @@ copy it later into the app
 %
 - Adding the licensing permission your application's manifest
 \lstinputlisting[
+  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -35,8 +36,8 @@ copy it later into the app
   language=Java,
   linerange={7-9},
   firstnumber=7,
-  caption={Calling the LVL},
-  label={lst:lvlcall}
+  caption={Include permission to check the license in AndroidManifest.xml},
+  label={lst:lvlPermission}
 ]{data/permission.xml}
 
 - Implementing a Policy, provided by LVL or own
@@ -49,6 +50,7 @@ copy it later into the app
 \url{https://developer.android.com/google/play/licensing/adding-licensing.html}
 
 \lstinputlisting[
+  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -58,11 +60,12 @@ copy it later into the app
   language=Java,
   linerange={57-64},
   firstnumber=57,
-  caption={Calling the LVL},
-  label={lst:lvlcall}
+  caption={Setting up the LVL license check call},
+  label={lst:lvlSetup}
 ]{data/lvl.java}
 
 \lstinputlisting[
+  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -70,8 +73,8 @@ copy it later into the app
   frame=single,
   numbers=left,
   language=Java,
-  linerange={136-149},
+  linerange={134-150},
   firstnumber=57,
-  caption={Callback},
-  label={lst:lvlcallback}
+  caption={LVL license check callback},
+  label={lst:lvlCallback}
 ]{data/lvl.java}

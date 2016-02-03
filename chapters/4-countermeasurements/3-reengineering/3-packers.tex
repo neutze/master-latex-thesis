@@ -66,3 +66,14 @@ results in slight file size increase and prevents easily static analysis
 
 still has string encryption (like DexGuard, Allatori) afterwards
 \cite{strazzareLevel0}\cite{blackhatPackers}\cite{yuPackers}
+
+
+
+
+
+%MAILVERKEHR%
+relevant fuer eure beiden Thema ist sicherlich, dass die neuen Androidversionen keinen dynamischen Code mehr unterstuetzen (soweit mir bekannt) bzw. das dieser zuvor in einer Datei abgelegt werden muss (vgl. OpenDexfile(...) ).  Hat jemand von euch den aktuellen Android Code gerade parat? Ich habe ihn hier auf meinem NB nicht drauf.
+vgl. hierzu
+https://www.blackhat.com/docs/asia-15/materials/asia-15-Park-We-Can-Still-Crack-You-General-Unpacking-Method-For-Android-Packer-No-Root.pdf​
+
+... Interessant waere, ob es noch irgendeine Moeglichkeit gibt doch dynamischen Code zu laden. Eine erste Idee war mit mkfifo fuer einen kurzen Zeitraum eine Datei zu liefern und dann wieder nur nonsense. Braucht Android die Datei nur kurzzeitig oder dauerhaft? Theoretisch bauen auf der Idee von dynamischen Code zahlreiche sicherheitsloesungen auf. Weiss jemand von euch bereits, warum Google das entfernt hat? Malware Problem?

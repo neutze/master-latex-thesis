@@ -11,8 +11,10 @@ example code taken from an app which was inspected, modification happens for all
 
 dex == smali, smali better readable but dex to see how easy change
 since the translation from java to dex does some optimizations/logik, dex and java do not express the same, but it is how it is in the decompiled code, java is also an abstraction of the actual code, sometimes java also a little confusing since changes happened in dex code and cannot be decompiled to java in a good manner, very messy, it is included for better understanding anyways since humanreadable
-\subsubsection{Pattern N1}
-classes it attacks
+
+The names of the patterns/patches are taken from the patching result output figure~\ref{fig:luckyScreen} on the right
+\subsubsection{Patch Pattern N1}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
 
@@ -54,8 +56,8 @@ switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
 ]{data/n1.diff}
 old code when license code not licensed return in case not licensed with error
 after patching when not licensed return as old license key
-\subsubsection{Pattern N2}
-classes it attacks
+\subsubsection{Patch Pattern N2}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
 greift auch zB. google maps api (\url{com/google/android/gms/}) oder in app billing (\url{com/android/iab/v3/}) an, collateral schaden
@@ -100,8 +102,8 @@ instead of moving the result from a function to v3, it is initiated with true/1
 
 old code: signature was verified, if true it is continued
 after patching the verification is treated as always true and so it is continued
-\subsubsection{Pattern N3}
-classes it attacks
+\subsubsection{Patch Pattern N3}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/APKExpansionPolicy.java}
 \url{com/google/android/vending/licensing/ServerManagedPolicy.java}
 Policy integration of License Verification Library, those are the two examples offered by Google\cite{developersLicensingReference}
@@ -146,8 +148,8 @@ variable is initiated with opposite of what they were initiated before
 
 old code variable is initiated false and true for inversed as basic return value
 after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
-\subsubsection{Pattern N4}
-classes it attacks
+\subsubsection{Patch Pattern N4}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseChecker.java}
 LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
 
@@ -190,16 +192,16 @@ after it is patched it is always compared with itself which returns always true 
 
 in the original code it is checked whether the license is already cached, fi yes, condition is called
 after patching the result of the check is always compared to itself, and thus  the condition is always called
-\subsubsection{Pattern N5}
-classes it attacks
+\subsubsection{Patch Pattern N5}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 
 works the same way as pattern N2
 
 im gegensatz zu N2 wird jetzt die condition nie aufgeraufen anstatt sie immer aufzurufen wie in N5
 result is that the check for the result code given to the function and extracted from the server response is disabled since the result of the check is set to always false
-\subsubsection{Pattern N6}
-classes it attacks
+\subsubsection{Patch Pattern N6}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 
 \lstinputlisting[
@@ -241,8 +243,8 @@ the second equal check is done by comparing a variable with itself thus always t
 ]{data/n6.diff}
 
 instead checking two variables for a case, the condition is just always called
-\subsubsection{Pattern N7}
-classes it attacks
+\subsubsection{Patch Pattern N7}
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/ILicenseResultListener.java}
 ILicenseResultListener, IPC callback implementation, receives async response from server\cite{developersLicensingReference}
 einfach auf alles was in \url{com/android/} ist, some kind of bruteforce
@@ -261,10 +263,10 @@ similar to N2, but Java result is more generic
 ]{data/n2.diff}
 
 instead of initializing variable with result from function, it is always initialized with false / 0
-\subsubsection{Amazon}
+\subsubsection{Amazon Market Patch}
 also applies pattern N2
 
-classes it attacks, inside kiwi logic
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside kiwi logic
 \url{com/amazon/android/licensing/b.java}
 \url{com/amazon/android/o/d.java}
 
@@ -314,10 +316,10 @@ after patching the response is always evalauted and the result is compared with 
 
 result
 never the less what the check for "LICENSED" returns, the condition for "LICENSED" is always called
-\subsubsection{Samsung Pattern}
+\subsubsection{Samsung Market Patch}
 also applies pattern N2
 
-classes it attacks, inside zirconia logic
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside zirconia logic
 \url{com/samsung/zirconia/LicenseRetriever.java}
 \url{com/samsung/zirconia/Zirconia.java}
 
@@ -397,6 +399,8 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
 
 summarizing what patterns each modus applies Table~\ref{table:patterns}
 
+
+%detailierter
 auto: just applies minimum patches, N1 swaps switch cases so not licensed is treated here as old license key in the LicenseValidator, N2 skips the signature verification in the LicenseValidator, N3 inverts the return boolean for the policy checks in the implemented Policy class by initializing with 0/false, and N4 skips, in the only case occured in the test set, the check whether download is allowed and allows it always
 auto inverse: does the same as auto but initializes the policy check with 1/true instead of false
 extreme:

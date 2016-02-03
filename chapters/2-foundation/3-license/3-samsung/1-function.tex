@@ -19,7 +19,7 @@ if purchased for device, server returns license back to zirconia
 zirconia stores license on device
 return step 1
 
-callback method, asynch, zirconia does not return license validity result as boolean \ref{zirconiacallback}
+callback method, asynch, zirconia does not return license validity result as boolean \ref{codeSnippet:zirconiaCallback}
 does not work if network is offline or in airplane
 
 \cite{samsungZirconia}
@@ -28,13 +28,10 @@ does not work if network is offline or in airplane
 
 
 %WAS PASSIERT WENN KEIN PLAYSTORE/AIRPLANE%
-no google services
-licensechecker, checkAccess: Could not bind to service.
-activity, callback: license not verified
+no store services needed, direct communication with server
 
 airplane
 first time
-licensechecker, responsecode: ERROR_CONTACTING_SERVER = 0x101 = 257
 activity, callback: license not verified
 second time
 verified if license was stored

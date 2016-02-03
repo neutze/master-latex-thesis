@@ -37,11 +37,11 @@ copy it later into the app
   linerange={7-9},
   firstnumber=7,
   caption={Include permission to check the license in AndroidManifest.xml},
-  label={lst:lvlPermission}
+  label={codeSnippet:lvlPermission}
 ]{data/permission.xml}
 
 - Implementing a Policy, provided by LVL or own
-- Implementing an Obfuscator, if Policy caches any license response data. \ref{lvlcall} line 59, cannot be reused or manipulated by a root user
+- Implementing an Obfuscator, if Policy caches any license response data. \ref{codeSnippet:lvlSetup} line 59, cannot be reused or manipulated by a root user
 - adding code to check license in application main activity\_main
 \cite{developersLicensingAdding}
 %
@@ -61,7 +61,7 @@ copy it later into the app
   linerange={57-64},
   firstnumber=57,
   caption={Setting up the LVL license check call},
-  label={lst:lvlSetup}
+  label={codeSnippet:lvlSetup}
 ]{data/lvl.java}
 
 \lstinputlisting[
@@ -76,5 +76,5 @@ copy it later into the app
   linerange={134-150},
   firstnumber=57,
   caption={LVL license check callback},
-  label={lst:lvlCallback}
+  label={codeSnippet:lvlCallback}
 ]{data/lvl.java}

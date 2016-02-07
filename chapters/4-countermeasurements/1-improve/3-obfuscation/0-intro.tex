@@ -1,4 +1,43 @@
 %START TEXT INPUT
+man versucht sich vor neuen angriffen zu schützen indem man reengineering zeitintensiver macht
+%START TEXT INPUT
+
+wenn anderes zb nicht geht weil algorithmus in der app, ohne redesign, wenn man auf kapiutel 1 sitzen bleibt, kein kontent server möglich, smartcard nicht einbauen will weil extra hardware/kosten,...
+
+ref kapitel 1 macht gg lucky sicher, aber crakcbar wenn manuell, was kann man dagegen tun
+
+
+
+now that the lvl is modified and the environment is enforced, the next goal is to prevent pirates from even starting to analyze the applcation, automatischer crack nicht mehr funktioniert, muster, andere mechanismen erkennt er nicht
+
+does not help when standard version is implemented, that is why this is working best with customized implementation of LVL
+%
+Reverse engineering and code protection are processes which are opposing each other, neither classified as good nor bad\newline
+"good" developer: malware detection and IP protection\newline
+"bad" developer: analysis for attack and analysis resistance
+
+\cite{kovachevaMaster}
+%
+it is not possible to 100 percent evade reengineering, but adding different methods to hide from plain sight of reengineering tools
+%
+reengineering cannot be vermiede
+best is to apply technqiues to make it as hard a possible
+\cite{munteanLicense}
+%
+
+if they do not see what the app is doing, they cannot fix it
+
+Application developers are interested in protecting their applications. Protection in this case means that it should be hard to understand
+what an application is doing and how its functionalities are implemented.\newline
+
+
+Reverse engineering of Android applications is much easier than on other architectures -see- high level but simple bytecode language\newline
+
+Obfuscation techniques protect intellectual property of software/license verification\newline
+
+possible code obfuscation methods on the Android platform focus on obfuscating Dalvik bytecode -see- limitations of current reverse engineering tools\newline
+
+%START TEXT INPUT
 This is my real text! Rest might be copied or not be checked!
 %START TEXT INPUT
 SOLUTION
@@ -57,3 +96,15 @@ parallele zu disassembler ziehen\newline
 Obfuscation cannot prevent reverse engineering but can make it harder and more time consuming. We will discuss which obfuscation and code protection methods are applicable under Android and show limitations of current reverse engineering tools\newline
 
 The following optimizers/obfuscators are common tools. (dadrin dann verbreitung preis etc erklären)
+
+
+
+
+
+angriff beschreiben
+- library öffentlich
+- reengineering (ref meien tools)
+
+davor schützen, jeden beliebigen test durch unäre antwort ersetzen, um das zu umgehen höher level als die license verifcation
+
+=> tests die man auf unär modifizieren kann sind schwerer zu lokalisieren, hilft gg reengineering

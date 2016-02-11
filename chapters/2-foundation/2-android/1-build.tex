@@ -1,23 +1,29 @@
 \subsection{Android Application Package (APK)} \label{subsection:foundation-android-package}
-Android applications are installed and distributed in the \gls{apk} file format.
-They can either be installed from an appstore like Google Play or downloaded and installed manually or by using \gls{adb} from any other source.
+Android applications are distributed and installed using the \gls{apk} file format.
+They can either be obtained from an appstore, like Google Play, or downloaded and installed, manually or by using \gls{adb}, from any other source.
+
+The \gls{apk} format is based on the ZIP file archive format and contains the code and resources of the application.
+The build process of \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
 \newline
-The \gls{apk} format is based on the ZIP file archive format and contains the resources of the application. The resources are added in the build process which is visualized in figure~\ref{fig:apk}.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/apk.png}
     \caption{\gls{apk} build process \cite{andevconDalvikART}}
     \label{fig:apk}
 \end{figure}
+
+Since Android applications are usually written in Java, the first step is similar to the Java program build process.
+The Java source code is compiled into \gls{classg} file by the Java Compiler javac.
+Each .class files contains the Java bytecode of the corresponding Java class.
+The structure of a \gls{classg} file can be seen in figure~\ref{fig:java}.
+As an additional step in the Java compilation process a Java obfuscator can be applied (similar to section~\ref{subsection:counter-improve-obfuscation}).
+In the end the .class files are packed into a \gls{jar} file.
 \newline
-Android applications are usually written in Java.
-
-step 1
-Java files which will be compiled into \gls{classg} files by a Java Compiler,  similar to a Java program build process, class files contain Java bytecode representing the compiled application, optional step apply a Java Obfuscator\newline
-Standard Java environment compiles each separate class in the .java source code file into a corresponding Java bytecode .class file. Each class will be compiled into a single .class file. These are later packed together in a single .jar archive file. The JVM unpacks the .class files, parses and executes their code at runtime.\newline
-
+Since Android is using the \gls{dvm}, which will be described in section~\ref{subsection:android-dalvik}, the Java bytecode has to be converted
 step 2: transformation from Java bytecode into Dalvik bytecode, see oben, dx programm from android sdk (due to it is necessity for building an application for the Android platform), output saved in singel \gls{dexg} file, included in an APK in next step, possible to apply a further obfuscator operating
-on Dalvik bytecode(ERKLÄRUNG)\newline
+on Dalvik bytecode(ERKLÄRUNG)
+\newline
 On the Android platform, the build process differs after the point when the .class files have been generated. Once having the latter, they are forwarded to the “dx” tool which is part of the standard Android SDK. This tool compresses all .class files into a single classes.dex file i.e. the .dex file is the sole bytecode container for all the application’s classes. After it has been created, the classes.dex is forwarded to the ApkBuilder tool altogether with the application resources and shared object (.so) files which, if present, contain native code. As a result, the APK archive is created and the final compulsory step is its signing. Figure 1.2 shows the APK build process and the
 possible obfuscation manipulations which are optional during the build stages\newline
 

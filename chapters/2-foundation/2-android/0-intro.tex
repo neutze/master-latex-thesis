@@ -1,10 +1,12 @@
-%\subsection{Introduction} \label{subsection:android-introduction}
+%\subsection{Introduction} \label{section:android-introduction}
 
 Android is an open source mobile \gls{os} launched in 2007 and currently developed by Google.
-It is based on the Linux kernel and targets touch screen devices as mobile devices or wearables.
+It is based on the Linux kernel and mainly targets touch screen devices such as mobile devices or wearables.
 The system is designed to run efficiently on battery powered devices with limited hardware and computational capacity.
 Android's main hardware platform is the ARM architecture since these processors with their low power consumtion are often used in this scenario.
-The following will give an quick overview over the architecture of Android and a deeper insight in the runtime powering Android.
+The following will give an overview over the architecture of Android and a deeper insight in the runtime powering Android.
+The architecture of the software stack of Android can be seen in figure~\ref{fig:androidArchitecture}.
+\newline
 
 \begin{figure}[h]
     \centering
@@ -13,23 +15,21 @@ The following will give an quick overview over the architecture of Android and a
     \label{fig:androidArchitecture}
 \end{figure}
 
-The architecture of the software stack of Android can be seen in figure~\ref{fig:androidArchitecture}.
-\newline
 The basis of the system is its kernel.
-The kernel is responsible for power and memory management and is capable to execute standard Unix commands.
-It provides an hardware abstraction layer for software and controls the device drivers.
+It is responsible for power and memory management and controls the device drivers.
+Software can use the provided hardware abstraction layer as well as execute standard Unix commands using the kernel.
 \newline
-The layer on top of the kernel contains \gls{art}, which will be explained in detail, as well as the the native libraries of the system.
-Android libraries are usually written in Java except these native and speed critical ones.
-They are written in C or C++ and allow low level interaction between applications and the kernel by using the \gls{jni}.
-This includes libraries like OpenGL, multimedia playback or the SQLite database.
+The layer above the kernel contains the Android Runtime, which will be explained in detail in section~\ref{subsection:android-art}, as well as the native libraries of the system.
+Usually Android libraries are written in Java except the ones which are resource and time critical.
+They are written in C or C++ in order to boost performance and allow low level interaction between applications and the kernel by using the \gls{jni}.
+Examples for native libraries are OpenGL, multimedia playback or the SQLite database.
 \newline
-Above this layer is the application framework.
-The application framework provides generic functionality as notification support to applications over Androids \gls{api}.
+On top of the libraries and the runtime lies the application framework.
+This layer provides generic functionality as notification support to applications over Android's \gls{api}.
 \newline
-Applications are installed and executed on the top layer.
+The most upper layer enables the installation and execution of applications.
 \newline
-This structure enables Android to be run on a wide range of devices.
+Using layers and abstraction enables Android to be run on a wide range of devices.
 
 
 

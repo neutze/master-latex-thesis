@@ -59,21 +59,6 @@ art file format
     \label{fig:art2}
 \end{figure}
 
-
-the oat dexfile header
-oat headers are 1...n dex files, actual value given by dexfilecount field in header
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/oatdex.png}
-    \caption{oatdex}
-    \label{fig:awesome_image122223}
-\end{figure}
-
-
-finding dex in oat
-odex files will usually have only one (=original) dex embedded
-booat.oat is something else entirely, some 14 dex files the best of the android framework jars, each dex contains potentilly hundres of classes
-
 art code generation
 oat method headers point to offset of native code
 each method has a quick or portable method header, contains mapping from virtual register to underlying machine registers
@@ -90,8 +75,21 @@ compiler is layered architecture, using portable (llvm) adds another lvl with ll
     \label{fig:artarch}
 \end{figure}
 
-vergleich java/dex/odex(art) code
-\newline
+the oat dexfile header
+oat headers are 1...n dex files, actual value given by dexfilecount field in header
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/oatdex.png}
+    \caption{oatdex}
+    \label{fig:awesome_image122223}
+\end{figure}
+
+
+finding dex in oat
+odex files will usually have only one (=original) dex embedded
+booat.oat is something else entirely, some 14 dex files the best of the android framework jars, each dex contains potentilly hundres of classes
+
+
 
 lessons
 base code is dex so vm is still 32bit, no 64bit registers or operands so mapping to underlying arch inst always 64bit, there are actually a frw 64bit instructions but most dex code doesnt use them
@@ -101,11 +99,14 @@ garbage collection, register maps, likewase same
 cavears: not all methods guaranteed to be compiled, reversing can be quite a pain
 \newline
 
-ART runtime threads
-the daemon threads are started in java by libcore, daemon class wraps thread class and provides singleton INSTANCE, do same basic operations as they did in "classic" dalvikVM, libart subree in libcore implementation slightly different
-\newline
 
 isn't android all dalvik now?
 art is runtime but application compile into dex, art is compiled on device during install, art binaries has dalvik embedded, some methods may be left as dex to be interpreted, dalvik is much easier to debug than art --see- evaluation \newline
 \cite{andevconDalvikART}
 %
+
++
+
+%ART runtime threads
+%the daemon threads are started in java by libcore, daemon class wraps thread class and provides singleton INSTANCE, do same basic operations as they did in "classic" dalvikVM, libart subree in libcore implementation slightly different
+%\newline

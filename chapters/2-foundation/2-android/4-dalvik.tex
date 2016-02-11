@@ -8,6 +8,7 @@ In addition to these hardware limitations Andriod has some additional requiremen
 In order to run efficient it has to be designed according to these requirements.
 The \gls{dvm} a customized and optimized \gls{jvm} based on Apache Harmony and thus is related to Java.
 It is not fully J2SE or J2ME compatible since it uses 16bit opcodes and register-based architecture in contrast to the standard \gls{jvm} being stack-based and using 8bit opcodes.
+
 The advantage of register-based architecture is that they need less instructions for execution than stack-based architecture which results in less CPU cycles.
 The downside is an approximatly 25\% larger codebase and negligible larger fetching times \cite{ehringerDalvik}.
 In addition to the lower level changes the \gls{dvm} is optimized for memory sharing, it stores references bitmaps seperately from objects and optimizes application startup by using zygotes \cite{andevconDalvikART}.

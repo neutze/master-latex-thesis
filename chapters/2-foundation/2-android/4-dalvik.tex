@@ -1,54 +1,14 @@
 \subsection{Dalvik Virtual Machine} \label{subsection:android-dalvik}
-%START TEXT INPUT
-The \gls{dvm}, created by Dan Bornstein and named after an Iclandic town, was introduced along with Android.
+The original \gls{vm} powering Android is the \gls{dvm}, which was created by Dan Bornstein and named after an Iclandic town. It was introduced along with Android in 2008 \cite{developersRelease}.
 \newline
 In contrast to a stationary computer a mobile device have a lot of constraints.
 Since they are powered by battery the processing power and RAM are limited to fit power consumtion.
-In addition to these hardware limitations Andriod has some additional requirements, like no swap for the RAM, the need to run on a diverse set of devices and a sandboxed application runtime .
-In order to run efficient it has to be designed according to these requirements.
-The \gls{dvm} a customized and optimized \gls{jvm} based on Apache Harmony and thus is related to Java.
-It is not fully J2SE or J2ME compatible since it uses 16bit opcodes and register-based architecture in contrast to the standard \gls{jvm} being stack-based and using 8bit opcodes.
-
-The advantage of register-based architecture is that they need less instructions for execution than stack-based architecture which results in less CPU cycles.
-The downside is an approximatly 25\% larger codebase and negligible larger fetching times \cite{ehringerDalvik}.
+In addition to these hardware limitations Andriod has some additional requirements, like no swap for the RAM, the need to run on a diverse set of devices and in a sandboxed application runtime .
+In order to deliver best performance and run efficiently it has to be designed according to these requirements.
+The \gls{dvm} is a customized and optimized version of the \gls{jvm} abd based on Apache Harmony.
+Even though it is based on Java, it is not fully J2SE or J2ME compatible since it uses 16bit opcodes and register-based architecture in contrast to the standard \gls{jvm} being stack-based and using 8bit opcodes.
+The advantage of register-based architecture is that it need less instructions for execution than stack-based architecture which results in less CPU cycles and thus less power consumption which is important for a battery driven device.
+The downside of this architecture is the fact that it has an approximatly 25\% larger codebase for the same application and negligible larger fetching times \cite{ehringerDalvik}.
 In addition to the lower level changes the \gls{dvm} is optimized for memory sharing, it stores references bitmaps seperately from objects and optimizes application startup by using zygotes \cite{andevconDalvikART}.
 \newline
-
-The last change made to \gls{dvm} was the introduction of \gls{jit} in Android version 2.2 "Froyo".
-%START TEXT INPUT
-
-
-%The applications for Android are written using the Java programming language.
-
-%stack abstraction is the Dalvik Virtual Machine (DVM)\newline
-%DVM is highly tailored to work according to the specifications of the Android platform\newline
-%optimized for a slower CPU in comparison with a stationary machine andworks with relatively little RAM memory (
-%• limited processor speed
-%• limited RAM
-%• no swap space
-%• battery powered
-%• diverse set of devices
-%• sandboxed application runtime)\cite{ehringerDalvik}\newline
-%DVM is register-based, differing from the standard Java Virtual Machine (JVM) which is stack-based, register-based architectures require fewer executed instructions than stack-based architectures, register-based code is approximately 25 percent larger than the stack-based, the increase in the instructions fetching time is negligible: 1.07 percent extra real machine loads\cite{ehringerDalvik}\newline
-
-%the Android OS has no swap space imposing that the virtual machine works without swap. Finally, mobile devices are powered by a battery thus the DVM is optimized to be as energy preserving as possible, Except being highly efficient, the DVM is also designed to be replicated quickly because each application runs within a “sandbox”: a context containing its own instance of the virtual machine assigned a unique Unix user ID\newline
-
-%wie der build process funktioniert wird später gesondert beschrieben, hier sagen wir einfach das ergebnis ist die dex datei\newline
-
-%\cite{kovachevaMaster} \cite{ehringerDalvik}
-%
-
-%
-%DVM is
-%- Customized optimized JVM based on Apache Harmony,
-%- Not fully J2SE or J2ME compatible -see- Java compiles into DEX code -see- 16-bit opcodes and Register, rather than stack-based\newline
-%History, Dalvík was introduced along with Android, created by Created by Dan Bornstein, Named after an Icelandic town, 2.2 brought current just in time compilation (ERKLÄREN)\newline
-%Dalvik vs Java
-%- Dalvík is a virtual machine implementation, Based on Apache Harmony, Borrows heavily from Java
-%- Brings significant improvements over Java, in particular J2ME, Virtual Machine architecture is optimized for memory sharing, Reference counts/bitmaps stored separately from objects, Dalvik VM startup is optimized through Zygote
-%- Java .class files are further compiled into DEX.\newline
-%Overview creating APK
-
-%unterschied zu java und dann auf dex?\newline
-%\cite{andevconDalvikART}
-%
+The last big change made to the \gls{dvm} was the introduction of \gls{jit} in Android version 2.2 "Froyo".

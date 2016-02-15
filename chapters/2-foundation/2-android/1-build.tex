@@ -5,14 +5,12 @@ They can either be obtained from an appstore, like Google Play, or downloaded an
 The \gls{apk} format is based on the ZIP file archive format and contains the code and resources of the application.
 The build process of \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
 \newline
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/apk.png}
     \caption{\gls{apk} build process \cite{andevconDalvikART}}
     \label{fig:apk}
 \end{figure}
-
 Since Android applications are usually written in Java, the first step is similar to the Java program build process.
 The Java source code is compiled into \gls{classg} file by the Java Compiler javac.
 Each .class files contains the Java bytecode of the corresponding Java class.
@@ -23,7 +21,7 @@ In the end the .class files are packed into a \gls{jar} file.
 Since Android is using the \gls{dvm}, which will be described in section~\ref{subsection:android-dalvik}, the Java bytecode has to be converted to Dalvik bytecode.
 The Android \gls{sdk} includes the tool dx which is used to convert \gls{classg} files to a single classes.dex file containing all classes.
 The \gls{dex} format will be described in \ref{subsection:android-dex}.
-After this conversion additional obfuscation techniques can be applied \ref{dexProtector}.
+After this conversion additional obfuscation techniques can be applied \cite{dexProtector}.
 \newline
 In the next step the ApkBuilder combines the three main parts of the application into one archive file.
 The first one is the classes.dex with the bytecode.

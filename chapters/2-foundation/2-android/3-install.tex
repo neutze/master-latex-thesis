@@ -1,12 +1,20 @@
 \subsection{Installing an APK} \label{subsection:android-install}
-%START TEXT INPUT
-Now that we have an apk we can install it
-
-Installation two steps:  primary is the APK verification and secondary is the bytecode optimization/art\newline
-legitimate signature as well as correct classes.dex structure cannot be verified are rejected for installation by the OS\newline
-Once verified, the .dex file is forwarded for optimization: a necessary step due to the high diversity of Android running hardware (dex)-see- Dalvik executable is a generic file format which needs additional processing to achieve best performance for the concrete device architecture (odex)\newline
-optimization\newline
-step removes the classes.dex from the original APK archive and loads in memory the .odex file upon execution, occurs only once, during the initial run of the application which explains the usually slower first application launch comparing to the subsequent ones\cite{kovachevaMaster}
+Now that the format of the \gls{apk} and \gls{dex} file format are explained, the application can be installed.
+Before running an application, two steps are applied on the \gls{apk}.
+The first step is primary about the verification of the application while the second step is the bytecode optimization and, in case of \gls{art}, the code compilation.
+Before installing an application it is checked for a legitimate signature as well as correct classes.dex structure (see figure~\ref{fig:install}).
+In case this cannot be verified, the installation will be rejected by the OS.
+The second step is the optimization.
+In case the device is still running the \gls{dvm}, the \gls{odex} verison of the classes.dex is generated.
+This is possible because \gls{dex} files can be optimized in order to achieve the best performance for a given device architecture.
+This is due to the the high diversity of Android running hardware and their different processors.
+In the process the classes.dex file is taken from the archive and put as \gls{odex} file into the Dalvik cache.
+This is done once and from then on the execution is done by using the \gls{odex} file.
+This preprocessed version of the application has an improved startup time. \cite{kovachevaMaster}
+The current versions of Android run on the \gls{art}.
+For this runtime the second step is more complex since the bytecode has to be compiled an additional time.
+This will be explained closer in section~\ref{subsection:android-art}.
+\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/install.png}
@@ -14,38 +22,5 @@ step removes the classes.dex from the original APK archive and loads in memory t
     \label{fig:install}
 \end{figure}
 
-In order to create a sandboxed environment, Android assigns each application a seperate user ID on install to ensure that nobody except users with the same ID can access the applications resources.
-The Android operating system is a multi-user Linux system in which each app is a different user.
-By default, the system assigns each app a unique Linux user ID (the ID is used only by the system and is unknown to the app). The system sets permissions for all the files in an app so that only the user ID assigned to that app can access them
-Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps.
-By default, every app runs in its own Linux process. Android starts the process when any of the app's components need to be executed, then shuts down the process when it's no longer needed or when the system must recover memory for other apps\cite{developerFundamentals}
-
-%START TEXT INPUT
-
-%
-%Installation two steps:  primary is the APK verification and secondary is the bytecode optimization/art\newline
-%legitimate signature as well as correct classes.dex structure cannot be verified are rejected for installation by the OS\newline
-%Once verified, the .dex file is forwarded for optimization: a necessary step due to the high diversity of Android running hardware (dex)-see- Dalvik executable is a generic file format which needs additional processing to achieve best performance for the concrete device architecture (odex)\newline
-%optimization\newline
-%step removes the classes.dex from the original APK archive and loads in memory the .odex file upon execution, occurs only once, during the initial run of the application which explains the usually slower first application launch comparing to the subsequent ones
-
-%ablauf starten von app\newline
-%When an Android application is executed, the process consists of the following four parts:
-%• Dalvik bytecode, which is located in the dex file
-%• Dalvik Virtual Machine [13], which executes the Dalvik bytecode
-%• Native Code, like shared objects, which is executed by the processor
-%• Android Application Framework, which provides services for the application\newline
-%\cite{kovachevaMaster}
-%
-
-
-
-
-%
-%The Android operating system is a multi-user Linux system in which each app is a different user.
-%By default, the system assigns each app a unique Linux user ID (the ID is used only by the system and is unknown to the app). The system sets permissions for all the files in an app so that only the user ID assigned to that app can access them
-%Each process has its own virtual machine (VM), so an app's code runs in isolation from other apps.
-%By default, every app runs in its own Linux process. Android starts the process when any of the app's components need to be executed, then shuts down the process when it's no longer needed or when the system must recover memory for other apps
-
-%\cite{developerFundamentals}
-%
+When the application is run later, Android is creating an sandboxed environment for each application.
+This is achieved by Android assigning each process a seperate user ID on install to ensure that each application is isolated from the others and has no access on resources except its own. \cite{developerFundamentals}

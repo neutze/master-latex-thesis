@@ -1,20 +1,12 @@
 \subsection{Android Runtime} \label{subsection:android-art}
-
-\url{https://source.android.com/devices/tech/dalvik/index.html}
-
-
-In Android version 4.4 "Kitkat" Google introduced \gls{art} which was optional and only available through the developer options.
+In Android version 4.4 "Kitkat" Google introduced \gls{art} which was optional and only available as a preview through the developer options.
+Like \gls{dvm}, \gls{art} executes the \gls{dex} fileformat und \gls{dex} bytecode specification \cite{androidArt}.
 With the release of verison 5.0 "Lollipop" \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
-
-
-JIT is slow, consuming both cycles and battery power
-gabage collection causes hangs/jitters
-dalvik is 32bit, cannot beneift from 64bit architecture
-
-%
-art introduced in kitkat 4.4, available only through developer options,  declared to be preview release, own risk, very little documentation, if any
-in lollipop art becomes runtime of choice, supersedes dalvik, breaks compatibility with older dex, as well as itself, very little docu
-constantly evolving  through marshmallow, major caveat : oftenc changes in between android minro versions, android optimizes apps everytime you update\newline
+Throughout the Android 6.0 "Marshmallow" previews it was constantly evolving and sometimes breaking with older versions at the cost of almost no documentation.
+\newline
+\gls{art} is designed to address the shortcomings of the \gls{dvm}.
+Since maintaining
+ android optimizes apps everytime you update\newline
 art was designed to address shortcomings of dalvik:
 virutal machine maintenance is expensie, interpreter/jit simply arent efficient as native code, doing jit all over again on every execution is wasteful, maintenance threads require significantly mroe cpu cycles, cpu cycles translate to slower performance and shorter battery life
 dalvik garbage collection frequently causes hangs/jitter

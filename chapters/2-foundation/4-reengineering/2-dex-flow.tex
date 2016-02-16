@@ -1,0 +1,75 @@
+\subsection{dex Analysis} \label{subsection:tools-dex}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
+%
+nur dex weil die apps im moment so vorliegen
+
+aosp-supplied dexdumo to disassemble dex
+
+\cite{andevconDalvikART}
+%
+%
+always attack dex since the protection mechanism is in there (except JNI?)
+since apk is zip like decompression tool like 7zip can extract classes.dex from apk file
+
+hexdump to get bytecode
+
+
+code wie er vorliegt, wenn was geändert wird wird es hier geändert
+
+
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={32-35},
+  firstnumber=1,
+  caption={Script to extract the \gls{dex} byte code from the \gls{apk}},
+  label={codeSnippet:dexScript}
+]{data/extractScript.sh}
+RESULT OUTPUT
+dex hexdump, start of the dex file, e.g first 8 byte represent the dex header magic dex.035, version 35\cite{developersDalvik}
+LINE | bytecode | ASCII representation
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  caption={dex hexdump example},
+  label={codeSnippet:dexOutput}
+]
+00000000  64 65 78 0a 30 33 35 00  ae a5 51 7e 06 f7 00 84  |dex.035...Q~....|
+00000010  ee 23 5d 3b 4a 61 bb 08  51 a7 c9 02 c1 4e d2 91  |.#];Ja..Q....N..|
+00000020  0c fb 21 00 70 00 00 00  78 56 34 12 00 00 00 00  |..!.p...xV4.....|
+00000030  00 00 00 00 ac 88 06 00  f4 4e 00 00 70 00 00 00  |.........N..p...|
+00000040  ad 09 00 00 40 3c 01 00  0a 0e 00 00 f4 62 01 00  |....@<.......b..|
+00000050  3d 27 00 00 6c 0b 02 00  ff 4b 00 00 54 45 03 00  |='..l....K..TE..|
+\end{lstlisting}
+
+
+
+
+
+jedes tool:\newline
+woher kommt es?\newline
+wozu wurde es erfunden?\newline
+wer hat es erfunden? quelle\newline
+blabla von der seite\newline
+wozu benutze ich es?\newline
+welches abstrahierungslevel\newline
+beispiel\newline
+additional features?\newline
+WARUM SCHAUEN WIR ES UNS AN?\newline
+wo findet man es?\newline
+welches level?\newline
+vorteil\newline
+blabla aus dem internet\newline

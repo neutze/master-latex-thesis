@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         Test.suchTest();
 
-        final String mAndroidId = Settings.Secure.getString(this.getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        final String mAndroidId = Settings.Secure.getString(this.getContentResolverSettings.Secure.ANDROID_ID);
         final AESObfuscator mObsfuscator = new AESObfuscator(SALT, getPackageName(), mAndroidId);
         final ServerManagedPolicy serverPolicy = new ServerManagedPolicy(this, mObsfuscator);
         mLicenseCheckerCallback = new MyLicenseCheckerCallback();

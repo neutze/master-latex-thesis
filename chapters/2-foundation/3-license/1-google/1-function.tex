@@ -19,7 +19,7 @@ Figure~\ref{fig:lvl} gives an overview how the parts are connecnted. \cite{digip
     \label{fig:lvl}
 \end{figure}
 In order to start the validation process with the Google Server und to determine the license status of the application, additional information has to be provided.
-The user has to initiate the call with  the package name of the application, a salt which has to be included in every call to ensure no attack has happened as well as the callback for asynchronous handling.
+The user has to initiate the call with  the package name of the application, a nonce, which has to be included in every repsonse to ensure integrity, as well as the callback for asynchronous handling.
 The Google Play Service then adds the primary Google account the application is executed with, the IMSI of the device
 On the server Google checks whether the user has purchased the application and sends the corresponding response to the Google Play Service which passes it to the application. \cite{developersLicensingOverview}
 \newline

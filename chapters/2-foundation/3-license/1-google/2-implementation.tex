@@ -23,17 +23,6 @@ As soon as the \gls{lvl} is part of the application project the licensing permis
   label={codeSnippet:lvlPermission}
 ]{data/permission.xml}
 The last step is to create the license call which can be seen in code snippet~\ref{codeSnippet:lvlSetup}.
-As described in subsection~\ref{section:license-google-functional}, different information has to be aquired and added to the license request.
-The first part is the user id, which is created randonly when the user sets the device up for the first time and remains the same for the lifetime of the user's device
-
-
-- Implementing a Policy, provided by LVL or own
-- Implementing an Obfuscator, if Policy caches any license response data. \ref{codeSnippet:lvlSetup} line 59, cannot be reused or manipulated by a root user
-- adding code to check license in application main activity\_main
-\cite{developersLicensingAdding}
-%
-\url{https://developer.android.com/google/play/licensing/setting-up.html}
-
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -48,7 +37,13 @@ The first part is the user id, which is created randonly when the user sets the 
   caption={Setting up the LVL license check call},
   label={codeSnippet:lvlSetup}
 ]{data/lvl.java}
-
+As described in subsection~\ref{section:license-google-functional}, different information has to be aquired and added to the license request.
+In order to identify the user the its unique id is aquired.
+The id is created randomly when the user sets up the device for the first time and remains the same for the lifetime of the user's device \cite{androidSecure}.
+The obfuscator is later applied on the cached license response data to prevent manipulation or reuse by root user.
+In order to decide what should happen to the reponse data and whether it should be stored, a policy is specified.
+This can be either one of the provided policies are a custom one.
+Before making the license check request, a callback has to be definden, which can be seen in code snipped~\ref{ (codeSnippet:lvlCallback}.
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -63,4 +58,8 @@ The first part is the user id, which is created randonly when the user sets the 
   caption={LVL license check callback},
   label={codeSnippet:lvlCallback}
 ]{data/lvl.java}
-\cite{developersLicensingSetup} \cite{developersLicensingAdding}
+The callback contains actions for the different outcomes of the license check.
+The scenarios are either applicationError, e.g. when no connection can be established, dontAllow in case license is not valid and allow when the users status is verified.
+Now the license check can be initiated with the values. \cite{developersLicensingSetup} \cite{developersLicensingAdding}
+\newline
+The license check can be implemented in any activity and executed as the developer likes.

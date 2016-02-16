@@ -12,14 +12,16 @@ With \gls{art} Android is following iOS into the 64bit world but this is not the
 Improvements in the \gls{vm} make the maintenance less expensive and the compilation is changed from \gls{jit} to \gls{aot} as well as the overhead cycles have been reduced.
 The \gls{gc} is also non-blocking now and and can run parallel in fore- and background.
 \newline
-The mean idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{LLVM} code.
+The mean idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{llvm} code.
 Each of the types has its purpose and advantage.
 The native code offers an improved execution performance while the \gls{llvm} code offers protability.
-In practice the preference is to compile to native since adding \gls{LLVM} bitcode adds another layer of complexity to \gls{art}.
+In practice the preference is to compile to native since adding \gls{llvm} bitcode adds another layer of complexity to \gls{art}.
 \newline
 Different from \gls{dvm} is the fact that \gls{art} uses not one but two file formats.
-Similar to the zygote of \gls{dvm}, which is used as a pre-initialized instance for faster application start up, \gls{art} offers an image of pre-initialized classes and and related object at run time, the boot.art file.
-It is mapped to the memory at startup \cite{developersConfigureArt}
+Similar to the zygote of \gls{dvm}, \gls{art} offers an image of pre-initialized classes and and related object at run time, the boot.art file.
+It is mapped to the memory upon zygote startup to provide improved application starting time \cite{developersConfigureArt}.
+The second file format is
+
 
 
 Art itself:

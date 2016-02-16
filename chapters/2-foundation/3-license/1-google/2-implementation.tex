@@ -1,30 +1,13 @@
-\subsubsection{Implementation of the License Verification Library}\label{section:license-google-implementation}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-
-%
-run time, set of libraries provided by google
-app can query Google Play licensing Server to determine the license status of user
-returns information on whether your user is authorized to use the app based on stored sales revords
-real time over network
-\cite{developersLicensingBlog}
-%
-
-%
-what you need
-
-google publisher account on google play
-google play developer console at Services \& API, app specific public key for licensing, implement it into the application
-copy it later into the app
-
-\cite{developersLicensingAdding}
-%
-
-%
-- Adding the licensing permission your application's manifest
+\subsubsection{Implementation of the License Verification Library} \label{section:license-google-implementation}
+The provided library of Google can be implemented in only a few steps.
+First of all, a Google Publisher Account for Google Play is needed.
+It enables the developer to publish applications on Google Play and take advantage of the \gls{lvl}.
+As soon as an application is created in the Google Developer Console the public/private key is created.
+Each key pair is app specific and can be found under "Services \& API".
+It is later on added into the application. \cite{developersLicensingSetup}
+\newline
+Now that the Google Play prerequisites are set, the \gls{lvl} has to be extracted from the Android \gls{sdk} folder and added to the application.
+As soon as the \gls{lvl} is part of the application project the licensing permission can be added to the application's manifest (see code snippet~\ref{codeSnippet:lvlPermission}), else the \gls{lvl} will throw an exception.
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -36,9 +19,13 @@ copy it later into the app
   language=Java,
   linerange={7-9},
   firstnumber=7,
-  caption={Include permission to check the license in AndroidManifest.xml},
+  caption={Include permission to check the license in AndroidManifest.xml \cite{developersLicensingAdding}},
   label={codeSnippet:lvlPermission}
 ]{data/permission.xml}
+The last step is to create the license call which can be seen in code snippet~\ref{codeSnippet:lvlSetup}.
+As described in subsection~\ref{section:license-google-functional}, different information has to be aquired and added to the license request.
+The first part is the user id, which is created randonly when the user sets the device up for the first time and remains the same for the lifetime of the user's device
+
 
 - Implementing a Policy, provided by LVL or own
 - Implementing an Obfuscator, if Policy caches any license response data. \ref{codeSnippet:lvlSetup} line 59, cannot be reused or manipulated by a root user
@@ -46,8 +33,6 @@ copy it later into the app
 \cite{developersLicensingAdding}
 %
 \url{https://developer.android.com/google/play/licensing/setting-up.html}
-
-\url{https://developer.android.com/google/play/licensing/adding-licensing.html}
 
 \lstinputlisting[
   float=h,
@@ -78,3 +63,4 @@ copy it later into the app
   caption={LVL license check callback},
   label={codeSnippet:lvlCallback}
 ]{data/lvl.java}
+\cite{developersLicensingSetup} \cite{developersLicensingAdding}

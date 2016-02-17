@@ -1,14 +1,9 @@
 \section{Patching Patterns} \label{section:luckypatcher-patterns}
-In order to identify the single patterns, the information from the output of cracking \ref{fig:luckyScreen} right, of the apps was matched with the changes in the code. the changes in the code were inspected on dex, smali and java level with the tools explained in Section~\ref{section:reengineering}. in case of LVL, from the information where in the package the change was done, conclusion to the original class from in the lvl could be done
-
-diff for original app and modified app
-
-example code taken from an app which was inspected, modification happens for all at the same spot/manner
-
-dex == smali, smali better readable but dex to see how easy change
-since the translation from java to dex does some optimizations/logik, dex and java do not express the same, but it is how it is in the decompiled code, java is also an abstraction of the actual code, sometimes java also a little confusing since changes happened in dex code and cannot be decompiled to java in a good manner, very messy, it is included for better understanding anyways since humanreadable
-
-The names of the patterns/patches are taken from the patching result output figure~\ref{fig:luckyScreen} on the right
+In order to identify the structure of the single patterns, the code of the original code was compared to the cracked output.
+The changes in the code were inspected on dex, smali and Java level with the tools explained in Section~\ref{section:reengineering}.
+After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
+\newline
+The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
 \subsubsection{Patch Pattern N1}
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator}
@@ -380,12 +375,12 @@ always starts condition, even though input is not as supposed to start
 \centering
 \begin{tabular}{l|cccccccc}
                            & \multicolumn{8}{c}{Patterns}           \\
-\multicolumn{1}{c|}{Modus} & N1 & n3 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
+\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
 Auto                       & X  & X  & X  &     & X  &    &    &    \\
 Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
 Extreme                    &    &    &    &     &    & X  & X  & X  \\
 Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
-Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
+Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
 \end{tabular}
 \caption{Overview of License Verification Library patching patterns applied by each modus}
 \label{table:patterns}

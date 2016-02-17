@@ -12,53 +12,25 @@ On each level the modified and original code will be compared using diff to retr
 Before working on applications from the store, an application, including the \gls{lvl} as Google's tutorial describes it \cite{developersLicensingAdding}, is created.
 This is done in order to test whether and how Lucky Patcher works on the most basic version.
 For Amazon's Kiwi \gls{drm}, the same application, with deactivated \gls{lvl}, is uploaded to Amazon and injected with their \gls{drm}.
-In addition to the basic application, other applications which are purchased from the stores are tested in order to identify additional patterns and to analyse the result.
-The applications which were approved to be included into the thesis by the developers are FKUpdater \cite{fkupdater}, Freelatics Bodyweight \cite{freelatics} and Solid Explorer \cite{solidexporer} for the \gls{lvl} and A Better Camera \cite{abettercamera} for the Amazon DRM.
+In addition to the basic application, other applications were analysed as well, in order to identify additional patterns and to analyse the result.
+These apps were chosen since they were already owned and tested to include the license verification library respectively Amazon \gls{drm}.
+The applications, which were approved to be included into the thesis by the developers, are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
 The analysis for Samsung is done by using the example application since the library is implemented the same way into all applications used in.
 In contrast to Amazon this can assumed because it is done by the developer and not injected when uploading.
 \newline
 In addition to the analysis, the modified application is installed on different devices to evaluate the crack.
 The difference between the devices is the availability of the corresponding store as well as the presence of root and internet connection.
 \newline
-
-patterns und patching modes grob erklären (modi von luckypatcher die verschiedene operationen (pattern) auf app anwenden) => vorgehensweise zur\newline
-
-see figure~\ref{fig:luckyScreen} middle liuckypatcher offeres different sets of methods to remove the license verification
-Auto Mode - "The monomal number of patches. Suitable for most applications with simple protection" - uses patterns
-
-Auto Mode (Inversed) - "There are a few differences from the ”Auto mode”. It may help you, if "Auto mode" was unsuccessful." - uses patterns
-
-Other Patches (Extreme Mode!) - "Additional patches (mnay cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with ”Auto mode” or ”Auto mode (Inversed)”." - uses patterns
-
-Auto Mode (Amazon Market) - "Removes License Verification for applciations from Amazon Market" - uses patterns
-
-Auto Mode (SamsungApps) - "Removes License Verification for Apps from SamsungApps" - uses patterns  (is now GalaxyApps)
-
-
-in order to find out what patterns are doing, different apps had to be analysed after patching
-the apps chosen were already owned, in addition an app for each license verification model was created, uploaded and installed from the store so the license verification was working
-
-to verify that license check is enabled, each app was extracted from the device using method described in \ref{subsection:tools-apk} and installed on a device with a different google account
-then for each app a modified apk see figure~\ref{fig:luckyScreen} left, using one modus is created and copied to a computer for further inspection. so for each app there are 5 modified apks now
-
-
-as example apps to show results Runtastic Pro\cite{runtasticApp}, Version 6.3, the created LicenseTest and Teamspeak 3\cite{teamspeakApp}, Version 3.0.20.2, are chosen
-
-\begin{table}[h]
-\centering
-\begin{tabular}{llll}
-                                             & \multicolumn{3}{c}{Application}             \\
-\multicolumn{1}{c|}{Modus}                   & LicenseTester & Runtastic Pro & Teamspeak 3 \\ \hline
-\multicolumn{1}{l|}{Purchased}               & yes           & yes           & yes         \\
-\multicolumn{1}{l|}{Pirated}                 & no            & no            & no          \\
-\multicolumn{1}{l|}{Auto}                    & yes           & yes           & no          \\
-\multicolumn{1}{l|}{Auto (Inversed)}         & no            & yes           & no          \\
-\multicolumn{1}{l|}{Extreme}                 & no            & yes           & no          \\
-\multicolumn{1}{l|}{Auto+Extreme}            & yes           & yes           & no          \\
-\multicolumn{1}{l|}{Auto (Inversed)+Extreme} & no            & yes           & no
-\end{tabular}
-\caption{Functionality for the test apps before and after patching}
-\label{table:functionality}
-\end{table}
-
-the result after patching the different apps with each modus returned the patterns used by each modus
+Lucky Patcher offers different modes to patch applications.
+At the end of patching in a modus the applied patterns can be seen like in figure~\ref{fig:luckyScreen} on the right.
+A pattern is a set of predefined sequences of byte code in which a certain values are modified.
+In order to discover applied patterns and to evaluate each mode, each method is applied on each application.
+\newline
+These are the different modes and what Lucky Patcher descibes them as.
+\begin{itemize}
+\item The Auto Mode - "The minimal number of patches. Suitable for most applications with simple protection".
+\item Auto Mode (Inversed) "There are a few differences from the ”Auto mode”. It may help you, if ”Auto mode” was unsuccessful."
+\item Other Patches (Extreme Mode!) - "Additional patches (mnay cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with ”Auto mode” or ”Auto mode (Inversed)”."
+\item Auto Mode (Amazon Market) - "Removes License Verification for applciations from Amazon Market"
+\item Auto Mode (SamsungApps) - "Removes License Verification for Apps from SamsungApps" (Note: SamsungApps is called GalaxyApps, see subsection~\ref{section:license-samsung})
+\end{itemize}

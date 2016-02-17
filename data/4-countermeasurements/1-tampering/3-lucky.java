@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-public class LuckyPatcher {
+public class Lucky Patcher {
 
     public static boolean checkInstall(final Context context) {
         boolean result = false;

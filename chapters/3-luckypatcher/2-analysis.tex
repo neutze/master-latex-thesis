@@ -1,25 +1,35 @@
 \section{Code Analysis} \label{section:luckypatcher-analysis}
-The code analysis was done using LuckyPatcher in version 6.0.4 using the two tools descibed in subsection~\ref{subsection:forensics-tools-java}.
+The code analysis was done using Lucky Patcher in version 6.0.4 using the two tools described in subsection~\ref{subsection:forensics-tools-java}.
 The reversed code was inspected using a text editor like Atom \cite{atom}.
 \newline
 Before analysing the code, a look is taken at the structure.
 When loading the folder of the reengineered code into the editor a lot of different code folders can be spotted.
-These code folders hold the packages of LuckyPatcher itself and used libraries.
+These code folders hold the packages of Lucky Patcher itself and used libraries.
 The libraries can be divided in four categories.
-The first category contains the Android Support Library v4 with many of it's modules, which LuckyPatcher includes as well as many other applications.
-It is used for downward compability of Android related functions of LuckyPatcher itself.
-The second category contains the code of LuckyPatcher. It is located in two places.
+The first category contains the Android Support Library v4 with many of it's modules, which Lucky Patcher includes as well as many other applications.
+It is used for downward compatibility of Android related functions of Lucky Patcher itself.
+The second category contains the code of Lucky Patcher. It is located in two places.
 In the package com.chelpus utility functions, like "copy file" and "rename", are stored.
 The "application" itself is com.android.vending.billing.InAppBillingService.LACK. It contains the activities and functions which are used for cracking applications.
-The third category are support libraries required by LuckyPatcher to apply it's cracking mechanisms.
-This includes libraries like axml \cite{axml} for serializing the AndroidManifest.xml from Android binary into a ASCII formatted xml file to make it readable and zip4j \cite{zip4j}, a Java library to handle ZIP files, to name a few.
+The third category are support libraries required by Lucky Patcher to apply it's cracking mechanisms.
+This includes libraries like axml \cite{axml} for serializing the AndroidManifest.xml from Android binary into an ASCII formatted xml file to make it readable and zip4j \cite{zip4j}, a Java library to handle ZIP files, to name a few.
 The fourth and last category is an modified billing and license library, which can be applied in combination to use a proxy to redirect inapp billing and licensing calls, and a package containing the already cracked \gls{lvl} which will be explained in section~\ref{section:luckypatcher-patterns}.
-In addition to these categories, the asset folder stores different predefinded custom patches which can be applied applications \cite{munteanLicensing}.
+In addition to these categories, the asset folder stores different predefined custom patches which can be applied applications \cite{munteanLicense}.
 \newline
 This is very hard since there is no folder structure sorting the classes in activities or models.
 The patchActivity in the package com.android.vending.billing.InAppBillingService.LACK can be identified as launcher method when looking into the AndroidManifest.xml file.
 The folder embracing the activity has a flat hierarchy and is not grouped into folders by activities or models.
-In the launcherActivity the listAppsFragment is created which implements most of the app logic in over 13000 lines of code.
-This makes it difficult to get a clear understanding of how exactly LuckyPatcher is patching the attacked application.
+In the launcherActivity the listAppsFragment is created which implements most of the app logic in over 17.000 lines of code.
+This makes it difficult to get a clear understanding of how exactly Lucky Patcher is patching the attacked application.
 Another problem is the obfuscation of strings and methods which makes it impossible to get their purpose just from the name.
 At some points it is even impossible for the decompiler tool to disassemble to Java code and thus it returns just the instruction dump.
+\newline
+Lucky Patcher has already been target of analysis, e.g. in Marius-Nicolae Muntean's Master's thesis "Improving License Verification in Android" \cite{munteanLicense}
+thus there are functions to look for.
+When loading the applications, each package is checked for it's permissions which are extracted from the application's AndroidManifest.xml.
+When the application with the check is selected for cracking, the classes.dex is extracted from the \gls{apk}.
+In the next step Lucky Patcher applies the manipulation of the \gls{dex} file on binary level.
+The altered file can either be output as an \gls{apk} or put, depending on the runtime, either as \gls{.odex} in the Dalvik Cache at /data/dalvik-cache/ or directly injected into the corresponding .art file.
+After changing the classes.dex, the header's checksum hash and signature have to be updated to reflect the changes and to be valid.
+\cite{munteanLicense}
+%

@@ -1,4 +1,26 @@
-\section{Cracking License Verification} \label{section:luckypatcher-modi}
+\section{Analysis of Patched Applications} \label{section:luckypatcher-operation}
+In addition to analysing the reverse engineered source code, an analysis of patched applications is done.
+This is done by first patching an application and creating a modified apk as described in section~\ref{section:luckypatcher-explain} followed by reengineering and analysing them according to the methodology shown in section~\ref{section:reengineering}.
+The reason for not patching directly on the device is the circumstance that when the patch is applied on the application, the patched class.dex will be stored as odex.
+Since the odex is specific to the code and device, it does not reveal the general approach of patching
+Since the code is modified directly, a static analysis is sufficient.
+\newline
+The goal of reverse engineering the code and comparing it to the original application is to see the changes on different levels.
+This includes the \gls{dex} level, on which Lucky Patcher works, the smali level, which makes the \gls{dex} code human readable friendly, as well as Java level, on which the functionality chance can be identified.
+On each level the modified and original code will be compared using diff to retrieve the changes in an easy way as well as ignoring the unchanged code.
+\newline
+Before working on applications from the store, an application, including the \gls{lvl} as Google's tutorial describes it \cite{developersLicensingAdding}, is created.
+This is done in order to test whether and how Lucky Patcher works on the most basic version.
+For Amazon's Kiwi \gls{drm}, the same application, with deactivated \gls{lvl}, is uploaded to Amazon and injected with their \gls{drm}.
+In addition to the basic application, other applications which are purchased from the stores are tested in order to identify additional patterns and to analyse the result.
+The applications which were approved to be included into the thesis by the developers are FKUpdater \cite{fkupdater}, Freelatics Bodyweight \cite{freelatics} and Solid Explorer \cite{solidexporer} for the \gls{lvl} and A Better Camera \cite{abettercamera} for the Amazon DRM.
+The analysis for Samsung is done by using the example application since the library is implemented the same way into all applications used in.
+In contrast to Amazon this can assumed because it is done by the developer and not injected when uploading.
+\newline
+In addition to the analysis, the modified application is installed on different devices to evaluate the crack.
+The difference between the devices is the availability of the corresponding store as well as the presence of root and internet connection.
+\newline
+
 patterns und patching modes grob erklären (modi von luckypatcher die verschiedene operationen (pattern) auf app anwenden) => vorgehensweise zur\newline
 
 see figure~\ref{fig:luckyScreen} middle liuckypatcher offeres different sets of methods to remove the license verification

@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import me.neutze.licensetest.security.tampered.DebugCheck;
-import me.neutze.licensetest.security.tampered.LuckyPatcher;
+import me.neutze.licensetest.security.tampered.Lucky Patcher;
 import me.neutze.licensetest.security.tampered.SignatureCheck;
 import me.neutze.licensetest.security.tampered.SimpleCheck;
 import me.neutze.licensetest.security.tampered.VerifyInstaller;
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
             LogToastHelper.feedback(getApplicationContext(), TAG, "SimpleCheck.findBinary(su)==true");
             //android.os.Process.killProcess(android.os.Process.myPid());
         }
-        if (LuckyPatcher.checkInstall(this)) {
-            LogToastHelper.feedback(getApplicationContext(), TAG, "LuckyPatcher.checkInstall()==true");
+        if (Lucky Patcher.checkInstall(this)) {
+            LogToastHelper.feedback(getApplicationContext(), TAG, "Lucky Patcher.checkInstall()==true");
             //android.os.Process.killProcess(//android.os.Process.myPid());
         }
 

@@ -157,7 +157,7 @@ As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a 
   caption={Diff on Smali level for N3 pattern},
   label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
-The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is more complex again since the structure if the code in the \gls{dex} files is different than the one in Java.
+The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is, again, more complex since the structure if the code in the \gls{dex} files is different than the one in Java.
 This is due to the fact that while in Java the \textit{return} followed by a value is possible, in \gls{dex} files this statement is split in two parts.
 First, an internal variable is initiated with a standard value corresponding to the type of the return and in a second step the value is returned.
 The patterns modify the value initialization which results in the change of the return statement in the Java code.
@@ -244,7 +244,7 @@ In this decompiled code, the parsing of the result code is spoofed and not the v
   label={codeSnippet:n4DiffJava}
 ]{data/n5.diff}
 
-If this pattern would be applied alone, it would be able to circumvent the response code checks, but it is effective when combined with pattern N6.
+If this pattern would be applied alone, it would be able to circumvent the response code checks, but it is effective when combined with pattern N.
 
 
 \subsubsection{Patch Pattern N6}

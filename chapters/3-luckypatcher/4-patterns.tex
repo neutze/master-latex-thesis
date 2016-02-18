@@ -228,13 +228,25 @@ The result is that even though policy does not allow the access, this patterns m
 
 
 \subsubsection{Patch Pattern N5}
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/LicenseValidator.java}
+As part of the extreme mode, pattern N5 works on the \gls{dex} file similar to pattern N2 on the \textit{LicenseValidator}'s \textit{verify()} method. It does not affect the standard implementation of the \gls{lvl}.
+\newline
+As described before, the dex code is has a more complex decompiled Java code than the source code, especially in this case since instead of calling attributes of an object directly it stores them into variables before.
+In this decompiled code, the parsing of the result code is spoofed and not the value of the response data is stored but the response code is set to 0.
+\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-4},
+  caption={Diff on Java level for N5 patch (abstracted)},
+  label={codeSnippet:n4DiffJava}
+]{data/n5.diff}
 
-works the same way as pattern N2
+If this pattern would be applied alone, it would be able to circumvent the response code checks, but it is effective when combined with pattern N6.
 
-im gegensatz zu N2 wird jetzt die condition nie aufgeraufen anstatt sie immer aufzurufen wie in N5
-result is that the check for the result code given to the function and extracted from the server response is disabled since the result of the check is set to always false
+
 \subsubsection{Patch Pattern N6}
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}

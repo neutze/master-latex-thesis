@@ -1,0 +1,4 @@
+*@@ Pattern N5 @@*
+!!- v0_0.a = !!Integer.parseInt(v2_1[0]);
++ Integer.parseInt(v2_1[0]);
+??+ v0_0.a = 0;??

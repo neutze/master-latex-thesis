@@ -4,12 +4,12 @@ The changes in the code were inspected on dex, smali and Java level with the too
 After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
-The patterns N\textif{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
+The patterns N\textit{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
 This insight was gained in the analysis.
 In the context of the \gls{dex}, hexadecimal values like \textit{0x0a} are simplified as \textit{0a} for smoother reading.
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
-It tagets the LicenseValidator class in \textit{com/google/android/vending/licensing/LicenseValidator} which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
+It tagets the \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
 When analysing the dex code, it is identified that the changes happen in a switch statement.
 The code block starts \textit{00 02}, which stands for a sparse-switch, followed by \textit{09 00}, which gives the number of elements \cite{opcodes}.
@@ -66,7 +66,7 @@ As well as pattern N1, N2 is applied in all patching modes, except the solo extr
 It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textit{com/google/android/gms/ads/}.
 The extended analysis of different applications showed the altering of custom libraries, which include code for Google inapp billing, like AnjLab's inapp billing library \cite{inappBilling}, located at \textit{com/anjlab/android/iab/v3/Security}, in the FKUpdater, are modified as well.
 This is collateral damage when applying the pattern to classes outside of the \gls{lvl} libary caused by the possibility of moving the classes of the library to different packages.
-As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the LicenseValidator class.
+As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the \textit{LicenseValidator} class.
 \newline
 The changes in the \gls{dex} file in code snippet~\ref{codeSnippet:n2DiffDex} effect a simpler construct than pattern N1 does.
 Instead of of using the opcode \textit{0a} for moving the result the result of the corresponding function to the variable 5 (source-destination order of \textit{05}), it simply moves (opcode \textit{12}) the value 1, which stands for true, to the variable 5 (\textit{15}).
@@ -118,17 +118,14 @@ The conclusion is that after applying this pattern the result of the verificatio
 \subsubsection{Patch Pattern N3}
 This pattern is different than the other patterns since there are two versions of it.
 Pattern N3 is present when using auto mode while pattern N3i is used in the inversed auto mode.
+The name N3i is chosen since it is used in the inversed auto mode.
+LuckyPatcher does not make a difference between them.
 They are combined under the same number since both attack the same logic inside the classes which define the policies.
-In the \gls
-Pattern N3 is applied in patching in which the auto mode is present respecively N3i is present where the reverse mode is used. Both patterns target the same code but in different ways.
-
-Unterschied erklären
-
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/APKExpansionPolicy.java}
-\url{com/google/android/vending/licensing/ServerManagedPolicy.java}
-Policy integration of License Verification Library, those are the two examples offered by Google\cite{developersLicensingReference}
-
+In case of LicenseTest application with the basic implementation of the \gls{lvl}, these classes are the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy} in the  \textit{com/google/android/vending/licensing/} folder.
+Those two classes are examples of policies offered by Google \cite{developersLicensingReference}.
+The goal of the two patterns is the opposite of each other.
+Both edit the value which is moved (opcode \textit{12}) into variable 1, but while N3 is moving true (opcode \textit{11}), N3i is moving false (opcode \textit{02}) (see code snippet~\ref{codeSnippet:n3DiffDex}).
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -139,9 +136,8 @@ Policy integration of License Verification Library, those are the two examples o
   caption={Diff on Dex level for N3 pattern},
   label={codeSnippet:n3DiffDex}
 ]{data/n3.diff}
-
-for forward value 0x0 is switched with 0x1 and for inverse...inversed
-
+As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a better presentation of the two patterns.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -152,10 +148,11 @@ for forward value 0x0 is switched with 0x1 and for inverse...inversed
   caption={Diff on Smali level for N3 pattern},
   label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
-
-variable is initiated with opposite of what they were initiated before
-
-
+The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is more complex again since the structure if the code in the \gls{dex} files is different than the one in Java.
+This is due to the fact that while in Java a \gls{return value} is possible, in \gls{dex} files this is split in two parts.
+First, an internal variable is initiated with a standard value corresponding to the type of the return and in a second step the value is returned.
+The patterns modify the value initialization which results in the change of the return statement in the Java code.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -167,8 +164,9 @@ variable is initiated with opposite of what they were initiated before
   label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
 
-old code variable is initiated false and true for inversed as basic return value
-after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
+Both patterns attack the \textit{allowAccess} functions which evaluates whether the verification result is according to the policy or not.
+Since this method is a place to change the logic in order to fool a cracking tool by changing the desired outcome from true to false, Lucky Patcher offers a way to deal with this implementation.
+This is the reason why the mode is called inverse auto mode since it fixes the return value to the opposite of the auto mode.
 \subsubsection{Patch Pattern N4}
 
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%

@@ -149,7 +149,7 @@ As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a 
   label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
 The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is more complex again since the structure if the code in the \gls{dex} files is different than the one in Java.
-This is due to the fact that while in Java a \gls{return value} is possible, in \gls{dex} files this is split in two parts.
+This is due to the fact that while in Java the \textit{return} followed by a value is possible, in \gls{dex} files this statement is split in two parts.
 First, an internal variable is initiated with a standard value corresponding to the type of the return and in a second step the value is returned.
 The patterns modify the value initialization which results in the change of the return statement in the Java code.
 \newline
@@ -158,12 +158,12 @@ The patterns modify the value initialization which results in the change of the 
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
+  float=h,
   frame=single,
   linerange={17-23},
   caption={Diff on Java level for N3 pattern (abstracted)},
   label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
-
 Both patterns attack the \textit{allowAccess} functions which evaluates whether the verification result is according to the policy or not.
 Since this method is a place to change the logic in order to fool a cracking tool by changing the desired outcome from true to false, Lucky Patcher offers a way to deal with this implementation.
 This is the reason why the mode is called inverse auto mode since it fixes the return value to the opposite of the auto mode.

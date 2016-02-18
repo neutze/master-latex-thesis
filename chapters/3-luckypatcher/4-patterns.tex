@@ -4,12 +4,15 @@ The changes in the code were inspected on dex, smali and Java level with the too
 After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
+In the context of the \gls{dex}, the values are hexadecimal.
 \subsubsection{Patch Pattern N1}
-Pattern N1 is applied in all patching modes except the solo extreme mode.
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/LicenseValidator}
-LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
-
+Pattern N1 is present in all patching modes except the solo extreme mode.
+It tagets the LicenseValidator class in \textit{com/google/android/vending/licensing/LicenseValidator} which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
+\newline
+When analysing the dex code, it is identified that the changes happen in a switch statement.
+The code block starts 00 02, which stands for a sparse-switch, followed by 09 00, which gives the number of elements \cite{opcodes}.
+According to diff of the \gls{dex} file extracted, which can be seen in code snippet~\ref{codeSippet:n1DiffDex}, element 1a and 0f are switched in their order, meaing 0f is now before 1a in the sequence of the switch.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -21,8 +24,11 @@ LicenseValidator, responsible for decrypting and verifying the response from the
   label={codeSnippet:n1DiffDex}
 ]{data/n1.diff}
 
-values are swapped
-
+Smali, which converts the \gls{dex} file to a human readable output, a code representation where result of opcode changes are easier assigned to functions.
+When converting the byte code to smali, a sparse switch struct with nine elements is created.
+Due to the internal mapping by the language, variables have different names.
+The swap of switch cases 0x1 und 0x2 can be seen in the diff of code snippet~\ref{codeSnippet:n1DiffSmali}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -34,8 +40,14 @@ values are swapped
   label={codeSnippet:n1DiffSmali}
 ]{data/n1.diff}
 
-switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
-
+The diff of Java, seen in code snippet~\ref{codeSnippet:n1DiffJava}, gives the best overview on the changed behavior of the application, since it does not contain jumps to abstract function names but includes the code as the developer intended it.
+Since the cracking pattern was also applied to the LicenseTest application, it is possible to compare the decompiled code to the original source code and it's original structure.
+The original library handles the \textit{LICENSED} reponse the same way as \textit{LICENSED\_OLD\_KEY}, since not having a breakpoint in the \textit{LICENSED} switch case, the code subsequently continues in the \textit{LICENSED\_OLD\_KEY} switch case and leaving it afterwards.
+The is only the reason if license keys are stored and allowed for verification, e.g. one time verification for future offline support.
+The entry point for a \textit{NOT\_LICENSED} response is follows after these two cases and is completed by a break to exit the switch case.
+When the pattern N1 is applied, the switch case statements of \textit{LICENSED\_OLD\_KEY} and \textit{NOT\_LICENSED} are swapped, but not the code inside the block.
+This means that instead of \textit{NOT\_LICENSED} disallow the licensing process, it makes use of the \textit{NOT\_LICENSED} condition and allows access.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -46,11 +58,15 @@ switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
   caption={Diff on Java level for N1 pattern (abstracted)},
   label={codeSnippet:n1DiffJava}
 ]{data/n1.diff}
-old code when license code not licensed return in case not licensed with error
-after patching when not licensed return as old license key
-
+As a results, pattern N1 voids the usecase of the switch.
 \subsubsection{Patch Pattern N2}
-Pattern N2 is applied in all patching modes except the solo extreme mode.
+As well as pattern N1, N2 is applied in all patching modes, except the solo extreme mode.
+It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textif{com/google/android/gms/ads/}.
+The extended analysis of different applications showed the altering of custom libraries, which include code for Google inapp billing, like AnjLab's inapp billing library \cite{inappBilling}, located at \textit{com/anjlab/android/iab/v3/Security}, in the FKUpdater, are modified as well.
+This is collateral damage when applying the pattern to classes outside of the \gls{lvl} libary caused by the possibility of moving the classes of the library to different packages.
+As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the LicenseValidator class.
+\newline
+
 
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}
@@ -311,11 +327,11 @@ after it is patched it is always compared with itself which returns always true 
   label={codeSnippet:amazonDiffJava}
 ]{data/amazon.diff}
 
-in the original code the result from the server is tested whether it is "LICENSED"
+in the original code the result from the server is tested whether it is \textit{LICENSED}
 after patching the response is always evalauted and the result is compared with itself which is always true
 
 result
-never the less what the check for "LICENSED" returns, the condition for "LICENSED" is always called
+never the less what the check for \textit{LICENSED} returns, the condition for \textit{LICENSED} is always called
 \subsubsection{Samsung Market Patch}
 also applies pattern N2
 
@@ -373,7 +389,7 @@ after patching true/1 is always moved to v0 and returned
 ]{data/samsung.diff}
 
 \url{com/samsung/zirconia/LicenseRetriever.java}
-always starts condition, even though input is not "12" as supposed to start
+always starts condition, even though input is not \textit{12} as supposed to start
 \url{com/samsung/zirconia/Zirconia.java}
 S1
 always returns true for checkLicenseFile and checkLicenseFilePhase2, does not check anything which is done normally

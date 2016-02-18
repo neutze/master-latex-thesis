@@ -4,14 +4,17 @@ The changes in the code were inspected on dex, smali and Java level with the too
 After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
+The number next to the pattern indicates how often it was applied to the application.
 The patterns N\textit{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
 This insight was gained in the analysis.
 In the context of the \gls{dex}, hexadecimal values like \textit{0x0a} are simplified as \textit{0a} for smoother reading.
+
+
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
-It tagets the \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
+It tagets the \textit{verify()} function of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
-When analysing the dex code, it is identified that the changes happen in a switch statement.
+When analysing the dex code, it is identified that the changes happen in the switch statement.
 The code block starts \textit{00 02}, which stands for a sparse-switch, followed by \textit{09 00}, which gives the number of elements \cite{opcodes}.
 According to diff of the \gls{dex} file extracted, which can be seen in code snippet~\ref{codeSnippet:n1DiffDex}, element 1a and 0f are switched in their order, meaing 0f is now before 1a in the sequence of the switch.
 \newline
@@ -60,13 +63,16 @@ This means that instead of \textit{NOT\_LICENSED} disallow the licensing process
   caption={Diff on Java level for N1 pattern (abstracted)},
   label={codeSnippet:n1DiffJava}
 ]{data/n1.diff}
-As a results, pattern N1 voids the usecase of the switch.
+
+As a results, pattern N1 voids the usecase of the switch in the function \textit{verify()} since it always handles \textit{NOT\_LICENSED} response codes the same way as \textit{LICENSED}.
+
+
 \subsubsection{Patch Pattern N2}
 As well as pattern N1, N2 is applied in all patching modes, except the solo extreme mode.
 It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textit{com/google/android/gms/ads/}.
 The extended analysis of different applications showed the altering of custom libraries, which include code for Google inapp billing, like AnjLab's inapp billing library \cite{inappBilling}, located at \textit{com/anjlab/android/iab/v3/Security}, in the FKUpdater, are modified as well.
 This is collateral damage when applying the pattern to classes outside of the \gls{lvl} libary caused by the possibility of moving the classes of the library to different packages.
-As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the \textit{LicenseValidator} class.
+As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the \textit{LicenseValidator} class's \textit{verify()} function.
 \newline
 The changes in the \gls{dex} file in code snippet~\ref{codeSnippet:n2DiffDex} effect a simpler construct than pattern N1 does.
 Instead of of using the opcode \textit{0a} for moving the result the result of the corresponding function to the variable 5 (source-destination order of \textit{05}), it simply moves (opcode \textit{12}) the value 1, which stands for true, to the variable 5 (\textit{15}).
@@ -114,7 +120,9 @@ In order to simplify and remove superfluous code, the if statement is collapsed 
   caption={Diff on Java level for N2 pattern (abstracted)},
   label={codeSnippet:n2DiffJava}
 ]{data/n2.diff}
-The conclusion is that after applying this pattern the result of the verification of the signature is no longer included in the logic.
+
+The conclusion is that after applying this pattern the result of the verification of the signature is no longer included in the logic of \textit{verify()}.
+
 \subsubsection{Patch Pattern N3}
 This pattern is different than the other patterns since there are two versions of it.
 Pattern N3 is present when using auto mode while pattern N3i is used in the inversed auto mode.
@@ -122,7 +130,8 @@ The name N3i is chosen since it is used in the inversed auto mode.
 LuckyPatcher does not make a difference between them.
 They are combined under the same number since both attack the same logic inside the classes which define the policies.
 In case of LicenseTest application with the basic implementation of the \gls{lvl}, these classes are the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy} in the  \textit{com/google/android/vending/licensing/} folder.
-Those two classes are examples of policies offered by Google \cite{developersLicensingReference}.
+Those two classes are examples of policies offered by Google \cite{developersLicensingReference} in which the \textit{allowAccess()} is altered.
+\newline
 The goal of the two patterns is the opposite of each other.
 Both edit the value which is moved (opcode \textit{12}) into variable 1, but while N3 is moving true (opcode \textit{11}), N3i is moving false (opcode \textit{02}) (see code snippet~\ref{codeSnippet:n3DiffDex}).
 \newline
@@ -164,15 +173,17 @@ The patterns modify the value initialization which results in the change of the 
   caption={Diff on Java level for N3 pattern (abstracted)},
   label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
-Both patterns attack the \textit{allowAccess} functions which evaluates whether the verification result is according to the policy or not.
+Both patterns attack the class's \textit{allowAccess()} functions which evaluates whether the verification result is according to the policy or not.
 Since this method is a place to change the logic in order to fool a cracking tool by changing the desired outcome from true to false, Lucky Patcher offers a way to deal with this implementation.
 This is the reason why the mode is called inverse auto mode since it fixes the return value to the opposite of the auto mode.
+
+
 \subsubsection{Patch Pattern N4}
-
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/LicenseChecker.java}
-LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
-
+Pattern N4 was only applied once in the test sample and is part of the auto and auto inverse patching modes.
+The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl} which is responsible for instantiating the license check in it's \textit{checkAccess()} function \cite{developersLicensingReference}.
+\newline
+When the pattern is applied, it replaces the function's equal zero check (\textit{38}) with a check for not equal (\textit{33}) as it can be seen in code snippet~\ref{codeSnippet:n4DiffDex} and code snippet~\ref{codeSnippet:n4DiffSmali}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -183,8 +194,6 @@ LicenseChecker, class that instatiates a license check\cite{developersLicensingR
   caption={Diff on Dex level for N4 patch},
   label={codeSnippet:n4DiffDex}
 ]{data/n4.diff}
-
-if-eqz is repalces by if-ne
 
 \lstinputlisting[
   style=diff,
@@ -199,19 +208,25 @@ if-eqz is repalces by if-ne
 in the original code variable v0 is compared for not equality with zero
 after it is patched it is always compared with itself which returns always true and the condition is always called
 
+Since the code's syntax is changed when compiled from Java to dex, the decompiled code has a different sequence.
+In the source code of the \gls{lvl}, the \textit{checkAccess()} first checks whether the policy allows acces.
+When decompiled, it is checked for not equality first and the source code's equality block is moved to the else condition.
+This results in the initial equals zero condition and latter not equal test.
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={9-12},
+  linerange={9-11},
   caption={Diff on Java level for N4 patch (abstracted)},
   label={codeSnippet:n4DiffJava}
 ]{data/n4.diff}
 
-in the original code it is checked whether the license is already cached, fi yes, condition is called
-after patching the result of the check is always compared to itself, and thus  the condition is always called
+
+The result is that even though policy does not allow the access, this patterns modifies the \textit{checkAccess()} function to act as it would have been allowed anyway.
+
+
 \subsubsection{Patch Pattern N5}
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}

@@ -23,7 +23,8 @@ LicenseValidator, responsible for decrypting and verifying the response from the
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-3},
   caption={Diff on Dex level for N1 pattern},
   label={codeSnippet:n1DiffDex}
@@ -36,7 +37,9 @@ values are swapped
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
+  float=h,
   linerange={5-9},
   caption={Diff on Smali level for N1 pattern},
   label={codeSnippet:n1DiffSmali}
@@ -49,7 +52,8 @@ switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={11-15},
   caption={Diff on Java level for N1 pattern (abstracted)},
   label={codeSnippet:n1DiffJava}
@@ -68,7 +72,8 @@ one Pattern
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-3},
   caption={Diff on Dex level for N2 pattern},
   label={codeSnippet:n2DiffDex}
@@ -81,7 +86,8 @@ move-result is replaced by move const
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={5-7},
   caption={Diff on Smali level for n2 pattern},
   label={codeSnippet:n2DiffSmali}
@@ -94,7 +100,8 @@ instead of moving the result from a function to v3, it is initiated with true/1
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={9-11},
   caption={Diff on Java level for N2 pattern (abstracted)},
   label={codeSnippet:n2DiffJava}
@@ -113,7 +120,8 @@ Policy integration of License Verification Library, those are the two examples o
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-7},
   caption={Diff on Dex level for N3 pattern},
   label={codeSnippet:n3DiffDex}
@@ -126,7 +134,8 @@ for forward value 0x0 is switched with 0x1 and for inverse...inversed
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={9-15},
   caption={Diff on Smali level for N3 pattern},
   label={codeSnippet:n3DiffSmali}
@@ -140,7 +149,8 @@ variable is initiated with opposite of what they were initiated before
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={17-23},
   caption={Diff on Java level for N3 pattern (abstracted)},
   label={codeSnippet:n3DiffJava}
@@ -149,6 +159,8 @@ variable is initiated with opposite of what they were initiated before
 old code variable is initiated false and true for inversed as basic return value
 after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
 \subsubsection{Patch Pattern N4}
+
+
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseChecker.java}
 LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}
@@ -158,7 +170,8 @@ LicenseChecker, class that instatiates a license check\cite{developersLicensingR
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-3},
   caption={Diff on Dex level for N4 patch},
   label={codeSnippet:n4DiffDex}
@@ -171,7 +184,8 @@ if-eqz is repalces by if-ne
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={5-7},
   caption={Diff on Smali level for N4 patch},
   label={codeSnippet:n4DiffSmali}
@@ -184,7 +198,8 @@ after it is patched it is always compared with itself which returns always true 
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={9-12},
   caption={Diff on Java level for N4 patch (abstracted)},
   label={codeSnippet:n4DiffJava}
@@ -209,7 +224,8 @@ classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN W
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-3},
   caption={Diff on Dex level for N6 patch},
   label={codeSnippet:n6DiffDex}
@@ -222,7 +238,8 @@ if-eqz is replaced by move constant, variables for if-eq are changed
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={5-12},
   caption={Diff on Smali level for N6 patch},
   label={codeSnippet:n6DiffSmali}
@@ -236,7 +253,8 @@ the second equal check is done by comparing a variable with itself thus always t
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={14-17},
   caption={Diff on Java level for N6 patch (abstracted)},
   label={codeSnippet:n6DiffJava}
@@ -256,7 +274,8 @@ similar to N2, but Java result is more generic
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={13-15},
   caption={Diff on Java level for N7 patch (abstracted)},
   label={codeSnippet:n7DiffJava}
@@ -279,7 +298,8 @@ similar like pattern N4
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-3},
   caption={Diff on Dex level for Amazon patch},
   label={codeSnippet:amazonDiffDex}
@@ -292,7 +312,8 @@ if-eqz is repalces by if-ne
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={5-7},
   caption={Diff on Smali level for Amazon patch},
   label={codeSnippet:amazonDiffSmali}
@@ -305,7 +326,8 @@ after it is patched it is always compared with itself which returns always true 
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={9-12},
   caption={Diff on Java level for Amazon patch (abstracted)},
   label={codeSnippet:amazonDiffJava}
@@ -332,7 +354,8 @@ two patterns, lets call it S1 and S2, S1 used on both, S2 used twice on zirconia
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={1-7},
   caption={Diff on Dex level for Samsung patch},
   label={codeSnippet:samsungDiffDex}
@@ -348,7 +371,8 @@ move-result is replaced by move const
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={9-15},
   caption={Diff on Smali level for Samsung patch},
   label={codeSnippet:samsungDiffSmali}
@@ -366,7 +390,8 @@ after patching true/1 is always moved to v0 and returned
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  frame=single,
+  frame=single,float=h,
+
   linerange={17-23},
   caption={Diff on Java level for Samsung patch (abstracted)},
   label={codeSnippet:samsungDiffJava}

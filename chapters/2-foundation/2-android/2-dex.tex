@@ -7,7 +7,7 @@ In addition the Dalvik bytecode is more suited to run on the ARM architecture si
 Registers in \gls{dex} bytecode are 32bits wide and store values such as integers or float values.
 In case there are 64bit values, adjacent registers are used to store it.
 The Java bytecode is actually more compact since it uses 8bit constants while \gls{dex} bytecode has instructions of 16bit multiples.
-The \gls{dex} bytecode supports 218 valid opcodes which have a dest-source ordering for its arguments.
+The \gls{dex} bytecode supports 218 valid opcodes which have a source-destination ordering for its arguments.
 The arguments of the instruction refer to indexes in the pools which can be seen in figure~\ref{fig:dex}.
 \newline
 \begin{figure}[h]

@@ -4,14 +4,16 @@ The changes in the code were inspected on dex, smali and Java level with the too
 After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
-In the context of the \gls{dex}, the values are hexadecimal.
+The patterns N\textif{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
+This insight was gained in the analysis.
+In the context of the \gls{dex}, hexadecimal values like \textit{0x0a} are simplified as \textit{0a} for smoother reading.
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
 It tagets the LicenseValidator class in \textit{com/google/android/vending/licensing/LicenseValidator} which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
 When analysing the dex code, it is identified that the changes happen in a switch statement.
-The code block starts 00 02, which stands for a sparse-switch, followed by 09 00, which gives the number of elements \cite{opcodes}.
-According to diff of the \gls{dex} file extracted, which can be seen in code snippet~\ref{codeSippet:n1DiffDex}, element 1a and 0f are switched in their order, meaing 0f is now before 1a in the sequence of the switch.
+The code block starts \textit{00 02}, which stands for a sparse-switch, followed by \textit{09 00}, which gives the number of elements \cite{opcodes}.
+According to diff of the \gls{dex} file extracted, which can be seen in code snippet~\ref{codeSnippet:n1DiffDex}, element 1a and 0f are switched in their order, meaing 0f is now before 1a in the sequence of the switch.
 \newline
 \lstinputlisting[
   style=diff,
@@ -27,7 +29,7 @@ According to diff of the \gls{dex} file extracted, which can be seen in code sni
 Smali, which converts the \gls{dex} file to a human readable output, a code representation where result of opcode changes are easier assigned to functions.
 When converting the byte code to smali, a sparse switch struct with nine elements is created.
 Due to the internal mapping by the language, variables have different names.
-The swap of switch cases 0x1 und 0x2 can be seen in the diff of code snippet~\ref{codeSnippet:n1DiffSmali}.
+The swap of switch cases \textit{0x1} und \textit{0x2} can be seen in the diff of code snippet~\ref{codeSnippet:n1DiffSmali}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -61,19 +63,14 @@ This means that instead of \textit{NOT\_LICENSED} disallow the licensing process
 As a results, pattern N1 voids the usecase of the switch.
 \subsubsection{Patch Pattern N2}
 As well as pattern N1, N2 is applied in all patching modes, except the solo extreme mode.
-It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textif{com/google/android/gms/ads/}.
+It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textit{com/google/android/gms/ads/}.
 The extended analysis of different applications showed the altering of custom libraries, which include code for Google inapp billing, like AnjLab's inapp billing library \cite{inappBilling}, located at \textit{com/anjlab/android/iab/v3/Security}, in the FKUpdater, are modified as well.
 This is collateral damage when applying the pattern to classes outside of the \gls{lvl} libary caused by the possibility of moving the classes of the library to different packages.
 As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the LicenseValidator class.
 \newline
-
-
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/LicenseValidator.java}
-LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
-greift auch zB. google maps api (\url{com/google/android/gms/}) oder in app billing (\url{com/android/iab/v3/}) an, collateral schaden
-one Pattern
-
+The changes in the \gls{dex} file in code snippet~\ref{codeSnippet:n2DiffDex} effect a simpler construct than pattern N1 does.
+Instead of of using the opcode \textit{0a} for moving the result the result of the corresponding function to the variable 5 (source-destination order of \textit{05}), it simply moves (opcode \textit{12}) the value 1, which stands for true, to the variable 5 (\textit{15}).
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -85,8 +82,8 @@ one Pattern
   label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
 
-move-result is replaced by move const
-
+Smali displays this in a more convenient manner as seen in code snippet~\ref{codeSnippet:n2DiffSmali}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -98,8 +95,15 @@ move-result is replaced by move const
   label={codeSnippet:n2DiffSmali}
 ]{data/n2.diff}
 
-instead of moving the result from a function to v3, it is initiated with true/1
-
+The impact on the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) is more complex.
+Now, instead of calling additional code in case the signature is verified, the additional code is always called.
+The reason for this structural change in code is the fact that in dex the if statement is split.
+In a first step, the signature is verified , while in the second step the result is moved to a variable and this variable is evaluated in the third step.
+Since the first step is not modified, it is still interpreted as a function by the decompiler.
+For the second and third step it is different.
+The reason is the decompiler since the variable is set with the constant value true and checked afterwards in an if evaluation.
+In order to simplify and remove superfluous code, the if statement is collapsed and the body is moved to outer scope.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -110,10 +114,12 @@ instead of moving the result from a function to v3, it is initiated with true/1
   caption={Diff on Java level for N2 pattern (abstracted)},
   label={codeSnippet:n2DiffJava}
 ]{data/n2.diff}
-
-old code: signature was verified, if true it is continued
-after patching the verification is treated as always true and so it is continued
+The conclusion is that after applying this pattern the result of the verification of the signature is no longer included in the logic.
 \subsubsection{Patch Pattern N3}
+This pattern is different than the other patterns since there are two versions of it.
+Pattern N3 is present when using auto mode while pattern N3i is used in the inversed auto mode.
+They are combined under the same number since both attack the same logic inside the classes which define the policies.
+In the \gls
 Pattern N3 is applied in patching in which the auto mode is present respecively N3i is present where the reverse mode is used. Both patterns target the same code but in different ways.
 
 Unterschied erklären

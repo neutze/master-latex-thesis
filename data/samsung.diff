@@ -14,10 +14,10 @@
 !!- move-result v0!!
 ??+ const/4 v0, 0x1??
 
-@@ Pattern S1 @@
+*@@ Pattern S1 @@*
 !!-!! if (!!v6!! == !!12!!) {...}
 ??+?? if (??v0?? == ??v0??) {...}
 
-@@ Pattern S2 @@
+*@@ Pattern S2 @@*
 !!-!! return !!foo()!!;
 ??+?? return ??1??;

@@ -6,10 +6,10 @@
 !!-    move-result v5!!
 ??+    const/4 v5, 0x1??
 
-@@ Pattern N2 @@
+*@@ Pattern N2 @@*
 !!- if (!!sig.verify(Base64.decode(signature))!!)!! {...;}
 ??+?? sig.verify(Base64.decode(signature); ...;
 
-@@ Pattern N7 @@
+*@@ Pattern N7 @@*
 !!-!! x = !!foo()!!;
 ??+?? x = ??false??;

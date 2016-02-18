@@ -5,6 +5,7 @@ After analysing same patterns in the different modes it was identified that thes
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
 \subsubsection{Patch Pattern N1}
+Pattern N1 is applied in all patching modes except the solo extreme mode.
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
@@ -47,7 +48,10 @@ switch case for input 0x01 (not licensed) and 0x02 (old license key) are swapped
 ]{data/n1.diff}
 old code when license code not licensed return in case not licensed with error
 after patching when not licensed return as old license key
+
 \subsubsection{Patch Pattern N2}
+Pattern N2 is applied in all patching modes except the solo extreme mode.
+
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseValidator.java}
 LicenseValidator, responsible for decrypting and verifying the response from the licensing server\cite{developersLicensingReference}
@@ -94,6 +98,10 @@ instead of moving the result from a function to v3, it is initiated with true/1
 old code: signature was verified, if true it is continued
 after patching the verification is treated as always true and so it is continued
 \subsubsection{Patch Pattern N3}
+Pattern N3 is applied in patching in which the auto mode is present respecively N3i is present where the reverse mode is used. Both patterns target the same code but in different ways.
+
+Unterschied erklären
+
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/APKExpansionPolicy.java}
 \url{com/google/android/vending/licensing/ServerManagedPolicy.java}
@@ -140,6 +148,7 @@ variable is initiated with opposite of what they were initiated before
 old code variable is initiated false and true for inversed as basic return value
 after patching the return is the opposite, meaning all true results are now false and all false are now true, meaning wrong input is declared as OK
 \subsubsection{Patch Pattern N4}
+
 classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
 \url{com/google/android/vending/licensing/LicenseChecker.java}
 LicenseChecker, class that instatiates a license check\cite{developersLicensingReference}

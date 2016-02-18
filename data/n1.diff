@@ -8,7 +8,7 @@
 ??+?? 0x1 -> ??:sswitch_d5??
 ??+?? 0x2 -> ??:sswitch_e0??
 
-@@ Pattern N1 @@
+*@@ Pattern N1 @@*
 !!-!! case !!LICENSED_OLD_KEY!!: handleResponse();
 !!-!! case !!NOT_LICENSED!!: handleError();
 ??+?? case ??NOT_LICENSED??: handleResponse();

@@ -8,8 +8,9 @@ The number next to the pattern indicates how often it was applied to the applica
 The patterns N\textit{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
 This insight was gained in the analysis.
 In the context of the \gls{dex}, hexadecimal values like \textit{0x0a} are simplified as \textit{0a} for smoother reading.
-The opcodes can be taken from one of the many dalvik opcode documentations \cite{opcodes}.
-
+The opcodes can be taken from one of the many dalvik opcode documentations \cite{opcodes} and input arguments, as long as they are not constants, are called variable v\textit{x} where \textit{x} stands for the value.
+Since changing the dex code results in a different checksum of the code, the code has to be resigned.
+This changes appear in the diff of the dex files as well but are not explained since it does not have an impact on the functionality of the application itself.
 
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
@@ -162,7 +163,7 @@ As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a 
 ]{data/n3.diff}
 The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is, again, more complex since the structure if the code in the \gls{dex} files is different than the one in Java.
 This is due to the fact that while in Java the \textit{return} followed by a value is possible, in \gls{dex} files this statement is split in two parts.
-First, an internal variable is initiated with a standard value corresponding to the type of the return and in a second step the value is returned.
+First, an internal variable is initialized with a standard value corresponding to the type of the return and in a second step the value is returned.
 The patterns modify the value initialization which results in the change of the return statement in the Java code.
 \newline
 \lstinputlisting[
@@ -183,7 +184,7 @@ This is the reason why the mode is called inverse auto mode since it fixes the r
 
 \subsubsection{Patch Pattern N4}
 Pattern N4 was only applied once in the test sample and is part of the auto and auto inverse patching modes.
-The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl} which is responsible for instantiating the license check in it's \textit{checkAccess()} method \cite{developersLicensingReference}.
+The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl} which is responsible for initializing the license check in it's \textit{checkAccess()} method \cite{developersLicensingReference}.
 \newline
 When the pattern is applied, it replaces the method's equal zero check (\textit{38}) with a check for not equal (\textit{33}) as it can be seen in code snippet~\ref{codeSnippet:n4DiffDex} and code snippet~\ref{codeSnippet:n4DiffSmali}.
 \newline
@@ -256,9 +257,10 @@ Pattern N6 is part of the extreme mode and attacks similar to the pattern N1, N2
 The analysis of the \gls{dex} file in code snippet~\ref{codeSnippet:n6DiffDex} reveals that the attack replaces two statements.
 The first modification is replacing the if equal zero (\textit{38}) with setting a constant (\textit{12}).
 This results in the argument, that should have been checked for equality with zero, is now the target variable of the constant move 0 (\textit{0a}).
-Since the \textit{if-eqz} opcode uses a jump target as well (\textit{06}), it is set to the \textit{nop} opcode (\textit{00}), which means no operation, in order to keep the syntax of the dex code.
+Since the \textit{if-eqz} opcode uses four touples, one of them is jump target which is set (\textit{06}), it has to be removed to keep the syntax of the dex code valid.
+This is done by replacing the jump target with the \textit{nop} opcode (\textit{00}), which means no operation, and thus has no effect on the semantic of the code.
 The second change is the modification of the follow up if statement.
-Instead of checking whether the variable, which was originally checked for quality with zero, is equal (\textit{32}) to another variable (\textit{4a})}, anoother variable is now compared to itself (\textit{00}).
+Instead of checking whether the variable, which was originally checked for quality with zero, is equal (\textit{32}) to another variable (\textit{4a}), anoother variable is now compared to itself (\textit{00}).
 \newline
 \lstinputlisting[
   style=diff,
@@ -309,13 +311,14 @@ The changes of these two patterns add up to a clean Java code as seen in the sec
 
 In general this pattern is used to void the license code checks in the \textit{verify()} method.
 \subsubsection{Patch Pattern N7}
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%
-\url{com/google/android/vending/licensing/ILicenseResultListener.java}
-ILicenseResultListener, IPC callback implementation, receives async response from server\cite{developersLicensingReference}
-einfach auf alles was in \url{com/android/} ist, some kind of bruteforce
-
-similar to N2, but Java result is more generic
-
+The final pattern for the \gls{lvl} is pattern N7.
+It is applied in the extreme mode and as this mode indicates, it takes a harsh approach of applying itself.
+In addition to patching the \gls{lvl}'s \textit{ILicenseResultListener} \textit{onTransact()} method, which is the implementation fo the callback for interprocess communication which receives the async response from the license server \cite{developersLicensingReference}, it applies it's patterns to all classes possible in the \url{com/android/}.
+It can be described as the bruteforce version of pattern N2 and thus should only applied in case the other modes are not successfully.
+\newline
+Similar to pattern N2, pattern N7 replaces the moving of the result (\textit{0a}) of a function to the variable with initializing it with a constant (\textit{12}).
+Since \textit{move-result} moves it to variable v0 (\textit{00}) the resulting initialization sets v0 to zero.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -326,19 +329,15 @@ similar to N2, but Java result is more generic
   caption={Diff on Java level for N7 patch (abstracted)},
   label={codeSnippet:n7DiffJava}
 ]{data/n2.diff}
-
-instead of initializing variable with result from method, it is always initialized with false / 0
+The aim of this attack is to patch the \textit{ILicenseResultListener} at any cost so \textit{onTransact()} returns true independet of the result of \textit{verifyLicense()} which is returned in the original implementation.
 \subsubsection{Amazon Market Patch}
-also applies pattern N2
-
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside kiwi logic
-\url{com/amazon/android/licensing/b.java}
-\url{com/amazon/android/o/d.java}
-
-see, obfuscated
-
-similar like pattern N4
-
+Amazon does not have different pattern but only one patch which is called pattern in this context.
+Since the Kiwi library is injected by Amazon and cannot be customized by the developer as well as the structure of the library result in the fact that only on pattern is sufficient to circumvent the license verification mechanism
+The patch attacks two classes, one contained \textit{com/amazon/android/licensing/b.java} and the other one contained in \textit{com/amazon/android/o/d.java}.
+Since the injected library is obfuscated no meaningful names can be presented.
+\newline
+The Amazon pattern works similar to the \gls{lvl}'s pattern N4 and replaces the if equal zero opcode (\textit{38}) with the opcode to check for not equality (\textit{33}).
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -349,9 +348,8 @@ similar like pattern N4
   caption={Diff on Dex level for Amazon patch},
   label={codeSnippet:amazonDiffDex}
 ]{data/amazon.diff}
-
-if-eqz is repalces by if-ne
-
+In the original code, \textit{if-eqz} just takes the second 0 of the input (\textit{00}) for the comparison thus the first argument if the input is 0.
+As the result of patching, the first argument is taken as well and thus v0 is compared to v0.
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -362,25 +360,26 @@ if-eqz is repalces by if-ne
   caption={Diff on Smali level for Amazon patch},
   label={codeSnippet:amazonDiffSmali}
 ]{data/amazon.diff}
-in the original code variable v0 is compared for not equality with zero
-after it is patched it is always compared with itself which returns always true and the condition is always called
-
+The Java code makes it easier to reflect of the changes byattack.
+Instead of checking in the \textit{b.java} class, whether the response code is \textit{LICENSED}, this statement of the if clause is always false and thus never called.
+The same canges are applied to the \text{d.java} class but since the variables are obfuscated it is hard to describe the exact behavior.
+After analysing the dependencies, it can be said that the function checks whether the given string is not null and then return true.
+After patching, the result is always true since the null check is always false as in \textit{b.java}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={9-12},
+  linerange={9-11},
   caption={Diff on Java level for Amazon patch (abstracted)},
   label={codeSnippet:amazonDiffJava}
 ]{data/amazon.diff}
 
-in the original code the result from the server is tested whether it is \textit{LICENSED}
-after patching the response is always evalauted and the result is compared with itself which is always true
-
-result
-never the less what the check for \textit{LICENSED} returns, the condition for \textit{LICENSED} is always called
+The analysis of the Amazon patch indicates that there are less patterns needed since there is no altered behavior to expect.
+Patches are applied to manipulate the checks in case the response code is null or different than \textit{LICENSED}.
+The result is forced to be always true and thus the license verification always passes.
 \subsubsection{Samsung Market Patch}
 also applies pattern N2
 

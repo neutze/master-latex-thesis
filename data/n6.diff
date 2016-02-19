@@ -5,13 +5,12 @@
 *@@ Pattern N6 @@*
 !!-    if-eqz p2, :cond_e!!
 ??+    const/4 p2, 0x0??
-
-!!-    if-eq p2, v4, :cond_e!!
 ??+    nop??
 ??+??
-??+    if-eq v0, v0, :cond_e??
+
+-    if-eq !!p2!!, !!v4!!, :cond_e
++    if-eq ??v0??, ??v0??, :cond_e
 
 *@@ Pattern N6 @@*
-!!-!! if (!!p2 == 0 || p2 == v8!!) {...}
-??+ p2 = 0;??
-??+?? if (??v0 == v0??) {...}
+!!- if (responseCode == 0 || responseCode == NOT_LICENSED || responseCode == LICENSED_OLD_KEY)  {...}!! return;
+??+?? if (null == null || broken code?? return;

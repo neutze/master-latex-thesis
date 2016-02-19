@@ -330,6 +330,29 @@ Since \textit{move-result} moves it to variable v0 (\textit{00}) the resulting i
   label={codeSnippet:n7DiffJava}
 ]{data/n2.diff}
 The aim of this attack is to patch the \textit{ILicenseResultListener} at any cost so \textit{onTransact()} returns true independet of the result of \textit{verifyLicense()} which is returned in the original implementation.
+
+\subsubsection{Overview for Patching the \gls{lvl}}
+The summary of the \gls{lvl} patterns and their use in the patching modes can be seen in table~\ref{table:patterns}.
+The auto mode and inversed auto mode are applying patches at the important parts of the \gls{lvl}.
+They are very efficient as long as the library is not altered.
+In contrast to the determined patching of the automatic modes, the extreme mode applies pattern covering a variaty of methods.
+This might cause instability, as seen in pattern N6, since it alters the syntax of the dex file.
+\begin{table}[h]
+\centering
+\begin{tabular}{l|cccccccc}
+                           & \multicolumn{8}{c}{Patterns}           \\
+\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
+Auto                       & X  & X  & X  &     & X  &    &    &    \\
+Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
+Extreme                    &    &    &    &     &    & X  & X  & X  \\
+Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
+Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
+\end{tabular}
+\caption{Patching patterns applied by each mode}
+\label{table:patterns}
+\end{table}
+
+
 \subsubsection{Amazon Market Patch}
 Amazon does not have different pattern but only one patch which is called pattern in this context.
 Since the Kiwi library is injected by Amazon and cannot be customized by the developer as well as the structure of the library result in the fact that only on pattern is sufficient to circumvent the license verification mechanism
@@ -380,17 +403,17 @@ After patching, the result is always true since the null check is always false a
 The analysis of the Amazon patch indicates that there are less patterns needed since there is no altered behavior to expect.
 Patches are applied to manipulate the checks in case the response code is null or different than \textit{LICENSED}.
 The result is forced to be always true and thus the license verification always passes.
+
+
 \subsubsection{Samsung Market Patch}
-also applies pattern N2
-
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside zirconia logic
-\url{com/samsung/zirconia/LicenseRetriever.java}
-\url{com/samsung/zirconia/Zirconia.java}
-
-not obfuscated
-
-two patterns, lets call it S1 and S2, S1 used on both, S2 used twice on zirconia
-
+The Zirconia library of Samsung cannot be modified similar to Amazon and thus requires only one patch as well.
+The patch is applied on the \textit{LicenseRetriever} and \textit{Zirconia} class in the \textit{com/samsung/zirconia} package.
+Unlike Amazon's Kiwi \gls{drm}, Zirconia is not obfuscated and thus better to understand.
+The Samsung patch uses two patterns, called S1 and S2 in order to distinguish between them.
+While S1 is applied on both classes, S2 is applied twice but only on the \textit{Zirconia} class.
+\newline
+While Pattern S1 replaces the arguments of the \textit{if-eq} \textit{d6} with \textit{00} and instead of comparing two different variables, the variable is compared to itself, pattern S2 modifies the dex code to initialize a variable (\textit{12}) instead of assigning it the result of a method {\textit{0a}}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -401,12 +424,8 @@ two patterns, lets call it S1 and S2, S1 used on both, S2 used twice on zirconia
   caption={Diff on Dex level for Samsung patch},
   label={codeSnippet:samsungDiffDex}
 ]{data/samsung.diff}
-
-S1
-input for if-eq is modified
-S2
-move-result is replaced by move const
-
+The result of this attack for pattern S1 is that the \textit{if-eq} statement is always true while the result of methods affected by pattern S2 is always true.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -417,61 +436,21 @@ move-result is replaced by move const
   caption={Diff on Smali level for Samsung patch},
   label={codeSnippet:samsungDiffSmali}
 ]{data/samsung.diff}
-S1
-in the original code checks whether to different variables are equal
-after patching the check is done with the same variables and thus always returns true
-
-S3
-in the original code the result of a method is moved to v0 and returned
-after patching true/1 is always moved to v0 and returned
-
+The abstract presentation of the result in Java code in code snippet~\ref{codeSnippet:samsungDiffJava} shows the resulting behavior.
+This means for \textit{LicenseRetriever}'s \textit{receiveResponse} method, that instead of checking the repsone code for validity, it is always accepted as valid.
+In the method \textit{checkerThreadWorker} of the \textit{Zirconia} class, the patch voids the check of the response code with the locally stored one.
+These behavior is the result of pattern S1.
+Pattern S2 works on the methods \textit{checkLicenseFile} and \textit{checkLicenseFilePhase2} of the \textit{Zirconia} class.
+Instead to return the result of the license check, true always is returned.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={17-23},
+  linerange={17-24},
   caption={Diff on Java level for Samsung patch (abstracted)},
   label={codeSnippet:samsungDiffJava}
 ]{data/samsung.diff}
-
-\url{com/samsung/zirconia/LicenseRetriever.java}
-always starts condition, even though input is not \textit{12} as supposed to start
-\url{com/samsung/zirconia/Zirconia.java}
-S1
-always returns true for checkLicenseFile and checkLicenseFilePhase2, does not check anything which is done normally
-S2
-always starts condition, even though input is not as supposed to start
-\url{com/samsung/zirconia/Zirconia.java}
-\begin{table}[h]
-\centering
-\begin{tabular}{l|cccccccc}
-                           & \multicolumn{8}{c}{Patterns}           \\
-\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
-Auto                       & X  & X  & X  &     & X  &    &    &    \\
-Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
-Extreme                    &    &    &    &     &    & X  & X  & X  \\
-Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
-Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
-\end{tabular}
-\caption{Overview of License Verification Library patching patterns applied by each modus}
-\label{table:patterns}
-\end{table}
-
-
-
-summarizing what patterns each modus applies Table~\ref{table:patterns}
-
-
-%detailierter
-auto: just applies minimum patches, N1 swaps switch cases so not licensed is treated here as old license key in the LicenseValidator, N2 skips the signature verification in the LicenseValidator, N3 inverts the return boolean for the policy checks in the implemented Policy class by initializing with 0/false, and N4 skips, in the only case occured in the test set, the check whether download is allowed and allows it always
-auto inverse: does the same as auto but initializes the policy check with 1/true instead of false
-extreme:
-auto+extreme: applies auto and extreme patches
-auto inverse+extreme: applies auto and extreme patches
-
-
-
-
-!!! kann man das excel sheet in die datein machen und nicht als appendix, da manche apps ihre ergebnisse nicht öffentlich sehen wollen !!!
+The result of applying these patches is that not only the checks of the license files are voided and return always true but also reponse codes other than \textit{LICENSED} accepted since they are neither compared to the accepted one nor to the stored one, whcih should be valid.

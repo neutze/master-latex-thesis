@@ -8,8 +8,8 @@
 ??+    nop??
 ??+??
 
--    if-eq !!p2!!, !!v4!!, :cond_e
-+    if-eq ??v0??, ??v0??, :cond_e
+!!-!!    if-eq !!p2!!, !!v4!!, :cond_e
+??+??    if-eq ??v0??, ??v0??, :cond_e
 
 *@@ Pattern N6 @@*
 !!-!! if (!!responseCode == 0 || responseCode == NOT_LICENSED || responseCode == LICENSED_OLD_KEY)  {...}!! return;

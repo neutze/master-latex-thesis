@@ -1,4 +1,6 @@
-A part of the license verification's insecurity it the fact that not only the possible outcome is binary, either it works or it does not, and can be guessed, in the end only a unary result is accepted and achieved by cracking.
-In order to fight this major flaw, more complex mechanisms for license verification are proposed.
-The first proposal is the content server which allows to remove part of the functionality from the application and puts it on a server.
-The second proposal is to introduce encryption and replace the desired unary result.
+A part of the license verification's insecurity is the fact that not only the possible outcome is binary, either the license is verified or it is not, but it is also possible to predict the outcome since in the end, only one result is accepted.
+This is mechanism can be easily attacked by cracking applications since they only have to modify in a way that only the result is unary in the end and thus, despite the input, always accepted.
+\newline
+In order to fight this major flaw, more complex mechanisms to replace the old license verification are proposed.
+The first proposal is the introduction of content server which allows to move part of the functionality, like the license verification, from the application to a server and thus not accessible by attackers.
+The second proposal is to introduce encryption and replace the binary mechanism by an unpredictable one.

@@ -1,16 +1,9 @@
 \subsubsection{Root} \label{subsection:counter-improve-tampering-root}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-
-WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-\url{http://stackoverflow.com/questions/10585961/way-to-protect-from-lucky-patcher-play-licensing}\newline
-
-
-
+Root is the foundation to cracking applications and thus when the device is rooted it possible to alter the application.
+The developer can check whether root is available on the device and evtually exclude users accordingly.
+When using this feature, the developer has to communicate the users the reasons for this strict policy since there are a lot of users who use root for other reasons than cracking applications.
+Google has introduced a similar \gls{api}, called SafetyNet \cite{safetynetPay}, which is said to be used in security critical applications like Android Pay \cite{safetynetGoogle}.
+\newline
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -25,10 +18,5 @@ WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE S
   caption={Example code for checking for root},
   label={codeSnippet:tamperingRoot}
 ]{data/4-countermeasurements/1-tampering/2-root.java}
-
-
-SafetyNet provides services for analyzing the configuration of a particular device, to make sure that apps function properly on a particular device and that users have a great experience. \url{https://developer.android.com/training/safetynet/index.html} Checking device compatibility with safetynet\newline
-Unlocked bootloader doesn't matter.
-Can't have root installed initially.
-Has to be a stock / signed ROM.
-\url{https://www.reddit.com/r/Android/comments/3kly2z/checking_device_compatibility_with_safetynet/}
+Since root is achieved by moving the \textit{su} file to the file system, the application can search in the common locations for it.
+In case the search is successful, the execution of the application can be terminated.

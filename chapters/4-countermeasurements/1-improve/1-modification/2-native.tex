@@ -1,25 +1,12 @@
 \subsubsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
-luckypatcher automatic patching works on dex
-why not remove the key license verification code from from java and move it to native code
-this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
 
-native code can be executed using two thinks, android ndk a toolset to implement native-code languages, e.g. c or c++, and  \gls{jni} used by java to execute native code
-
-native code is difficult to be decompiled, can be checked for tampering when loading it
-
-%EVAL
-elemente für app in native initiieren, damit man nicht einfach deaktivieren kann
-
-nur gut wenn wichtige funktionen der app enthält
+Lucky Patcher's automatic patching modes, as described in chapter~\ref{chapter:luckypatcher}m target the application's \gls{dex} file.
+In order to  thus removing it from this file makes it more complicated to crack the application sucessfully.
+Since Android supports the \gls{ndk}, it is possible to implement parts of the application using native code.
+Usually the \gls{ndk} targets CPU intensive taks, such as game engines and signal processing, but it can be used for any other purposes as well.
+Google suggests using it only if necessary since it increases the complexity of an application, which, in case of the license verification library, is desired \cite{androidNdk}.
 
 
-
-%eval
-at first a good protection against luckypatcher since the automatic patching discussed in chapter~\ref{chapter:luckypatcher} does not work for the app any longer, but not protection of luckypatcher because it supports custom patching
-when analyzing luckypatcher there can be .so files be found which are used to replace existing ones in order to patch fucntionality
-
-so now attackers have to invest time in analyzing the native code
-difficult since in opposite of byte-code, it does not contain a lot of meta-data such as local variable types, class strcture, which allows bytecode to be compiled on multiple devices, this information is discarded in native code in the compilation process
 
 there are two scenarios:
 first scenario
@@ -37,4 +24,15 @@ for this reason when coming up with a native implementation for a library for al
 - since there is only one version, make it as hard to reengineer and predictable as possible, use encryption and dynamic code generation, automatically custimize itself for every app and ever time its loaded
 this needs a lot of research, work and if it would be so simple, big companies like google would already have come up with it, but in this direction it has to go when stick around for a long time with dex and its vulnerabilities
 
-zwar kann lucky patcher auch so files patchen, aber dazu muss der user erstmal 
+
+this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
+at first a good protection against luckypatcher since the automatic patching discussed in does not work for the app any longer, but not protection of luckypatcher because it supports custom patching
+when analyzing luckypatcher there can be .so files be found which are used to replace existing ones in order to patch fucntionality
+
+so now attackers have to invest time in analyzing the native code
+difficult since in opposite of byte-code, it does not contain a lot of meta-data such as local variable types, class strcture, which allows bytecode to be compiled on multiple devices, this information is discarded in native code in the compilation process
+
+%EVAL
+elemente für app in native initiieren, damit man nicht einfach deaktivieren kann
+nur gut wenn wichtige funktionen der app enthält
+native code is difficult to be decompiled, can be checked for tampering when loading it

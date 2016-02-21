@@ -1,10 +1,10 @@
 \subsubsection{Debuggability} \label{subsection:section:counter-improve-tampering-debuggable}
-WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-der debug modus kann dem angreifer informationen/logs über die application geben während diese läuft, aus diesen informationen können erkenntnisse über die funktionsweise geben die für einen angriff/modifikation gewonnen werden können. aus diesen informationen können dann patches für software wie lucky patcher entwickelt werden, da man die anzugreifenden stellen bereits kennt.
-kann erzwungen werden indem man das debug flag setzt (wo ist es, wie kann es gesetzt werden)\newline
-um dies zu verhindern kann gecheckt werden ob dieses flag forciert wird und gegebenenfalls das laufen der application unterbinden\newline
-
+Enabling debugging allows the developer to use aditional features for analysing the app at runtime, like printing out logs \cite{androidDebugging}.
+This features are used to gain information about the flow of the app and to reenginer functionality.
+From the results of this analysis weak points in the application can be identified and custom patches for cracking tools can be derived from them.
+This is the reason for disabling the debug flag in release builds on the application stores, but since the flag for debugging is included inside the \gls{dex} file, it can be enabled by attacks
+In order to prevent attackers taking advantage from this possiblity, the developer should check whether this flag is activated und thus the application is tampered.
+\newline
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -19,5 +19,6 @@ um dies zu verhindern kann gecheckt werden ob dieses flag forciert wird und gege
   caption={Example code for checking for debuggability},
   label={codeSnippet:tamperingDebuggable}
 ]{data/4-countermeasurements/1-tampering/1-debuggable.java}
-
- Code SNippet~/ref{codeSnippet:tamperingDebuggable} zeigt eine funktion die auf den debug modus prüft. Dazu werden zuerst in zeile 15 die appinfo auf das debug flag überprüft. ist dieses vorhanden, ist die variable debuggable true. in diesem fall wird dann die geschlossen\newline
+Code snippet~\ref{codeSnippet:tamperingDebuggable} is an example for an implementation of this check.
+The debug flag can be aquired from the application information as seen in line 15.
+In case the debug is set, and thus the application is tampered, the process is killed in line 18.

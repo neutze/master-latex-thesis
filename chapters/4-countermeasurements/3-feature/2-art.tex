@@ -8,6 +8,7 @@ since dex is more like dangerous executable format and bears significant risks t
 improve ART, already contains machine code which is hard to analyze and thus also difficult to find patches to apply with luckypatcher
 
 
+
 %eval
 already on the way, cannot be done from one day on the other, but right now not a protection against luckypatcher, will only be a solution when art code included in apks
 but why not now?
@@ -27,5 +28,11 @@ art is a far more advanced runtime architecture, brings android closer to ios na
 vestiges of dex still remain to haunt performance, dex code is still 32bit
 very much still a shifting landscape, internal structures keep on changing, google isnt afraid to break compatibility, llvm integration likely to only increas eand improve
 for most users the change is smooth, better performance and power consumption, negligible cost binary size increase, minor limitations on dex obfuscation remain, for optimal performance and obfuscation nothing beats JNI
+
+isn't android all dalvik now?
+art is runtime but application compile into dex, art is compiled on device during install, art binaries has dalvik embedded, some methods may be left as dex to be interpreted, dalvik is much easier to debug than art --see- evaluation \newline
+
+When creating odex on art it is directly put into art file
+
 \cite{andevconDalvikART}
 %

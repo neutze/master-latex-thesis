@@ -1,11 +1,22 @@
 \subsubsection{Modify the Library} \label{subsection:counter-modifications-library}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
 STRUKTUR ÄNDERN
 CODE ISOMORPH ÄNDERN. e.g. switch zu if
 figure~\ref{fig:verificationNow} element (1)
+
+suggested by google
+%
+goal is to make lvl implementation unique, difficult to trace when decompiled
+counter intuitive from traditional software engineering viewpoint, removing functions, hiding license check routines in unrelated code
+
+Google is aware of easy hacking and thus suggests modifcations to the lvl
+modify license verification library in way that it is difficult for attacker to modify the disassembled code and get a positive check as result
+advantages, harder to crack, cannot be used as blueprint and no blueprint can be used on it, unique
+\cite{developersSecuring}
+%
+
+many developers do not customize the library, easy to hack
+\cite{munteanLicense}
+
 
 most developers include the LVL unchanged without modifying it, attacks can always be done the same wayso this is very easy for luckypatcher
 for own security and the security of other developers try to create a unique implementation,

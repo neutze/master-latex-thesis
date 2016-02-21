@@ -1,15 +1,7 @@
 \subsubsection{Secure Element} \label{section:counter-replace-encryption-key-local}
-\subsubsection{Secure Element} \label{section:counter-replace-encryption-key-online}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/encryptionKeySmart.png}
-    \caption{Decryption by using a smartcard}
-    \label{fig:encryptionKeySmart}
-\end{figure}
 
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
+idea: store key at secure place where it is not exposed but delivers decrypted output for an input, best suitable for this task smartcard
+
 
 can either be mounted in the sdcard slot or using an adapter for the usb interface
 accessed over reads and writes to the filesystem
@@ -26,28 +18,13 @@ encryption key can be stored on
 
 no complexe tasks since low power
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{data/encryptionKeySmart.png}
+    \caption{Decryption by using a smartcard}
+    \label{fig:encryptionKeySmart}
+\end{figure}
 
-encryption inside app
-x = encrypt("Hello")
-function(x)
-
-function(input):
-y = decrypt(input) <- auf handy
-case y == "Hello"
-
-=> wenn falscher text dann random aktion/
-
-
-am besten wäre die smartcard wenn kommunication über aussen geht, weil man da nichts faken kann bzw die app dann nicht funktionieren könnte, similar mit registriert auf dem server
-
-\url{https://www.youtube.com/watch?v=rSH6dnUTDZo}
-
-
-
-%eval
-luckypatcher not able to attack since the logic is put onto a secure external device
-
-nicht für boolean
 
 same as internet service but extra hardare has to be bought
 people are lazy and do not want to have extra hardware
@@ -55,15 +32,7 @@ when integrated into phone, it will take a long time until each phone supports i
 many different implementation fragmentate the market, there is not one single solution to focus on and push for market wide accepted solution
 solution which are out there have major security flaws, smartcard itself can be attacked
 
-encrypt inside app can be cracked when the source code is known
-x = encrypt("Hello") // x = "Hello"
-function(x)
-
-function(input):
-y = decrypt(input) // y = input
-case y == "Hello"
-
-
+have problems on their own
 DAP Verification .... normalerweise muss jede Applet, die auf so ein Secure Element/Smartcard etc. kommt mit ner Signatur unterschrieben sein ...
 %\url{http://www.win.tue.nl/pinpasjc/docs/Card%20Spec%20v2.1.1%20v0303.pdf}
 

@@ -1,5 +1,7 @@
 \subsubsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
-luckypatcher automatic patching works on dex, why not remove the key license verification code from from java and move it to native code, this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
+luckypatcher automatic patching works on dex
+why not remove the key license verification code from from java and move it to native code
+this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
 
 native code can be executed using two thinks, android ndk a toolset to implement native-code languages, e.g. c or c++, and  \gls{jni} used by java to execute native code
 
@@ -34,3 +36,5 @@ for this reason when coming up with a native implementation for a library for al
 - users do not custimize library so a heavy obfuscation should be applied
 - since there is only one version, make it as hard to reengineer and predictable as possible, use encryption and dynamic code generation, automatically custimize itself for every app and ever time its loaded
 this needs a lot of research, work and if it would be so simple, big companies like google would already have come up with it, but in this direction it has to go when stick around for a long time with dex and its vulnerabilities
+
+zwar kann lucky patcher auch so files patchen, aber dazu muss der user erstmal 

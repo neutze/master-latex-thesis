@@ -73,10 +73,15 @@ only complicates but does not stop
 %
 
 %
+first line of defense, can be applied without much extra workload
 will not protect against autoamted attack, does not alter flow of program
 makes more difficult for attackers to write initial attack
 removing symbols that would quickly reveal original structure
 number of commercial and open-source obfuscators available for Java that will work with Android
+
+be aware that certain methods cannot be obfuscated, even with advanced tools
+e.g. on create cannot be renamed since it needs to remain callable by the android system
+avoid putting license check code in these methods since attackers will be looking for the lvl there
 \cite{developersSecuring}
 %
 

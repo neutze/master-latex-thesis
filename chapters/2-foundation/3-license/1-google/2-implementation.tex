@@ -43,7 +43,7 @@ The id is created randomly when the user sets up the device for the first time a
 The obfuscator is later applied on the cached license response data to prevent manipulation or reuse by root user.
 In order to decide what should happen to the reponse data and whether it should be stored, a policy is specified.
 This can be either one of the provided policies are a custom one.
-Before making the license check request, a callback has to be definden, which can be seen in code snipped~\ref{ (codeSnippet:lvlCallback}.
+Before making the license check request, a callback has to be definden, which can be seen in code snipped~\ref{codeSnippet:lvlCallback}.
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -60,6 +60,6 @@ Before making the license check request, a callback has to be definden, which ca
 ]{data/lvl.java}
 The callback contains actions for the different outcomes of the license check.
 The scenarios are either applicationError, e.g. when no connection can be established, dontAllow in case license is not valid and allow when the users status is verified.
-Now the license check can be initiated with the values. \cite{developersLicensingSetup} \cite{developersLicensingAdding}
+Now the license check can be initiated with the values. \cite{developersLicensingSetup}\cite{developersLicensingAdding}
 \newline
 The license check can be implemented in any activity and executed as the developer likes.

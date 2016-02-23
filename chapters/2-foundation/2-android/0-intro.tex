@@ -1,8 +1,8 @@
-Android is an open source mobile \gls{os} launched in 2007 and currently developed by Google.
+Android is an open source mobile \gls{os} launched in 2007 and today mainly maintained and developed by Google.
 It is based on the Linux kernel and mainly targets touch screen devices such as mobile devices or wearables.
 The system is designed to run efficiently on battery powered devices with limited hardware and computational capacity.
-Android's main hardware platform is the ARM architecture since these processors with their low power consumtion are often used in this scenario.
-The following will give an overview over the architecture of Android and a deeper insight in the runtime powering Android.
+Android's main hardware platform is the ARM architecture, known for their low power consumption, are mainly used in this scenario.
+The following will give an overview over the architecture of Android and a deeper insight in the runtime system powering Android.
 The architecture of the software stack of Android can be seen in figure~\ref{fig:androidArchitecture}.
 \newline
 
@@ -15,7 +15,6 @@ The architecture of the software stack of Android can be seen in figure~\ref{fig
 
 The basis of the system is its kernel.
 It is responsible for power and memory management and controls the device drivers.
-Software can use the provided hardware abstraction layer as well as execute standard Unix commands using the kernel.
 \newline
 The layer above the kernel contains the Android Runtime, which will be explained in detail in section~\ref{subsection:android-art}, as well as the native libraries of the system.
 Usually Android libraries are written in Java except the ones which are resource and time critical.
@@ -25,22 +24,6 @@ Examples for native libraries are OpenGL, multimedia playback or the SQLite data
 On top of the libraries and the runtime lies the application framework.
 This layer provides generic functionality as notification support to applications over Android's \gls{api}.
 \newline
-The most upper layer enables the installation and execution of applications.
+The top layer enables the installation and execution of applications.
 \newline
-Using layers and abstraction enables Android to be run on a wide range of devices.
-
-
-
-%The underlying entity of the system is its kernel which bridges the hardware of the device and the remaining software components. Being a Linux-based kernel, it allows remote access to the device via a Linux shell as well as the execution of standard Unix commands.
-%Er ist für die Speicherverwaltung und Prozessverwaltung zuständig und stellt die Schnittstelle zum Abspielen von Multimedia und der Netzwerkkommunikation dar. Außerdem bildet er die Hardware-Abstraktionsschicht für den Rest der Software und stellt die Gerätetreiber für das System.
-
-%A level above is the Android Runtime, which will be explained closer\newline
-%At the same abstraction level as the virtual machine are the native libraries of the system. Written in C/C++, they permit low level interaction between the applications and the kernel through Java Native Interface (JNI)\newline
-%The next layer is the application framework which provides generic functionality to mobile software through Android’s \gls{apig}.
-%The top layer of the Android OS stack is where custom applications are compiled, installed and executed.\newline
-
-%The top layer of the Android OS stack is where custom applications are compiled, in- stalled and executed. The file format of the install ready application is called Android Package (APK) and all the mobile software is distributed over Google Play in this for- mat. The APK format is a package management system based on the ZIP file archive format. Further details about the contents of Android applications are provided in the subsequent section.
-%To show that Android is targeting a wide range of devices, including resource constrained ones, the minimal device hardware requirements [13] are given on table 1.1. Currently, most smartphones and tablets largely exceed the listed.
-
-%\cite{kovachevaMaster}
-%
+Using these layers and abstraction enables Android to be run on a wide range of devices as well allows software to execute standard Unix commands using the kernel.

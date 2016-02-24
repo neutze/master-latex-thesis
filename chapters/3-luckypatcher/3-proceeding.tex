@@ -1,38 +1,43 @@
 \section{Analysis of Patched Applications} \label{section:luckypatcher-operation}
-In addition to analysing the reverse engineered source code, an analysis of patched applications is done.
-This is done by first patching an application and creating a modified apk as described in section~\ref{section:luckypatcher-explain} followed by reengineering and analysing them according to the methodology shown in section~\ref{section:reengineering}.
-The reason for not patching directly on the device is the circumstance that when the patch is applied on the application, the patched class.dex will be stored as odex.
-Since the odex is specific to the code and device, it does not reveal the general approach of patching
-Since the code is modified directly, a static analysis is sufficient.
+In addition to analysing the reverse engineered source code, an analysis of the outcome of \gls{luckypatcherg} is done.
+The analysis is done to identify the parts of the code manipulated by \gls{luckypatcherg} and later on find solutions to protect these weak points.
+Different applications are used to get a variety of results and see how different implementations are attacked.
+They are patched and output as modified \gls{apk} by \gls{luckypatcherg} as described in section~\ref{section:luckypatcher-explain}.
+Since the code itself is modified, a static analysis is sufficient.
+Afterwards they are analysed according to the methodology shown in  section~\ref{section:reengineering}.
+The analysis is done with modified \gls{apk}s and not on the device directly since the resulting \gls{odex} files are device specific and cannot be used for a general conclusion.
 \newline
 The goal of reverse engineering the code and comparing it to the original application is to see the changes on different levels.
 This includes the \gls{dex} level, on which Lucky Patcher works, the smali level, which makes the \gls{dex} code human readable friendly, as well as Java level, on which the functionality chance can be identified.
 On each level the modified and original code will be compared using diff to retrieve the changes in an easy way as well as ignoring the unchanged code.
 \newline
-Before working on applications from the store, an application, including the \gls{lvl} as Google's tutorial describes it \cite{developersLicensingAdding}, is created.
-The app is called \textit{LicenseTest} in the following.
-This is done in order to test whether and how Lucky Patcher works on the most basic version.
+In order to have a reference application with known source code and an implementation according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, a test application is created.
+This application is called \textit{LicenseTest}.
+It makes it possible to analyse how Lucky Patcher works on the most basic version.
+Besides circumventing the Google \gls{lvl}, \gls{luckypatcherg} supports the cracking applications from Amazon and Samsung as well.
 For Amazon's Kiwi \gls{drm}, the same application, with deactivated \gls{lvl}, is uploaded to Amazon and injected with their \gls{drm}.
-In addition to LicenseTest, other applications were analysed as well, in order to identify additional patterns and to analyse the result.
-These apps were chosen since they were already owned and tested to include the license verification library respectively Amazon \gls{drm}.
-The applications, which were approved to be included into the thesis by the developers, are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
-The analysis for Samsung is done by using the example application since the library is implemented the same way into all applications used in.
-In contrast to Amazon this can assumed because it is done by the developer and not injected when uploading.
+The analysis for Samsung’s Zirconia \gls{drm} is only done by using \textit{LicenseTest} with deactivated \gls{lvl} as well, since the library is implemented the same way into all applications.
+This can be assumed since the library is included as a \gls{jar} and cannot be modified.
+In addition to the basic application, other applications were analysed as well,to see how \gls{luckypatcherg} handles different implementations.
+The applications, are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
+These apps were chosen since they were already owned and approved to be included into the thesis by the developers.
+They include Google’s \gls{lvl} and Amazon \gls{drm}.
 \newline
-In addition to the analysis, the modified application is installed on different devices to evaluate the crack.
-The difference between the devices is the availability of the corresponding store as well as the presence of root and internet connection.
+In addition to the code analysis, the modified application is installed on different devices to evaluate the success of the crack.
+This is possible since the modified application can be installed on any device.
+The goal is to identify whether the crack works even though the corresponding store, root or internet connection are not available.
 \newline
-Lucky Patcher offers different modes to patch applications.
-At the end of patching in a modus the applied patterns can be seen like in figure~\ref{fig:luckyScreen} on the right.
-A pattern is a predefined sequence of bytecode setting certain values.
-It is searched for and replaced by pre-fabricated code when cracking an application.
-These patterns are identified and evaluated after each mode is applied to the test set of applications.
+As described before, \gls{luckypatcherg} offers different modes to patch applications.
+Each mode uses a set of patterns which each change a piece of binary.
+These patterns are shown in figure~\ref{fig:luckyScreen} on the right.
+A pattern is a set of predefined sequences of bytecode in which a certain values are modified.
+In order to discover applied patterns and to evaluate each mode, each mode is applied on each application.
 \newline
-These are the different modes and what Lucky Patcher descibes them as.
+These are the different modes and what Lucky Patcher describes them as.
 \begin{itemize}
 \item The Auto Mode - "The minimal number of patches. Suitable for most applications with simple protection".
 \item Auto Mode (Inversed) "There are a few differences from the ”Auto mode”. It may help you, if ”Auto mode” was unsuccessful."
-\item Other Patches (Extreme Mode!) - "Additional patches (mnay cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with ”Auto mode” or ”Auto mode (Inversed)”."
-\item Auto Mode (Amazon Market) - "Removes License Verification for applciations from Amazon Market"
+\item Other Patches (Extreme Mode!) - "Additional patches (may cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with ”Auto mode” or ”Auto mode (Inversed)”."
+\item Auto Mode (Amazon Market) - "Removes License Verification for applications from Amazon Market"
 \item Auto Mode (SamsungApps) - "Removes License Verification for Apps from SamsungApps" (Note: SamsungApps is called GalaxyApps, see subsection~\ref{section:license-samsung})
 \end{itemize}

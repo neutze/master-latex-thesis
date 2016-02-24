@@ -1,16 +1,16 @@
 \subsubsection{Functional Principle} \label{section:license-google-functional}
-Google's approach is a network service which allows to query the trusted Google Play license server in order to determine whether the user has a valid license.
-The library is provided by Google and the exact functionality can be studied by the developer since it is delivered in source code.\cite{munteanLicense}
+Google's approach is based on a network service which allows to query the trusted Google Play license server in order to determine whether the user has a valid license.
+The LVL is provided by Google in source code to be included in an App by the programmer. Thus its exact functionality and even structures and variable names can be studied by programmers. \cite{munteanLicense}
 \newline
 It has to be manually integrated into the application by the developer and allows a simple checking with Google and has a callback for the reply.
 The developer can decide when and how often the application should check its license.
-Upon initiation, the library connects to the Google Play Service which manages the connection between the device and the license server.
-It sends a request for a license check on the server to determine the validity of the license, whether the application was bought by the user.
+Upon initialization, the library connects to the Google Play Service which manages the connection between the device and the license server.
+It sends a request for a license check to the server.
 This is similar to \gls{drm}.
-Adding the library to the application does not alter the function of the application, it just addes a call.
-While the library takes care of the complicated process, like the networking and webservice, and returns the response of Google Play as soon as it arrives, the developer only has handle the callback.
-The developer is in full control what should happen with the response and whether access should be granted.
-Figure~\ref{fig:lvl} gives an overview how the parts are connecnted. \cite{digipomLvl}\cite{developersLicensingOverview}
+Adding the library to the application does not alter the function of the application, it just adds a call.
+The developer only needs to handle the result of this call, as the library takes care of the complicated process, like the networking and web service, and returns the response of Google Play as soon as it arrives.
+The developer is in full control of what happens with the response and whether access is granted.
+Figure~\ref{fig:lvl} gives an overview how the parts are connected. \cite{digipomLvl} \cite{developersLicensingOverview}
 \newline
 \begin{figure}[h]
     \centering
@@ -18,26 +18,25 @@ Figure~\ref{fig:lvl} gives an overview how the parts are connecnted. \cite{digip
     \caption{Google's implementation of license checking \cite{developersLicensingOverview}}
     \label{fig:lvl}
 \end{figure}
-In order to start the validation process with the Google Server und to determine the license status of the application, additional information has to be provided.
-The user has to initiate the call with  the package name of the application, a nonce, which has to be included in every repsonse to ensure integrity, as well as the callback for asynchronous handling.
-The Google Play Service then adds the primary Google account the application is executed with, the IMSI of the device
-On the server Google checks whether the user has purchased the application and sends the corresponding response to the Google Play Service which passes it to the application. \cite{developersLicensingOverview}
+In order to start the validation process with the Google Server and determine the license status of the application, additional information has to be provided.
+The \textit{LicenseChecker} has to be initiated with the package name of the application, a nonce, to ensure integrity of the response, as well as the callback for asynchronous handling, to start the call to the Play Service client.
+The Google Play Service then adds the primary Google account username, the identity and other information and sends the license check request to the server.
+On the Google Play server, it is checked whether the user has purchased the application and a corresponding response is send back to the Google Play Service, which returns it to the application. \cite{developersLicensingOverview}
 \newline
 The security of the response is very important.
 It is achieved by public/private key encryption.
-Each published application in the Play Store has a pair of keys of which the developer has to integrate the public key, which is visible to him, into the application in order to decrypt the communication which is encrypted by the server with the private key.
-This way it the origin of the response is ensured as well as tampering detected.
-\cite{munteanLicense}\cite{developersLicensingOverview}
+Each published application in the Play Store has a pair of keys.
+The developer has to integrate the public key into the application, which is available in the Google Play developer console.
+The private key is used to decrypt the communication with the server which encrypts its response with the private key.
+This way it the origin of the response is ensured and tampering detected.
+\cite{munteanLicense} \cite{developersLicensingOverview}
 \newline
-This results in some restrictions for the application to run.
-First of all, access to the internet is necessary as well since a connection to the Google Server has to be established.
+This mechanism requires an online connection to the internet, as it needs to connect to the Google server.
 In case this is not possible, an internal error will be triggered which results in the license not being verified.
-Second of all, the Google Play Service has to be installed.
-It comes preinstalled with the Google Apps which includes the Google Play store.
-On the one hand, this is a prerequisite to legally aquire an application with the \gls{lvl}.
-On the other hand, in case applications, with \gls{lvl} implemented, cannot bind to the Google Play Service and thus cannot verify the license status.
-When the server is finally reached and the license is verified, it can be stored on the device and used in future requests in case no internet connection is available. \cite{developersLicensingAdding}\cite{developersLicensingOverview}
+In addition, the Google Play Service has to be installed which comes preinstalled with the Google Apps, including the Google Play store.
+It is a prerequisite to legally acquire an application with the \gls{lvl} since it is bought in the Play Store.
+In case the application is installed and the Google Play Service is not installed, it cannot bind to it and thus cannot verify the license.
+The developer can decide when and how often the license check should be done as well as whether the result should be stored for future requests or when no internet connection is available. \cite{developersLicensingAdding } \cite{developersLicensingOverview}
 \newline
-In summary this means the Google Play Service as well as a one time internet connection have to be present on the first startup in order to make the license check and, in case of the right answer, run the application.
-It replaces the old copy protection, which is no longer supported, with a secure mechanism to control access to the application.
+The \gls{lvl} mechanism replaces the old copy protection, which is no longer supported.
 This license verification model can be enforced on all devices which have access to Google Play. \cite{developersLicensingAdding} \cite{developersLicensingOverview}

@@ -16,7 +16,7 @@ The architecture of the software stack of Android can be seen in figure~\ref{fig
 The basis of the system is its kernel.
 It is responsible for power and memory management and controls the device drivers.
 \newline
-The layer above the kernel contains the Android Runtime, which will be explained in detail in section~\ref{subsection:android-art}, as well as the native libraries of the system.
+The layer above the kernel contains the \gls{dvm}, which will be covered in section~\ref{subsection:android-vm}, \gls{art}, which will be explained in detail in section~\ref{subsection:android-art}, as well as the native libraries of the system.
 Usually Android libraries are written in Java except the ones which are resource and time critical.
 They are written in C or C++ in order to boost performance and allow low level interaction between applications and the kernel by using the \gls{jni}.
 Examples for native libraries are OpenGL, multimedia playback or the SQLite database.

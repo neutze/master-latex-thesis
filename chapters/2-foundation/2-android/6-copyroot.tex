@@ -1,27 +1,22 @@
-\subsection{Copy Protection and Root} \label{subsection:android-copyroot}
-%START TEXT INPUT
+\subsection{Root and Copy Protection} \label{subsection:android-copyroot}
+"Rooting" or "getting root" is the process of modifying the operation system's software that shipped with a device in order to get complete control over it.
+The name "root" comes from the Linux \gls{os} world where the user \textit{root} has all privileges.
+This allows to overcome limitations set by carriers and manufacturers, like removing pre-installed applications, extending system functionality or to upgrading to custom versions of Android.
+Manufacturers and carriers do not approve of rooting but they cannot prevent it as the access is usually gained by exploiting vulnerabilities in the system's code or device drivers.
+Vulnerabilities are quite common and documented \cite{androidVulnerabilities}.
+\cite{asdasd}
+Timeline
+\cite{asdasd}
+Today it is easy to gain root rights,, even for non-techies.
+There are videos and tutorials on the internet  are available, even tools to automate the process, like Wugfresh's Rootkits \cite{wugfresh}.
+Rooting is usually bundled with installing a program called "su" which manages the root access for applications requesting it.
+Rooting a phone is not without risk since installing bad files can result in the so called "bricking" meaning the phone is nonfunctional since the software cannot be executed anymore.\cite{androidpoliceRoot}
+\newline
 Now that the application is installed and ready to run.
-In order to prevent unauthorized usage of the app copy protection is applied.
-After downloading \gls{apk} from an application store it is moved to /data/app on the phone upon installation.
+Copy protection is applied to prevent unauthorized usage of the app.
+The downloaded \gls{apk} from an application store is moved to /data/app on the phone.
 The user has no rights to access this folder and thus not copy the application.
-This mechanism has a major flow since when a single user can get hold of the \gls{apk} and redistribute it, copy protection for the application is circumvented.
+This mechanism has a major flaw, as copy protection is circumvented when a single user can get hold of the application and redistribute it, e.g. by using root.
 This was effective in the early days of Android when rooting was not easily facilitated.
 \newline
-\textit{Rooting} or \textit{getting root} is the process of modifying the operation system's software that shipped with a device in order to get complete control over it.
-The name \textit{root} comes from the Linux \gls{os} world and is the user with the most privileges.
-This allows the user to overcome limitations by carriers and manufacturers, like removing pre-installed applications, extend system functionality or to upgrade to custom versions of Android.
-Manufacturers and carriers do not aprove rooting but since the access is usually gained by exploiting vulnerabilities in the system's code or device drivers, they cannot prevent it.
-Vulnerabilities are quite common and documented \cite{androidVul}.
-Today it is easy, even for non-techies, to gain root.
-There are videos and tutorials on the internet, even tools to automate the process, like Wugfresh's Rootkits \cite{wugfresh}, are available.
-Rooting is usually bundles with installing a progremm called \textit{su} which manages the root access for applications which request it.
-Rooting a phone is not without risk since installing bad files can result in the so called \textit{bricking} meaning the phone is nonfunctional since the software cannot be executed anymore.\cite{androidpoliceRoot}
-\newline
-Even though rooting brings a lot of improvements to the table it is bad for the copy protection making it non-existent. For this reason new ways of protecting applications have to be invented.
-
-
-TODO:
-1) Root Exploits
-Man koennte sagen die Wurzel allen uebels - im Sinne von Kopierschutz. Daher bitte alle Root-Exploits raussuchen, die es in den letzten Jahren so gab und auf der benannten Timeline darstellen (s.u.), damit wir auch einen Rueckschluss ziehen koennen, wie oft es Root-Exploits gibt.  Weitere Exploits haben Kommilitonen von Dir auch mal im AP erstellt. Bitte alles zusammentragen und in eine Grafik ueberfuehren.
-
-Von Interesse ist auch, welche Geraete eigentlich offiziell gerootet werden koennen. Wie sehen das die Hersteller? Zunehmend sieht man Secure Boot und dergleichen?
+Rooting circumvents the original copy protection, so new ways of protecting applications have to be invented.

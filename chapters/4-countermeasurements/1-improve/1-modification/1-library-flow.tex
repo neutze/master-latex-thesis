@@ -1,29 +1,48 @@
 \subsection{Modify the Library} \label{subsection:counter-modifications-library}
-STRUKTUR ÄNDERN
-CODE ISOMORPH ÄNDERN. e.g. switch zu if
-figure~\ref{fig:verificationNow} element (1)
-
-suggested by google
-%
-goal is to make lvl implementation unique, difficult to trace when decompiled
-counter intuitive from traditional software engineering viewpoint, removing functions, hiding license check routines in unrelated code
-
-Google is aware of easy hacking and thus suggests modifcations to the lvl
-modify license verification library in way that it is difficult for attacker to modify the disassembled code and get a positive check as result
-advantages, harder to crack, cannot be used as blueprint and no blueprint can be used on it, unique
-\cite{developersSecuring}
-%
-
-many developers do not customize the library, easy to hack
-\cite{munteanLicense}
 
 
-most developers include the LVL unchanged without modifying it, attacks can always be done the same wayso this is very easy for luckypatcher
-for own security and the security of other developers try to create a unique implementation,
-ideal would be that no patterns can be applied to you and that in case the implementation gets racked no pattern of yours can be applied to others
+Lucky Patcher automatic patching is reliant on applying patterns
+patching application code is both most wide-spread and most powerful to interfer app logic\cite{munteanLicense}
+way to challenge luckypatcher is to actively go against luckypatcher patterns, achieved by modifying the library \cite{munteanLicense}
+this should be the first solution anyone does in order to actively fight luckypatcher
+modify to make difficult to apply common cracking techniques. \cite{developersSecuring}
+google suggests additional improvements \cite{developersSecuring}
+modify the \gls{lvl} in way that it is difficult for attack to modify the disassembled code and get a positive license check as result \cite{developersSecuring}
+provides protection against two different types of attack \cite{developersSecuring}
+- protects against attackers trying to crack app \cite{developersSecuring}
+- prevents attacks designed to target other applications (and stock lvl distribution itself) from being ported over to own app \cite{developersSecuring}
+goal is to increase the complexity of applcaition's bytecode and implementation unqiue \cite{developersSecuring}
 
-this is a list of ideas of how to modify versus each pattern,
+three areas to focus on \cite{developersSecuring}
+core licensing library logic \cite{developersSecuring}
+entry/exit points of licensing library \cite{developersSecuring}
+invocation and handling of response \cite{developersSecuring}
 
+core modifications, primary focus on two calsses which comprise the core of \gls{lvl} - licensechecker and licensevalidator (see lucky patcher attacks them primary as well) \cite{developersSecuring}
+modify these two classes as much as possible, in any way possible, while retaining the original function of the application \cite{developersSecuring}
+some ideas, encouraged to be creative \cite{developersSecuring}
+-replace switch with if, additional code between blocks => pattern nennen \cite{developersSecuring}
+- xor or ahsh functions to derive new values for any constants used and check for those instead CODE ISOMORPH ÄNDERN\cite{developersSecuring}
+-remove unused code, e.g. implement the policy cerification online with the rest of licensevalidator \cite{developersSecuring}
+-move entirety of \gls{lvl} to own application's package \cite{developersSecuring}
+-spawn additional threads to handle different parts of license validation \cite{developersSecuring}
+-replace functions with inline code where possible => pattern nennen (moveresult) \cite{developersSecuring}
+- difficult to trace when decompiled, counter intuitive from traditional software engineering viewpoint, removing functions, hiding license check routines in unrelated code\cite{developersSecuring}
+- radical solution: kill app at first invalid response code, makes it impossible to alter follow up methods on reponse code, bad user experience
+
+=> make lvl implementation unique, that is why examples are bad and own approach good \cite{developersSecuring}
+
+for entry/exit \cite{developersSecuring}
+attack by attacker write counterfeit version of LVL thaht implements same interface, add additional arguments to licensechecker constructor and allow() and dontAllow() in LicenseCheckerCallback => pattern nennen \cite{developersSecuring}
+
+attack calls in application to lvl, e.g. dialog and attacker comments out, add different activity that handles informing of invalid license and temrinates original activity, add finish() to other parts of code which is executed in case original one gets disabled, or set a timer that will cause termination after timeout \cite{developersSecuring}
+postpone licensecheck sine attackers expect instant license check during launch \cite{developersSecuring}
+
+This can only be applied to the \gls{lvl} since it is the only library where the source code is accessible for the developer.
+For Amazon and Samsung, this propose can be useful as well, but it is difficult to ship a high number of unique implementations as well as injecting it over the web interface cannot be done without additional work.
+amazon/samsung not much to do since from company that is why the following not simple methods target lvl\cite{munteanLicense}
+
+thoughts on identified patterns
 pattern 1,7 attacks the switch, the idea is to replace the switch with an if statemant or shuffle the cases
 move it to a function and implement it somewhere as well thus the code might no longer be together with the rest of the class and the attacker has to specific search for it
 
@@ -32,18 +51,9 @@ pattern 2,4,5 skips using the outcome of a function and setting it always to tru
 pattern 3 modifies the return values on initialization, idea to alter the return value, changing it to e.g. int, thus all the ifs have to be modified to fit the needs
 
 
-general ideas
-move the lvl into own application folder
-replace functions with inline code when possible
-test again inside the function and e.g. kill the app on tampering
-best would be to really make it different, e.g. recreate classes
-
-
-creativity helps, does not protect at all but when applied correct automode does not work and patterns have to be registered
-
-%eval
 this tries to directly encounter luckypatcher by fighting the way the patterns work
 
 it is easy to apply and there are no limits of variants how it can be modified
 luckypatcher has to look at each app individual and in the worst case create custom patches
+this are all improvements which do net ensure no 100\% safety, at least can protect against autopatching, additional work for attackers
 but as it seams developers do not like to modify as seen in analysis since all apps are somehow patchable

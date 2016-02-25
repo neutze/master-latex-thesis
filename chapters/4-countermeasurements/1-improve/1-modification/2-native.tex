@@ -1,11 +1,12 @@
-\subsubsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
+\subsection{Native Implementation of \gls{lvl}} \label{subsection:counter-modifications-dynamic}
 
 Lucky Patcher's automatic patching modes, as described in chapter~\ref{chapter:luckypatcher}m target the application's \gls{dex} file.
 In order to  thus removing it from this file makes it more complicated to crack the application sucessfully.
 Since Android supports the \gls{ndk}, it is possible to implement parts of the application using native code.
 Usually the \gls{ndk} targets CPU intensive taks, such as game engines and signal processing, but it can be used for any other purposes as well.
 Google suggests using it only if necessary since it increases the complexity of an application, which, in case of the license verification library, is desired \cite{androidNdk}.
-
+a determined attacker willing to disassemble and reassemble code can eventully hack around the service\cite{developersSecuring}
+developer can make hackers task immensely more difficult to the point where it is not worth the time\cite{developersSecuring}
 
 
 there are two scenarios:

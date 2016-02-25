@@ -7,7 +7,31 @@ The main problem is that most developers include the \gls{lvl}'s source code unc
 Lucky Patcher profits from this misbelieve since patterns can be applied successfully without complciations.
 
 
+
+
+Lucky Patcher automatic patching is reliant on applying patterns
+
+patching application code is both most wide-spread and most powerful to interfer app logic\cite{munteanLicense}
+
+way to challenge luckypatcher is to actively go against luckypatcher patterns, achieved by modifying the library \cite{munteanLicense}
+
+ see patterns to fight in patterns chapter
+can be done in different ways, modify library or go native\cite{munteanLicense}
+
+many developers do not customize the library, easy to hack
+\cite{munteanLicense}
 %
+
+this should be the first solution anyone does in order to actively fight luckypatcher
+automatischen angriff aushebenln indem andere struktur
+
+
+lvl protects against casual piracy, users who try to copy apks directly from one device to another without purcahsing the applciation\cite{developersSecuring}
+
+modify to make difficult to apply common cracking techniques. \cite{developersSecuring}
+
+
+
 google suggests additional improvements \cite{developersSecuring}
 modify the \gls{lvl} in way that it is difficult for attack to modify the disassembled code and get a positive license check as result \cite{developersSecuring}
 provides protection against two different types of attack \cite{developersSecuring}
@@ -39,6 +63,9 @@ attack by attacker write counterfeit version of LVL thaht implements same interf
 
 attack calls in application to lvl, e.g. dialog and attacker comments out, add different activity that handles informing of invalid license and temrinates original activity, add finish() to other parts of code which is executed in case original one gets disabled, or set a timer that will cause termination after timeout \cite{developersSecuring}
 postpone licensecheck sine attackers expect instant license check during launch \cite{developersSecuring}
+
+
+amazon/samsung not much to do since from company that is why the following not simple methods target lvl\cite{munteanLicense}
 
 thoughts on identified patterns
 pattern 1,7 attacks the switch, the idea is to replace the switch with an if statemant or shuffle the cases

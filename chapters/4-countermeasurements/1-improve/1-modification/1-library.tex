@@ -1,5 +1,4 @@
 \subsubsection{Modify the Library} \label{subsection:counter-modifications-library}
-
 \gls{luckypatcherg}'s patching is reliant on applying its patterns.
 Patching application code is the most effective and most common attack to modify the license logic.
 Going actively against these patterns should always be the first step to challenge \gls{luckypatcherg}.
@@ -32,7 +31,7 @@ These are only examples and creativity is welcome since the resulting implementa
 \newline
 The entry and exit points can be attacked by creating a counterfeit version of the \gls{lvl} that implements same interface.
 An unquite implementation provides resilience against this attack.
-It can be achieved by adding additional arguments to the \textit{LicenseChecker} constructor as well as the \textit{allow()} and the \textit{dontAllow()} methods.
+It can be achieved by adding additional arguments to the \textit{LicenseChecker} constructor as well as the \textit{allow()} and the \textit{dontAllow()} methods. \cite{developersSecuring}
 \newline
 Attackers do not only target the \gls{lvl} but the handling of the result in the application as well.
 This can be prevented by handling the mechanism in a separate activity.
@@ -42,4 +41,6 @@ In addition the license verification can be postponed to a later point in time s
 \newline
 These modifications are easy to apply and make the implementation unique.
 The unlimited ways to implement make it hard to attack automatically.
-This does not ensure total protection against \gls{luckypatcherg} since every application is patchable in some way, but forces the attacker to invest additional work in order to circumvent the license verification.
+This does not ensure total protection against \gls{luckypatcherg} since every application is patchable in some way.
+A determined attacker, willing to invest a lot of time and work in disassembling and reassembling, can eventually hack the implementation.
+The aim of the developer is to make the work of the attacker as hard as possible to the point where the profit is not worth the time. \cite{developersSecuring}

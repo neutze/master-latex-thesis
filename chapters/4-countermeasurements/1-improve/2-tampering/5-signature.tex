@@ -1,30 +1,9 @@
 \subsubsection{Signature} \label{subsection:counter-improve-tampering-signature}
-
-
-
-
-\url{http://developer.android.com/tools/publishing/app-signing.html}\newline
-\url{http://forum.xda-developers.com/showthread.php?t=2279813&page=5}\newline
-
-CONTRA\newline
-
-
-The unfortunate side effect of Lucky Patcher working with the Dalvik cache of an app is that the app developers cannot detect manipulations to their code through fingerprinting because the original code, located in “/data/app/<appName.apk>/classes.dex”, remains untouched. While it is allowed for an app to access its own optimized bytecode from the cache [32], computing a checksum or a hash for it doesn’t make sense because many optimizations to this bytecode are device-specific and cannot be known in advance.
-\cite{munteanLicense}
-!!!überprüfen!!!
-
-
-\subsubsection{Local Signature Check} \label{subsection:counter-tampering-signature-local}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-
-local check whether signature is allowed\newline
-once in code \newline
-save to use signature in code?\newline
-
+Application code is signed to connect a developer to an application and enable him to provide updates for the application.
+Since the checksum and signature have to be rewritten when cracking the application, this can be used to detect attacks.
+This is similar to Google Maps inside an application.
+The Maps library sends the signature and the API key to the server which. similar to the license verification, decides wether the application is allowed to show the map.
+\newline
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -38,5 +17,7 @@ save to use signature in code?\newline
   caption={Partial Listing},
   label={codeSnippet:tamperingSignature}
 ]{data/4-countermeasurements/1-tampering/5-signature.java}
-
-da signatur geändert ist, funktionieren dinge wie google maps nicht mehr -> build in tampering protection
+The code for the signature check can be seen in code snippet~\ref{codeSnippet:tamperingSignature}.
+In order to check the application's signature, the original signature has to be provided (see line 53).
+The application's signature fetched from the package information (line 57ff).
+In case the signature cannot be retrieved or the signature do not match, the check terminates the application.

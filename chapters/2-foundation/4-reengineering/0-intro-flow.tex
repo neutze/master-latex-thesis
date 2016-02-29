@@ -1,3 +1,6 @@
+\begin{itemize}
+    \item test
+\end{itemize}
 The Cracking Tool has to alter an application's behaviour by applying patches only to the \gls{apk} file, since it is the only source of code on the phone. This is the reason for the investigations to start with analysing the \gls{apk}. This is done using static analysis tools. The aim is to get an accurate overview of how the circumventing of the license verification mechanism is achieved. This knowledge is later used to find countermeasures to prevent the specific Cracking Tool from succeeding.\newline
 The reengineering has to be done by using different layers of abstraction. The first reason is because it is very difficult to conclude from the altered bytecode, which is not human-readable, to the new behaviour of the application. The second reason is because the changes in the Java code are interpreted by the decompiler, which might not reflect the exact behaviour of the code or even worse, cannot be translated at all.\newline
 These problems are encountered by analysing the different abstraction levels of code as well as different decompilers.

@@ -204,7 +204,7 @@ Since \text{if-eqz} evaluates only the one argument \textit{v0} and thus the sec
   label={codeSnippet:n4DiffSmali}
 ]{data/n4.diff}
 The Java code interprets the variable \textit{v0} as boolean.
-Thus instead of checking whether the result of \textit{mPolicy.allow} is \textit{false}, it compares the result for inequality with itself, which is always false.
+Thus instead of checking whether the result of \textit{mPolicy.allow()} is \textit{false}, it compares the result for inequality with itself, which is always false.
 \newline
 \lstinputlisting[
   style=diff,
@@ -218,14 +218,15 @@ Thus instead of checking whether the result of \textit{mPolicy.allow} is \textit
 ]{data/n4.diff}
 
 
-The result of patching with pattern N4 is that in the \textit{checkAccess()} method the result of whether the policy allows is never considered.
+The result of patching with pattern N4 is that in the \textit{checkAccess()} method the result, whether the policy allows the proceeding, is never considered.
 
 
 \subsubsection{Patch Pattern N5}
-As part of the extreme mode, pattern N5 works on the \gls{dex} file similar to pattern N2 on the \textit{LicenseValidator}'s \textit{verify()} method. It does not affect the standard implementation of the \gls{lvl}.
+As part of the extreme mode, pattern N5 works on the \gls{dex} file similar to pattern N2 on the \textit{LicenseValidator}'s \textit{verify()} method.
+It does not affect the standard implementation of the \gls{lvl}.
 \newline
-As described before, the dex code is has a more complex decompiled Java code than the source code, especially in this case since instead of calling attributes of an object directly it stores them into variables before.
-In this decompiled code, the parsing of the result code is spoofed and not the value of the response data is stored but the response code is set to 0.
+In the Java diff in code snippet~{codeSnippet:n5DiffJava} the result of patching can be seen.
+Instead of setting the variable to the result of parsing first value of the array \textit{v2\_1}, the value of the array is parsed but the variable is set to \textit{0}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -238,19 +239,16 @@ In this decompiled code, the parsing of the result code is spoofed and not the v
   label={codeSnippet:n5DiffJava}
 ]{data/n5.diff}
 
-If this pattern would be applied alone, it would be able to circumvent the response code checks, but it is effective when combined with pattern N.
-
+The result of this pattern is that inside \textit{verify()} method the check for not equality with \textit{0} is always false.
+This means the response code is always excepted and thus the exception \textit{Response codes don't match} is never raised.
 
 \subsubsection{Patch Pattern N6}
-Pattern N6 is part of the extreme mode and attacks similar to the pattern N1, N2 and N5 the \textit{verify()} method in the \gls{lvl}'s '\textit{LivenseValidator} class.
+Pattern N6 is part of the extreme mode and, similar to the pattern N1, N2 and N5, it attacks the \textit{verify()} method in the \gls{lvl}'s \textit{LicenseValidator} class.
 \newline
-The analysis of the \gls{dex} file in code snippet~\ref{codeSnippet:n6DiffDex} reveals that the attack replaces two statements.
-The first modification is replacing the if equal zero (\textit{38}) with setting a constant (\textit{12}).
-This results in the argument, that should have been checked for equality with zero, is now the target variable of the constant move 0 (\textit{0a}).
-Since the \textit{if-eqz} opcode uses four touples, one of them is jump target which is set (\textit{06}), it has to be removed to keep the syntax of the dex code valid.
-This is done by replacing the jump target with the \textit{nop} opcode (\textit{00}), which means no operation, and thus has no effect on the semantic of the code.
-The second change is the modification of the follow up if statement.
-Instead of checking whether the variable, which was originally checked for quality with zero, is equal (\textit{32}) to another variable (\textit{4a}), anoother variable is now compared to itself (\textit{00}).
+This pattern changes three values of the \gls{dex} file which can be seen in code snippet~\ref{codeSnippet:n6DiffDex}.
+The first changed value is \textit{38} which is replaced by \textit{12}.
+The second value is \textit{06} which is replaced by \textit{00}.
+The third change is the replacing of \textit{4a} by \textit{00}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -262,8 +260,12 @@ Instead of checking whether the variable, which was originally checked for quali
   caption={Diff on Dex level for N6 patch},
   label={codeSnippet:n6DiffDex}
 ]{data/n6.diff}
-The change of the code structure is more visible in the code snipept~\ref{codeSnippet:n6DiffSmali}.
-The \textit{if-eqz} is replaced by the initialization of the p2, a nop operation and an empty line while the follow up statement has its two different arguments each exchanged with the same variable.
+The change of the code structure is more visible in the code snippet~\ref{codeSnippet:n6DiffSmali}.
+The first results in the initialization of \textit{p2} with \textit{0}.
+The second change is required since moving a value to a variable only requires two arguments instead of one argument plus the destination offset.
+In order to get a valid syntax, the code has to be changed accordingly.
+The result is interpreted by the decompiler as a \textit{nop} operator and an empty line.
+The third change is the replacing arguments \textit{p2} and \textit{v4} of the \textit{if-eq} evaluation with \textit{v0} for each.
 \newline
 \lstinputlisting[
   style=diff,
@@ -276,17 +278,9 @@ The \textit{if-eqz} is replaced by the initialization of the p2, a nop operation
   label={codeSnippet:n6DiffSmali}
 ]{data/n6.diff}
 
-The analysis on Java level is more complex since removing the if statement destroys the original code herarchy and makes the syntax of the class invalid.
-Decompilers are built to work on correct syntax, in more complex code processes, the reverse engineered code cannot be created.
-In case of the \textit{LicenseTest}, the decompiler was not successful as well, but the reversed code revealed that in the \textit{verify()} method, right after the declaration of the variables, the second if statement of the two changed ones appeared
-This can be seen in the first part of the code snippet~\ref{codeSnippet:n6DiffJava}.
-The rest of the method cannot be decompiled and since translating from dex or smali to Java is hard to do by a human, this change cannot be analysed any further.
-This is the reason to look interpretation of code which was achieved in one of the apps, in this context it is called \textit{IntelligentGadget} because the developer denied permission to name the application.
-In this application, the code was fully restored and the change was reflected in simple way.
-Instead of checking the response code whether it is not null (which cannot be seen in the code but is interpreted from the source code) and equal to the given value, it is checked whether it is not zero, which is not one of the specified values of the response code.
-For this reason the check for invalidity of the response code is never true and thus the termination conidition is never called.
-This simple reengineered code is the result of applying pattern N5 and pattern N6 in combination.
-The changes of these two patterns add up to a clean Java code as seen in the second part of the code snippet~\ref{codeSnippet:n6DiffJava}.
+The analysis on Java level is more complex since removing the \textit{if-eqz} statement leaves the original condition without an entry call.
+The Java decompiler fails to interpret the missing connection and thus only the \textit{if-eq} is recognizable, see code snippet~\ref{codeSnippet:n6DiffJava}.
+Since this evaluation is always true, the code inside the condition is always executed.
 \newline
 \lstinputlisting[
   style=diff,
@@ -299,15 +293,16 @@ The changes of these two patterns add up to a clean Java code as seen in the sec
   label={codeSnippet:n6DiffJava}
 ]{data/n6.diff}
 
-In general this pattern is used to void the license code checks in the \textit{verify()} method.
+This pattern is used to void the license code checks in the \textit{verify()} method.
+
 \subsubsection{Patch Pattern N7}
 The final pattern for the \gls{lvl} is pattern N7.
-It is applied in the extreme mode and as this mode indicates, it takes a harsh approach of applying itself.
-In addition to patching the \gls{lvl}'s \textit{ILicenseResultListener} \textit{onTransact()} method, which is the implementation fo the callback for interprocess communication which receives the async response from the license server \cite{developersLicensingReference}, it applies it's patterns to all classes possible in the \url{com/android/}.
-It can be described as the bruteforce version of pattern N2 and thus should only applied in case the other modes are not successfully.
+It is applied in the extreme mode and as this mode indicates, it takes a harsh approach on applying itself.
+It does not only patch the \textit{ILicenseResultListener} class's \textit{onTransact()} method, which is the implementation for the callback for interprocess communication and receives the async response from the license server \cite{developersLicensingReference}.
+In addition the pattern is applied to all classes eligable in the \url{com/android/}.
+It can be described as the bruteforce version of pattern N2 and thus should only applied when the other modes are not successfully since the outcome might not be stable anymore.
 \newline
-Similar to pattern N2, pattern N7 replaces the moving of the result (\textit{0a}) of a function to the variable with initializing it with a constant (\textit{12}).
-Since \textit{move-result} moves it to variable v0 (\textit{00}) the resulting initialization sets v0 to zero.
+Similar to pattern N2, pattern N7 attacks by initializing the corresponding variable with \textit{false} instead of moving a result of a method into it.
 \newline
 \lstinputlisting[
   style=diff,
@@ -319,7 +314,7 @@ Since \textit{move-result} moves it to variable v0 (\textit{00}) the resulting i
   caption={Diff on Java level for N7 patch (abstracted)},
   label={codeSnippet:n7DiffJava}
 ]{data/n2.diff}
-The aim of this attack is to patch the \textit{ILicenseResultListener} at any cost so \textit{onTransact()} returns true independet of the result of \textit{verifyLicense()} which is returned in the original implementation.
+The goal of this attack is to patch the \textit{ILicenseResultListener}, where ever it may be implemented, so \textit{onTransact()} returns true independet of the result of \textit{verifyLicense()}, which is returned in the original implementation.
 
 \subsubsection{Overview for Patching the \gls{lvl}}
 The summary of the \gls{lvl} patterns and their use in the patching modes can be seen in table~\ref{table:patterns}.

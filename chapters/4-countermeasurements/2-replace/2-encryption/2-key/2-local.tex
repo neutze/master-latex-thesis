@@ -1,29 +1,31 @@
 \subsubsection{Secure Element} \label{section:counter-replace-encryption-key-local}
-
-idea: store key at secure place where it is not exposed but delivers decrypted output for an input, best suitable for this task smartcard
-
-
-can either be mounted in the sdcard slot or using an adapter for the usb interface
-accessed over reads and writes to the filesystem
-since it has to be small as a sd card and powered by the host system its hardware capabilities are restrained as well \cite{stSe} with power as low as 25MHz complexe calculations would take too much time
-
-simple tasks (beschreiben)
-
-unbestechlich, jedoch boolean abfrage immer crackbar, deswegen andere sachen machen zB verschlüsseln
-
-encrypted strings from the application can be decrypted by the secure element
-store property settings on it
-
-encryption key can be stored on
-
-no complexe tasks since low power
-
+Since there is the possibility to read the cached encryption key \cite{memoryDump} and crack the encryption, the use of \gls{se} is proposed.
+A secure element is a tamper-resistant platform which can be used to securely host applications and cryptographic keys \cite{seDefinition}.
+There are different form factors for \gls{se}s.
+For Android, the microSD form factor is the interesting one.
+It can be either mounted in the SD Card slot or by using an adapter on the USB interface, which requires the device to support \gls{otg} \cite{usbOtg}.
+The resource is accessed over reads and writes to the filesystem.
+Since the \gls{se} has to be small to fit the size of an SD Card and powered by the host system, its hardware capabilities are constrained.
+The result is a performance of 25MHz which does not allow complexe comnputations. \cite{stSe}
+\newline
+For this reason the usage of the \gls{se} is restricted to simple tasks, like storing a key used for decryption.
+The advantage of an \gls{se} is that its functionality is outside of the Android application and thus cannot be manipulated by \gls{luckypatcherg}.
+\newline
+An abstract presentation of the use of a \gls{se} can be seen in figure~\ref{fig:encryptionKeySmart}.
+\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/encryptionKeySmart.png}
     \caption{Decryption by using a smartcard}
     \label{fig:encryptionKeySmart}
 \end{figure}
+Integrating a \gls{se} comes with some problems.
+\begin{itemize}
+  \item the user has to buy extra hardware
+  \item not all devices have a SD Card slot or support \gls{otg}
+  \item different implementations for communication with the \gls{se}
+\end{itemize}
+
 
 
 same as internet service but extra hardare has to be bought

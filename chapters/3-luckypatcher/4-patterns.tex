@@ -190,8 +190,8 @@ As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} wit
   caption={Diff on Dex level for N4 patch},
   label={codeSnippet:n4DiffDex}
 ]{data/n4.diff}
-In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \text{if-eqz} with \text{if-ne}.
-Since \text{if-eqz} evaluates only the one argument \textit{v0} and thus the second argument is \textit{0} in the \gls{dex} file, the two argument using \text{if-ne} interprets this as \textit{v0}.
+In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \textit{if-eqz} with \textit{if-ne}.
+Since \textit{if-eqz} evaluates only the one argument \textit{v0} and thus the second argument is \textit{0} in the \gls{dex} file, the two argument using \textit{if-ne} interprets this as \textit{v0}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -319,8 +319,9 @@ The goal of this attack is to patch the \textit{ILicenseResultListener}, where e
 \subsubsection{Overview for Patching the \gls{lvl}}
 The summary of the \gls{lvl} patterns and their use in the patching modes can be seen in table~\ref{table:patterns}.
 The auto mode and inversed auto mode are applying patches at the important parts of the \gls{lvl}.
-They are very efficient as long as the library is not altered.
-In contrast to the determined patching of the automatic modes, the extreme mode applies pattern covering a variaty of methods.
+They are very efficient as long as the library is not modified by the developer.
+\newline
+In contrast to the determined patching of the automatic modes, the extreme mode tries to apply patterns to different places as well as to more complex methods.
 This might cause instability, as seen in pattern N6, since it alters the syntax of the dex file.
 \begin{table}[h]
 \centering
@@ -339,8 +340,10 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
 
 
 \subsubsection{Amazon Market Patch}
-Amazon does not have different pattern but only one patch which is called pattern in this context.
-Since the Kiwi library is injected by Amazon and cannot be customized by the developer as well as the structure of the library result in the fact that only on pattern is sufficient to circumvent the license verification mechanism
+Amazon does not have different pattern.
+Since the Kiwi library is injected by Amazon and cannot be customized by the developer, only one pattern is necessary.
+
+ as well as the structure of the library result in the fact that only on pattern is sufficient to circumvent the license verification mechanism
 The patch attacks two classes, one contained \textit{com/amazon/android/licensing/b.java} and the other one contained in \textit{com/amazon/android/o/d.java}.
 Since the injected library is obfuscated no meaningful names can be presented.
 \newline

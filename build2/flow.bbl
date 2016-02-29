@@ -1,0 +1,1484 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{nty}{nty}
+    \entry{androidVulnerabilities}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=d07b01a382b3f83862cb7ee228f7b15c}{{Alastair\bibnamedelimb Beresford,\bibnamedelimb et\bibnamedelimb al.}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{d07b01a382b3f83862cb7ee228f7b15c}
+      \strng{fullhash}{d07b01a382b3f83862cb7ee228f7b15c}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{All Vulnerabilities}
+      \field{urlday}{24}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://androidvulnerabilities.org/all
+      \endverb
+    \endentry
+    \entry{allatori}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b9be2462031dc7c274fe817e6844d6d4}{{allatori}}{a\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b9be2462031dc7c274fe817e6844d6d4}
+      \strng{fullhash}{b9be2462031dc7c274fe817e6844d6d4}
+      \field{sortinit}{a}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Allatori Java Obfuscator}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.allatori.com/
+      \endverb
+    \endentry
+    \entry{allatoriDoc}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b9be2462031dc7c274fe817e6844d6d4}{{allatori}}{a\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b9be2462031dc7c274fe817e6844d6d4}
+      \strng{fullhash}{b9be2462031dc7c274fe817e6844d6d4}
+      \field{sortinit}{a}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Documentation}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.allatori.com/doc.html
+      \endverb
+    \endentry
+    \entry{proguard}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b9be2462031dc7c274fe817e6844d6d4}{{allatori}}{a\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b9be2462031dc7c274fe817e6844d6d4}
+      \strng{fullhash}{b9be2462031dc7c274fe817e6844d6d4}
+      \field{sortinit}{a}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ProGuard}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.android.com/tools/help/proguard.html
+      \endverb
+    \endentry
+    \entry{abettercamera}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=dfcfd335b592d2859ab2ea42691da319}{{Almalence\bibnamedelimb Inc}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{dfcfd335b592d2859ab2ea42691da319}
+      \strng{fullhash}{dfcfd335b592d2859ab2ea42691da319}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Better Camera}
+      \field{urlday}{17}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.amazon.de/Almalence-Inc-A-Better-Camera/dp/B00HUP8UZA
+      \endverb
+    \endentry
+    \entry{amazonDeveloper}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b3b3a6ac74ecbd56bcdbefa4799fb9df}{{Amazon}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \strng{fullhash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Amazon Developer Service}
+      \field{urlday}{02}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.amazon.com/
+      \endverb
+    \endentry
+    \entry{amazonBeta}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b3b3a6ac74ecbd56bcdbefa4799fb9df}{{Amazon}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \strng{fullhash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Amazon Send Developers a Welcome Package}
+      \field{urlday}{19}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.androidheadlines.com/2010/10/amazon-send-developers-a-welcome-package.html
+      \endverb
+    \endentry
+    \entry{amazonRelease}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b3b3a6ac74ecbd56bcdbefa4799fb9df}{{Amazon}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \strng{fullhash}{b3b3a6ac74ecbd56bcdbefa4799fb9df}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introducing Amazon Appstore for Android}
+      \field{urlday}{19}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-newsArticle&ID=1541548
+      \endverb
+    \endentry
+    \entry{androidArt}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{{Android}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \strng{fullhash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ART and Dalvik}
+      \field{urlday}{15}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://source.android.com/devices/tech/dalvik/index.html
+      \endverb
+    \endentry
+    \entry{developersConfigureArt}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{{Android}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \strng{fullhash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Configuring ART}
+      \field{urlday}{15}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://source.android.com/devices/tech/dalvik/configure.html
+      \endverb
+    \endentry
+    \entry{androidDrm}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e84e30b9390cdb64db6db2c9ab87846d}{{Android}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \strng{fullhash}{e84e30b9390cdb64db6db2c9ab87846d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DRM}
+      \field{urlday}{29}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://source.android.com/devices/drm.html
+      \endverb
+    \endentry
+    \entry{developersLicensingAdding}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Adding Licensing to Your App}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.android.com/google/play/licensing/adding-licensing.html
+      \endverb
+    \endentry
+    \entry{androidNdk}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android NDK}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.android.com/tools/sdk/ndk/index.html
+      \endverb
+    \endentry
+    \entry{developerFundamentals}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Application Fundamentals}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.android.com/guide/components/fundamentals.html
+      \endverb
+    \endentry
+    \entry{safetynetGoogle}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Checking Device Compatibility with SafetyNet}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.android.com/training/safetynet/index.html
+      \endverb
+    \endentry
+    \entry{developersDalvik}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Dalvik Executable format}
+      \field{urlday}{02}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://source.android.com/devices/tech/dalvik/dex-format.html
+      \endverb
+    \endentry
+    \entry{androidDebugging}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Debugging}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.android.com/tools/debugging/index.html
+      \endverb
+    \endentry
+    \entry{developersLicensingOverview}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Licensing Overview}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.android.com/google/play/licensing/overview.html
+      \endverb
+    \endentry
+    \entry{developersLicensingReference}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Licensing Reference}
+      \field{urlday}{21}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.android.com/google/play/licensing/licensing-reference.html
+      \endverb
+    \endentry
+    \entry{developersLicensingSetup}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Setting Up for Licensing}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://developer.android.com/google/play/licensing/setting-up.html
+      \endverb
+    \endentry
+    \entry{androidSecure}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=af05011ef932571b63118654e584db53}{{Android\bibnamedelimb Developers}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{af05011ef932571b63118654e584db53}
+      \strng{fullhash}{af05011ef932571b63118654e584db53}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Settings.Secure}
+      \field{urlday}{16}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.android.com/reference/android/provider/Settings.Secure.html
+      \endverb
+    \endentry
+    \entry{developersRelease}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=d78f828b1ff70465e7d0421d6da7fc14}{{Android\bibnamedelimb Developers\bibnamedelimb Blog}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{d78f828b1ff70465e7d0421d6da7fc14}
+      \strng{fullhash}{d78f828b1ff70465e7d0421d6da7fc14}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Announcing the Android 1.0 SDK, release 1}
+      \field{urlday}{15}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://android-developers.blogspot.de/2008/09/announcing-android-10-sdk-release-1.html
+      \endverb
+    \endentry
+    \entry{inappBilling}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=841a2554db9c5ae76c33ef9587e40682}{{AnjLab}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{841a2554db9c5ae76c33ef9587e40682}
+      \strng{fullhash}{841a2554db9c5ae76c33ef9587e40682}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A lightweight implementation of Android In-app Billing Version 3}
+      \field{urlday}{18}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/anjlab/android-inapp-billing-v3
+      \endverb
+    \endentry
+    \entry{googleIOArt}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=f2ec0d727d1fbf2e1770a3518649be4d}{Anwar\bibnamedelima Ghuloum}{A\bibinitperiod\bibinitdelim G\bibinitperiod}{Ian\bibnamedelima Rogers}{I\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{Brian\bibnamedelima Carlstrom}{B\bibinitperiod\bibinitdelim C\bibinitperiod}}%
+      }
+      \strng{namehash}{f2ec0d727d1fbf2e1770a3518649be4d}
+      \strng{fullhash}{f2ec0d727d1fbf2e1770a3518649be4d}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The ART runtime}
+      \field{urlday}{02}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=EBlTzQsUoOw
+      \endverb
+    \endentry
+    \entry{apksfree}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=937c438fb3d16128bc4a5e777d935df1}{{APKSFree.com}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{937c438fb3d16128bc4a5e777d935df1}
+      \strng{fullhash}{937c438fb3d16128bc4a5e777d935df1}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{diff}
+      \field{urlday}{11}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.androidapksfree.com/app/blackmart-alpha-latest-version/
+      \endverb
+    \endentry
+    \entry{armTz}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=47f45e65244c17ec9fa8771a5c6d60e1}{{ARM}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{47f45e65244c17ec9fa8771a5c6d60e1}
+      \strng{fullhash}{47f45e65244c17ec9fa8771a5c6d60e1}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TrustZone}
+      \field{urlday}{24}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.arm.com/products/processors/technologies/trustzone/index.php
+      \endverb
+    \endentry
+    \entry{blackmartStore}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=73a7ee611c79b377552a5ac11cda7490}{{Blackmart}}{B\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{73a7ee611c79b377552a5ac11cda7490}
+      \strng{fullhash}{73a7ee611c79b377552a5ac11cda7490}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Blackmart Alpha}
+      \field{urlday}{20}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.blackmart.us/
+      \endverb
+    \endentry
+    \entry{googleDalvik}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7eaac2ce77fd967940c339416114635f}{Bornstein}{B\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7eaac2ce77fd967940c339416114635f}
+      \strng{fullhash}{7eaac2ce77fd967940c339416114635f}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Dalvik VM Internals}
+      \field{urlday}{02}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://sites.google.com/site/io/dalvik-vm-internals
+      \endverb
+    \endentry
+    \entry{bitdefenderPlagiarism}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=1073bdcfa69303b13eccde3ddcad2125}{Botezatu}{B\bibinitperiod}{Loredana}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{1073bdcfa69303b13eccde3ddcad2125}
+      \strng{fullhash}{1073bdcfa69303b13eccde3ddcad2125}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Manipulation und Diebstahl im Google Play Store}
+      \field{urlday}{16}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.bitdefender.de/hotforsecurity/manipulation-und-diebstahl-im-google-play-store-2673.html
+      \endverb
+    \endentry
+    \entry{dragonTZ}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=c24d5a8e01c6ac43eec975d13d143ce7}{Charles\bibnamedelima Holmes}{C\bibinitperiod\bibinitdelim H\bibinitperiod}{Josh\bibnamedelima Thomas}{J\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c24d5a8e01c6ac43eec975d13d143ce7}
+      \strng{fullhash}{c24d5a8e01c6ac43eec975d13d143ce7}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An Infestation of Dragons - Exploring Vulnerabilities in the ARM TrustZone Architecture}
+      \field{urlday}{24}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://usmile.at/sites/default/files/androidsecuritysymposium/presentations/Thomas_Holmes_AnInfestationOfDragons.pdf
+      \endverb
+    \endentry
+    \entry{luckyPatcherOfficial}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b7444658cd78b8578417915f31efe2a7}{{ChelpuS}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b7444658cd78b8578417915f31efe2a7}
+      \strng{fullhash}{b7444658cd78b8578417915f31efe2a7}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lucky Patcher}
+      \field{urlday}{09}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://lucky-patcher.netbew.com/
+      \endverb
+    \endentry
+    \entry{axml}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=4dcff6dee37920301b12f5a11973ac02}{Choi}{C\bibinitperiod}{Wontae}{W\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{4dcff6dee37920301b12f5a11973ac02}
+      \strng{fullhash}{4dcff6dee37920301b12f5a11973ac02}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A mini project to customize existing AXML library}
+      \field{urlday}{17}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/wtchoi/axml
+      \endverb
+    \endentry
+    \entry{developersLicensingBlog}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=a9b44e6e637f2b45f96e1c9c60803c93}{Chu}{C\bibinitperiod}{Eric}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a9b44e6e637f2b45f96e1c9c60803c93}
+      \strng{fullhash}{a9b44e6e637f2b45f96e1c9c60803c93}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Licensing Service For Android Applications}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://android-developers.blogspot.de/2010/07/licensing-service-for-android.html
+      \endverb
+    \endentry
+    \entry{comscoreMarket}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=a4507edb80bc497066ab897272b571aa}{{comScore}}{c\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{a4507edb80bc497066ab897272b571aa}
+      \strng{fullhash}{a4507edb80bc497066ab897272b571aa}
+      \field{sortinit}{c}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{comScore Reports November 2015 U.S. Smartphone Subscriber Market Share}
+      \field{urlday}{19}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.comscore.com/ger/Insights/Market-Rankings/comScore-Reports-November-2015-US-Smartphone-Subscriber-Market-Share
+      \endverb
+    \endentry
+    \entry{antipiracy}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0015623d7228d7f6027beb8a8d2b85bb}{{ContentGuard}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{0015623d7228d7f6027beb8a8d2b85bb}
+      \strng{fullhash}{0015623d7228d7f6027beb8a8d2b85bb}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{AntiPiracySupport}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/ContentGuard/AntiPiracySupport
+      \endverb
+    \endentry
+    \entry{crackApk}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=4fa240d285aa5f547c544d43e66daab5}{{CrackAPK}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{4fa240d285aa5f547c544d43e66daab5}
+      \strng{fullhash}{4fa240d285aa5f547c544d43e66daab5}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android APK Cracked}
+      \field{urlday}{20}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.crackapk.com/
+      \endverb
+    \endentry
+    \entry{cveAndroidPriv}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6ee17bdf4a7da206068fe02847a4aed5}{{CVE}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{6ee17bdf4a7da206068fe02847a4aed5}
+      \strng{fullhash}{6ee17bdf4a7da206068fe02847a4aed5}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Common Vulnerabilities and Exposures}
+      \field{urlday}{25}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=android,+privileges
+      \endverb
+    \endentry
+    \entry{cveDetails}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=180b8e9561fe687f89767423b03e8284}{{CVE\bibnamedelimb Details}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{180b8e9561fe687f89767423b03e8284}
+      \strng{fullhash}{180b8e9561fe687f89767423b03e8284}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Google Android: List of Security Vulnerabilities (Gain Privilege)}
+      \field{urlday}{29}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.cvedetails.com/vulnerability-list/vendor_id-1224/product_id-19997/opgpriv-1/Google-Android.html
+      \endverb
+    \endentry
+    \entry{dexProtector}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=28a2cbaf03c928fa03fc4cba891ed198}{{Dex\bibnamedelimb Protector}}{D\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{28a2cbaf03c928fa03fc4cba891ed198}
+      \strng{fullhash}{28a2cbaf03c928fa03fc4cba891ed198}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Dex Protector}
+      \field{urlday}{15}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://dexprotector.com/
+      \endverb
+    \endentry
+    \entry{piracyRate}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7318451071da29d132b1f1819849e047}{Dziatkiewicz}{D\bibinitperiod}{Mark}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7318451071da29d132b1f1819849e047}
+      \strng{fullhash}{7318451071da29d132b1f1819849e047}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Preventing Android applications piracy possible, requires diligence, planning}
+      \field{urlday}{26}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.fiercedeveloper.com/story/preventing-android-applications-piracy-possible-requires-diligence-planning/2012-08-14
+      \endverb
+    \endentry
+    \entry{ehringerDalvik}{misc}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b6d9e39a07be1e2597e6dde534733836}{Ehringer}{E\bibinitperiod}{David}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b6d9e39a07be1e2597e6dde534733836}
+      \strng{fullhash}{b6d9e39a07be1e2597e6dde534733836}
+      \field{sortinit}{E}
+      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{03}
+      \field{title}{The Dalvik Virtual Machine Architecture}
+      \field{urlday}{09}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \field{year}{2010}
+      \verb{file}
+      \verb http://davidehringer.com/software/android/The_Dalvik_Virtual_Machine.pdf
+      \endverb
+    \endentry
+    \entry{distributionRoot}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=25589d9979878388b9471f2a806b88e1}{Erikrespo}{E\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{25589d9979878388b9471f2a806b88e1}
+      \strng{fullhash}{25589d9979878388b9471f2a806b88e1}
+      \field{sortinit}{E}
+      \field{sortinithash}{fefc5210ef4721525b2a478df41efcd4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Häufigkeit der verschiedenen Android-Versionen. Alle Versionen älter als 4.0 sind fast verschwunden}
+      \field{urlday}{25}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Android_(Betriebssystem)#/media/File:Android_historical_version_distribution_-_vector.svg
+      \endverb
+    \endentry
+    \entry{proguardLicensing}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=98173fced6f772e6f5dd9fcac2a1a48e}{Galpin}{G\bibinitperiod}{Dan}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{98173fced6f772e6f5dd9fcac2a1a48e}
+      \strng{fullhash}{98173fced6f772e6f5dd9fcac2a1a48e}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Proguard, Android, and the Licensing Server}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://android-developers.blogspot.de/2010/09/proguard-android-and-licensing-server.html
+      \endverb
+    \endentry
+    \entry{atom}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{{GitHub}}{G\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Atom - A hackable text editor for the 21st Century}
+      \field{urlday}{17}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://atom.io/
+      \endverb
+    \endentry
+    \entry{seDefinition}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=79761f753ca52c992699cdc70bcc4fbb}{{GlobalPlatform}}{G\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{79761f753ca52c992699cdc70bcc4fbb}
+      \strng{fullhash}{79761f753ca52c992699cdc70bcc4fbb}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{GlobalPlatform made simple guide: Secure Element}
+      \field{urlday}{29}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.globalplatform.org/mediaguideSE.asp
+      \endverb
+    \endentry
+    \entry{dexguard}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=96690be6f13361e37ba49e76f438ec20}{{GuardSquare}}{G\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{96690be6f13361e37ba49e76f438ec20}
+      \strng{fullhash}{96690be6f13361e37ba49e76f438ec20}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DexGuard - The strongest Android obfuscator, protector, and optimizer}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.guardsquare.com/dexguard
+      \endverb
+    \endentry
+    \entry{developersSecuring}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=33f10214ff7fb2c4e537a602416c9bfc}{Johns}{J\bibinitperiod}{Trevor}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{33f10214ff7fb2c4e537a602416c9bfc}
+      \strng{fullhash}{33f10214ff7fb2c4e537a602416c9bfc}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Securing Android LVL Applications}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://android-developers.blogspot.de/2010/09/securing-android-lvl-applications.html
+      \endverb
+    \endentry
+    \entry{recodeMonument}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b410ebed8bdb0f64603d3af08fad8667}{Johnston}{J\bibinitperiod}{Eric}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b410ebed8bdb0f64603d3af08fad8667}
+      \strng{fullhash}{b410ebed8bdb0f64603d3af08fad8667}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mobile Game Piracy Isn’t All Bad, Says Monument Valley Producer (Q\&A)}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://recode.net/2015/01/06/mobile-game-piracy-isnt-all-bad-says-monument-valley-producer-qa/
+      \endverb
+    \endentry
+    \entry{digipomLvl}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=f1cd318e412b5f7226e5f377a9544ff7}{Kevin}{K\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{f1cd318e412b5f7226e5f377a9544ff7}
+      \strng{fullhash}{f1cd318e412b5f7226e5f377a9544ff7}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How the Android License Verification Library is Lulling You into a False Sense of Security}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.digipom.com/how-the-android-license-verification-library-is-lulling-you-into-a-false-sense-of-security/
+      \endverb
+    \endentry
+    \entry{kovachevaMaster}{thesis}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=473d09053a1bd4b3fe406bdc64f89feb}{Kovacheva}{K\bibinitperiod}{Alexandrina}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{2}{%
+        {Université de Luxembourg, Faculty of Science, Technology}%
+        {Communication}%
+      }
+      \strng{namehash}{473d09053a1bd4b3fe406bdc64f89feb}
+      \strng{fullhash}{473d09053a1bd4b3fe406bdc64f89feb}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{08}
+      \field{title}{Efficient Code Obfuscation for Android}
+      \field{type}{Master's Thesis}
+      \field{urlday}{09}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \field{year}{2013}
+      \verb{file}
+      \verb https://cryptolux.org/images/9/94/Alexandrina-thesis.pdf
+      \endverb
+    \endentry
+    \entry{safetynetPay}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=03cab3b15539f5734d6b451e564f05e9}{Kozyrakis}{K\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{03cab3b15539f5734d6b451e564f05e9}
+      \strng{fullhash}{03cab3b15539f5734d6b451e564f05e9}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{AntiPiracySupport}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://koz.io/inside-safetynet/
+      \endverb
+    \endentry
+    \entry{levinAndevcon}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9a4a8fdc33ee020f980cb5d48c800300}{Levin}{L\bibinitperiod}{Jonathan}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{9a4a8fdc33ee020f980cb5d48c800300}
+      \strng{fullhash}{9a4a8fdc33ee020f980cb5d48c800300}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android Security - New threats, New Capabilities}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://newandroidbook.com/files/Andevcon-Sec.pdfand
+      \endverb
+    \endentry
+    \entry{andevconDalvikART}{misc}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9a4a8fdc33ee020f980cb5d48c800300}{Levin}{L\bibinitperiod}{Jonathan}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{9a4a8fdc33ee020f980cb5d48c800300}
+      \strng{fullhash}{9a4a8fdc33ee020f980cb5d48c800300}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{Dalvik and ART}
+      \field{urlday}{09}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \field{year}{2015}
+      \verb{file}
+      \verb http://newandroidbook.com/files/ArtOfDalvik.pdf
+      \endverb
+    \endentry
+    \entry{lierschDeveloperThreats}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=feab587aa17539170da807e6fb893adb}{Liersch}{L\bibinitperiod}{Martin}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{feab587aa17539170da807e6fb893adb}
+      \strng{fullhash}{feab587aa17539170da807e6fb893adb}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android Piracy}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=TNnccRimhsI
+      \endverb
+    \endentry
+    \entry{zip4j}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7e13d04ddcd85c97c3fe1d276aeb332b}{Lingala}{L\bibinitperiod}{Srikanth\bibnamedelima Reddy}{S\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7e13d04ddcd85c97c3fe1d276aeb332b}
+      \strng{fullhash}{7e13d04ddcd85c97c3fe1d276aeb332b}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Zip4j - Java library to handle ZIP files}
+      \field{urlday}{17}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.lingala.net/zip4j/
+      \endverb
+    \endentry
+    \entry{androidpoliceRoot}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=82009d33227fab27f013df60e02297ba}{Morrow}{M\bibinitperiod}{Sarah}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{82009d33227fab27f013df60e02297ba}
+      \strng{fullhash}{82009d33227fab27f013df60e02297ba}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Rooting Explained + Top 5 Benefits Of Rooting Your Android Phone}
+      \field{urlday}{18}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.androidpolice.com/2010/04/15/rooting-explained-top-5-benefits-of-rooting-your-android-phone/
+      \endverb
+    \endentry
+    \entry{munteanLicense}{thesis}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=1bb103e6d7a220faa5c3ba7d819b71e8}{Muntean}{M\bibinitperiod}{Marius-Nicolae}{M\bibinithyphendelim N\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Technische Universität München, Fakultät für Informatik}%
+      }
+      \strng{namehash}{1bb103e6d7a220faa5c3ba7d819b71e8}
+      \strng{fullhash}{1bb103e6d7a220faa5c3ba7d819b71e8}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{05}
+      \field{title}{Improving License Verification in Android}
+      \field{type}{Master's Thesis}
+      \field{year}{2014}
+    \endentry
+    \entry{androidStack}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=33b49971d4a77242d10ebc0217c8f276}{{Obscure\bibnamedelimb -\bibnamedelimb community\bibnamedelimb site\bibnamedelimb theme}}{O\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{33b49971d4a77242d10ebc0217c8f276}
+      \strng{fullhash}{33b49971d4a77242d10ebc0217c8f276}
+      \field{sortinit}{O}
+      \field{sortinithash}{7803d2715d5e795e70382b084ab8d00e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding the Android software stack}
+      \field{urlday}{27}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://maat-portfolio.mut.ac.th/~r4140027/?p=116
+      \endverb
+    \endentry
+    \entry{metaJava}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=30162ed78b6c10f731411f2fc440c24f}{{Oracle}}{O\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{30162ed78b6c10f731411f2fc440c24f}
+      \strng{fullhash}{30162ed78b6c10f731411f2fc440c24f}
+      \field{sortinit}{O}
+      \field{sortinithash}{7803d2715d5e795e70382b084ab8d00e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{JAR File Specification}
+      \field{urlday}{15}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://docs.oracle.com/javase/6/docs/technotes/guides/jar/jar.html
+      \endverb
+    \endentry
+    \entry{opcodes}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=c17e5e1aba4609ade30683228b588693}{Paller}{P\bibinitperiod}{Gabor}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c17e5e1aba4609ade30683228b588693}
+      \strng{fullhash}{c17e5e1aba4609ade30683228b588693}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Dalvik opcodes}
+      \field{urlday}{18}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html
+      \endverb
+    \endentry
+    \entry{businessProfit}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0bccf05d87365893ef5d36d9687d0c9c}{Price}{P\bibinitperiod}{Rob}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{0bccf05d87365893ef5d36d9687d0c9c}
+      \strng{fullhash}{0bccf05d87365893ef5d36d9687d0c9c}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DexFile}
+      \field{urlday}{16}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.businessinsider.com/android-app-profitability-v-ios-2015-1?IR=T
+      \endverb
+    \endentry
+    \entry{safetynetPayx}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=834df0cb5ad535c7a3f081c03d139054}{{Pulser\_G2}}{P\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{834df0cb5ad535c7a3f081c03d139054}
+      \strng{fullhash}{834df0cb5ad535c7a3f081c03d139054}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Look at Marshmallow Root and Verity Complications}
+      \field{urlday}{22}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.xda-developers.com/a-look-at-marshmallow-root-verity-complications/
+      \endverb
+    \endentry
+    \entry{runtasticApp}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=914046c51a572d3e62c79c3634eec9ad}{{Runtastic}}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{914046c51a572d3e62c79c3634eec9ad}
+      \strng{fullhash}{914046c51a572d3e62c79c3634eec9ad}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Runtastic PRO Laufen \& Fitness}
+      \field{urlday}{20}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://play.google.com/store/apps/details?id=com.runtastic.android.pro2&hl=de
+      \endverb
+    \endentry
+    \entry{samsungKnox}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=3910b1e0ccab19bc46fd9db27cca49c9}{{Samsung}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{3910b1e0ccab19bc46fd9db27cca49c9}
+      \strng{fullhash}{3910b1e0ccab19bc46fd9db27cca49c9}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A closer look at KNOX contributing in Android}
+      \field{urlday}{24}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.samsungknox.com/en/androidworkwithknox
+      \endverb
+    \endentry
+    \entry{samsungZirconia}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=3910b1e0ccab19bc46fd9db27cca49c9}{{Samsung}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{3910b1e0ccab19bc46fd9db27cca49c9}
+      \strng{fullhash}{3910b1e0ccab19bc46fd9db27cca49c9}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How to protect your app from illegal copy using Samsung Application License Management (Zirconia)}
+      \field{urlday}{19}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://developer.samsung.com/technical-doc/view.do?v=T000000062L
+      \endverb
+    \endentry
+    \entry{schulzLabCourse}{thesis}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=4554400682bcfdfc1a37808bd3e11eb3}{Schulz}{S\bibinitperiod}{Patrick}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Friedrich-Wilhelms-Universität Bonn, Institute of Computer Science}%
+      }
+      \strng{namehash}{4554400682bcfdfc1a37808bd3e11eb3}
+      \strng{fullhash}{4554400682bcfdfc1a37808bd3e11eb3}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{07}
+      \field{title}{Code Protection in Android}
+      \field{type}{Lab Course}
+      \field{urlday}{09}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \field{year}{2012}
+      \verb{file}
+      \verb https://net.cs.uni-bonn.de/fileadmin/user_upload/plohmann/2012-Schulz-Code_Protection_in_Android.pdf
+      \endverb
+    \endentry
+    \entry{smartSD}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=9bd49cc92f81954461a98016668c9807}{{SD\bibnamedelimb Association}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{9bd49cc92f81954461a98016668c9807}
+      \strng{fullhash}{9bd49cc92f81954461a98016668c9807}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{smartSD Memory Cards}
+      \field{urlday}{29}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.sdcard.org/developers/overview/ASSD/smartsd/
+      \endverb
+    \endentry
+    \entry{xdaPiracy}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7eb10923872b582caa3403c21b76b641}{Serrafero}{S\bibinitperiod}{Mario\bibnamedelima Tomás}{M\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7eb10923872b582caa3403c21b76b641}
+      \strng{fullhash}{7eb10923872b582caa3403c21b76b641}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Piracy Testimonies, Causes and Prevention}
+      \field{urlday}{16}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.xda-developers.com/piracy-testimonies-causes-and-prevention/
+      \endverb
+    \endentry
+    \entry{spotify}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=86170ded6d1c3471dbd62163e8773be8}{{Spotify\bibnamedelimb Ltd.}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{86170ded6d1c3471dbd62163e8773be8}
+      \strng{fullhash}{86170ded6d1c3471dbd62163e8773be8}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spotify Music}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://play.google.com/store/apps/details?id=com.spotify.music&hl=de
+      \endverb
+    \endentry
+    \entry{stSe}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=4db12e8301f91b7e9ddfc16bac37658a}{{ST\bibnamedelimb life.augmented}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{4db12e8301f91b7e9ddfc16bac37658a}
+      \strng{fullhash}{4db12e8301f91b7e9ddfc16bac37658a}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Allatori Java Obfuscator}
+      \field{urlday}{24}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.st.com/web/catalog/mmc/FM143/SC1282/PF259413
+      \endverb
+    \endentry
+    \entry{stackoverflowPiracy}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=481b8423202598ecfb233c5fa68caf68}{{stack\bibnamedelimb overflow}}{s\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{481b8423202598ecfb233c5fa68caf68}
+      \strng{fullhash}{481b8423202598ecfb233c5fa68caf68}
+      \field{sortinit}{s}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Posts containing 'Android, Piracy'}
+      \field{urlday}{26}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://stackoverflow.com/search?q=android+piracy
+      \endverb
+    \endentry
+    \entry{stackoverflowLucky}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=481b8423202598ecfb233c5fa68caf68}{{stack\bibnamedelimb overflow}}{s\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{481b8423202598ecfb233c5fa68caf68}
+      \strng{fullhash}{481b8423202598ecfb233c5fa68caf68}
+      \field{sortinit}{s}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Posts containing 'Lucky Patcher'}
+      \field{urlday}{26}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://stackoverflow.com/search?q=lucky+patcher
+      \endverb
+    \endentry
+    \entry{busyboxApp}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=94509def5ef52b9a4f834f3f3b8ebfa0}{{Stericson}}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{94509def5ef52b9a4f834f3f3b8ebfa0}
+      \strng{fullhash}{94509def5ef52b9a4f834f3f3b8ebfa0}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Busybox - Android-Apps auf Google Play}
+      \field{urlday}{19}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.androidheadlines.com/2010/10/amazon-send-developers-a-welcome-package.html
+      \endverb
+    \endentry
+    \entry{teamspeakApp}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=c7b0a07efc0e7b1ae675f5a75df5f681}{{TeamSpeak\bibnamedelimb Systems\bibnamedelimb GmbH}}{T\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{c7b0a07efc0e7b1ae675f5a75df5f681}
+      \strng{fullhash}{c7b0a07efc0e7b1ae675f5a75df5f681}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TeamSpeak 3}
+      \field{urlday}{20}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://play.google.com/store/apps/details?id=com.teamspeak.ts3client&hl=de
+      \endverb
+    \endentry
+    \entry{memoryDump}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=3deef715f9ab3751838b148152c8b4fa}{Teoh}{T\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3deef715f9ab3751838b148152c8b4fa}
+      \strng{fullhash}{3deef715f9ab3751838b148152c8b4fa}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How to dump memory of any running processes in Android (rooted)}
+      \field{urlday}{29}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://tthtlc.wordpress.com/2011/12/10/how-to-dump-memory-of-any-running-processes-in-android-2/
+      \endverb
+    \endentry
+    \entry{strazzareLevel0}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=f4aceaaaeb704ec95a5057e4d2ae8d26}{Tim\bibnamedelima Strazzare}{T\bibinitperiod\bibinitdelim S\bibinitperiod}{Jon\bibnamedelima Sawyer}{J\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f4aceaaaeb704ec95a5057e4d2ae8d26}
+      \strng{fullhash}{f4aceaaaeb704ec95a5057e4d2ae8d26}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Android Hacker Protection Level 0}
+      \field{urlday}{22}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=6vFcEJ2jgOw
+      \endverb
+    \endentry
+    \entry{diffUbuntu}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b6dba63b206fedaeebf847395ac33613}{{ubuntuusers}}{u\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b6dba63b206fedaeebf847395ac33613}
+      \strng{fullhash}{b6dba63b206fedaeebf847395ac33613}
+      \field{sortinit}{u}
+      \field{sortinithash}{8145509bd2718876fc77d31fd2cde117}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{diff}
+      \field{urlday}{02}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://wiki.ubuntuusers.de/diff
+      \endverb
+    \endentry
+    \entry{developersPiracy}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=00bcd2177c9bee9ea1ac55447d38179b}{Underwood}{U\bibinitperiod}{Jack}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{00bcd2177c9bee9ea1ac55447d38179b}
+      \strng{fullhash}{00bcd2177c9bee9ea1ac55447d38179b}
+      \field{sortinit}{U}
+      \field{sortinithash}{8145509bd2718876fc77d31fd2cde117}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Today Calendar's Piracy Rate}
+      \field{urlday}{16}
+      \field{urlmonth}{01}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://plus.google.com/+JackUnderwood/posts/jWs84EPNyNS
+      \endverb
+    \endentry
+    \entry{wugfresh}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=90033e9f16b0a227d65b7f8906b05589}{{WugFresh}}{W\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{90033e9f16b0a227d65b7f8906b05589}
+      \strng{fullhash}{90033e9f16b0a227d65b7f8906b05589}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Nexus Root Toolkit v2.1.4}
+      \field{urlday}{16}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.wugfresh.com/nrt/
+      \endverb
+    \endentry
+    \entry{androidCrackingTools}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0085292b87a39552a041bf7674ae4f4e}{{Za\bibnamedelimb hiD}}{Z\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{0085292b87a39552a041bf7674ae4f4e}
+      \strng{fullhash}{0085292b87a39552a041bf7674ae4f4e}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ANTI-PIRACY SOFTWARE ACTIVATED SOLVED}
+      \field{urlday}{21}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://android-onex.blogspot.de/2015/07/anti-piracy-software-activated-solved.html
+      \endverb
+    \endentry
+  \endsortlist
+  \missing{subsection:foundation-android-package}
+  \missing{usbOtg}
+\endrefsection
+\endinput
+

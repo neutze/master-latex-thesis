@@ -15,16 +15,18 @@ Instead of using local license verification, the user has to enter his credentia
 In case the credentials are valid, the user is logged into the application.
 The content, the music in this case, is no longer on the phone itself, but streamed from the server.
 The attacker still can circumvent the user verification inside the application, but they are facing a second layer of security afterwards.
-Since the content is on the server and the user has to be authorized there, no content is available inside the application.
-Thus attacks on the applications are not simple anymore.
+Since the content is on the server and the user has to be authorized on it, no content is available inside the application.
+Thus attacks on the applications itself do not work anymore that easily.
 \newline
-This would be a perfect solution if there were not downsides as well.
-The first problem is that this model cannot be applied universally.
-This means that it must be possible to extract parts of the application's logic and implement them on a server.
-The second one are the additional resources needed.
-When realizing parts of the application on a server, not only knowledge and money is needed for the server, an additional application for the server has to be created as well.
+Having a content server is good solution against piracy but it has downsides as well.
+The first problem is that this model cannot be applied to all applications universally.
+It means that it must be possible to extract parts of the application's logic and implement them on a server.
+This is not possible for all applications.
+The second problem are the additional resources needed.
+When outsourcing parts of the application on a server, not only knowledge and money is needed for the server, but an additional application for the server has to be created as well.
 Not every developer can handle this additional workload.
-The third problem is the resulting always online necessaty which limits the freedom of users and might make the application less accepted.
+The third problem is the resulting always online necessaty which limits the freedom of users and creates additional unnecessary traffic.
+This is not accepted by all users.
 \newline
 Nevertheless, in case this implementation can be realized, it is an almost safe solution.
 As a byproduct, the protection of the \gls{ip} can be achieved as well by moving the core algorithm, when possible, to server.

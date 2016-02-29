@@ -3,9 +3,9 @@ Since there is the possibility to read the cached encryption key \cite{memoryDum
 A secure element is a tamper-resistant platform which can be used to securely host applications and cryptographic keys \cite{seDefinition}.
 There are different form factors for \gls{se}s.
 For Android, the microSD form factor is the interesting one.
-It can be either mounted in the SD Card slot or by using an adapter on the USB interface, which requires the device to support \gls{otg} \cite{usbOtg}.
+It can be either mounted in the microSD card slot or by using an adapter on the USB interface, which requires the device to support \gls{otg} \cite{usbOtg}.
 The resource is accessed over reads and writes to the filesystem.
-Since the \gls{se} has to be small to fit the size of an SD Card and powered by the host system, its hardware capabilities are constrained.
+Since the \gls{se} has to be small to fit the size of an microSD card and powered by the host system, its hardware capabilities are constrained.
 The result is a performance of 25MHz which does not allow complexe comnputations. \cite{stSe}
 \newline
 For this reason the usage of the \gls{se} is restricted to simple tasks, like storing a key used for decryption.
@@ -22,16 +22,21 @@ An abstract presentation of the use of a \gls{se} can be seen in figure~\ref{fig
 Integrating a \gls{se} comes with some problems.
 \begin{itemize}
   \item the user has to buy extra hardware
-  \item not all devices have a SD Card slot or support \gls{otg}
+  \item not all devices have a microSD card slot or support \gls{otg}
   \item different implementations for communication with the \gls{se}
 \end{itemize}
+The first problem is that the user is required to buy extra hardware.
+This means the user has to spend extra cache and to have the \gls{se} always around.
+The connection to the device using a cable is not the most convenient solution as well.
+The second problem is that not all devices either have an microSD card slot, nor \gls{otg} support.
+For example, the Nexus 7 (2012) and the Nexus 6P neither have the capability to use a microSD card.
+While the Nexus7 was supposed to have \gls{otg}, it did not work with the used \gls{se}, while the Nexus 6P did not support \gls{otg} out of the box.
+Both devices needed even needed additional plugins to read the \gls{otg} mounted microSD in a file explorer.
+The third problem is that each manufacturer implements its own interpretation for the interface which makes \gls{se} incompatible to each other.
+For this reason, the SD Association proposed the smartSD in order to have a universal standard for \gls{se}s \cite{smartSD}.
+\newline
 
 
-
-same as internet service but extra hardare has to be bought
-people are lazy and do not want to have extra hardware
-when integrated into phone, it will take a long time until each phone supports it, e.g. was not able to use it on Nexus 6P and Nexus 7, Linux did not recognize it but mass storage was enabled, Nexus7 said OTG available but it did not work
-many different implementation fragmentate the market, there is not one single solution to focus on and push for market wide accepted solution
 solution which are out there have major security flaws, smartcard itself can be attacked
 
 have problems on their own, nur so sicher wie das secure element
@@ -42,9 +47,6 @@ DAP Verification .... normalerweise muss jede Applet, die auf so ein Secure Elem
 Waehrend ich Exploits finden konnte, die Dir erw. Zugriff geben, wenn du Applets installieren kannst, u.a.
 %\url{https://www.cs.ru.nl/E.Poll/papers/cardis08.pdf}
 %\url{http://www.uclouvain.be/crypto/wissec2009/static/13.pdf}​
-
-SD Association
-\url{http://www.androidpolice.com/2016/02/22/with-smartsd-the-sd-association-wants-to-adapt-microsd-cards-to-make-mobile-payments/}
 
 
 

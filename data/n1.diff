@@ -9,7 +9,8 @@
 ??+?? 0x2 -> ??:sswitch_e0??
 
 *@@ Pattern N1 @@*
-!!-!! case !!LICENSED_OLD_KEY!!: handleResponse();
-!!-!! case !!NOT_LICENSED!!: handleError();
-??+?? case ??NOT_LICENSED??: handleResponse();
-??+?? case ??LICENSED_OLD_KEY??: handleError();
+case LICENSED:
+!!-!! case !!LICENSED_OLD_KEY!!: handleResponse(); break;
+!!-!! case !!NOT_LICENSED!!: handleError(); break;
+??+?? case ??NOT_LICENSED??: handleResponse(); break;
+??+?? case ??LICENSED_OLD_KEY??: handleError(); break;

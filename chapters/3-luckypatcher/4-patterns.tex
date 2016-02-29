@@ -5,20 +5,25 @@ After analysing same patterns in the different modes it was identified that thes
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
 The number next to the pattern indicates how often it was applied to the application.
-The patterns N\textit{x} aim to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to the respective store.
-This insight was gained in the analysis.
-In the context of the \gls{dex}, hexadecimal values like \textit{0x0a} are simplified as \textit{0a} for smoother reading.
-The opcodes can be taken from one of the many dalvik opcode documentations \cite{opcodes} and input arguments, as long as they are not constants, are called variable v\textit{x} where \textit{x} stands for the value.
-Since changing the dex code results in a different checksum of the code, the code has to be resigned.
-This changes appear in the diff of the dex files as well but are not explained since it does not have an impact on the functionality of the application itself.
+This number is not always correct.
+The patterns N\textit{x} are used to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to do the same with the library of the respective store.
+Additional knowledge on the patterns was was gained in the analysis.
+\newline
+Before explaining the patterns in detail, some information has to be provided.
+When analyzing \gls{dex} files, instead of using hexadecimal values like \textit{0x0a}, a simplified presentation as \textit{0a} for improved overview in the diff files is chosen.
+The opcodes used by the \gls{dvm} are taken from on of the documentations \cite{opcodes}.
+When converting \gls{dex} files to smali files, the arguments of the opcodes are transfered to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
+\newline
+Since changing the dex code of an application results in a new checksum, the code has to be resigned as well.
+This changes can be seen in the diff of the dex files.
+They are not explicit mentioned in the analysis since it is no direct change of the attack.
 
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
-It tagets the \textit{verify()} method of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder which is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
+It tagets the \textit{verify()} method of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
+This method is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
-When analysing the dex code, it is identified that the changes happen in the switch statement.
-The code block starts \textit{00 02}, which stands for a sparse-switch, followed by \textit{09 00}, which gives the number of elements.
-According to diff of the \gls{dex} file extracted, which can be seen in code snippet~\ref{codeSnippet:n1DiffDex}, element 1a and 0f are switched in their order, meaing 0f is now before 1a in the sequence of the switch.
+In can be seen in the dex code in code snippet~\ref{codeSnippet:n1DiffDex} that the the blocks \textit{1a} and \textit{0f} are swapped in their order.
 \newline
 \lstinputlisting[
   style=diff,
@@ -30,9 +35,7 @@ According to diff of the \gls{dex} file extracted, which can be seen in code sni
   caption={Diff on Dex level for N1 pattern},
   label={codeSnippet:n1DiffDex}
 ]{data/n1.diff}
-
-Smali, which converts the \gls{dex} file to a human readable output, a code representation where result of opcode changes are easier assigned to methods.
-When converting the bytecode to smali, a sparse switch struct with nine elements is created.
+When looking at the smali code, the two blocks can be identified as cases of a switch statement.
 Due to the internal mapping by the language, variables have different names.
 The swap of switch cases \textit{0x1} und \textit{0x2} can be seen in the diff of code snippet~\ref{codeSnippet:n1DiffSmali}.
 \newline
@@ -46,15 +49,10 @@ The swap of switch cases \textit{0x1} und \textit{0x2} can be seen in the diff o
   caption={Diff on Smali level for N1 pattern},
   label={codeSnippet:n1DiffSmali}
 ]{data/n1.diff}
-
-The diff of Java, seen in code snippet~\ref{codeSnippet:n1DiffJava}, gives the best overview on the changed behavior of the application, since it does not contain jumps to abstract method names but includes the code as the developer intended it.
-Since the cracking pattern was also applied to the \textit{LicenseTest}
- application, it is possible to compare the decompiled code to the original source code and it's original structure.
-The original library handles the \textit{LICENSED} reponse the same way as \textit{LICENSED\_OLD\_KEY}, since not having a breakpoint in the \textit{LICENSED} switch case, the code subsequently continues in the \textit{LICENSED\_OLD\_KEY} switch case and leaving it afterwards.
-The is only the reason if license keys are stored and allowed for verification, e.g. one time verification for future offline support.
-The entry point for a \textit{NOT\_LICENSED} response is follows after these two cases and is completed by a break to exit the switch case.
-When the pattern N1 is applied, the switch case statements of \textit{LICENSED\_OLD\_KEY} and \textit{NOT\_LICENSED} are swapped, but not the code inside the block.
-This means that instead of \textit{NOT\_LICENSED} disallow the licensing process, it makes use of the \textit{NOT\_LICENSED} condition and allows access.
+In the Java code snippet~\ref{codeSnippet:n1DiffJava}, not only the syntactic but also semantic changes can be seen.
+Before the patch, \textit{LICENSED} and \textit{LICENSED\_OLD\_KEY} both were handled as valid since \textit{LICENSED} jumps into the next case.
+After the patch, \textit{NOT\_LICENSED} starts where \textit{LICENSED\_OLD\_KEY} started before.
+Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which means even though the response code is \textit{NOT\_LICENSED} it is valid.
 \newline
 \lstinputlisting[
   style=diff,
@@ -62,14 +60,11 @@ This means that instead of \textit{NOT\_LICENSED} disallow the licensing process
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={11-15},
+  linerange={11-16},
   caption={Diff on Java level for N1 pattern (abstracted)},
   label={codeSnippet:n1DiffJava}
 ]{data/n1.diff}
-
-As a results, pattern N1 voids the usecase of the switch in the method \textit{verify()} since it always handles \textit{NOT\_LICENSED} response codes the same way as \textit{LICENSED}.
-
-
+The result is the voiding of the \textit{verify()} switch case since despite the input it always handles it as if the user is verified.
 \subsubsection{Patch Pattern N2}
 As well as pattern N1, N2 is applied in all patching modes, except the solo extreme mode.
 It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textit{com/google/android/gms/ads/}.

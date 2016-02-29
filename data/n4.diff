@@ -7,5 +7,5 @@
 ??+?? if-??ne?? v0, ??v0,?? :cond_15
 
 *@@ Pattern N4 @@*
-!!-!! if(!!!!!mPolicy.allow() {...}
+!!-!! if(!!!!!mPolicy.allow()) {...}
 ??+?? if(mPolicy.allow() ??!=?? mPolicy.allow()) {...}

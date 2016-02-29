@@ -65,15 +65,18 @@ Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which m
   label={codeSnippet:n1DiffJava}
 ]{data/n1.diff}
 The result is the voiding of the \textit{verify()} switch case since despite the input it always handles it as if the user is verified.
+
 \subsubsection{Patch Pattern N2}
 As well as pattern N1, N2 is applied in all patching modes, except the solo extreme mode.
-It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service libraries, located at \textit{com/google/android/gms/ads/}.
-The extended analysis of different applications showed the altering of custom libraries, which include code for Google inapp billing, like AnjLab's inapp billing library \cite{inappBilling}, located at \textit{com/anjlab/android/iab/v3/Security}, in the FKUpdater, are modified as well.
-This is collateral damage when applying the pattern to classes outside of the \gls{lvl} libary caused by the possibility of moving the classes of the library to different packages.
-As long as the \gls{lvl} package is untouched, pattern N2, similar to pattern N1, attacks the \textit{LicenseValidator} class's \textit{verify()} method.
+It is more aggressive since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service (gms) libraries, e.g.  \textit{com/google/android/gms/ads/}, as well.
+The extended analysis of different applications shows the altering of custom libraries as well.
+An example is AnjLab's inapp billing library \cite{inappBilling} in the FKUpdater, located at \textit{com/anjlab/android/iab/v3/Security}, which includes code for the Google inapp billing.
+This happens since the pattern is applied to other locations as well to counter a moved \gls{lvl}.
+Similar to pattern N1, pattern N2 attacks the \textit{LicenseValidator} class's \textit{verify()} method.
 \newline
-The changes in the \gls{dex} file in code snippet~\ref{codeSnippet:n2DiffDex} effect a simpler construct than pattern N1 does.
-Instead of of using the opcode \textit{0a} for moving the result the result of the corresponding method to the variable 5 (source-destination order of \textit{05}), it simply moves (opcode \textit{12}) the value 1, which stands for true, to the variable 5 (\textit{15}).
+
+The changes in the \gls{dex} file can be seen in code snippet~\ref{codeSnippet:n2DiffDex}.
+The sequence \textit{0a 05} is replaced by \textit{12 15}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -85,8 +88,8 @@ Instead of of using the opcode \textit{0a} for moving the result the result of t
   caption={Diff on Dex level for N2 pattern},
   label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
-
 Smali displays this in a more convenient manner as seen in code snippet~\ref{codeSnippet:n2DiffSmali}.
+Instead of moving the result of the proceeding function to \textit{v5} it is always set to \textit{true}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -99,14 +102,9 @@ Smali displays this in a more convenient manner as seen in code snippet~\ref{cod
   label={codeSnippet:n2DiffSmali}
 ]{data/n2.diff}
 
-The impact on the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) is more complex.
-Now, instead of calling additional code in case the signature is verified, the additional code is always called.
-The reason for this structural change in code is the fact that in dex the if statement is split.
-In a first step, the signature is verified , while in the second step the result is moved to a variable and this variable is evaluated in the third step.
-Since the first step is not modified, it is still interpreted as a method by the decompiler.
-For the second and third step it is different.
-The reason is the decompiler since the variable is set with the constant value true and checked afterwards in an if evaluation.
-In order to simplify and remove superfluous code, the if statement is collapsed and the body is moved to outer scope.
+The impact on the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) is more complex than just setting a variable to true.
+Instead of proceeding only if the signature is verified, the result is ignored and the following code is always executed.
+The Java code looks different since the decompiler collapses the \textit{if(true)} statement.
 \newline
 \lstinputlisting[
   style=diff,
@@ -119,20 +117,19 @@ In order to simplify and remove superfluous code, the if statement is collapsed 
   label={codeSnippet:n2DiffJava}
 ]{data/n2.diff}
 
-The conclusion is that after applying this pattern the result of the verification of the signature is no longer included in the logic of \textit{verify()}.
+The result is that the despite a possibly invalid signature the code of \textit{verify()} is executed anyways.
 
 \subsubsection{Patch Pattern N3}
-This pattern is different than the other patterns since there are two versions of it.
-Pattern N3 is present when using auto mode while pattern N3i is used in the inversed auto mode.
-The name N3i is chosen since it is used in the inversed auto mode.
-LuckyPatcher does not make a difference between them.
-They are combined under the same number since both attack the same logic inside the classes which define the policies.
-In case of \textit{LicenseTest}
- application with the basic implementation of the \gls{lvl}, these classes are the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy} in the  \textit{com/google/android/vending/licensing/} folder.
-Those two classes are examples of policies offered by Google \cite{developersLicensingReference} in which the \textit{allowAccess()} is altered.
+Pattern N3 is different than the other patterns since there are two versions of it.
+The first version, N3, is used in auto mode while pattern N3i is used in the inversed auto mode.
+The name N3i is chosen since it is used in the inversed mode.
+LuckyPatcher does not make a difference between them in the result ouput.
+They are combined under the same number since both attack the same logic inside the classes defining the policies.
+In case of the basic implementation of the \gls{lvl}, these classes are the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy} in the  \textit{com/google/android/vending/licensing/} folder.
+Those two classes are examples of policies offered by Google \cite{developersLicensingReference}.
+Pattern N3 attacks their \textit{allowAccess} method.
 \newline
-The goal of the two patterns is the opposite of each other.
-Both edit the value which is moved (opcode \textit{12}) into variable 1, but while N3 is moving true (opcode \textit{11}), N3i is moving false (opcode \textit{02}) (see code snippet~\ref{codeSnippet:n3DiffDex}).
+In case of pattern N3, \textit{01} is replaced with \textit{11}, while in case of N3i \textit{11} is replaced by \textit{01} (see code snippet~\ref{codeSnippet:n3DiffDex}).
 \newline
 \lstinputlisting[
   style=diff,
@@ -144,7 +141,8 @@ Both edit the value which is moved (opcode \textit{12}) into variable 1, but whi
   caption={Diff on Dex level for N3 pattern},
   label={codeSnippet:n3DiffDex}
 ]{data/n3.diff}
-As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a better presentation of the two patterns.
+When looking at the smali diff in code snippet~\ref{codeSnippet:n3DiffDex}, the dex code is translated to the initialization of \textit{v1}.
+While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -156,10 +154,9 @@ As usual, the smali diff in code snippet~\ref{codeSnippet:n3DiffDex} delivers a 
   caption={Diff on Smali level for N3 pattern},
   label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
-The Java code in code snippet~\ref{codeSnippet:n3DiffJava} is, again, more complex since the structure if the code in the \gls{dex} files is different than the one in Java.
-This is due to the fact that while in Java the \textit{return} followed by a value is possible, in \gls{dex} files this statement is split in two parts.
-First, an internal variable is initialized with a standard value corresponding to the type of the return and in a second step the value is returned.
-The patterns modify the value initialization which results in the change of the return statement in the Java code.
+The resulting code is shown in code snippet~\ref{codeSnippet:n3DiffJava}.
+The pattern attacks the result of the function.
+While N3 is used to attack code where the default return value is \textit{false}, pattern N3i is used when the default value is \textit{true}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -168,20 +165,20 @@ The patterns modify the value initialization which results in the change of the 
   captionpos=b,
   float=h,
   frame=single,
-  linerange={17-23},
+  linerange={17-25},
   caption={Diff on Java level for N3 pattern (abstracted)},
   label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
 Both patterns attack the class's \textit{allowAccess()} method which evaluates whether the verification result is according to the policy or not.
-Since this method is a place to change the logic in order to fool a cracking tool by changing the desired outcome from true to false, Lucky Patcher offers a way to deal with this implementation.
-This is the reason why the mode is called inverse auto mode since it fixes the return value to the opposite of the auto mode.
-
+The return value is only changed in case the test of the input is evaluated accordingly, if this is not the case, it is not changed.
+The pattern changes the default return value and thus makes the result of the evaluation negligible since the desired result is already set.
+There are two versions of the pattern to counter inversed logic which can be inplemented easily.
 
 \subsubsection{Patch Pattern N4}
 Pattern N4 was only applied once in the test sample and is part of the auto and auto inverse patching modes.
-The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl} which is responsible for initializing the license check in it's \textit{checkAccess()} method \cite{developersLicensingReference}.
+The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl} which is responsible for initializing the license check in its \textit{checkAccess()} method \cite{developersLicensingReference}.
 \newline
-When the pattern is applied, it replaces the method's equal zero check (\textit{38}) with a check for not equal (\textit{33}) as it can be seen in code snippet~\ref{codeSnippet:n4DiffDex} and code snippet~\ref{codeSnippet:n4DiffSmali}.
+As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} with \textit{33}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -193,7 +190,9 @@ When the pattern is applied, it replaces the method's equal zero check (\textit{
   caption={Diff on Dex level for N4 patch},
   label={codeSnippet:n4DiffDex}
 ]{data/n4.diff}
-
+In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \text{if-eqz} with \text{if-ne}.
+Since \text{if-eqz} evaluates only the one argument \textit{v0} and thus the second argument is \textit{0} in the \gls{dex} file, the two argument using \text{if-ne} interprets this as \textit{v0}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -204,13 +203,9 @@ When the pattern is applied, it replaces the method's equal zero check (\textit{
   caption={Diff on Smali level for N4 patch},
   label={codeSnippet:n4DiffSmali}
 ]{data/n4.diff}
-in the original code variable v0 is compared for not equality with zero
-after it is patched it is always compared with itself which returns always true and the condition is always called
-
-Since the code's syntax is changed when compiled from Java to dex, the decompiled code has a different sequence.
-In the source code of the \gls{lvl}, the \textit{checkAccess()} first checks whether the policy allows acces.
-When decompiled, it is checked for not equality first and the source code's equality block is moved to the else condition.
-This results in the initial equals zero condition and latter not equal test.
+The Java code interprets the variable \textit{v0} as boolean.
+Thus instead of checking whether the result of \textit{mPolicy.allow} is \textit{false}, it compares the result for inequality with itself, which is always false.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -223,7 +218,7 @@ This results in the initial equals zero condition and latter not equal test.
 ]{data/n4.diff}
 
 
-The result is that even though policy does not allow the access, this patterns modifies the \textit{checkAccess()} method to act as it would have been allowed anyway.
+The result of patching with pattern N4 is that in the \textit{checkAccess()} method the result of whether the policy allows is never considered.
 
 
 \subsubsection{Patch Pattern N5}

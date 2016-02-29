@@ -1,0 +1,41 @@
+\subsubsection{Implementation of Zirconia} \label{section:license-samsung-implementation}
+java package .jar and JNI native library have to be added to project
+for check and query of license server zirconia needs device info and internet connection (READ\_PHONE\_STATE and INTERNET permission)
+
+4 basics steps (see \ref{codeSnippet:zirconiaSetup})
+create
+
+can be implemented in any stage of the application, e.g. start or when saving
+
+\cite{samsungZirconia}
+%
+
+\lstinputlisting[
+  float=h,
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={56-61},
+  firstnumber=57,
+  caption={Setting up the Zirconia license check call},
+  label={codeSnippet:zirconiaSetup}
+]{data/samsung.java}
+
+\lstinputlisting[
+  float=h,
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={85-101},
+  firstnumber=57,
+  caption={Zirconia license check callback},
+  label={codeSnippet:zirconiaCallback}
+]{data/samsung.java}

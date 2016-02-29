@@ -1,0 +1,54 @@
+now that the lvl is modified and the environment is enforced, the next goal is to prevent pirates from even starting to analyze the applcation, automatischer crack nicht mehr funktioniert, muster, andere mechanismen erkennt er nicht
+ref kapitel 1 macht gg lucky sicher, aber crakcbar wenn manuell, was kann man dagegen tun
+
+does not help when standard version is implemented, that is why this is working best with customized implementation of LVL
+
+man versucht sich vor neuen angriffen zu schützen indem man reengineering zeitintensiver macht
+developer can make hackers task immensely more difficult to the point where it is not worth the time\cite{developersSecuring}
+reengineering cannot be vermiede\cite{munteanLicense}
+best is to apply technqiues to make it as hard a possible\cite{munteanLicense}
+obfuscate to make it difficult tor everse engineer\cite{developersSecuring}
+it is not possible to 100 percent evade reengineering, but adding different methods to hide from plain sight of reengineering tools\cite{munteanLicense}
+
+Reverse engineering and code protection are processes which are opposing each other, neither classified as good nor bad\cite{kovachevaMaster}
+"good" developer: malware detection and IP protection\cite{kovachevaMaster}
+"bad" developer: analysis for attack and analysis resistance\cite{kovachevaMaster}
+\cite{kovachevaMaster}
+
+Application developers are interested in protecting their applications. Protection in this case means that it should be hard to understand
+what an application is doing and how its functionalities are implemented.
+if they do not see what the app is doing, they cannot fix it
+
+Reverse engineering of Android applications is much easier than on other architectures -see- high level but simple bytecode language
+Obfuscation techniques protect intellectual property of software/license verification
+possible code obfuscation methods on the Android platform focus on obfuscating Dalvik bytecode -see- limitations of current reverse engineering tools
+Without proper naming of classes and methods it is much harder to reverse engineer an application, because in most cases the identifier enables an analyst to directly guess the purpose of the particular part. The program code itself will not be changed heavily, so the obfuscation by this tool is very limited.
+
+
+SOLUTION
+obfuscators are applied when compiling
+definition obfuscation, was macht es, wie funktioniert es, wer hat es erfunden, wie wendet man es an\newline
+first line of defense, can be applied without much extra workload\cite{developersSecuring}
+will not protect against autoamted attack, does not alter flow of program\cite{developersSecuring}
+makes more difficult for attackers to write initial attack\cite{developersSecuring}
+removing symbols that would quickly reveal original structure\cite{developersSecuring}
+
+(a) at source code and (b) bytecode level, Most existing open-source and commercial tools work on source code level\cite{kovachevaMaster}
+Java code is architecture-independent giving freedom to design generic code transformations. Lowering the obfuscation level to bytecode requires the algorithms applied to be tuned accordingly to the underlying architecture\cite{kovachevaMaster}
+
+number of commercial and open-source obfuscators available for Java that will work with Android\cite{developersSecuring}
+a few dex obfuscators exist, with different approaches\cite{andevconDalvikART}
+proguard or sdex, rename methods, field and calss names -- break down string operations so as to chop hard coded strings or encrypt -- can use dynamic class loading (dexloader classes to impede static analysis)\cite{andevconDalvikART}
+can add dead code and dummy lopps (minor impact of performance)\cite{andevconDalvikART}
+can also use goto into other onstructions\cite{andevconDalvikART}
+
+
+be aware that certain methods cannot be obfuscated, even with advanced tools\cite{developersSecuring}
+reliance on android framework apis (remain unobfuscated)
+e.g. on create cannot be renamed since it needs to remain callable by the android system\cite{developersSecuring}
+avoid putting license check code in these methods since attackers will be looking for the lvl there\cite{developersSecuring}
+
+
+does not protect directly versus luckypatcher but in case of an custom implementation it makes the process of analyzing the app more time consuming
+in theory a good addition to the security of the application, but against luckypatcher directly since it works on java level in order to disguise the way the code works
+it enforces increased initial effort an attacker has to spend in order to understand the code and thus reduces the likelihood of attackers to being motivated to crack the application

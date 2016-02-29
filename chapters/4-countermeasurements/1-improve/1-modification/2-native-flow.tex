@@ -1,40 +1,44 @@
-\subsubsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
+\subsection{Native Implementation of \gls{lvl}} \label{subsection:counter-modifications-dynamic}
 
-luckypatcher automatic patching works on dex, why not remove the key license verification code from from java and move it to native code, this way luckypatcher has to create a custom recipe for your application since custom recipes can inject .so files
-
-native code can be executed using two thinks, android ndk a toolset to implement native-code languages, e.g. c or c++, and  \gls{jni} used by java to execute native code
-
-native code is difficult to be decompiled, can be checked for tampering when loading it
-
-%EVAL
-elemente für app in native initiieren, damit man nicht einfach deaktivieren kann
-
-nur gut wenn wichtige funktionen der app enthält
-
-
-
-%eval
-at first a good protection against luckypatcher since the automatic patching discussed in chapter~\ref{chapter:luckypatcherg} does not work for the app any longer, but not protection of luckypatcher because it supports custom patching
-when analyzing luckypatcher there can be .so files be found which are used to replace existing ones in order to patch fucntionality
-
-so now attackers have to invest time in analyzing the native code
-difficult since in opposite of byte-code, it does not contain a lot of meta-data such as local variable types, class strcture, which allows bytecode to be compiled on multiple devices, this information is discarded in native code in the compilation process
-
-there are two scenarios:
-first scenario
-developers creates his own version of native implementation
-unique, but developer has to create it itself, knowledge and skill is needed and time has to be spent
-if done right, safe and advantage that the attacker has to invest time for this app itself in order to analyze the native code, then find a method to break it and repack it and make it available as custom patch, scares off attackers since a lot of work, have to evaluate whether app is worth it
-so if the resources are available, best method
-
-second scenario
-one public native library provided by google
-but when all use the same library, it is a vulnerable point because it makes sense for attackers to analyze the library and try to come up with a patch, since one solution can be applied to many different apps which would justify a lot of work as described in the first scenario, this patch then can then be applied as a custom patch via luckypatcher
-
-for this reason when coming up with a native implementation for a library for all, two things should be included
-- users do not custimize library so a heavy obfuscation should be applied
-- since there is only one version, make it as hard to reengineer and predictable as possible, use encryption and dynamic code generation, automatically custimize itself for every app and ever time its loaded
-this needs a lot of research, work and if it would be so simple, big companies like google would already have come up with it, but in this direction it has to go when stick around for a long time with dex and its vulnerabilities
+\gls{luckypatcherg}'s automatic patching modes, as described in chapter~\ref{chapter:luckypatcher}, target the application's \gls{dex} file.
+Since Android supports the \gls{ndk}, it is possible to implement parts of the application using native code.
+\newline
+Usually the \gls{ndk} targets CPU intensive taks, such as game engines and signal processing, but it can be used for any other purposes as well.
+Google suggests using it only if necessary since it increases the complexity of an application \cite{androidNdk}.
+In case of the \gls{lvl} this is a desired side effect.
+Native code, in opposite of byte-code, does not contain a lot of meta-data, such as local variable types, class structure.
+It information discared when the code is compiled and thus makes it harder to understand the code.
+\newline
+There are two scenarios for creating a native implementation of the \gls{lvl}.
+\begin{itemize}
+  \item The developers creates his own version of native implementation
+  \item Google provides a native implementation of the \gls{lvl}
+\end{itemize}
+When the developer creates his own implementation of the \gls{lvl} it is unique.
+In order to achieve this, the developer needs the required knowledge and skill as well as time to implement it.
+In case the implementation is done in a  right way, it offers uniqueness and safety.
+The attackers have to invest time to analyse the native code of the license verification and the implementation into the application itself.
+Only after reverse engineering the native code, they can start with searching for a way to break the license verification mechanism, repack the native code and make it available as a custom patch for \gls{luckypatcherg}.
+This scares off attackers since the circumventing of the license verification requires a lot of knowledge and time.
+As long as the attacker is evaluating the workload with the gain of cracking the application, it is considered a safe method, implied the developer has enough available resouces. \cite{munteanLicense}
+\newline
+Instead of providing Java code, Google could provide a native version of the \gls{lvl}.
+In the beginnign, it would be harder to find vulnerabilities than it was with the Java version.
+It would take some time for the attackers to crack the library but it would be justified for the attackers since the library would be implemented into all Play Store applications.
+Now this license verification would face the same probles as Amazon's or Samsung's libraries since one custom patch applied by \gls{luckypatcherg} would be able to crack all applications.
+For this reason, the implementation should include two essential features.
+\begin{itemize}
+\item heavy obfuscation should be applied since users do not need to understand the library
+\item encryption, dynamic code generation and automatic customization everytime it is loaded, since having only one version is an easy target
+\end{itemize}
+In addition to making the license check native, parts of the application should be moved into the native code.
+This protects against attacks where the call of the license verification library is skipped.
+\newline
+In general, the proposal is simple, but the implementation is much harder.
+Until now, no big companie has come up with such approach.
+This indicates that still a lot of reseach and work has to be done to implement this solution.
+At least, first steps in this direction have be made by addressing dex and its vulnerabilities. \cite{munteanLicense}
+\newline
+As long as the the license verification library is implemented in native code, the automatic patching modes of \gls{luckypatcherg} do not work.
+Attackers have to analyse the native code and create a custom patch for the application.
+These custom patches can already be found for some applications in form of modified \textit{.so} files.

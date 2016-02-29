@@ -1,0 +1,25 @@
+\subsubsection{Lucky Patcher} \label{subsection:counter-improve-tampering-luckypatcher}
+
+
+WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
+
+As the example shows, this check is not only a solution to prevent the application from running when Lucky Patcher is present on the device. The screening can be expanded to check for the installation of any other application, like black market apps or other cracking tools as the code example Code Example~\ref{codeSnippet:tamperingLucky} shows.
+
+can applied for all cracking tools as long as the package name is known, package names may change to avoid this
+
+\url{http://android-onex.blogspot.de/2015/07/anti-piracy-software-activated-solved.html}\newline
+
+\lstinputlisting[
+  float=h,
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={9-32},
+  firstnumber=9,
+  caption={Example code for checking whether Lucky Patcher is installed},
+  label={codeSnippet:tamperingLucky}
+]{data/4-countermeasurements/1-tampering/3-lucky.java}

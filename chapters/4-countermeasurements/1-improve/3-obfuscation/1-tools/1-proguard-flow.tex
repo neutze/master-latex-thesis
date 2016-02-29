@@ -1,0 +1,64 @@
+\subsubsection{Proguard} \label{subsection:counter-obfuscation-solution-proguard}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
+%
+A Java source code obfuscator. ProGuard performs variable identifiers name scrambling for packages, classes, methods and fields. It shrinks the code size by automatically removing unused classes, detects and highlights dead code, but leaves the developer to remove it manually
+\cite{kovachevaMaster}
+%
+
+%
+open source tool
+shrinks, optimizes and obfuscates java .class files
+result
+- smaller apk files (use rprofits download and less space)
+- obfuscated code, especially layout obfuscation, harder to reverse engineer
+- small performance increase due to optimizations
+integrated into android build system, thus easy use
+default turned off
+minifyEnabled true
+proguardFiles getDefaultProguardFile('proguard-android.txt), 'proguard-rules.pro'
+
+additional step in build process, right after java compiler compiled to class files, Proguard performs transformation on files
+removes unused classes, fields, methods and attributes which got past javac
+optimization step methods are inlined, unused parameters removed, classes and methods made private/static/final as possible
+obfuscation step name and identifiers mangled, data obfuscation is performed, packages flattened, methods renamed to same name and overloading differentiates them
+
+after proguard is finished dx converts to classes.dex
+
+\cite{munteanLicense}
+%
+
+
+
+
+%
+identifier mangling, ProGuard uses a similar approach. It uses minimal
+lexical-sorted strings like {a, b, c, ..., aa, ab}, original identifiers give information about interesting parts of a program, Reverse engineering methods can use these information to reduce the amount of program code that has to be manually analyzed -see-  neutralizing these information
+in order to prevent this reduction,  remove any meta information about the behavior, meaningless string representation holdin respect to consistence means identifiers for the same object must be replaced by the same string,
+advantage of minimizing the memory usage, e development process in step ”a” or step ”b” \newline
+string obfuscationa, string must be available at runtime because a user cannot
+understand an obfuscated or encrypted message dialog, information is context, other is information itself, e.g. key, url, injective function and deobfuscation stub which constructs original at runtime so no behaviour is changed, does not make understanding harder since only stub is added but reduces usable meta information\newline
+\cite{schulzLabCourse}
+%
+
+
+ProGuard is an open source tool which is also integrated in the Android SDK, free
+ProGuard is basically a Java obfuscator but can also be used for Android applications because they are usually written in Java // feature set includes identifier obfuscation for packages, classes, methods, and fields
+was kann er noch? -see- Besides these protection mechanisms it can also
+identify and highlight dead code and removed in a second, manual step
+Unused classes removed automatically by ProGuard.
+easy integration\cite{proguard}
+
+optimizes, shrinks, (barely) obfuscates, , reduces size, faster
+removes unnecessary/unused code
+merges identical code blocks
+performs optimiztations
+removes debug information
+renames objects
+restructures code
+removes linenumbers, stacktrace annoying
+\cite{proguardLicensing}
+\cite{strazzareLevel0}

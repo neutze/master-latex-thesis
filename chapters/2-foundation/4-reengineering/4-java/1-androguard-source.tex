@@ -1,0 +1,83 @@
+\subsubsection{androguard} \label{subsection:forensics-tools-java-androguard}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+%
+An analysis and disassembling tool processing both Dalvik bytecode and optimized bytecode\newline
+DAD which is also the fastest due to the fact it is a native decompiler, WAS ist dad? ERKLÄREN? .dex files was performed with DAD, the default disassembler
+in the Androguard analysis tool, largest successful disassembly
+ratio\newline
+underlying algorithm is recursive traversal\newline
+Androguard has a large online open-source database with known malware patterns\newline
+\cite{kovachevaMaster}
+%
+
+
+
+
+\url{https://github.com/androguard/androguard}
+
+powerful analysis tool is Androguard\newline
+includes a disassembler and other analysis methods to gather information about a program\newline
+Androguard helps an analyst to get a good overview by providing call graphs and an interactive interface -see- habe nur CLI benutzt\newline
+The integrated disassembler also uses the recursive traversal approach for finding instructions like baksmali, see section 2.2\newline
+one most popular analysis toolkits for Android applications due to its big code base and offered analysis methods -see- quelle, warum\newline
+
+
+RESULT OUTPUT
+code Listing
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+%python ~/Google\ Drive/master_thesis/sourcefiles/_tools/androdd.py -i ~/Google\ Drive/master_thesis/sourcefiles/lvl/auto/apk-fkupdater/fkupdater.apk -o ~/workspace/master-code-applications/code-fkupdater-lvl-auto/java/androguard/
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={7-9},
+  firstnumber=1,
+  caption={Script to decompile to Java using androguard},
+  label={codeSnippet:androguardScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  language=Java,
+  frame=single,
+  caption={Java code example using androguard},
+  label={codeSnippet:androguardOutput}
+]
+private void doCheck()
+{
+    this.mCheckLicenseButton.setEnabled(0);
+    this.setProgressBarIndeterminateVisibility(1);
+    this.mStatusText.setText(2131099673);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+    return;
+}
+\end{lstlisting}
+EXAMPLE BESCHREIBEN code snippet~\ref{codeSnippet:androguardOutput}
+
+
+jedes tool:\newline
+woher kommt es?\newline
+wozu wurde es erfunden?\newline
+wer hat es erfunden? quelle\newline
+blabla von der seite\newline
+wozu benutze ich es?\newline
+welches abstrahierungslevel\newline
+beispiel\newline
+additional features?\newline
+WARUM SCHAUEN WIR ES UNS AN?\newline
+wo findet man es?\newline
+welches level?\newline
+vorteil\newline
+blabla aus dem internet\newline

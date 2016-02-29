@@ -1,32 +1,9 @@
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-warum ändern?
-suggested by google
-
-
-boy ()
-
-applied when programming
-
-%
-way to challenge luckypatcher is to actively go against luckypatcher patterns, achieved by modifying the library, see patterns to fight in patterns chapter
-can be done in different ways, modify library or go native
-
-many developers do not customize the library, easy to hack
-\cite{munteanLicense}
-%
-
-%
-goal is to make lvl implementation unique, difficult to trace when decompiled
-counter intuitive from traditional software engineering viewpoint, removing functions, hiding license check routines in unrelated code
-
-Google is aware of easy hacking and thus suggests modifcations to the lvl
-modify license verification library in way that it is difficult for attacker to modify the disassembled code and get a positive check as result
-advantages, harder to crack, cannot be used as blueprint and no blueprint can be used on it, unique
-\cite{developersSecuring}
-%
-ERWÄHNEN DASS IM PROGRAMMIER PROZESS  IMPLEMENTIERT\newline
-
-this should be the first solution anyone does in order to actively fight luckypatcher
-automatischen angriff aushebenln indem andere struktur
+Attacking with \gls{luckypatcherg} is often successful since many developers do not customize the \gls{lvl}.
+One reason for this is developers using the library only against casual piracy.
+It prevents users, who try to copy \gls{apk}s directly from one device to another, from using the application.
+Another reason is that they do not know where exactly to fortify the library and thus they do not want to spend additional work.
+This thesis presents two approaches for making attacks on the library less succesful.
+\newline
+The first approach is to actively go against \gls{luckypatcherg}'s patterns by modifying the identified parts of code .
+\newline
+The second approach is to implement the \gls{lvl} with native code which cannot be targeted by patterns. \cite{developersSecuring} \cite{munteanLicense}

@@ -1,15 +1,9 @@
 \subsubsection{Sideload} \label{subsection:counter-improve-tampering-sideload}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-WAS IST DIE IDEE DAHINTER? WIE FUNKTIONIERT ES? WIE WIRD ES IMPLEMENTIERT? WIE SIEHT DAS RESULT AUS (EXAMPLE BILD)\newline
-
-\url{http://stackoverflow.com/questions/10809438/how-to-know-an-application-is-installed-from-google-play-or-side-}
-
-enforces installation from trusted sources to ensure original application
-developer should only distribute his software on in the app registered soruces, else app wont work an user is annoyed
-copied apps do not work now
+\gls{apk}s can be cracked on a different device, transfered and installed on the device, so checking for root and Lucky Patcher are not enough.
+Usually, applications, which include a license verification library, are purchased from the corresponding store.
+Installing them from other sources is a sign for piracy.
+For this reason, developers should enforce installation from trusted sources to ensure that the application is purchased as well.
+\newline
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -21,6 +15,10 @@ copied apps do not work now
   language=Java,
   linerange={15-40},
   firstnumber=15,
-  caption={Partial Listing},
+  caption={Example code for checking the origin of the installation},
   label={codeSnippet:tamperingSideload}
 ]{data/4-countermeasurements/1-tampering/4-sideload.java}
+The code snippet~\ref{codeSnippet:tamperingSideload} shows the implementation for the stores in scope for the thesis.
+Additional stores can and should be added in case the developer decides to offer the application in another store.
+\newline
+This feature should be implemented with caution since Google notes that this method relies on the \textit{getInstallerPackageName} which is neither documented nor supported and only works by accident \cite{developersSecuring}.

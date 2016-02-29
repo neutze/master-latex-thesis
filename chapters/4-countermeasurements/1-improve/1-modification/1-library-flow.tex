@@ -1,59 +1,46 @@
-\subsection{Modify the Library} \label{subsection:counter-modifications-library}
-
-
-Lucky Patcher automatic patching is reliant on applying patterns
-patching application code is both most wide-spread and most powerful to interfer app logic\cite{munteanLicense}
-way to challenge luckypatcher is to actively go against luckypatcher patterns, achieved by modifying the library \cite{munteanLicense}
-this should be the first solution anyone does in order to actively fight luckypatcher
-modify to make difficult to apply common cracking techniques. \cite{developersSecuring}
-google suggests additional improvements \cite{developersSecuring}
-modify the \gls{lvl} in way that it is difficult for attack to modify the disassembled code and get a positive license check as result \cite{developersSecuring}
-provides protection against two different types of attack \cite{developersSecuring}
-- protects against attackers trying to crack app \cite{developersSecuring}
-- prevents attacks designed to target other applications (and stock lvl distribution itself) from being ported over to own app \cite{developersSecuring}
-goal is to increase the complexity of applcaition's bytecode and implementation unqiue \cite{developersSecuring}
-
-three areas to focus on \cite{developersSecuring}
-core licensing library logic \cite{developersSecuring}
-entry/exit points of licensing library \cite{developersSecuring}
-invocation and handling of response \cite{developersSecuring}
-
-core modifications, primary focus on two calsses which comprise the core of \gls{lvl} - licensechecker and licensevalidator (see lucky patcher attacks them primary as well) \cite{developersSecuring}
-modify these two classes as much as possible, in any way possible, while retaining the original function of the application \cite{developersSecuring}
-some ideas, encouraged to be creative \cite{developersSecuring}
--replace switch with if, additional code between blocks => pattern nennen \cite{developersSecuring}
-- xor or ahsh functions to derive new values for any constants used and check for those instead CODE ISOMORPH ÄNDERN\cite{developersSecuring}
--remove unused code, e.g. implement the policy cerification online with the rest of licensevalidator \cite{developersSecuring}
--move entirety of \gls{lvl} to own application's package \cite{developersSecuring}
--spawn additional threads to handle different parts of license validation \cite{developersSecuring}
--replace functions with inline code where possible => pattern nennen (moveresult) \cite{developersSecuring}
-- difficult to trace when decompiled, counter intuitive from traditional software engineering viewpoint, removing functions, hiding license check routines in unrelated code\cite{developersSecuring}
-- radical solution: kill app at first invalid response code, makes it impossible to alter follow up methods on reponse code, bad user experience
-
-=> make lvl implementation unique, that is why examples are bad and own approach good \cite{developersSecuring}
-
-for entry/exit \cite{developersSecuring}
-attack by attacker write counterfeit version of LVL thaht implements same interface, add additional arguments to licensechecker constructor and allow() and dontAllow() in LicenseCheckerCallback => pattern nennen \cite{developersSecuring}
-
-attack calls in application to lvl, e.g. dialog and attacker comments out, add different activity that handles informing of invalid license and temrinates original activity, add finish() to other parts of code which is executed in case original one gets disabled, or set a timer that will cause termination after timeout \cite{developersSecuring}
-postpone licensecheck sine attackers expect instant license check during launch \cite{developersSecuring}
-
-This can only be applied to the \gls{lvl} since it is the only library where the source code is accessible for the developer.
-For Amazon and Samsung, this propose can be useful as well, but it is difficult to ship a high number of unique implementations as well as injecting it over the web interface cannot be done without additional work.
-amazon/samsung not much to do since from company that is why the following not simple methods target lvl\cite{munteanLicense}
-
-thoughts on identified patterns
-pattern 1,7 attacks the switch, the idea is to replace the switch with an if statemant or shuffle the cases
-move it to a function and implement it somewhere as well thus the code might no longer be together with the rest of the class and the attacker has to specific search for it
-
-pattern 2,4,5 skips using the outcome of a function and setting it always to true, this is a bit harder since it is already in a function, fitting bulk code around can make it harder to detect, especially for patterns, also checking inside again can help with detecting whether the fucntion is tampered, in case it is tampered the app can be killed or elements could not be loaded
-
-pattern 3 modifies the return values on initialization, idea to alter the return value, changing it to e.g. int, thus all the ifs have to be modified to fit the needs
-
-
-this tries to directly encounter luckypatcher by fighting the way the patterns work
-
-it is easy to apply and there are no limits of variants how it can be modified
-luckypatcher has to look at each app individual and in the worst case create custom patches
-this are all improvements which do net ensure no 100\% safety, at least can protect against autopatching, additional work for attackers
-but as it seams developers do not like to modify as seen in analysis since all apps are somehow patchable
+\subsubsection{Modify the Library} \label{subsection:counter-modifications-library}
+\gls{luckypatcherg}'s patching is reliant on applying its patterns.
+Patching application code is the most effective and most common attack to modify the license logic.
+Going actively against these patterns should always be the first step to challenge \gls{luckypatcherg}.
+This can only be applied to the \gls{lvl} since it is the only library where the source code can be accessed by the developer.
+For Amazon and Samsung, this propose can be useful as well but it is more difficult to implement since these two libraries have only one entry and exit point in the applicaiton.
+\newline
+Modifying and improving the \gls{lvl} does not only protect from patterns.
+Increasing complexity of the application's bytecode makes it unqiue and harder to reengineer. \cite{developersSecuring}
+\newline
+There are three areas the developer should focus on when modifying the \gls{lvl}  \cite{developersSecuring}.
+\begin{enumerate}
+\item core licensing library logic
+\item entry andexit points of the licensing library
+\item invocation and handling of the response
+\end{enumerate}
+The core logic two main classes are the \textit{LicenseChecker} and the \textit{LicenseValidator}.
+As seen in section~\ref{section:luckypatcher-patterns}, these two classes are the primary target of \gls{luckypatcherg} and thus should be altered as hard as possible while retaining the original function.
+The isomorphic code changes can include:
+\begin{itemize}
+\item replace the switch statement with an if statement and add additional code between the if statements (see pattern N1)
+\item use functions to create new values for constants used and check for these values in the further proceeding (see pattern N3)
+\item remove unused code, e.g. implement the \textit{LicenseValidator} online (see patterns N2, N4, N5, N6)
+\item move the \gls{lvl} package into the application (see patterns N2,N7)
+\item use additional threads to handle different steps in the license verification process
+\item implement functions inline where possible (see patterns N2, N5, N7)
+\item make actions in the decompiled code difficult to trace by removing functions or moving routines to unrelated code, counter intuitive from traditional software engineering
+\item implement radical response handling, e.g. kill the application as soon as a invalid response can be detected, results in bad user experience
+\end{itemize}
+These are only examples and creativity is welcome since the resulting implementation should be unique. \cite{developersSecuring}
+\newline
+The entry and exit points can be attacked by creating a counterfeit version of the \gls{lvl} that implements same interface.
+An unquite implementation provides resilience against this attack.
+It can be achieved by adding additional arguments to the \textit{LicenseChecker} constructor as well as the \textit{allow()} and the \textit{dontAllow()} methods. \cite{developersSecuring}
+\newline
+Attackers do not only target the \gls{lvl} but the handling of the result in the application as well.
+This can be prevented by handling the mechanism in a separate activity.
+In the original activity \textit{finish()} will be called and the attacker will be stuck in the new activity.
+This prevents from scenarios where the attacker voids methods which would prevent further proceeding.
+In addition the license verification can be postponed to a later point in time since attackers are expecting it on the the applications launch. \cite{developersSecuring}
+\newline
+These modifications are easy to apply and make the implementation unique.
+The unlimited ways to implement make it hard to attack automatically.
+This does not ensure total protection against \gls{luckypatcherg} since every application is patchable in some way.
+A determined attacker, willing to invest a lot of time and work in disassembling and reassembling, can eventually hack the implementation.
+The aim of the developer is to make the work of the attacker as hard as possible to the point where the profit is not worth the time. \cite{developersSecuring}

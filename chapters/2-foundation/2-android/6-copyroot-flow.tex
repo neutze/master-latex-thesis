@@ -1,69 +1,28 @@
-App ist installiert was nun?
-
-Zum Scope
-Wie wurde licensing durchgesetzt?
-
-Rooting
-Was ist rooting?
-Wie funktioniert es? exploits
-Was erlaubt es?
-Vorteile
-beispiele
-Probleme die es mit sich bringt
-
-
-
-
-%START TEXT INPUT
-%
-%unauthorized usage of an app through copy protection
-%apk was installed in a location on the phone /data/app user could not access
-%useless if single user can get apk and redistribute, gained by root
-%successful as long as root was not easy for everyone -see- samsung rooting odin QUELLE, did not have too big impact as today, oneclick root kits QUELLE, standard for nexus
-
-%on install app's classes.dex is copies an optimized version (odex) to dalvik cache /data/dalvik-cache/, for faster startup (contains system apps and frameworks as well)
-%odex erklären, byteswapping, structure realigning and memory-mapping
-%when app is started optimized code from dalvik cache will be executed instead of apk
-%\cite{munteanLicense}
-%
-%
-%what is rooting?
-%getting root/rooting process of modifying the operation system that shipped with your device to grant you complete control over it
-%overcome limitations by carriers/manufacturers, extend system functionality, upgrade to custom flavor
-%root comes from Linux OS world, most privileges user on the system is called root
-%rooting fairly simple, many videos and tutorials, sometimes oneclick tools
-%not aproved by manufacturers or carriers, can not prevent usually exploits vulnerability in operating system code or device drivers, allows the "hacker" to upload a special program called su to the phone
-%su provides root access to programs that request it
-%usually superuser permissions bundled with root
-%approve/deny requests from applications who want root
-%replaces convetional password with approve/deny, not secure but much more convenient
-%rooting the phone modifies the software thus can brick the phone, meaning the phone is nonfunctional since the software is broken
-
-%benefits
-%access all files on the phone, even those which the normal user has no permissions for, modify add delete
-
-%examples
-%modify system variables, e.g. to utilize the notification led on motorola devices which is usually disabled
-%install custom roms
-%\cite{androidpoliceRoot}
-%
-
-%
-%android's content protection are invalid when rooted
-%any application's data directory (or code) can be read
-%DRm can be bypassed
-%coupled with dex decompilkation big problem, app can be decompiled, modded and repackaged
-%\cite{levinAndevcon}
-%
-
-%a list of root vulnerabilities can be found on \url{http://androidvulnerabilities.org/all}
-
-%old system was to put APK in folder user cannot access, unless you root
-%weak, almost non-existant, anyone who can copy it can distribute it
-
-
-%It replaces the old system copy protection system, wherein your APKs would be put in a folder that you can't access. Unless you root. Oh, and anyone who can copy that APK off can then give it to someone else to put on their device, too. It was so weak, it was almost non-existant.\newline
-%kann mit root umgangen werden
-
-
-%Im original vom Markt direkt rutnergeladen und dann wird sie an den ort geschoben und kann nicht mehr zugegriffen werden -see- rechte etc, QUELLE\newline
+\subsection{Root and Copy Protection} \label{subsection:android-copyroot}
+"Rooting" or "getting root" is the process of modifying the operation system's software that shipped with a device in order to get complete control over it.
+The name "root" comes from the Linux \gls{os} world where the user \textit{root} has all privileges.
+This allows to overcome limitations set by carriers and manufacturers, like removing pre-installed applications, extending system functionality or to upgrading to custom versions of Android.
+Manufacturers and carriers do not approve of rooting but they cannot prevent it as the access is usually gained by exploiting vulnerabilities in the system's code or device drivers.
+Vulnerabilities are quite common.
+As seen in figure~\ref{fig:root}, there have been over 30 vulnerabilities to gain root rights since Febraury 2015.
+Details and references of these can be accessed on pages like Common Vulnerabilities and Exposures or similar \cite{cveAndroidPriv} \cite{cveDetails}.
+\newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{data/timeline.png}
+    \caption{Timeline of market share of evolving Android versions and dates of root exploits recorded \cite{distributionRoot} \cite{androidVulnerabilities} \cite{cveAndroidPriv} \cite{cveDetails}}
+    \label{fig:root}
+\end{figure}
+Today it is easy to exploit these vulnerabilities and gain root rights, even for non-techies.
+There are videos and tutorials available on the internet, even tools to automate the process, like Wugfresh's Rootkits \cite{wugfresh}.
+Rooting is usually bundled with installing a program called \textit{su} which manages the root access for applications requesting it.
+Rooting a phone is not without risk since installing bad files can result in the so called \textit{bricking} meaning the phone is nonfunctional since the software cannot be executed anymore. \cite{androidpoliceRoot}
+\newline
+Now that the application is installed and ready to run.
+Copy protection is applied to prevent unauthorized usage of the app.
+The downloaded \gls{apk}, purchased from an application store, is moved to \textit{/mnt/app-asec/package.name} on the phone.
+The user has no rights to access the cotaining \gls{apk} and thus cannot copy it.
+This mechanism has a major flaw, as copy protection is circumvented when a single user can get hold of the application and redistribute it, e.g. by using root.
+This was effective in the early days of Android when rooting was not easily facilitated.
+\newline
+Since rooting circumvents the copy protection, it is declared as deprecated and new ways of protecting applications have to been invented.

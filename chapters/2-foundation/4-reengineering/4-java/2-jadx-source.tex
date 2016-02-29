@@ -1,0 +1,59 @@
+\subsubsection{JADX} \label{subsection:forensics-tools-java-jadx}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+RESULT OUTPUT
+code Listing
+
+SCRIPT (LISTING BENUTZEN UND RICHTIGE APP)
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={28-30},
+  firstnumber=1,
+  caption={Script to decompile to Java using JADX},
+  label={codeSnippet:jadxScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  language=Java,
+  captionpos=b,
+  frame=single,
+  caption={Java code example using JADX},
+  label={codeSnippet:jadxOutput}
+]
+private void doCheck() {
+    this.mCheckLicenseButton.setEnabled(false);
+    setProgressBarIndeterminateVisibility(true);
+    this.mStatusText.setText(C0213R.string.checking_license);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+}
+\end{lstlisting}
+EXAMPLE BESCHREIBEN code snippet~\ref{codeSnippet:jadxOutput}
+
+
+https://github.com/skylot/jadx
+
+
+jedes tool:\newline
+woher kommt es?\newline
+wozu wurde es erfunden?\newline
+wer hat es erfunden? quelle\newline
+blabla von der seite\newline
+wozu benutze ich es?\newline
+welches abstrahierungslevel\newline
+beispiel\newline
+additional features?\newline
+WARUM SCHAUEN WIR ES UNS AN?\newline
+wo findet man es?\newline
+welches level?\newline
+vorteil\newline
+blabla aus dem internet\newline

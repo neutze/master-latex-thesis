@@ -1,38 +1,30 @@
-Was ersetzt sie? Wann eingeführt?
-Warum wurde sie eingesetzt?
-Allgemeines zur Einführung
-Eckdaten (jit, native)
-Downsides Dalvik?
+\subsection{Android Runtime} \label{subsection:android-art}
+<!-- benötigt noch feinschliff ->\newline\newline
+In Android version 4.4 \textit{Kitkat} Google introduced \gls{art} which was optional and only available as a preview through the developer options.
+Like \gls{dvm}, \gls{art} executes the \gls{dex} fileformat und \gls{dex} bytecode specification \cite{androidArt}.
+With the release of verison 5.0 \textit{Lollipop} \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
+Throughout the Android 6.0 \textit{Marshmallow} previews it was constantly evolving and sometimes breaking with older versions at the cost of almost no documentation.
+\newline
+\gls{art} is designed to address the shortcomings of the \gls{dvm}.
+Maintaining an \gls{vm} is expensive, having an interpreter and \gls{jit} is not as efficient of native code and doing \gls{jit} each time the application is executed is wasteful.
+This and maintaining background threads require significantly more CPU cycles which can be directly translated to slower performance and increased battery usage.
+In addition the Dalvik \gls{gc} frequently causes hands and jitters and \gls{dvm} is only supporting 32bit.
+With \gls{art} Android is following iOS into the 64bit world but this is not the only advantage over the \gls{dvm}.
+Improvements in the \gls{vm} make the maintenance less expensive and the compilation is changed from \gls{jit} to \gls{aot} as well as the overhead cycles have been reduced.
+The \gls{gc} is also non-blocking now and and can run parallel in fore- and background.
+\newline
+The mean idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{llvm} code.
+Each of the types has its purpose and advantage.
+The native code offers an improved execution performance while the \gls{llvm} code offers protability.
+In practice the preference is to compile to native since adding \gls{llvm} bitcode adds another layer of complexity to \gls{art}.
+\newline
+Different from \gls{dvm} is the fact that \gls{art} uses not one but two file formats.
+Similar to the zygote of \gls{dvm}, \gls{art} offers an image of pre-initialized classes and and related object at run time, the boot.art file.
+It is mapped to the memory upon zygote startup to provide improved application starting time \cite{developersConfigureArt}.
+The second file format is
 
-Art fileformat
-aufbau
-wie wird das fileformat erstellt
-Verscheidenen Systeme
-dex in oat
-
-Vorteile dalvik
-
-Zustand jetzt
 
 
-
-
-%
-art introduced in kitkat 4.4, available only through developer options,  declared to be preview release, own risk, very little documentation, if any
-in lollipop art becomes runtime of choice, supersedes dalvik, breaks compatibility with older dex, as well as itself, very little docu
-constantly evolving  through marshmallow, major caveat : oftenc changes in between android minro versions, android optimizes apps everytime you update\newline
-art was designed to address shortcomings of dalvik:
-virutal machine maintenance is expensie, interpreter/jit simply arent efficient as native code, doing jit all over again on every execution is wasteful, maintenance threads require significantly mroe cpu cycles, cpu cycles translate to slower performance and shorter battery life
-dalvik garbage collection frequently causes hangs/jitter
-virtual machine architecture is 32bit only, android i sfollowing ios into 64bit space\newline
-advantages of art
-art mvoes compilation from \gls{jit} to \gls{aot}
-VM maintenance not as expensive as dalvik, art compiles to native \gls{aot} not \gls{jit}, less maintenance threads and overhead cycles than dalvik
-garbage collection parallizable (foreground/background), non blocking -see- QUELLE
-64bit bus some issues still exist -see- quelle\newline
-main idea of art/aot:
-actually compilation can be to one of two types, quick (native code), portable(llvm code)
-in practice preference is to compile to naitve code, portable implies another layer of IR (LLVM's bit code)\newline
 Art itself:
 art uses not one but two file formats
 art - only one file, boot.art, in /syste/framework/architecture (arm,...)
@@ -43,27 +35,6 @@ contains pre-initilited classes, objects and support structures\newline
 ART/OAT files are created (on device or on host) by dex2oat
 art still optimizes dex but uses dex2oat instead, odex files are actually oat files (elf shared objects WAS IST DAS), actual dex payload buried deep inside
 command line saved inside oat file's key value store
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/oat.png}
-    \caption{oat}
-    \label{fig:oat}
-\end{figure}
-\newline
-
-art file format
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/art.png}
-    \caption{art}
-    \label{fig:art}
-\end{figure}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/art2.png}
-    \caption{art2}
-    \label{fig:art2}
-\end{figure}
 
 art code generation
 oat method headers point to offset of native code
@@ -110,8 +81,7 @@ isn't android all dalvik now?
 art is runtime but application compile into dex, art is compiled on device during install, art binaries has dalvik embedded, some methods may be left as dex to be interpreted, dalvik is much easier to debug than art --see- evaluation \newline
 \cite{andevconDalvikART}
 %
-
-+
+When creating odex on art it is directly put into art file
 
 %ART runtime threads
 %the daemon threads are started in java by libcore, daemon class wraps thread class and provides singleton INSTANCE, do same basic operations as they did in "classic" dalvikVM, libart subree in libcore implementation slightly different

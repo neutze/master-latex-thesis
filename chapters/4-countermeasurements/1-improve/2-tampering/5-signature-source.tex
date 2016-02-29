@@ -1,0 +1,44 @@
+\subsubsection{Signature} \label{subsection:counter-improve-tampering-signature}
+
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
+\url{http://developer.android.com/tools/publishing/app-signing.html}\newline
+\url{http://forum.xda-developers.com/showthread.php?t=2279813&page=5}\newline
+
+CONTRA\newline
+
+
+The unfortunate side effect of Lucky Patcher working with the Dalvik cache of an app is that the app developers cannot detect manipulations to their code through fingerprinting because the original code, located in “/data/app/<appName.apk>/classes.dex”, remains untouched. While it is allowed for an app to access its own optimized bytecode from the cache [32], computing a checksum or a hash for it doesn’t make sense because many optimizations to this bytecode are device-specific and cannot be known in advance.
+\cite{munteanLicense}
+!!!überprüfen!!!
+
+
+\subsubsection{Local Signature Check} \label{subsection:counter-tampering-signature-local}
+%START TEXT INPUT
+This is my real text! Rest might be copied or not be checked!
+%START TEXT INPUT
+
+
+
+local check whether signature is allowed\newline
+once in code \newline
+save to use signature in code?\newline
+
+\lstinputlisting[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=Java,
+  linerange={51-74},
+  firstnumber=51,
+  caption={Partial Listing},
+  label={codeSnippet:tamperingSignature}
+]{data/4-countermeasurements/1-tampering/5-signature.java}
+
+---> was passiert wenn odex?

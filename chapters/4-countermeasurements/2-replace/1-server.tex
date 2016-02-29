@@ -1,7 +1,9 @@
 \subsection{Content Server} \label{section:counter-replace-server}
-Moving the license verification to a server is one approach to fight the shortcomings of the license verification libraries.
-By introducing service managed accounts, the user has to login on a server in order retrieve content for the application.
-Since the applications logic is on a server, Lucky Patcher is not able to manipulate the verification logic.
+An approach to fight the shortcomings of the license verification libraries is moving it to a server.
+The introduction service managed accounts, users have to login on a server in order to verify their license.
+Instead of returning the result of the verification, the server delivers the content of the application.
+Since the license verification is no longer inside the application \gls{.dex} file, Lucky Patcher is not able to manipulate it anymore.
+\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/contentServer.png}
@@ -11,8 +13,9 @@ Since the applications logic is on a server, Lucky Patcher is not able to manipu
 The implementation can be described with the application Spotify \cite{spotify} as a reference.
 Instead of using local license verification, the user has to enter his credentials, which are send to the server.
 In case the credentials are valid, the user is logged into the application.
-The content, music in this case, is no longer on the phone itself, but streamed from the server.
-In case a attackers circumvent the user verification, they are facing a second layer of security since it is not possible to access the content on the server without a verified account.
+The content, the music in this case, is no longer on the phone itself, but streamed from the server.
+The attacker still can circumvent the user verification inside the application, but they are facing a second layer of security afterwards.
+Since the content is on the server and the user has to be authorized there, no content is available inside the application.
 Thus attacks on the applications are not simple anymore.
 \newline
 This would be a perfect solution if there were not downsides as well.

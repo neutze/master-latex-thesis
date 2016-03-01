@@ -31,7 +31,16 @@ erklärung command \cite{diffUbuntu}
 -u: Set the default 3 lines of unified context; This generates useful time stamps and context.\newline
 -r: Recursively compare any subdirectories found; Allows the patch to update subdirectories.\newline
 script erklären\newline
-
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N1 pattern},
+  label={codeSnippet:n1DiffDex}
+]{data/n1.diff}
 RESULT code snippet~\ref{codeSnippet:n1DiffDex}
 
 wo findet man es?\newline

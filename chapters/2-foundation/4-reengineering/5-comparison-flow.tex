@@ -1,18 +1,10 @@
 \subsection{Detect Code Manipulations} \label{subsection:forensics-tools-diff}
 \begin{itemize}
-    \item test
+  \item diff is used to compare reengineered source code of original app with cracked app, short diff description
+  \item find differences and identify pattern, understand how luckypatcher is working, compare on each abstraction level
+  \item explain script
+  \item explain result
 \end{itemize}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-vergleich gibts guten einblick was geändert wurde und wie es auf dem gegebenem lvl funtkioniert\newline
-
-vergleich von original und modifizierten code einer apk auf einer code ebene\newline
-needed to see differences before and after cracking tool\newline
-
-diff is used\newline
 
 \lstinputlisting[
   float=h,
@@ -26,18 +18,13 @@ diff is used\newline
   caption={Script to compare the original and manipulated \gls{apk} to see the modifications in the different presentations},
   label={codeSnippet:diffScript}
 ]{data/diffScript.sh}
-
-
-erklärung command \cite{diffUbuntu}
--N: Treat absent files as empty; Allows the patch create and remove files.\newline
--a: Treat all files as text; Allows the patch update non-text (aka: binary) files.\newline
--u: Set the default 3 lines of unified context; This generates useful time stamps and context.\newline
--r: Recursively compare any subdirectories found; Allows the patch to update subdirectories.\newline
-script erklären\newline
-
-RESULT code snippet~\ref{codeSnippet:n1DiffDex}
-
-wo findet man es?\newline
-welches level?\newline
-vorteil\newline
-blabla aus dem internet\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N1 pattern},
+  label={codeSnippet:n1DiffDex}
+]{data/n1.diff}

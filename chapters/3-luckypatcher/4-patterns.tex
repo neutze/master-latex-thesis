@@ -342,12 +342,11 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
 \subsubsection{Amazon Market Patch}
 Amazon does not have different pattern.
 Since the Kiwi library is injected by Amazon and cannot be customized by the developer, only one pattern is necessary.
-
- as well as the structure of the library result in the fact that only on pattern is sufficient to circumvent the license verification mechanism
-The patch attacks two classes, one contained \textit{com/amazon/android/licensing/b.java} and the other one contained in \textit{com/amazon/android/o/d.java}.
-Since the injected library is obfuscated no meaningful names can be presented.
+The pattern is applied twice.
+The first class tageted is \textit{com/amazon/android/licensing/b.java} while the second class is \textit{com/amazon/android/o/d.java}.
+Since the injected library is obfuscated, no meaningful names for the methods can be presented.
 \newline
-The Amazon pattern works similar to the \gls{lvl}'s pattern N4 and replaces the if equal zero opcode (\textit{38}) with the opcode to check for not equality (\textit{33}).
+The Amazon pattern works similar to the \gls{lvl}'s pattern N4 and replaces (\textit{38}) with (\textit{33}).
 \newline
 \lstinputlisting[
   style=diff,
@@ -359,8 +358,8 @@ The Amazon pattern works similar to the \gls{lvl}'s pattern N4 and replaces the 
   caption={Diff on Dex level for Amazon patch},
   label={codeSnippet:amazonDiffDex}
 ]{data/amazon.diff}
-In the original code, \textit{if-eqz} just takes the second 0 of the input (\textit{00}) for the comparison thus the first argument if the input is 0.
-As the result of patching, the first argument is taken as well and thus v0 is compared to v0.
+The pattern replaces \textit{if-eqz} with \textit{if-ne} as seen in code snippet~\ref{codeSnippet:n4DiffSmali}.
+Since \textit{if-eqz} evaluates only the one argument \textit{v0} and thus the second argument is \textit{0} in the \gls{dex} file, \textit{if-ne}, which requires two arguments, interprets this as \textit{v0}.
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -371,10 +370,10 @@ As the result of patching, the first argument is taken as well and thus v0 is co
   caption={Diff on Smali level for Amazon patch},
   label={codeSnippet:amazonDiffSmali}
 ]{data/amazon.diff}
-The Java code makes it easier to reflect of the changes byattack.
-Instead of checking in the \textit{b.java} class, whether the response code is \textit{LICENSED}, this statement of the if clause is always false and thus never called.
+The Java code makes it easier to identify the functional changes of the attack
+Since the if evaluation is always wrong inside the \textit{b.java} class, the case when the response code is not \textit{LICENSED} is never called.
 The same canges are applied to the \text{d.java} class but since the variables are obfuscated it is hard to describe the exact behavior.
-After analysing the dependencies, it can be said that the function checks whether the given string is not null and then return true.
+After analysing the dependencies, it can be said that the function checks whether the given string is not null and then returns true.
 After patching, the result is always true since the null check is always false as in \textit{b.java}.
 \newline
 \lstinputlisting[
@@ -388,19 +387,20 @@ After patching, the result is always true since the null check is always false a
   label={codeSnippet:amazonDiffJava}
 ]{data/amazon.diff}
 
-The analysis of the Amazon patch indicates that there are less patterns needed since there is no altered behavior to expect.
+The analysis of the Amazon patch indicates that there are less patterns needed since there is no modified code to expect.
 Patches are applied to manipulate the checks in case the response code is null or different than \textit{LICENSED}.
 The result is forced to be always true and thus the license verification always passes.
 
 
 \subsubsection{Samsung Market Patch}
-The Zirconia library of Samsung cannot be modified similar to Amazon and thus requires only one patch as well.
+Similiar to the Amazon's Kiwi library, Samsung's Zirconia library cannot be modified as well.
+Thus cracking the library only requires one patch as well.
 The patch is applied on the \textit{LicenseRetriever} and \textit{Zirconia} class in the \textit{com/samsung/zirconia} package.
 Unlike Amazon's Kiwi \gls{drm}, Zirconia is not obfuscated and thus better to understand.
 The Samsung patch uses two patterns, called S1 and S2 in order to distinguish between them.
 While S1 is applied on both classes, S2 is applied twice but only on the \textit{Zirconia} class.
 \newline
-While Pattern S1 replaces the arguments of the \textit{if-eq} \textit{d6} with \textit{00} and instead of comparing two different variables, the variable is compared to itself, pattern S2 modifies the dex code to initialize a variable (\textit{12}) instead of assigning it the result of a method {\textit{0a}}.
+While Pattern S1 replaces \textit{d6} with \textit{00}, pattern S2 uses \textit{12} instead of \textit{0a}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -412,7 +412,8 @@ While Pattern S1 replaces the arguments of the \textit{if-eq} \textit{d6} with \
   caption={Diff on Dex level for Samsung patch},
   label={codeSnippet:samsungDiffDex}
 ]{data/samsung.diff}
-The result of this attack for pattern S1 is that the \textit{if-eq} statement is always true while the result of methods affected by pattern S2 is always true.
+The result of pattern S1 is that the \textit{if-eq} statement is always true since the code now evaluates the equality of \textit{v0} compared with itself, which is always \textit{true}.
+Pattern S2 has the effect that \textit{v0} does not contain the result of a method but always \textit{true}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -425,11 +426,12 @@ The result of this attack for pattern S1 is that the \textit{if-eq} statement is
   label={codeSnippet:samsungDiffSmali}
 ]{data/samsung.diff}
 The abstract presentation of the result in Java code in code snippet~\ref{codeSnippet:samsungDiffJava} shows the resulting behavior.
-This means for \textit{LicenseRetriever}'s \textit{receiveResponse} method, that instead of checking the repsone code for validity, it is always accepted as valid.
-In the method \textit{checkerThreadWorker} of the \textit{Zirconia} class, the patch voids the check of the response code with the locally stored one.
-These behavior is the result of pattern S1.
-Pattern S2 works on the methods \textit{checkLicenseFile} and \textit{checkLicenseFilePhase2} of the \textit{Zirconia} class.
-Instead to return the result of the license check, true always is returned.
+
+Instead of checking the reponse code for validity, \textit{LicenseRetriever}'s \textit{receiveResponse()} method always skips the check, when pattern S1 is applied, and executes as if it was valid.
+In the method \textit{checkerThreadWorker()} of the \textit{Zirconia} class, pattern S1 voids the check of the response code and always continues as if the resposne code was valid.
+
+Pattern S2 works on the methods \textit{checkLicenseFile()} and \textit{checkLicenseFilePhase2()} of the \textit{Zirconia} class.
+Instead of returning the result of the license check, the methods return always \textit{true}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -441,4 +443,4 @@ Instead to return the result of the license check, true always is returned.
   caption={Diff on Java level for Samsung patch (abstracted)},
   label={codeSnippet:samsungDiffJava}
 ]{data/samsung.diff}
-The result of applying these patches is that not only the checks of the license files are voided and return always true but also reponse codes other than \textit{LICENSED} accepted since they are neither compared to the accepted one nor to the stored one, whcih should be valid.
+The result of applying the patch is that not only the license file checks are voided and return true as default, but also reponse codes other than \textit{LICENSED} are accepted since they are neither checked for validity nor to the stored one, which should be valid since it was stored.

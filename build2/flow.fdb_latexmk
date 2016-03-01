@@ -1,7 +1,0 @@
-# Fdb version 3
-["pdflatex"] 0 "flow.tex" "build2/flow.pdf" "flow" 0
-  "build2/flow.aux" 1456821332 8 a94a2480d3289e625eea47cd1b285758 ""
-  "flow.tex" 0 -1 0 ""
-  (generated)
-  "build2/flow.log"
-  "build2/flow.pdf"

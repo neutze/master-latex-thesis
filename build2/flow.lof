@@ -1,0 +1,65 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {american}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Different ways to generate revenue\relax }}{7}{figure.caption.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Android's architecture \cite {androidStack}\relax }}{9}{figure.caption.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces \gls {apk} build process \cite {andevconDalvikART}\relax }}{10}{figure.caption.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces \gls {jar} to \gls {apk} transformation \cite {googleDalvik}\relax }}{11}{figure.caption.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces \gls {dex} file format \cite {andevconDalvikART}\relax }}{12}{figure.caption.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Installing an \gls {apk} on a device \cite {googleIOArt}\relax }}{13}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces artarch\relax }}{13}{figure.caption.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Timeline of market share of evolving Android versions and dates of root exploits recorded \cite {distributionRoot} \cite {androidVulnerabilities} \cite {cveAndroidPriv} \cite {cveDetails}\relax }}{33}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Google's implementation of license checking \cite {developersLicensingOverview}\relax }}{34}{figure.caption.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Amazon library structure in decompiled application\relax }}{34}{figure.caption.21}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Developer preferences in the Amazon developer console \cite {amazonDeveloper}\relax }}{34}{figure.caption.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Abstraction of the current license verification mechanism. The library is represented by (1)\relax }}{35}{figure.caption.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Java .class and .dex can be transformed bidirectional \cite {andevconDalvikART}\relax }}{35}{figure.caption.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces Overview of build and reverse engineering of an \gls {apk} \cite {andevconDalvikART}\relax }}{36}{figure.caption.32}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Left to right: Features offered LuckyPatcher, modes to crack license verification and the result after patching\relax }}{38}{figure.caption.44}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Abstraction of the current attack on the license verification mechanism\relax }}{53}{figure.caption.58}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Introduction of additional tests to check environment and integrity of the application\relax }}{59}{figure.caption.60}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Abstraction of an application and a content server\relax }}{68}{figure.caption.75}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Encrypted resources which have to be decrypted on startup\relax }}{70}{figure.caption.78}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.4}{\ignorespaces Encrypted actions to obfuscate dependencies\relax }}{70}{figure.caption.80}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.5}{\ignorespaces Encrypted communication with a server\relax }}{71}{figure.caption.82}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.6}{\ignorespaces Retrieving the key after successful identification from the server and store it local on device\relax }}{72}{figure.caption.85}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.7}{\ignorespaces Decryption by using a smartcard\relax }}{73}{figure.caption.87}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 4.8}{\ignorespaces tee \cite {armTz}\relax }}{75}{figure.caption.88}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

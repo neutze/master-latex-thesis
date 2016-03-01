@@ -1,10 +1,75 @@
 \subsection{Java Analysis} \label{subsection:forensics-tools-java}
-\input{chapters/2-foundation/4-reengineering/4-java/0-intro-flow}
-\input{chapters/2-foundation/4-reengineering/4-java/1-androguard-flow}
-\input{chapters/2-foundation/4-reengineering/4-java/2-jadx-flow}
-
-
 \begin{itemize}
-    \item test
+    \item java code is best level to understand changes since it is programmed on this level
+    \item reversed build process, on compilation some information is always lost, cannot be recovered when decompiling
+    \item dex uses different patterns since for mobile usage, java cannot interpret them so good, this is the reason to use two different decompilers
+    \item androguard, script, outcome
+    \item jadx, script outcome
+    \item difference between those two
 \end{itemize}
-Es gibt noch mehr tools, wurden angewendet und verglichen, aber diese waren die haupttools und haben ihren dienst erfüllt
+
+\subsubsection{Androguard}
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={7-9},
+  firstnumber=1,
+  caption={Script to decompile to Java using androguard},
+  label={codeSnippet:androguardScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  captionpos=b,
+  language=Java,
+  frame=single,
+  caption={Java code example using androguard},
+  label={codeSnippet:androguardOutput}
+]
+private void doCheck()
+{
+    this.mCheckLicenseButton.setEnabled(0);
+    this.setProgressBarIndeterminateVisibility(1);
+    this.mStatusText.setText(2131099673);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+    return;
+}
+\end{lstlisting}
+
+\subsubsection{JADX}
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={28-30},
+  firstnumber=1,
+  caption={Script to decompile to Java using JADX},
+  label={codeSnippet:jadxScript}
+]{data/extractScript.sh}
+
+\begin{lstlisting}[
+  float=h,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  language=Java,
+  captionpos=b,
+  frame=single,
+  caption={Java code example using JADX},
+  label={codeSnippet:jadxOutput}
+]
+private void doCheck() {
+    this.mCheckLicenseButton.setEnabled(false);
+    setProgressBarIndeterminateVisibility(true);
+    this.mStatusText.setText(C0213R.string.checking_license);
+    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
+}
+\end{lstlisting}

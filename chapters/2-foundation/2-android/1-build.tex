@@ -17,7 +17,7 @@ Each \gls{classg} files contains the Java bytecode of the corresponding Java cla
 As an additional option in the compilation a Java obfuscator can be applied (see section~\ref{subsection:counter-improve-obfuscation}).
 In the end of the Java compilation process, the .class files are packed into a \gls{jar} file.
 \newline
-Since Android is using the \gls{dvm}, which will be described in section~\ref{subsection:android-dalvik}, the Java bytecode has to be converted to Dalvik bytecode.
+Since Android was using the \gls{dvm} and now \gls{art}, which will be described in section~\ref{subsection:android-dalvik} and section~\ref{subsection:android-art}, the Java bytecode has to be converted to Dalvik bytecode.
 The Android \gls{sdk} includes the tool dx which is used to convert \gls{classg} files to a single classes.dex file containing all classes.
 The \gls{dex} format will be described in \ref{subsection:android-dex}.
 Additional obfuscation techniques can be applied to protect the \gls{dex} code \cite{dexProtector}.

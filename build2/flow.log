@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.15)  29 FEB 2016 19:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.9.15)  1 MAR 2016 09:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1582,27 +1582,12 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `flow.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'flow.bbl' found.
+Package biblatex Info: ... file 'flow.bbl' not found.
 
-(build2/flow.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                subsection:foundation-android-package
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                usbOtg
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+No file flow.bbl.
 Package biblatex Info: Reference section=0 on input line 12.
 Package biblatex Info: Reference segment=0 on input line 12.
- (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count342
 \scratchdimen=\dimen218
@@ -1673,29 +1658,27 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
 LaTeX Info: Redefining \nameref on input line 12.
-
-(build2/flow.out) (build2/flow.out)
 \@outlinefile=\write8
 \openout8 = `flow.out'.
 
 Package nag Info: Command \hc@caption not defined, skipping amendment on input 
 line 12.
- (./pages/cover.tex
-<logos/tum.pdf, id=239, 53.2389pt x 28.4262pt>
+
+(./pages/cover.tex <logos/tum.pdf, id=7, 53.2389pt x 28.4262pt>
 File: logos/tum.pdf Graphic file (type pdf)
- <use logos/tum.pdf>
+
+<use logos/tum.pdf>
 Package pdftex.def Info: logos/tum.pdf used on input line 13.
 (pdftex.def)             Requested size: 113.81102pt x 60.77242pt.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 25.
-
-<logos/faculty.pdf, id=240, 34.14326pt x 36.98859pt>
+ <logos/faculty.pdf, id=8, 34.14326pt x 36.98859pt>
 File: logos/faculty.pdf Graphic file (type pdf)
- <use logos/faculty.pdf>
+
+<use logos/faculty.pdf>
 Package pdftex.def Info: logos/faculty.pdf used on input line 33.
 (pdftex.def)             Requested size: 56.9055pt x 61.65216pt.
-
-[1
+ [1
 
 \openout5 = `flow.ist'.
 
@@ -1704,7 +1687,8 @@ Package pdftex.def Info: logos/faculty.pdf used on input line 33.
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logos
 /tum.pdf> <./logos/faculty.pdf>]) (./pages/title.tex
 File: logos/tum.pdf Graphic file (type pdf)
- <use logos/tum.pdf>
+
+<use logos/tum.pdf>
 Package pdftex.def Info: logos/tum.pdf used on input line 5.
 (pdftex.def)             Requested size: 113.81102pt x 60.77242pt.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
@@ -1780,44 +1764,26 @@ Package microtype Info: Loading generic settings for font family
 ]
 Package tocbasic Info: character protrusion at toc deactivated on input line 24
 .
-
-(build2/flow.toc [6
-
-
-])
 \tf@toc=\write9
 \openout9 = `flow.toc'.
 
-LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <10.95> not available
-(Font)              Font shape `T1/pplx/m/it' tried instead on input line 29.
- [7] (build2/flow.gls
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 6.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic settings for font family
-(microtype)             `cmss' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-) (build2/flow.acrpdfTeX warning (ext4): destination with the same identifier (
-name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1 ...ysection[\glossarytoctitle]{\glossarytitle}
-                                                  \glossarypreamble [1
-
-
-
+ [6
 
 
 ]
-[2
+No file flow.gls.
+No file flow.acr.
+(./chapters/1-introduction-flow.tex
+LaTeX Font Info:    Font shape `T1/pplx/m/sl' in size <10.95> not available
+(Font)              Font shape `T1/pplx/m/it' tried instead on input line 1.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1 \chapter
+            {Introduction} \label{chapter:introduction} [1
 
-
-
-
-]) (./chapters/1-introduction-flow.tex [3]
+]
 Chapter 1.
 (./chapters/1-introduction/1-licensing-flow.tex
 LaTeX Font Info:    Try loading font information for OMS+pplx on input line 3.
@@ -1829,15 +1795,11 @@ LaTeX Font Warning: Font shape `OMS/pplx/m/n' undefined
 (Font)              for symbol `textbullet' on input line 3.
 
 ) (./chapters/1-introduction/2-motivation-flow.tex)
-(./chapters/1-introduction/3-related-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 12--1
-
- []
-
-[4
+(./chapters/1-introduction/3-related-flow.tex [2
 
 
-])) (./chapters/2-foundation-flow.tex [5]
+]))
+(./chapters/2-foundation-flow.tex [3]
 Chapter 2.
 (./chapters/2-foundation/0-intro-flow.tex)
 (./chapters/2-foundation/1-piracy-flow.tex
@@ -1846,7 +1808,7 @@ Chapter 2.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 1.
 
-<data/revenue.jpg, id=444, 4015.0pt x 2276.505pt>
+<data/revenue.jpg, id=94, 4015.0pt x 2276.505pt>
 File: data/revenue.jpg Graphic file (type jpg)
  <use data/revenue.jpg>
 Package pdftex.def Info: data/revenue.jpg used on input line 14.
@@ -1855,850 +1817,9 @@ Package pdftex.def Info: data/revenue.jpg used on input line 14.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./chapters/2-foundation/1-piracy/2-users-flow.tex)
-(./chapters/2-foundation/1-piracy/3-android-flow.tex [6
-
-
-] [7 <./data/revenue.jpg>])) (./chapters/2-foundation/2-android-flow.tex
-(./chapters/2-foundation/2-android/0-intro-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 4--11
-
- []
-
-<data/stack.png, id=469, 962.59625pt x 621.32124pt>
-File: data/stack.png Graphic file (type png)
- <use data/stack.png>
-Package pdftex.def Info: data/stack.png used on input line 14.
-(pdftex.def)             Requested size: 334.60571pt x 215.96776pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./chapters/2-foundation/2-android/1-build-flow.tex [8]
-<data/apk.png, id=496, 1044.90375pt x 985.6825pt>
-File: data/apk.png Graphic file (type png)
- <use data/apk.png>
-Package pdftex.def Info: data/apk.png used on input line 13.
-(pdftex.def)             Requested size: 334.60571pt x 315.6354pt.
- [9 <./data/stack.png>] [10 <./data/apk.png>]
-<data/apkfolder.png, id=530, 419.5675pt x 333.245pt>
-File: data/apkfolder.png Graphic file (type png)
- <use data/apkfolder.png>
-Package pdftex.def Info: data/apkfolder.png used on input line 42.
-(pdftex.def)             Requested size: 209.12778pt x 166.09833pt.
-)
-(./chapters/2-foundation/2-android/2-dex-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 34--1
-
- []
-
-<data/java.png, id=544, 745.78625pt x 713.66624pt>
-File: data/java.png Graphic file (type png)
- <use data/java.png>
-Package pdftex.def Info: data/java.png used on input line 17.
-(pdftex.def)             Requested size: 209.12778pt x 200.1192pt.
- [11 <./data/apkfolder.png>] <data/dex.png, id=570, 1291.82625pt x 575.14874pt>
-File: data/dex.png Graphic file (type png)
-
-<use data/dex.png>
-Package pdftex.def Info: data/dex.png used on input line 33.
-(pdftex.def)             Requested size: 334.60571pt x 148.97348pt.
-) (./chapters/2-foundation/2-android/3-install-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 22--1
-
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12 <./data/java.png>] <data/install.png, id=604, 825.0825pt x 467.7475pt>
-File: data/install.png Graphic file (type png)
-
-<use data/install.png>
-Package pdftex.def Info: data/install.png used on input line 24.
-(pdftex.def)             Requested size: 334.60571pt x 189.69363pt.
- [13 <./data/dex.png>])
-(./chapters/2-foundation/2-android/4-dalvik-flow.tex)
-(./chapters/2-foundation/2-android/5-art-flow.tex [14 <./data/install.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 5--28
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 42--48
-
- []
-
-<data/artarch.png, id=676, 801.99625pt x 286.06876pt>
-File: data/artarch.png Graphic file (type png)
- <use data/artarch.png>
-Package pdftex.def Info: data/artarch.png used on input line 53.
-(pdftex.def)             Requested size: 334.60571pt x 119.3536pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<data/oatdex.png, id=677, 833.1125pt x 439.6425pt>
-File: data/oatdex.png Graphic file (type png)
- <use data/oatdex.png>
-Package pdftex.def Info: data/oatdex.png used on input line 62.
-(pdftex.def)             Requested size: 334.60571pt x 176.57838pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--81
-
- []
-
-[16]) (./chapters/2-foundation/2-android/6-copyroot-flow.tex
-<data/timeline.png, id=688, 962.59625pt x 847.165pt>
-File: data/timeline.png Graphic file (type png)
- <use data/timeline.png>
-Package pdftex.def Info: data/timeline.png used on input line 15.
-(pdftex.def)             Requested size: 418.25555pt x 368.08722pt.
-))
-(./chapters/2-foundation/3-license-flow.tex [17 <./data/artarch.png> <./data/oa
-tdex.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./chapters/2-foundation/3-license/0-intro-flow.tex [18])
-(./chapters/2-foundation/3-license/1-google-flow.tex
-(./chapters/2-foundation/3-license/1-google/0-intro-flow.tex)
-(./chapters/2-foundation/3-license/1-google/1-function-flow.tex
-<data/lvl.png, id=729, 446.66875pt x 368.37625pt>
-File: data/lvl.png Graphic file (type png)
- <use data/lvl.png>
-Package pdftex.def Info: data/lvl.png used on input line 20.
-(pdftex.def)             Requested size: 334.60571pt x 275.9611pt.
-
-
-LaTeX Warning: Citation 'developersLicensingAdding ' on page 19 undefined on in
-put line 42.
-
-) (./chapters/2-foundation/3-license/1-google/2-implementation-flow.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[19] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/09/06 1.5e listings language file
-)
-(./data/permission.xml) (./data/lvl.java
-LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <9> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 57.
-) (./data/lvl.java)))
-(./chapters/2-foundation/3-license/2-amazon-flow.tex [20]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./chapters/2-foundation/3-license/2-amazon/0-intro-flow.tex
-<data/amazonFolder.png, id=778, 274.02374pt x 169.63374pt>
-File: data/amazonFolder.png Graphic file (type png)
-
-<use data/amazonFolder.png>
-Package pdftex.def Info: data/amazonFolder.png used on input line 11.
-(pdftex.def)             Requested size: 125.47794pt x 77.67784pt.
-)
-(./chapters/2-foundation/3-license/2-amazon/1-function-flow.tex [21]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[22] <data/amazon.png, id=833, 941.5175pt x 184.69pt>
-File: data/amazon.png Graphic file (type png)
- <use data/amazon.png>
-Package pdftex.def Info: data/amazon.png used on input line 18.
-(pdftex.def)             Requested size: 418.25555pt x 82.04446pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./chapters/2-foundation/3-license/2-amazon/2-implementation-flow.tex
-(./data/amazon.java)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)) (./chapters/2-foundation/3-license/3-samsung-flow.tex
-Overfull \hbox (64.45839pt too wide) in paragraph at lines 35--1
-[]\T1/pplx/m/n/10.95 (-20) rename on-Cre-ate to on-Cre-ateMain-Ac-tiv-ity start
- in new on-Cre-ate, also start Kiwi.onCreate((Activity)
- []
-
-(./chapters/2-foundation/3-license/3-samsung/0-intro-flow.tex)
-(./chapters/2-foundation/3-license/3-samsung/1-function-flow.tex [23])
-(./chapters/2-foundation/3-license/3-samsung/2-implementation-flow.tex
-Overfull \hbox (14.93814pt too wide) in paragraph at lines 5--7
-\T1/pplx/m/n/10.95 (-20) of li-cense server zir-co-nia needs de-vice info and i
-n-ter-net con-nec-tion (READ_PHONE_STATE
- []
-
-[24] (./data/samsung.java) (./data/samsung.java)))
-(./chapters/2-foundation/3-license/4-abstraction-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 1--5
-
- []
-
-<data/verificationNow.png, id=866, 601.24625pt x 297.11pt>
-File: data/verificationNow.png Graphic file (type png)
-
-<use data/verificationNow.png>
-Package pdftex.def Info: data/verificationNow.png used on input line 9.
-(pdftex.def)             Requested size: 334.60571pt x 165.35135pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[25])) (./chapters/2-foundation/4-reengineering-flow.tex
-(./chapters/2-foundation/4-reengineering/0-intro-flow.tex [26]
-<data/re1.png, id=906, 847.165pt x 195.73125pt>
-File: data/re1.png Graphic file (type png)
- <use data/re1.png>
-Package pdftex.def Info: data/re1.png used on input line 28.
-(pdftex.def)             Requested size: 334.60571pt x 77.3085pt.
-
-<data/re2.png, id=909, 1044.90375pt x 985.6825pt>
-File: data/re2.png Graphic file (type png)
- <use data/re2.png>
-Package pdftex.def Info: data/re2.png used on input line 35.
-(pdftex.def)             Requested size: 334.60571pt x 315.6354pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 50--57
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
-
- []
-
-[27]) (./chapters/2-foundation/4-reengineering/1-apk-flow.tex
-Overfull \hbox (7.05643pt too wide) in paragraph at lines 83--1
-[]$\T1/cmtt/m/n/10.95 https : / / net . cs . uni-[]bonn . de / fileadmin / user
- _ upload / plohmann / 2012-[]Schulz-[]Code _
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--1
-
- []
-
-
-Overfull \hbox (92.011pt too wide) in paragraph at lines 14--17
-[]\T1/pplx/m/n/10.95 (-20) then find app which should be trans-fered to com-put
-er and use adb pull /data/app/me.neutze.licensetest-
- []
-
-) (./chapters/2-foundation/4-reengineering/2-dex-flow.tex [28]
-(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/09/06 1.5e listings language file
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/09/06 1.5e listings language file
-)
-(./data/extractScript.sh))
-(./chapters/2-foundation/4-reengineering/3-smali-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 65--1
-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 18--22
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--31
-
- []
-
-[30]
-Overfull \hbox (9.6188pt too wide) in paragraph at lines 32--34
-[]\T1/pplx/m/n/10.95 (-20) RESULT OUT-PUT: selbe wie dex, je-doch hu-man read-a
-ble, no big dif-fer-ence, nebeneinan-
- []
-
-(./data/extractScript.sh))
-(./chapters/2-foundation/4-reengineering/4-java-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 76--1
-
- []
-
-[31] (./chapters/2-foundation/4-reengineering/4-java/0-intro-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 8--12
-
- []
-
-) (./chapters/2-foundation/4-reengineering/4-java/1-androguard-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 13--1
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--26
-
- []
-
-[32] (./data/extractScript.sh))
-(./chapters/2-foundation/4-reengineering/4-java/2-jadx-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 70--1
-
- []
-
-[33] (./data/extractScript.sh))
-Underfull \hbox (badness 10000) in paragraph at lines 46--5
-
- []
-
-[34]) (./chapters/2-foundation/4-reengineering/5-comparison-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
-(./data/diffScript.sh)
-Underfull \hbox (badness 10000) in paragraph at lines 31--37
-
- []
-
-[35]))) (./chapters/3-luckypatcher-flow.tex
-Underfull \hbox (badness 10000) in paragraph at lines 40--1
-
- []
-
-[36] [37 <./data/timeline.png>] [38 <./data/lvl.png> <./data/amazonFolder.png> 
-<./data/amazon.png>] [39 <./data/verificationNow.png> <./data/re1.png>]
-[40 <./data/re2.png>]
-Chapter 3.
-(./chapters/3-luckypatcher/0-intro-flow.tex)
-(./chapters/3-luckypatcher/1-introduction-flow.tex
-<data/luckyFeatures.png, id=1107, 1084.05pt x 1927.2pt>
-File: data/luckyFeatures.png Graphic file (type png)
-
-<use data/luckyFeatures.png>
-Package pdftex.def Info: data/luckyFeatures.png used on input line 24.
-(pdftex.def)             Requested size: 125.47794pt x 223.04956pt.
-
-<data/luckyModi.png, id=1108, 1084.05pt x 1927.2pt>
-File: data/luckyModi.png Graphic file (type png)
- <use data/luckyModi.png>
-Package pdftex.def Info: data/luckyModi.png used on input line 25.
-(pdftex.def)             Requested size: 125.47794pt x 223.04956pt.
-
-<data/luckyPatching.png, id=1109, 1084.05pt x 1927.2pt>
-File: data/luckyPatching.png Graphic file (type png)
-
-<use data/luckyPatching.png>
-Package pdftex.def Info: data/luckyPatching.png used on input line 26.
-(pdftex.def)             Requested size: 125.47794pt x 223.04956pt.
- [41
-
-
-] [42 <./data/luckyFeatures.png> <./data/luckyModi.png> <./data/luckyPatching.p
-ng>])
-(./chapters/3-luckypatcher/2-analysis-flow.tex
-Overfull \hbox (74.98837pt too wide) in paragraph at lines 15--20
-\T1/pplx/m/it/10.95 (-20) pli-ca-tion code \T1/pplx/m/n/10.95 (-20) it-self can
- be found in the pack-age \T1/pplx/m/it/10.95 (-20) com.android.vending.billing
-.InAppBillingService.LACK\T1/pplx/m/n/10.95 (-20) .
- []
-
-) (./chapters/3-luckypatcher/3-proceeding-flow.tex
-Overfull \hbox (32.6522pt too wide) in paragraph at lines 26--1
-\T1/pplx/m/n/10.95 (-20) or mod-els. The \T1/pplx/m/it/10.95 (-20) patchAc-tiv-
-ity \T1/pplx/m/n/10.95 (-20) in the pack-age \T1/pplx/m/it/10.95 (-20) com.andr
-oid.vending.billing.InAppBillingService.LACK
- []
-
-[43] [44]) (./chapters/3-luckypatcher/4-patterns-flow.tex [45]
-Underfull \hbox (badness 10000) in paragraph at lines 25--40
-
- []
-
-(./data/n1.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 41--54
-
- []
-
-[46] (./data/n1.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 55--69
-
- []
-
-(./data/n1.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 73--80
-
- []
-
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 81--93
-
- []
-
-(./data/n2.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 94--106
-
- []
-
-(./data/n2.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 108--121
-
- []
-
-(./data/n2.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 126--146
-
- []
-
-[48] (./data/n3.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 147--159
-
- []
-
-(./data/n3.diff) (./data/n3.diff)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 181--195
-
- []
-
-[49] (./data/n4.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 196--208
-
- []
-
-(./data/n4.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 209--221
-
- []
-
-(./data/n4.diff [50])
-Underfull \hbox (badness 10000) in paragraph at lines 228--243
-
- []
-
-(./data/n5.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 249--265
-
- []
-
-(./data/n6.diff) [51]
-Underfull \hbox (badness 10000) in paragraph at lines 266--282
-
- []
-
-(./data/n6.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 284--297
-
- []
-
-(./data/n6.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 302--319
-
- []
-
-[52] (./data/n2.diff) [53]
-Underfull \hbox (badness 10000) in paragraph at lines 349--364
-
- []
-
-(./data/amazon.diff) (./data/amazon.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 377--392
-
- []
-
-(./data/amazon.diff) [54]
-Underfull \hbox (badness 10000) in paragraph at lines 400--417
-
- []
-
-(./data/samsung.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 418--429
-
- []
-
-(./data/samsung.diff)
-Underfull \hbox (badness 10000) in paragraph at lines 430--446
-
- []
-
-[55] (./data/samsung.diff)) (./chapters/3-luckypatcher/5-learnings-flow.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[56] <data/verificationNowAttack.png, id=1432, 601.24625pt x 296.10625pt>
-File: data/verificationNowAttack.png Graphic file (type png)
-
-<use data/verificationNowAttack.png>
-Package pdftex.def Info: data/verificationNowAttack.png used on input line 51.
-(pdftex.def)             Requested size: 334.60571pt x 164.79272pt.
- [57 <./data/verificationNowAttack.png>]))
-(./chapters/4-countermeasurements-flow.tex [58]
-Chapter 4.
-(./chapters/4-countermeasurements/0-intro-flow.tex)
-(./chapters/4-countermeasurements/1-improve-flow.tex
-(./chapters/4-countermeasurements/1-improve/0-intro-flow.tex)
-(./chapters/4-countermeasurements/1-improve/1-modification-flow.tex
-(./chapters/4-countermeasurements/1-improve/1-modification/0-intro.tex)
-(./chapters/4-countermeasurements/1-improve/1-modification/1-library.tex
-[59
-
-
-]) (./chapters/4-countermeasurements/1-improve/1-modification/2-native.tex
-[60]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gls' on input line 1.
-
-[61])) (./chapters/4-countermeasurements/1-improve/2-tampering-flow.tex
-(./chapters/4-countermeasurements/1-improve/2-tampering/0-intro.tex
-<data/verificationNowAdditional.png, id=1514, 601.24625pt x 297.11pt>
-File: data/verificationNowAdditional.png Graphic file (type png)
-
-<use data/verificationNowAdditional.png>
-Package pdftex.def Info: data/verificationNowAdditional.png used on input line 
-8.
-(pdftex.def)             Requested size: 334.60571pt x 165.35135pt.
-)
-(./chapters/4-countermeasurements/1-improve/2-tampering/1-debuggable.tex
-[62] (./data/4-countermeasurements/1-tampering/1-debuggable.java))
-(./chapters/4-countermeasurements/1-improve/2-tampering/2-root.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[63 <./data/verificationNowAdditional.png>]
-(./data/4-countermeasurements/1-tampering/2-root.java))
-(./chapters/4-countermeasurements/1-improve/2-tampering/3-lucky.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./data/4-countermeasurements/1-tampering/3-lucky.java))
-(./chapters/4-countermeasurements/1-improve/2-tampering/4-sideload.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./data/4-countermeasurements/1-tampering/4-sideload.java))
-(./chapters/4-countermeasurements/1-improve/2-tampering/5-signature.tex
-[64]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./data/4-countermeasurements/1-tampering/5-signature.java))
-(./chapters/4-countermeasurements/1-improve/2-tampering/6-flow.tex [65]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)) (./chapters/4-countermeasurements/1-improve/3-obfuscation-flow.tex [66]
-(./chapters/4-countermeasurements/1-improve/3-obfuscation/0-intro.tex [67]
-[68]) (./chapters/4-countermeasurements/1-improve/3-obfuscation/1-tools.tex
-(./chapters/4-countermeasurements/1-improve/3-obfuscation/1-tools/1-proguard.te
-x [69] [70])
-(./chapters/4-countermeasurements/1-improve/3-obfuscation/1-tools/2-dexguard.te
-x)
-(./chapters/4-countermeasurements/1-improve/3-obfuscation/1-tools/3-allatori.te
-x)))) (./chapters/4-countermeasurements/2-replace-flow.tex
-(./chapters/4-countermeasurements/2-replace/0-intro-flow.tex)
-(./chapters/4-countermeasurements/2-replace/1-server-flow.tex [71]
-<data/contentServer.png, id=1754, 618.31pt x 178.6675pt>
-File: data/contentServer.png Graphic file (type png)
-
-<use data/contentServer.png>
-Package pdftex.def Info: data/contentServer.png used on input line 9.
-(pdftex.def)             Requested size: 334.60571pt x 96.69165pt.
-)
-(./chapters/4-countermeasurements/2-replace/2-encryption-flow.tex [72 <./data/c
-ontentServer.png>]
-(./chapters/4-countermeasurements/2-replace/2-encryption/0-intro.tex)
-(./chapters/4-countermeasurements/2-replace/2-encryption/1-content.tex
-(./chapters/4-countermeasurements/2-replace/2-encryption/1-content/0-intro.tex)
-
-(./chapters/4-countermeasurements/2-replace/2-encryption/1-content/1-resource.t
-ex <data/encryptionResource.png, id=1766, 601.24625pt x 201.75375pt>
-File: data/encryptionResource.png Graphic file (type png)
-
-<use data/encryptionResource.png>
-Package pdftex.def Info: data/encryptionResource.png used on input line 11.
-(pdftex.def)             Requested size: 334.60571pt x 112.2825pt.
-)
-(./chapters/4-countermeasurements/2-replace/2-encryption/1-content/2-action.tex
-[73] <data/encryptionAction.png, id=1774, 572.1375pt x 275.0275pt>
-File: data/encryptionAction.png Graphic file (type png)
-
-<use data/encryptionAction.png>
-Package pdftex.def Info: data/encryptionAction.png used on input line 10.
-(pdftex.def)             Requested size: 334.60571pt x 160.84637pt.
-)
-(./chapters/4-countermeasurements/2-replace/2-encryption/1-content/3-communicat
-ion.tex <data/encryptionComm.png, id=1777, 596.2275pt x 297.11pt>
-File: data/encryptionComm.png Graphic file (type png)
-
-<use data/encryptionComm.png>
-Package pdftex.def Info: data/encryptionComm.png used on input line 11.
-(pdftex.def)             Requested size: 334.60571pt x 166.7386pt.
- [74 <./data/encryptionResource.png> <./data/encryptionAction.png>]))
-(./chapters/4-countermeasurements/2-replace/2-encryption/2-key.tex
-(./chapters/4-countermeasurements/2-replace/2-encryption/2-key/0-intro.tex)
-(./chapters/4-countermeasurements/2-replace/2-encryption/2-key/1-online.tex
-<data/encryptionKeyServer.png, id=1790, 646.415pt x 266.9975pt>
-File: data/encryptionKeyServer.png Graphic file (type png)
-
-<use data/encryptionKeyServer.png>
-Package pdftex.def Info: data/encryptionKeyServer.png used on input line 12.
-(pdftex.def)             Requested size: 334.60571pt x 138.20801pt.
-)
-(./chapters/4-countermeasurements/2-replace/2-encryption/2-key/2-local.tex
-[75 <./data/encryptionComm.png>]
-<data/encryptionKeySmart.png, id=1812, 344.28625pt x 268.00125pt>
-File: data/encryptionKeySmart.png Graphic file (type png)
-
-<use data/encryptionKeySmart.png>
-Package pdftex.def Info: data/encryptionKeySmart.png used on input line 18.
-(pdftex.def)             Requested size: 334.60571pt x 260.46796pt.
- [76 <./data/encryptionKeyServer.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 28--38
-
- []
-
-[77 <./data/encryptionKeySmart.png>]))))
-(./chapters/4-countermeasurements/3-feature-flow.tex
-(./chapters/4-countermeasurements/3-feature/0-intro-flow.tex)
-(./chapters/4-countermeasurements/3-feature/1-tee-flow.tex [78]
-<data/tee.png, id=1853, 299.6796pt x 232.2276pt>
-File: data/tee.png Graphic file (type png)
- <use data/tee.png>
-Package pdftex.def Info: data/tee.png used on input line 22.
-(pdftex.def)             Requested size: 334.60571pt x 259.31001pt.
- [79 <./data/tee.png>]) (./chapters/4-countermeasurements/3-feature/2-art-flow.
-tex
-Underfull \hbox (badness 10000) in paragraph at lines 32--34
-
- []
-
-))) (./chapters/5-conclusion-flow.tex [80]
-Chapter 5.
-(./chapters/5-conclusion/0-intro-flow.tex)
-(./chapters/5-conclusion/1-summary-flow.tex
-Overfull \hbox (25.88028pt too wide) in paragraph at lines 25--1
-\T1/pplx/m/n/10.95 (-20) http://www.hotforsecurity.com/blog/mobile-app-developm
-ent-company-fights-off-android-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--1
-
- []
-
-) (./chapters/5-conclusion/2-discussion-flow.tex [81
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
-
- []
-
-) (./chapters/5-conclusion/3-future-flow.tex [82])) [83]
-Package tocbasic Info: character protrusion at lof deactivated on input line 44
-.
- (build2/flow.lof)
-\tf@lof=\write10
-\openout10 = `flow.lof'.
-
-
-[84
-
-
-]
-Package tocbasic Info: character protrusion at lot deactivated on input line 45
-.
- (build2/flow.lot)
-\tf@lot=\write11
-\openout11 = `flow.lot'.
-
- [85
-
-
-]
-Package tocbasic Info: character protrusion at lol deactivated on input line 46
-.
- (build2/flow.lol [86
+) (./chapters/2-foundation/1-piracy/2-users-flow.tex [4
 
 
 ])
-\tf@lol=\write12
-\openout12 = `flow.lol'.
-
- [87]
-Package microtype Info: Character `029' is missing
-(microtype)             in font `T1/pplx/m/sc/10.95'.
-(microtype)             Ignoring protrusion settings for this character.
-
-Overfull \hbox (34.60667pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) Amazon. \T1/pplx/m/it/10.95 (-20) Ama-zon Send De-ve
-l-op-ers a Wel-come Pack-age\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20
-) url\T1/pplx/m/n/10.95 (-20) : []$\T1/cmtt/m/n/10.95 http : / / www . androidh
-eadlines .
- []
-
-[88
-
-
-]
-Overfull \hbox (8.2115pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) ARM. \T1/pplx/m/it/10.95 (-20) Trust-Zone\T1/pplx/m/
-n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) url\T1/pplx/m/n/10.95 (-20) : []$\T1/
-cmtt/m/n/10.95 http : / / www . arm . com / products / processors / technologie
-s /
- []
-
-
-Overfull \hbox (16.39708pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) Blackmart. \T1/pplx/m/it/10.95 (-20) Black-mart Al-p
-ha\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) url\T1/pplx/m/n/10.95 (-
-20) : []$\T1/cmtt/m/n/10.95 http : / / www . blackmart . us/$[] \T1/pplx/m/n/10
-.95 (-20) (vis-ited on 01/20/2016). 
- []
-
-
-Overfull \hbox (37.01247pt too wide) in paragraph at lines 48--48
-\T1/cmtt/m/n/10.95 androidsecuritysymposium / presentations / Thomas _ Holmes _
- AnInfestationOfDragons .
- []
-
-[89]
-Overfull \hbox (8.2984pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) E. Chu. \T1/pplx/m/it/10.95 (-20) Li-cens-ing Ser-vi
-ce For An-droid Ap-pli-ca-tions\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (
--20) url\T1/pplx/m/n/10.95 (-20) : []$\T1/cmtt/m/n/10.95 http : / / android -[]
- developers .
- []
-
-
-Overfull \hbox (4.12807pt too wide) in paragraph at lines 48--48
-\T1/cmtt/m/n/10.95 (Betriebssystem ) # / media / File : Android _ historical _ 
-version _ distribution_ -[]
- []
-
-[90]
-Overfull \hbox (14.22668pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) J. Levin. \T1/pplx/m/it/10.95 (-20) An-droid Se-cu-r
-ity - New threats, New Ca-pa-bil-i-ties\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc
-/10.95 (-20) url\T1/pplx/m/n/10.95 (-20) : []$\T1/cmtt/m/n/10.95 http : / / new
-androidbook .
- []
-
-
-Overfull \hbox (4.02303pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) M. Lier-sch. \T1/pplx/m/it/10.95 (-20) An-droid Pira
-cy\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) url\T1/pplx/m/n/10.95 (-
-20) : []$\T1/cmtt/m/n/10.95 https : / / www . youtube . com / watch ? v = TNncc
-RimhsI$[]
- []
-
-[91]
-Overfull \hbox (12.59827pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) P. Schulz. ^^P  Code Pro-tec-tion in An-droid.^^Q La
-b Course. Friedrich-Wilhelms-Universität
- []
-
-
-Overfull \hbox (13.61046pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) SD As-so-ci-a-tion. \T1/pplx/m/it/10.95 (-20) smartS
-D Mem-ory Cards\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) url\T1/pplx
-/m/n/10.95 (-20) : []$\T1/cmtt/m/n/10.95 https : / / www . sdcard . org / devel
-opers /
- []
-
-[92]
-Overfull \hbox (19.54082pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) Stericson. \T1/pplx/m/it/10.95 (-20) Busy-box - Andr
-oid-Apps auf Google Play\T1/pplx/m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) ur
-l\T1/pplx/m/n/10.95 (-20) : []$\T1/cmtt/m/n/10.95 http : / / www . androidheadl
-ines .
- []
-
-
-Overfull \hbox (14.8307pt too wide) in paragraph at lines 48--48
-[]\T1/pplx/m/n/10.95 (-20) ubuntuusers. \T1/pplx/m/it/10.95 (-20) diff\T1/pplx/
-m/n/10.95 (-20) . \T1/pplx/m/sc/10.95 (-20) url\T1/pplx/m/n/10.95 (-20) : []$\T
-1/cmtt/m/n/10.95 https : / / wiki . ubuntuusers . de / diff$[] \T1/pplx/m/n/10.
-95 (-20) (vis-ited on 02/02/2016). 
- []
-
-No complaints by nag.
-[93]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
- (build2/flow.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
-Package rerunfilecheck Info: File `flow.out' has not changed.
-(rerunfilecheck)             Checksum: 77AD882A548520262A8E87A16FFE5AD2;3783.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                flow
-(biblatex)                and rerun LaTeX afterwards.
-
-Package logreq Info: Writing requests to 'flow.run.xml'.
-\openout1 = `flow.run.xml'.
-
- ) 
-Here is how much of TeX's memory you used:
- 46324 strings out of 493089
- 986180 string characters out of 6134842
- 1851835 words of memory out of 5000000
- 47375 multiletter control sequences out of 15000+600000
- 78895 words of font info for 418 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,10n,94p,1817b,3122s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
-exlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/urw/palatino/uplri8a.pfb>
-Output written on build2/flow.pdf (101 pages, 3573812 bytes).
-PDF statistics:
- 2371 PDF objects out of 2487 (max. 8388607)
- 2134 compressed objects within 22 object streams
- 734 named destinations out of 1000 (max. 500000)
- 54899 words of extra memory for PDF output out of 61914 (max. 10000000)
-
+(./chapters/2-foundation/1-piracy/3-android-flow.tex [5 <./data/revenue.jpg>]))
+(./chapters/2-foundation/2-android-

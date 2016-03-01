@@ -3,11 +3,11 @@ As explained in chapter~\cite{subsection:foundation-android-package}, Android ap
 The dex file format is compiled from Java bytecode.
 Java and the \gls{dvm} differ significantly in how they execute code.
 While the Java \gls{vm} is stack-based the \gls{dvm} is register-based.
-Dalvik bytecode is more suited to run on the ARM architecture since it supports direct mapping from dex registers to the registers of the ARM processor.
-Registers in \gls{dex} bytecode are 32bits wide and store values such as integers or float values.
-In case there are 64bit values, adjacent registers are used to store it.
+Dalvik bytecode is suited to run on the ARM architecture.
+It supports direct mapping from dex registers to the 32 bit registers of the ARM processor.
+In case there are 64 bit values, adjacent registers are used to store it.
 The Java bytecode is actually more compact since it uses 8bit instructions while \gls{dex} bytecode has instructions of 16bit multiples.
-The \gls{dex} bytecode supports 218 valid opcodes which have a dest-source ordering for its arguments.
+The \gls{dex} bytecode supports 218 valid opcodes which have a dest-source ordering for its arguments. \cite{androidDalvik}
 \newline
 \begin{figure}[h]
     \centering

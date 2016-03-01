@@ -24,12 +24,12 @@ constantly evolving  through marshmallow, major caveat : oftenc changes in betwe
 art was designed to address shortcomings of dalvik:
 virutal machine maintenance is expensie, interpreter/jit simply arent efficient as native code, doing jit all over again on every execution is wasteful, maintenance threads require significantly mroe cpu cycles, cpu cycles translate to slower performance and shorter battery life
 dalvik garbage collection frequently causes hangs/jitter
-virtual machine architecture is 32bit only, android i sfollowing ios into 64bit space\newline
+virtual machine architecture is 32 bit only, android i sfollowing ios into 64 bit space\newline
 advantages of art
 art mvoes compilation from \gls{jit} to \gls{aot}
 VM maintenance not as expensive as dalvik, art compiles to native \gls{aot} not \gls{jit}, less maintenance threads and overhead cycles than dalvik
 garbage collection parallizable (foreground/background), non blocking -see- QUELLE
-64bit bus some issues still exist -see- quelle\newline
+64 bit bus some issues still exist -see- quelle\newline
 main idea of art/aot:
 actually compilation can be to one of two types, quick (native code), portable(llvm code)
 in practice preference is to compile to naitve code, portable implies another layer of IR (LLVM's bit code)\newline
@@ -98,7 +98,7 @@ booat.oat is something else entirely, some 14 dex files the best of the android 
 
 
 lessons
-base code is dex so vm is still 32bit, no 64bit registers or operands so mapping to underlying arch inst always 64bit, there are actually a frw 64bit instructions but most dex code doesnt use them
+base code is dex so vm is still 32 bit, no 64 bit registers or operands so mapping to underlying arch inst always 64 bit, there are actually a few 64 bit instructions but most dex code doesnt use them
 generated code isnt always that efficient, not on same par as an optimizing antive code compiler, likely to improve with llvm optimizations
 overall code (determined by Mir optimizations) flow is same
 garbage collection, register maps, likewase same

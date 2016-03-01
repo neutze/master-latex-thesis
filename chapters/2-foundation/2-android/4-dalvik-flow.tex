@@ -1,17 +1,11 @@
 \subsection{Dalvik Virtual Machine} \label{subsection:android-dalvik}
 \begin{itemize}
-    \item test
+  \item allgemeines dvm, wer wann name
+  \item constraints are reason for way it works
+  \item customized, optimized apachy harmony
+  \item based on Java, but not fully compatible
+  \item 16bit opcodes & register vs 8bit and stack
+  \item advantages of register, low power but larger code and fetching times
+  \item optimized memory sharing, optimized startup times
+  \item last change 2.2 jit
 \end{itemize}
-The original \gls{vm} powering Android is the \gls{dvm}, which was created by Dan Bornstein and named after an Iclandic town. It was introduced along with Android in 2008 \cite{developersRelease}.
-\newline
-In contrast to a stationary computer, a mobile device has a lot of constraints.
-Since is is powered by battery the processing power and RAM are limited to fit power consumption.
-In addition to these hardware limitations Android has some additional requirements, like no swap for the RAM, the need to run on a diverse set of devices and in a sandboxed application runtime.
-In order to deliver best performance and run efficiently, it has to be designed according to these requirements.
-The \gls{dvm} is a customized and optimized version of the \gls{jvm} and based on Apache Harmony.
-Even though it is based on Java, it is not fully J2SE or J2ME compatible since it uses 16bit opcodes and register-based architecture in contrast to the standard \gls{jvm} being stack-based and using 8bit opcodes.
-The advantage of register-based architecture is that it need less instructions for execution than stack-based architecture which results in less CPU cycles and thus less power consumption which is important for a battery driven device.
-The downside of this architecture is the fact that it has an approximatly 25\% larger codebase for the same application and negligible larger fetching times \cite{ehringerDalvik}.
-In addition to the lower level changes the \gls{dvm} is optimized for memory sharing, it stores references bitmaps seperately from objects and optimizes application startup by using zygotes \cite{andevconDalvikART}.
-\newline
-The last big change made to the \gls{dvm} was the introduction of \gls{jit}, which will be discussed in subsection~\ref{subsection:android-art}, in Android version 2.2 "Froyo".

@@ -1,22 +1,7 @@
 \subsubsection{Lucky Patcher} \label{subsection:counter-improve-tampering-luckypatcher}
-Having Lucky Patcher installed is an indicator that the user is attacking license verifications libraries.
-The check is not as strict as the one for root and exlucding the user from executing is builds upon a foundation.
-It can be extended to detect additional unwanted applications by adding their package name to the check \cite{androidCrackingTools}.
-Some custom Android versions already include a library called \textit{AntiPiracySupport} \cite{antipiracy} which is used to remove and blacklist piracy applications.
-\newline
-\lstinputlisting[
-  float=h,
-  basicstyle=\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=Java,
-  linerange={9-69},
-  firstnumber=9,
-  caption={Example code for checking whether \gls{luckypatcherg} is installed on the device},
-  label={codeSnippet:tamperingLucky}
-]{data/4-countermeasurements/1-tampering/3-lucky.java}
-As shown in code snippet~\ref{codeSnippet:tamperingLucky}, the check tries to aquire whether the Lucky Patcher package is installed.
-In case information is available and thus the application is installed, the check stops the application.
+\begin{itemize}
+  \item luckypatcheer is used to attack applications
+  \item do not run when LP detected
+  \item  can be extended to other software as well
+  \item already implemented in library antipiracysupport
+\end{itemize}

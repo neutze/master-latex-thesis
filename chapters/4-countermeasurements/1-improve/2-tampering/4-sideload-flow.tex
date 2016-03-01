@@ -1,24 +1,8 @@
 \subsubsection{Sideload} \label{subsection:counter-improve-tampering-sideload}
-\gls{apk}s can be cracked on a different device, transfered and installed on the device, so checking for root and Lucky Patcher are not enough.
-Usually, applications, which include a license verification library, are purchased from the corresponding store.
-Installing them from other sources is a sign for piracy.
-For this reason, developers should enforce installation from trusted sources to ensure that the application is purchased as well.
-\newline
-\lstinputlisting[
-  float=h,
-  basicstyle=\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=Java,
-  linerange={15-40},
-  firstnumber=15,
-  caption={Example code for checking the origin of the installation},
-  label={codeSnippet:tamperingSideload}
-]{data/4-countermeasurements/1-tampering/4-sideload.java}
-The code snippet~\ref{codeSnippet:tamperingSideload} shows the implementation for the stores in scope for the thesis.
-Additional stores can and should be added in case the developer decides to offer the application in another store.
-\newline
-This feature should be implemented with caution since Google notes that this method relies on the \textit{getInstallerPackageName} which is neither documented nor supported and only works by accident \cite{developersSecuring}.
+\begin{itemize}
+  \item cracked apps can be on phones even though lp or root are not present
+  \item installed from e.g. blackmarket or traded
+  \item normaly apps with lvl can only be installed from store since they are only distributed there
+  \item prevent to run the app when installed from other source
+  \item google notes that this feature is only possible by using an undocumented method, handle with care
+\end{itemize}

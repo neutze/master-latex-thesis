@@ -1,11 +1,6 @@
 \subsubsection{Flow Control} \label{subsection:counter-improve-tampering-flow}
-Another approach to ensure that the application is not tampered is to define a flow inside the application.
-This is not directly a check but enforces the correct sequential exection of code.
-The flow has a known sequene and should include which is likely to be tampered.
-Inside this code, important parts of the application can be interwoven, e.g. the interface initialization.
-As soon as a cracking tool alters the license library and thus the predefined flow, some code blocks are skipped and thus the essential code inside them is not executed.
-\newline
-A similar technique would be to have two license verifications inside the application.
-One is known to fail while the other one is the actual check.
-Since \gls{luckypatcherg} does not know the difference, its automatic mode patches both.
-The developer can take adventage of this by inverting the callback for the result of the knownly failing verification.
+\begin{itemize}
+  \item since the code is known and can be modified, this can be used to implement functionality inside that Library by reusing methods or implementing
+  calls which are only called if the right flow inside the library is done, e.g. put important method in block that is skipped when patched
+  \item implement second version of LVL that is known to fail, LP will patch both, stop app when failing licensecheck is true
+\end{itemize}

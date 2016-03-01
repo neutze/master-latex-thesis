@@ -9,67 +9,19 @@
 \end{itemize}
 
 \subsubsection{Androguard}
-\lstinputlisting[
-  float=h,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=bash,
-  linerange={7-9},
-  firstnumber=1,
-  caption={Script to decompile to Java using androguard},
-  label={codeSnippet:androguardScript}
-]{data/extractScript.sh}
-
-\begin{lstlisting}[
-  float=h,
-  basicstyle=\footnotesize,
-  breaklines=true,
-  captionpos=b,
-  language=Java,
-  frame=single,
-  caption={Java code example using androguard},
-  label={codeSnippet:androguardOutput}
-]
-private void doCheck()
-{
-    this.mCheckLicenseButton.setEnabled(0);
-    this.setProgressBarIndeterminateVisibility(1);
-    this.mStatusText.setText(2131099673);
-    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
-    return;
-}
-\end{lstlisting}
+\begin{itemize}
+  \item was macht androguard
+  \item wie sieht output aus
+\end{itemize}
 
 \subsubsection{JADX}
-\lstinputlisting[
-  float=h,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=bash,
-  linerange={28-30},
-  firstnumber=1,
-  caption={Script to decompile to Java using JADX},
-  label={codeSnippet:jadxScript}
-]{data/extractScript.sh}
+\begin{itemize}
+  \item was macht androguard
+  \item wie sieht output aus
+\end{itemize}
 
-\begin{lstlisting}[
-  float=h,
-  basicstyle=\footnotesize,
-  breaklines=true,
-  language=Java,
-  captionpos=b,
-  frame=single,
-  caption={Java code example using JADX},
-  label={codeSnippet:jadxOutput}
-]
-private void doCheck() {
-    this.mCheckLicenseButton.setEnabled(false);
-    setProgressBarIndeterminateVisibility(true);
-    this.mStatusText.setText(C0213R.string.checking_license);
-    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
-}
-\end{lstlisting}
+----
+
+\begin{itemize}
+  \item compare 
+\end{itemize}

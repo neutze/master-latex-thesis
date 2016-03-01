@@ -1,7 +1,10 @@
-A part of the license verification's insecurity is the fact that not only the possible outcome is binary, either the license is verified or it is not, but it is also possible to predict the outcome since in the end, only one result is accepted.
-This mechanism can be easily attacked.
-The attacker can modify that even the wrong result is always accepted.
-\newline
+\begin{itemize}
+  \item big vulnerability is binary outcome,predictable, can be forced unary and
+  \item wrong result will be accepted
+  \item improve this flaw by introducing complex mechanism and replace old
+  \item two proposals: content server with verification on server to counter modification, encryption to make outcome unpredictable
+\end{itemize}
+
 In order to fight this major flaw, more complex mechanisms have to replace the original license verification.
 In the following, different approaches are proposed.
 The first proposal is the introduction of content server which allows to move part of the functionality, like the license verification, from the application to a server.

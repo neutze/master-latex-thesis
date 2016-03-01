@@ -1,27 +1,5 @@
 \subsubsection{Debuggability} \label{subsection:section:counter-improve-tampering-debuggable}
 \begin{itemize}
-    \item test
+    \item debug is needed to gain additional information when analysing the app
+    \item prevent app from running when debug is active
 \end{itemize}
-Enabling debugging allows the developer to use aditional features for analysing the app at runtime, like printing out logs \cite{androidDebugging}.
-This features are used to gain information about the flow of the app and to reenginer functionality.
-From the results of this analysis weak points in the application can be identified and custom patches for cracking tools can be derived from them.
-This is the reason for disabling the debug flag in release builds on the application stores, but since the flag for debugging is included inside the \gls{dex} file, it can be enabled by attacks
-In order to prevent attackers taking advantage from this possiblity, the developer should check whether this flag is activated und thus the application is tampered.
-\newline
-\lstinputlisting[
-  float=h,
-  basicstyle=\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  frame=single,
-  numbers=left,
-  language=Java,
-  linerange={14-22},
-  firstnumber=14,
-  caption={Example code for checking for debuggability},
-  label={codeSnippet:tamperingDebuggable}
-]{data/4-countermeasurements/1-tampering/1-debuggable.java}
-Code snippet~\ref{codeSnippet:tamperingDebuggable} is an example for an implementation of this check.
-The debug flag can be aquired from the application information as seen in line 15.
-In case the debug is set, and thus the application is tampered, the process is killed in line 18.

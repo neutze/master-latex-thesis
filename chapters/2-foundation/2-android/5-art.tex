@@ -1,16 +1,19 @@
 \subsection{Android Runtime} \label{subsection:android-art}
-<!-- benötigt noch feinschliff ->\newline\newline
 In Android version 4.4 \textit{Kitkat} Google introduced \gls{art} which was optional and only available as a preview through the developer options.
-Like \gls{dvm}, \gls{art} works according to the dex bytecode specification and executes the \gls{dex} fileformat \cite{androidArt}.
+\gls{art} is designed to address the shortcomings of the \gls{dvm}.
+\newline
+For backwards compability, \gls{art} still works with bytecode in the \gls{dex} files format \cite{androidArt}.
 With the release of verison 5.0 \textit{Lollipop} \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
 Throughout the Android 6.0 \textit{Marshmallow} previews it was constantly evolving and sometimes breaking with older versions at the cost of almost no documentation.
 \newline
-\gls{art} is designed to address the shortcomings of the \gls{dvm}.
-Maintaining an \gls{vm} is expensive, having an interpreter and \gls{jit} is not as efficient of native code and doing \gls{jit} each time the application is executed is wasteful.
-This and maintaining background threads require significantly more CPU cycles which can be directly translated to slower performance and increased battery usage.
-In addition the Dalvik \gls{gc} frequently causes hands and jitters and \gls{dvm} is only supporting 32 bit.
-With \gls{art} Android is following iOS into the 64 bit world but this is not the only advantage over the \gls{dvm}.
-Improvements in the \gls{vm} make the maintenance less expensive and the compilation is changed from \gls{jit} to \gls{aot} as well as the overhead cycles have been reduced.
+Maintaining an \gls{vm} is expensive, having an interpreter and \gls{jit} is not as efficient as native code.
+Performing \gls{jit} each time the application is executed is wasteful.
+In addition, maintaining background threads require significantly more CPU cycles.
+Both can be directly translated to slower performance and increased battery usage.
+The \gls{dvm} frequently suffers from hangs and jitters caused by the \gls{gc}.
+With \gls{art} Android is following iOS into the 64 bit world, the 32 bit support of the \gls{dvm} look like a disadvantage, but it is not.
+\newline
+Improvements in \gls{art} make the maintenance less expensive, like moving from \gls{jit} to \gls{aot} and reducing overhead cycles.
 The \gls{gc} is also non-blocking now and and can run parallel in fore- and background.
 \newline
 The mean idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{llvm} code.
@@ -20,53 +23,15 @@ In practice the preference is to compile to native since adding \gls{llvm} bitco
 \newline
 Different from \gls{dvm} is the fact that \gls{art} uses not one but two file formats.
 Similar to the zygote of \gls{dvm}, \gls{art} offers an image of pre-initialized classes and and related object at run time, the boot.art file.
-It is mapped to the memory upon zygote startup to provide improved application starting time \cite{developersConfigureArt}.
-The second file format is
-
-
-
-Art itself:
-art uses not one but two file formats
-art - only one file, boot.art, in /syste/framework/architecture (arm,...)
-oat - master file, boot.oat, in /syste/framework/architecture (arm,...) - odex files no longer optimized dex but oat, alongeside apk for system apps/frameworks, /data/dalvik-cache for 3rd party apps, still uses odex extension, now file format is elf/oat\newline
-art files is a proprietary format, poorly documented, changed format internally repeatedly
-art file maps in memory right before oat, which links with it
-contains pre-initilited classes, objects and support structures\newline
-ART/OAT files are created (on device or on host) by dex2oat
-art still optimizes dex but uses dex2oat instead, odex files are actually oat files (elf shared objects WAS IST DAS), actual dex payload buried deep inside
-command line saved inside oat file's key value store
-
-
-finding dex in oat
-odex files will usually have only one (=original) dex embedded
-booat.oat is something else entirely, some 14 dex files the best of the android framework jars, each dex contains potentilly hundres of classes
-
-art supports mutliple architectures(x86,arm/64,mips)
-compiler is layered architecture, using portable (llvm) adds another lvl with llvm bitcode (not in this scope)
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/artarch.png}
-    \caption{artarch}
-    \label{fig:artarch}
-\end{figure}
-
-
-
-lessons
-base code is dex so vm is still 32 bit, no 64 bit registers or operands so mapping to underlying arch inst always 64 bit, there are actually a few 64 bit instructions but most dex code doesnt use them
-generated code isnt always that efficient, not on same par as an optimizing antive code compiler, likely to improve with llvm optimizations
-overall code (determined by Mir optimizations) flow is same
-garbage collection, register maps, likewase same
-cavears: not all methods guaranteed to be compiled, reversing can be quite a pain
+It is poorly documented and still chaning a lot.
+The boot.art file is mapped in memory before the linked .oat file
+It is mapped to the memory upon zygote startup to provide improved application starting time .
+In addition to the boot.art file, there are two different .oat files.
+The boot.oat contains around fourteen of the most used Android framework \gls{jar}s.
+The other .oat files are the former \gls{odex} files.
+They are still located in the Dalvik cache, but they are now \gls{elf} files with the odex file embedded.
+Instead of \gls{dexopt}, \gls{dex2oat} is used to create these files. \cite{andevconDalvikART} \cite{developersConfigureArt} \cite{androidArt} \cite{intelArt}
 \newline
-
-
-isn't android all dalvik now?
-art is runtime but application compile into dex, art is compiled on device during install, art binaries has dalvik embedded, some methods may be left as dex to be interpreted, dalvik is much easier to debug than art --see- evaluation \newline
-\cite{andevconDalvikART}
-%
-When creating odex on art it is directly put into art file
-
-%ART runtime threads
-%the daemon threads are started in java by libcore, daemon class wraps thread class and provides singleton INSTANCE, do same basic operations as they did in "classic" dalvikVM, libart subree in libcore implementation slightly different
-%\newline
+In general, there is still room for improvement since not all code is guaranteed to be compiled.
+Since the base code is still dex and thus the \gls{vm} is still 32 bit, \gls{art} is not fully 64 bit.
+The generated code is also not always efficient as from a native compiler but is likely to be improved with \gls{llvm} improvements.

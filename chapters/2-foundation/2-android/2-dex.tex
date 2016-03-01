@@ -1,5 +1,5 @@
 \subsection{Dalvik Executionable File Format} \label{subsection:android-dex}
-As explained in chapter~\cite{subsection:foundation-android-package}, Android applications are distributed using dex bytecode which is compiled from Java bytecode.
+As explained in subsection~\ref{subsection:foundation-android-package}, Android applications are distributed using dex bytecode which is compiled from Java bytecode.
 Dalvik bytecode is suited to run on the ARM architecture.
 It supports direct mapping from dex registers to the 32 bit registers of the ARM processor.
 The instructions are 16 bit mutliples, which makes the dex bytecode less compact than Java bytecode with its 8 bit instructions.
@@ -20,7 +20,7 @@ A decrease of the memory footprint of up to 44\% compared to the \gls{jar} is po
     \caption{\gls{jar} to \gls{apk} transformation \cite{googleDalvik}}
     \label{fig:java}
 \end{figure}
-The compiled \gls{dex} file has the the structure seen in figure~\ref{fig:dex}.
+The compiled \gls{dex} file has the the structure seen in figure~\ref{fig:dex} on the left.
 Most important parts of the header are the checksum and the signature.
 The checksum contains the Adler32 checksum of the \gls{dex} file, including everything except the magic and this field.
 It is used to detect whether the file is corrupt.
@@ -38,7 +38,7 @@ When the file is modified, both values have to be updated.
 Dex bytecode supports optimization, upon installation improvements for the underlying architecture can be applied to the bytecode.
 The resulting \gls{dex} file is called \gls{odex}.
 The optimization is executed by a program called \textit{dexopt} which is part of the Android platform.
-For the \gls{dvm} it makes no difference whether \gls{dex} or \gls{odex} files are executed, but using an \gls{odex} file has the better performance.
+The semantics of the two files is the same, but the \gls{odex} file has the better performance.
 \newline
 Like Java bytecode, \gls{dex} bytecode has a serious flaw.
 Since bytecode is pretty simple and contains a lot of meta information, decompilation can be succesfully done and the result is easily understandable.

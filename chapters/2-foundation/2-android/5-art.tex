@@ -1,4 +1,4 @@
-\subsection{Android Runtime} \label{subsection:android-art}
+\subsection{Android Runtime (ART)} \label{subsection:android-art}
 In Android version 4.4 \textit{Kitkat} Google introduced \gls{art} which was optional and only available as a preview through the developer options.
 \gls{art} is designed to address the shortcomings of the \gls{dvm}.
 \newline
@@ -30,7 +30,7 @@ In addition to the boot.art file, there are two different .oat files.
 The boot.oat contains around fourteen of the most used Android framework \gls{jar}s.
 The other .oat files are the former \gls{odex} files.
 They are still located in the Dalvik cache, but they are now \gls{elf} files with the odex file embedded.
-Instead of \gls{dexopt}, \gls{dex2oat} is used to create these files. \cite{andevconDalvikART} \cite{developersConfigureArt} \cite{androidArt} \cite{intelArt}
+Instead of \textit{dexopt}, \textit{dex2oat} is used to create these files. \cite{andevconDalvikART} \cite{developersConfigureArt} \cite{androidArt} \cite{intelArt}
 \newline
 In general, there is still room for improvement since not all code is guaranteed to be compiled.
 Since the base code is still dex and thus the \gls{vm} is still 32 bit, \gls{art} is not fully 64 bit.

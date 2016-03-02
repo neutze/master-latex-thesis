@@ -1,0 +1,18 @@
+[0] Config.pm:324> INFO - This is Biber 2.1
+[0] Config.pm:327> INFO - Logfile is 'build2/flow.blg'
+[65] biber-darwin:276> INFO - === Wed Mar  2, 2016, 12:49:15
+[65] Biber.pm:333> INFO - Reading 'build2/flow.bcf'
+[184] Biber.pm:645> INFO - Found 28 citekeys in bib section 0
+[204] Biber.pm:2977> INFO - Processing section 0
+[224] Biber.pm:3115> INFO - Looking for bibtex format file 'bibliography/literature.bib' for section 0
+[232] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[237] bibtex.pm:895> INFO - Found BibTeX data source 'bibliography/literature.bib'
+[271] Utils.pm:146> WARN - Possible typo (case mismatch) between citation and datasource keys: 'usbOtg' and 'usbOTG' in file 'bibliography/literature.bib'
+[276] Utils.pm:146> WARN - I didn't find a database entry for 'usbOtg' (section 0)
+[616] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[617] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[617] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'en-US'
+[617] Biber.pm:2858> INFO - No sort tailoring available for locale 'en-US'
+[721] bbl.pm:505> INFO - Writing 'build2/flow.bbl' with encoding 'UTF-8'
+[726] bbl.pm:596> INFO - Output to build2/flow.bbl
+[726] Biber.pm:106> INFO - WARNINGS: 2

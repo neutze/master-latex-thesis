@@ -1,0 +1,59 @@
+\BOOKMARK [0][-]{Doc-Start}{Acknowledgments}{}% 1
+\BOOKMARK [0][-]{Doc-Start}{Assumptions}{}% 2
+\BOOKMARK [0][-]{chapter*.1}{Abstract}{}% 3
+\BOOKMARK [0][-]{section*.3}{Glossary}{}% 4
+\BOOKMARK [0][-]{section*.5}{Acronyms}{}% 5
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 6
+\BOOKMARK [1][-]{section.1.1}{Licensing}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.2}{Motivation}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.3}{Related Work}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Foundation}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Software Piracy}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.1.1}{Developers}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Users}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.3}{Piracy on Android}{section.2.1}% 14
+\BOOKMARK [1][-]{section.2.2}{Android}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.1}{Android Application Package \(APK\)}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.2}{Dalvik Executionable File Format}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.3}{Installing an APK}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.4}{Dalvik Virtual Machine}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.5}{Android Runtime}{section.2.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.6}{Root and Copy Protection}{section.2.2}% 21
+\BOOKMARK [1][-]{section.2.3}{License Verification Libraries}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.3.1}{Google's License Verification Library \(LVL\)}{section.2.3}% 23
+\BOOKMARK [2][-]{subsection.2.3.2}{Amazon DRM \(Kiwi\)}{section.2.3}% 24
+\BOOKMARK [2][-]{subsection.2.3.3}{Samsung DRM \(Zirconia\)}{section.2.3}% 25
+\BOOKMARK [2][-]{subsection.2.3.4}{Overview License Verification}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.5}{Abstraction}{section.2.3}% 27
+\BOOKMARK [1][-]{section.2.4}{Code Analysis}{chapter.2}% 28
+\BOOKMARK [2][-]{subsection.2.4.1}{Retrieving an APK}{section.2.4}% 29
+\BOOKMARK [2][-]{subsection.2.4.2}{dex Analysis}{section.2.4}% 30
+\BOOKMARK [2][-]{subsection.2.4.3}{Smali Analysis}{section.2.4}% 31
+\BOOKMARK [2][-]{subsection.2.4.4}{Java Analysis}{section.2.4}% 32
+\BOOKMARK [2][-]{subsection.2.4.5}{Detect Code Manipulations}{section.2.4}% 33
+\BOOKMARK [0][-]{chapter.3}{Cracking Android Applications with Lucky Patcher}{}% 34
+\BOOKMARK [1][-]{section.3.1}{Lucky Patcher}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.2}{Code Analysis}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.3}{Analysis of Patched Applications}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.4}{Patching Patterns}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.5}{Conclusion and Learnings}{chapter.3}% 39
+\BOOKMARK [0][-]{chapter.4}{Countermeasures for Developers}{}% 40
+\BOOKMARK [1][-]{section.4.1}{Extend Current Library}{chapter.4}% 41
+\BOOKMARK [2][-]{subsection.4.1.1}{Modifications on the Google LVL}{section.4.1}% 42
+\BOOKMARK [2][-]{subsection.4.1.2}{Native Implementation of lvl}{section.4.1}% 43
+\BOOKMARK [2][-]{subsection.4.1.3}{Tampering Protection}{section.4.1}% 44
+\BOOKMARK [2][-]{subsection.4.1.4}{Obfuscation}{section.4.1}% 45
+\BOOKMARK [1][-]{section.4.2}{Complex Verification}{chapter.4}% 46
+\BOOKMARK [2][-]{subsection.4.2.1}{Content Server}{section.4.2}% 47
+\BOOKMARK [2][-]{subsection.4.2.2}{Encryption}{section.4.2}% 48
+\BOOKMARK [1][-]{section.4.3}{Additional Environmental Features}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.3.1}{Trusted Execution Environment}{section.4.3}% 50
+\BOOKMARK [2][-]{subsection.4.3.2}{ART}{section.4.3}% 51
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 52
+\BOOKMARK [1][-]{section.5.1}{Summary}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.2}{Discussion}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.3}{Future Work}{chapter.5}% 55
+\BOOKMARK [0][-]{appendix*.50}{List of Figures}{}% 56
+\BOOKMARK [0][-]{appendix*.51}{List of Tables}{}% 57
+\BOOKMARK [0][-]{appendix*.52}{List of Code Snippets}{}% 58
+\BOOKMARK [0][-]{appendix*.53}{Bibliography}{}% 59

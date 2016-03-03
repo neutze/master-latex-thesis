@@ -20,13 +20,13 @@ Java bytecode can be obfuscated, which is topic of section~\ref{subsection:count
 When all Java classes are compiled to \gls{classg} files, they are packed into a \gls{jar} file.
 \newline
 Since Android is using a different \gls{vm} for executing the code, the Java bytecode has to be converted to Dalvik bytecode.
-The Android \gls{sdk} provides \textit{dx}, the tool used to convert \gls{classg} files to a single classes.dex file.
+The Android \gls{sdk} provides \textit{dx}, the tool used to convert \gls{classg} files to a single \textit{classes.dex} file.
 The \gls{vm} and the \gls{dex} file format will be described in the following.
 Similar to the Java bytecode, obfuscation can be applied.
 \newline
 The \gls{apk} itself consits of three parts.
 \begin{itemize}
-\item classes.dex, containing the bytecode
+\item \textit{classes.dex}, containing the bytecode
 \item resource files (\textit{res/*.*}), containing static content like images, the strings.xml and the layout.xml files
 \item resources.arsc and AndroidManifest.xml, containing compiled resources respectively essential information as required permissions
 \end{itemize}
@@ -45,7 +45,7 @@ The structure of a final \gls{apk} file has at least the following content seen 
     \caption{\gls{apk} folder structure}
     \label{fig:apkfolder}
 \end{figure}
-The AndroidManfiest.xml and the classes.dex, which have been covered already.
+The AndroidManfiest.xml and the \textit{classes.dex}, which have been covered already.
 The META-INF folder, which is inherited from Java and used to store package and extension configuration data, e.g. the signature \cite{metaJava}.
 While the static resources, like drawables and layouts, are in the res folder, the resources.arsc contains the compiled resources.
 In case the application implements native code, it is stored in the libs folder, split by the different processor types, like armeabi-v7a for ARM or x86 for Intel processors. \cite{kovachevaMaster} \cite{ehringerDalvik}

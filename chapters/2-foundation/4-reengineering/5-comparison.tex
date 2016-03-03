@@ -1,16 +1,9 @@
 \subsection{Detect Code Manipulations} \label{subsection:forensics-tools-diff}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-
-vergleich gibts guten einblick was geändert wurde und wie es auf dem gegebenem lvl funtkioniert\newline
-
-vergleich von original und modifizierten code einer apk auf einer code ebene\newline
-needed to see differences before and after cracking tool\newline
-
-diff is used\newline
-
+The \textit{classes.dex} and its abstractions contain a lot of code.
+The best way to recover the changes is to use diff.
+Diff is a standard command line tool which is used to compare two files and in order to recieve the difference between them.
+It is applied to the different code abstraction of the original \gls{apk} and the attacked \gls{apk}.
+\newline
 \lstinputlisting[
   float=h,
   breaklines=true,
@@ -23,14 +16,10 @@ diff is used\newline
   caption={Script to compare the original and manipulated \gls{apk} to see the modifications in the different presentations},
   label={codeSnippet:diffScript}
 ]{data/diffScript.sh}
-
-
-erklärung command \cite{diffUbuntu}
--N: Treat absent files as empty; Allows the patch create and remove files.\newline
--a: Treat all files as text; Allows the patch update non-text (aka: binary) files.\newline
--u: Set the default 3 lines of unified context; This generates useful time stamps and context.\newline
--r: Recursively compare any subdirectories found; Allows the patch to update subdirectories.\newline
-script erklären\newline
+It returns the location as well as the orignal and changed code.
+The automatic discovery and listing of the changes saves a lot of time.
+The example diff of a dex file is presented is code snippet~\ref{codeSnippet:n1DiffDex}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -41,9 +30,3 @@ script erklären\newline
   caption={Diff on Dex level for N1 pattern},
   label={codeSnippet:n1DiffDex}
 ]{data/n1.diff}
-RESULT code snippet~\ref{codeSnippet:n1DiffDex}
-
-wo findet man es?\newline
-welches level?\newline
-vorteil\newline
-blabla aus dem internet\newline

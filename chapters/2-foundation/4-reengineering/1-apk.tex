@@ -1,24 +1,13 @@
 \subsection{Retrieving an APK} \label{subsection:tools-apk}
-5
-most apps are installed /data/app, apk can be pulled from there
-
-to get installed applications on phone use android package manager
-after connecting phone to computer and having \gls{adb} tools installed
-adb shell \'pm list packages -f\' (1)
-outputs a list of installed apps in formatf <namespace>.<appName> and an appended number "-1", each is a folder of instlaled app containing a base.apk (the application apk)
-example 2 enthällt return von (1)
-
-then find app which should be transfered to computer and use
-adb pull /data/app/me.neutze.licensetest-1/base.apk
-to download app into current folder
-
-in case you have root you can use file manager as solid explorer to access the folder directly and copy apk to user-defined location/send per mail
-
-
-\cite{munteanLicense}
-%
-
-In the following there will be an example application to generalise the procedure. The application is called \textit{LicenseTest} and has for our purpose a license verification library included (Amazon, Google or Samsung).\newline
-In order to analyse an \gls{apk}, it has to be pulled from the Android device onto the computer. First the package name of the app has to be found out. This can be done by using the \gls{adb}. Entering example 1 returned example 2
-
-dann auf verschiedenen leveln anschauen mit den folgenden tools
+The analysis is performed on a computer since most tools are available on that platform.
+In order to analyse the application, its \gls{apk} has to be extracted from the phone and transfered to the computer.
+\newline
+Most \gls{apk}s are stored in \textit{/data/app}.
+The filesystem of an Android device be accesses using the \textit{adb shell}, which is part of the Android \gls{sdk}.
+The user has no read rights on the folder and thus cannot see the content of the folder.
+In order to pull the desired application package the exact name is required.
+The package manager can be used to list all installed applications and their package names.
+The list can be retrieved using \textit{pm list packages -f} in the \textit{adb shell}.
+In case the phone is \textit{rooted}, the user can list the content of the server in the \textit{adb shell}.
+The format of the application package name is \textit{<namespace>.<appName>} and contains the application as \textit{base.apk}.
+The \gls{apk} can be extracted to the current folder using \textit{adb pull /data/app/<namespace>.<appName>/base.apk} on the computer's console.

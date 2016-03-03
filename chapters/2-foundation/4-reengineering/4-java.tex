@@ -1,44 +1,21 @@
 \subsection{Java Analysis} \label{subsection:forensics-tools-java}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-dex different patterns for mobile Usage, java does not really now, thats why different java decompiler
-%
-dex to java
-.dex and .class are isomorphic
-dex debug items map dex offsets to java line numbers
-tools like dex2jar can easily decomile from dex to a jar
-extremly useful for reverse engineering, even more so useful for malice\newline
-
-probleme des disassemlbers erklären\newline
-interpretations sache\newline
-deswegen zwei compiler\newline
-unterschiedliche interpretation resultiert in flow und auch ob sies können ist unterschiedlich\newline
-
-ectl unterschiede/vor-nachteile\newline
-ggf bezug zu DALVIK/buildprocess (Java wird disassembled und dann assembler)\newline
-
-\subsubsection{Androguard}
-An analysis and disassembling tool processing both Dalvik bytecode and optimized bytecode\newline
-DAD which is also the fastest due to the fact it is a native decompiler, WAS ist dad? ERKLÄREN? .dex files was performed with DAD, the default disassembler
-in the Androguard analysis tool, largest successful disassembly
-ratio\newline
-underlying algorithm is recursive traversal\newline
-androguard has a large online open-source database with known malware patterns\newline
-\cite{kovachevaMaster}
-%
-
-
-
-
-\url{https://github.com/androguard/androguard}
-
-powerful analysis tool is Androguard\newline
-includes a disassembler and other analysis methods to gather information about a program\newline
-Androguard helps an analyst to get a good overview by providing call graphs and an interactive interface -see- habe nur CLI benutzt\newline
-The integrated disassembler also uses the recursive traversal approach for finding instructions like baksmali, see section 2.2\newline
-one most popular analysis toolkits for Android applications due to its big code base and offered analysis methods -see- quelle, warum\newline
+The third abstraction is the decompiled Java code.
+The goal is to reverse engineer a result very close to the source code including the changes.
+It suits best for the analysis since it contains the most information, such as variable and method names.
+The representation is close to how the developer implemented the application.
+\newline
+As seen in figure~\ref{fig:re1}, the .dex files are isomorphic to the corresponding Java \gls{classg} files.
+This makes it possible to decompile the dex bytecode into Java code.
+The decompilation to the exact source code cannot be achieved since in the compilation process some information is lost.
+Another problem is the otimization of the dex bytecode for mobile usage.
+The specific mobile patterns are unknown to the Java decompiler.
+The outcome is not always sufficient and for this reason two different decompilers, DAD and JADX, are used.
+\newline
+The first decompiler is DAD, short name of "DAD is A Decompiler".
+It is part of Androguard \cite{androguard}.
+It works with the dex bytecode and does not require third aprty tools like dex2jar \cite{dex2jar}.
+Code snippet~\ref{codeSnippet:androguardScript} shows how it is used to decompile the \gls{apk} into Java code.
+\newline
 \lstinputlisting[
   float=h,
   breaklines=true,
@@ -51,28 +28,9 @@ one most popular analysis toolkits for Android applications due to its big code 
   caption={Script to decompile to Java using androguard},
   label={codeSnippet:androguardScript}
 ]{data/extractScript.sh}
-
-\begin{lstlisting}[
-  float=h,
-  basicstyle=\footnotesize,
-  breaklines=true,
-  captionpos=b,
-  language=Java,
-  frame=single,
-  caption={Java code example using androguard},
-  label={codeSnippet:androguardOutput}
-]
-private void doCheck()
-{
-    this.mCheckLicenseButton.setEnabled(0);
-    this.setProgressBarIndeterminateVisibility(1);
-    this.mStatusText.setText(2131099673);
-    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
-    return;
-}
-\end{lstlisting}
-
-\subsubsection{JADX}
+The second decompiler is JADX \cite{jadx}.
+It supports decompilation for dex to Java code.
+It can be used in the command line as seen in Code snippet~\ref{codeSnippet:jadxScript}.
 \lstinputlisting[
   float=h,
   breaklines=true,
@@ -85,21 +43,3 @@ private void doCheck()
   caption={Script to decompile to Java using JADX},
   label={codeSnippet:jadxScript}
 ]{data/extractScript.sh}
-
-\begin{lstlisting}[
-  float=h,
-  basicstyle=\footnotesize,
-  breaklines=true,
-  language=Java,
-  captionpos=b,
-  frame=single,
-  caption={Java code example using JADX},
-  label={codeSnippet:jadxOutput}
-]
-private void doCheck() {
-    this.mCheckLicenseButton.setEnabled(false);
-    setProgressBarIndeterminateVisibility(true);
-    this.mStatusText.setText(C0213R.string.checking_license);
-    this.mChecker.checkAccess(this.mLicenseCheckerCallback);
-}
-\end{lstlisting}

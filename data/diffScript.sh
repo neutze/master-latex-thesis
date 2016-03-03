@@ -1,9 +1,9 @@
 #!/bin/bash
 #dex
-diff -Naur /dex/original/ /dex/manipulated/ > dex.diff
+diff -r /dex/original/ /dex/manipulated/ > dex.diff
 #smali
-diff -Naur /baksmali/original/ /baksmali/manipulated/ > baksmali.diff
+diff -r /smali/original/ /smali/manipulated/ > smali.diff
+#dad
+diff -r /java/dad/original/ /java/dad/jadx/ > dad.diff
 #jadx
-diff -Naur /jadx/original/ /androguard/jadx/ > jadx.diff
-#androguard
-diff -Naur /androguard/original/ /androguard/manipulated/ > andro.diff
+diff -r /java/dad/original/ /java/dad/manipulated/ > jadx.diff

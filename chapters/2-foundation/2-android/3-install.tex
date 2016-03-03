@@ -4,11 +4,11 @@ The installation consists of two major steps.
 The first step is primarily about verification, while the second step is the bytecode optimization and, in case of \gls{art}, the code compilation (see figure~\ref{fig:install}).
 The differences will be explained in the following subsections.
 \newline
-Before initiating the installation, the \gls{apk} is checked for a legitimate checksum, the signature is checked and the classes.dex structure is validated.
+Before initiating the installation, the \gls{apk} is checked for a legitimate checksum, the signature is checked and the \textit{classes.dex} structure is validated.
 In case one action fails to validate, the installation is rejected by the OS.
 \newline
 The installation can be performed in two ways depending on the runtime of the Android \gls{os}.
-In case the \gls{dvm}, optimisation is applied to the classes.dex file and the corresponding \gls{odex} file is generated and moved to the Dalvik cache.
+In case the \gls{dvm}, optimisation is applied to the \textit{classes.dex} file and the corresponding \gls{odex} file is generated and moved to the Dalvik cache.
 As a reminder, the \gls{odex} is an optimization tailored to the specific architecture of the device in order to achieve the best performance.
 This is useful due to the the high diversity of Android running hardware and their different processors.
 This is done once on installation.

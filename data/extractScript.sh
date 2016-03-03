@@ -6,7 +6,7 @@ rm -rf ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/smali/
 rm -rf ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/jasmin/
 #!/bin/bash
 #androguard
-python androdd.py -i lvltest-version.apk -o /androguard/version/
+python androdd.py -i base.apk -o /java/dad/
 
 #apktool
 mkdir ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/smali/
@@ -18,7 +18,7 @@ rm -rf ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/tmp/
 
 #!/bin/bash
 #baksmali
-java -jar baksmali.jar -x lvltest-version.apk -o /baksmali/version/
+java -jar baksmali.jar -x base.apk -o /smali/
 
 #dex2jar
 bash ~/Google\ Drive/master_thesis/sourcefiles/_tools/_dex2jar-2.0/d2j-dex2jar.sh -f -o ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/jar/lvltest-version.jar ~/Google\ Drive/master_thesis/sourcefiles/lvl/auto/apk-lvltest-version/lvltest-version.apk
@@ -27,9 +27,9 @@ bash ~/Google\ Drive/master_thesis/sourcefiles/_tools/_dex2jar-2.0/d2j-dex2jar.s
 bash ~/Google\ Drive/master_thesis/sourcefiles/_tools/_dex2jar-2.0/d2j-jar2jasmin.sh -f -o ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/jasmin ~/workspace/master-code-applications/code-lvltest-version-lvl-auto/jar/lvltest-version.jar
 #!/bin/bash
 #jadx
-jadx -d /jadx/version/ --deobf --show-bad-code lvltest-version.apk
+jadx -d /java/jadx/ --deobf --show-bad-code base.apk
 
 #!/bin/bash
 #hexdump dex
-unzip lvltest-version.apk -d /tmp/
-hexdump -C /tmp/classes.dex >> /dex/version/classes.txt
+unzip baseapk -d /tmp/
+hexdump -C /tmp/classes.dex >> /dex/classes.txt

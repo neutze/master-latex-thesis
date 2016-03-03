@@ -102,7 +102,7 @@ Instead of moving the result of the proceeding function to \textit{v5} it is alw
   label={codeSnippet:n2DiffSmali}
 ]{data/n2.diff}
 
-The impact on the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) is more complex than just setting a variable to true.
+The impact on the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) is more complex than just setting a variable to \textit{true}.
 Instead of proceeding only if the signature is verified, the result is ignored and the following code is always executed.
 The Java code looks different since the decompiler collapses the \textit{if(true)} statement.
 \newline
@@ -314,7 +314,7 @@ Similar to pattern N2, pattern N7 attacks by initializing the corresponding vari
   caption={Diff on Java level for N7 patch (abstracted)},
   label={codeSnippet:n7DiffJava}
 ]{data/n2.diff}
-The goal of this attack is to patch the \textit{ILicenseResultListener}, where ever it may be implemented, so \textit{onTransact()} returns true independet of the result of \textit{verifyLicense()}, which is returned in the original implementation.
+The goal of this attack is to patch the \textit{ILicenseResultListener}, where ever it may be implemented, so \textit{onTransact()} returns \textit{true} independet of the result of \textit{verifyLicense()}, which is returned in the original implementation.
 
 \subsubsection{Overview for Patching the \gls{lvl}}
 The summary of the \gls{lvl} patterns and their use in the patching modes can be seen in table~\ref{table:patterns}.
@@ -373,8 +373,8 @@ Since \textit{if-eqz} evaluates only the one argument \textit{v0} and thus the s
 The Java code makes it easier to identify the functional changes of the attack
 Since the if evaluation is always wrong inside the \textit{b.java} class, the case when the response code is not \textit{LICENSED} is never called.
 The same canges are applied to the \text{d.java} class but since the variables are obfuscated it is hard to describe the exact behavior.
-After analysing the dependencies, it can be said that the function checks whether the given string is not null and then returns true.
-After patching, the result is always true since the null check is always false as in \textit{b.java}.
+After analysing the dependencies, it can be said that the function checks whether the given string is not null and then returns \textit{true}.
+After patching, the result is always \textit{true} since the null check is always false as in \textit{b.java}.
 \newline
 \lstinputlisting[
   style=diff,

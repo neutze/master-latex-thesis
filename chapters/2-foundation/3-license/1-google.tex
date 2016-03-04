@@ -112,6 +112,5 @@ This license verification can be enforced on all devices which have access to Go
 In case the application is installed on a device without the Google Play Service, it cannot bind to it and thus cannot verify the license.
 Only pirated applications are impacted since the \gls{lvl} should only be implemented when the application is distributed over Google Play.
 The actual license check obviously requires connection to the internet, as the \gls{lvl} needs to connect to the Google server.
-In case this is not possible, an internal error occurs and the license verification fails.
 The developer must decide when and how often the license check is done as well as whether the result should be stored for future requests.
-Depending on this policy, internet connection is needed. \cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
+Depending on the resulting policy, internet connection is needed. \cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}

@@ -1,25 +1,31 @@
 \section{Code Analysis} \label{section:luckypatcher-analysis}
-The code analysis was done using Lucky Patcher in version 6.0.4 using the two tools (Androguard and JADX) described in subsection~\ref{subsection:forensics-tools-java}.
-The reversed code was inspected using a text editor like Atom \cite{atom}.
-\newline
+The code analysis was done using Lucky Patcher in version 6.0.4 using the two decompilers DAD and JADX, which are described in subsection~\ref{subsection:forensics-tools-java}.
+The reverse engineered code was inspected using a text editor like Atom \cite{atom}.
 Before analysing the code, a look is taken at the structure.
-When loading the folder of the reengineered code into the editor a lot of different code folders can be spotted.
-These code folders hold the packages of Lucky Patcher itself. libraries used and resources.
-The libraries can be divided into four categories.
-\begin{enumerate}
-\item Android Support Library v4 with many of it's modules.
-It is used for downward compatibility of Android related functions of Lucky Patcher itself.
-\item Lucky Patcher code.
-They are located in two places.
-Utility functions, like "copy file" and "rename", are stored in the package com.chelpus utility functions
-The \textit{application code} itself can be found in the package \textit{com.android.vending.billing.InAppBillingService.LACK}.
-It contains the activities and functions which are used for cracking applications.
-\item The third category are support libraries required by Lucky Patcher to apply it's cracking mechanisms.
-This includes libraries, e.g. axml \cite{axml} for serializing the AndroidManifest.xml from Android binary into an ASCII formatted, human readable xml and zip4j \cite{zip4j}, a Java library to handle ZIP files.
-The fourth and last category is a modified billing and license library.
-It is applied in combination with a proxy to redirect inapp billing and licensing calls.
-\item Already cracked \gls{lvl}.
-\end{enumerate}
-Besides the four code folders, the asset folde stores different predefined custom patches which can be applied applications \cite{munteanLicense}.
 \newline
-The code itself
+The folder containing the decompiled application is loaded into the editor.
+On the first look, different folders can be spotted in the applications tructure.
+These folders contain the resources, different libraries and the actual \gls{luckypatcherg} code.
+The folders containing code can be divided into four categories.
+\begin{enumerate}
+\item Android Support Library v4 with many of it's modules -
+It is used to provide downward compatibility of Android related functions.
+\item Lucky Patcher code -
+They are located in two places.
+Utility functions, like \textit{copy file} and \textit{rename}, are stored in the package com.chelpus utility functions
+The application code itself can be found in the package
+\textit{com.android.vending.billing.InApp- BillingService.LACK}.
+It contains the activities and functions which are used for cracking applications.
+\item The third category are support libraries required by Lucky Patcher to apply it's patches -
+This includes libraries, e.g. axml \cite{axml} for serializing the AndroidManifest.xml from Android binary into an ASCII formatted, human readable xml and zip4j \cite{zip4j}, a Java library to handle ZIP files.
+\item The fourth is a modified billing and license library -
+It is applied in combination with a proxy to redirect inapp billing and licensing calls.
+\end{enumerate}
+In the resources folder, different predefined custom patches can be found.
+\newline
+\newline
+\gls{luckypatcherg} tries to hide the way it works.
+The developer uses heavy obfuscation and a flat code structure to make reverse engineering time consuming.
+It is applied effective since \gls{luckypatcherg} is dealing with applications which use this to fight off attacks.
+For this reason a blackbox analysis is choosen.
+The different modes are applied on a variety of applications and the outcome is analysed in order to identify how \gls{luckypatcherg} works.

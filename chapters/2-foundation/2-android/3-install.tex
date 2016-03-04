@@ -1,5 +1,5 @@
 \subsection{Installing an APK} \label{subsection:android-install}
-Before running an application, its \gls{apk} has to be installed.
+Before running an application, the \gls{apk}, containing the code, has to be installed.
 The installation consists of two major steps.
 The first step is primarily about verification, while the second step is the bytecode optimization and, in case of \gls{art}, the code compilation (see figure~\ref{fig:install}).
 The differences will be explained in the following subsections.
@@ -28,5 +28,5 @@ After the bytecode is optimized respectively compiled, the application can be ru
     \label{fig:install}
 \end{figure}
 When the application is run on the device, Android creates an sandboxed environment for application only.
-This is achieved by assigning each process an own \gls{vm} and seperate user ID.
+This is achieved by assigning each process an own \gls{vm} and separate user ID.
 This way each application runs separated from the others and has no access on resources except its own. \cite{developerFundamentals}

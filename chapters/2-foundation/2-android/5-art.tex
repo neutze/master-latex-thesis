@@ -1,9 +1,10 @@
+
 \subsection{Android Runtime (ART)} \label{subsection:android-art}
 In Android version 4.4 \textit{Kitkat} Google introduced \gls{art} which was optional and only available as a preview through the developer options.
 \gls{art} is designed to address the shortcomings of the \gls{dvm}.
 \newline
-For backwards compability, \gls{art} still works with bytecode in the \gls{dex} files format \cite{androidArt}.
-With the release of verison 5.0 \textit{Lollipop} \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
+For backwards compatibility, \gls{art} still works with bytecode in the \gls{dex} files format \cite{androidArt}.
+With the release of version 5.0 \textit{Lollipop} \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
 Throughout the Android 6.0 \textit{Marshmallow} previews it was constantly evolving and sometimes breaking with older versions at the cost of almost no documentation.
 \newline
 Maintaining an \gls{vm} is expensive, having an interpreter and \gls{jit} is not as efficient as native code.
@@ -18,12 +19,12 @@ The \gls{gc} is also non-blocking now and and can run parallel in fore- and back
 \newline
 The mean idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{llvm} code.
 Each of the types has its purpose and advantage.
-The native code offers an improved execution performance while the \gls{llvm} code offers protability.
+The native code offers an improved execution performance while the \gls{llvm} code offers portability.
 In practice the preference is to compile to native since adding \gls{llvm} bitcode adds another layer of complexity to \gls{art}.
 \newline
 Different from \gls{dvm} is the fact that \gls{art} uses not one but two file formats.
 Similar to the zygote of \gls{dvm}, \gls{art} offers an image of pre-initialized classes and and related object at run time, the boot.art file.
-It is poorly documented and still chaning a lot.
+It is poorly documented and still changing a lot.
 The boot.art file is mapped in memory before the linked .oat file
 It is mapped to the memory upon zygote startup to provide improved application starting time .
 In addition to the boot.art file, there are two different .oat files.

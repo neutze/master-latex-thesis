@@ -1,13 +1,17 @@
 \subsection{Retrieving an APK} \label{subsection:tools-apk}
-The analysis is performed on a computer since most tools are available on that platform.
-In order to analyse the application, its \gls{apk} has to be extracted from the phone and transfered to the computer.
+The analysis is performed using different tools on a desktop computer.
+The \gls{apk} has to be extracted from the phone and transferred onto the computer because the tools cannot analyse the application while it is still on the phone.
+This is done using the \textit{adb shell} which is part of the Android \gls{sdk}.
 \newline
-Most \gls{apk}s are stored in \textit{/data/app}.
-The filesystem of an Android device be accesses using the \textit{adb shell}, which is part of the Android \gls{sdk}.
-The user has no read rights on the folder and thus cannot see the content of the folder.
-In order to pull the desired application package the exact name is required.
-The package manager can be used to list all installed applications and their package names.
-The list can be retrieved using \textit{pm list packages -f} in the \textit{adb shell}.
-In case the phone is \textit{rooted}, the user can list the content of the server in the \textit{adb shell}.
-The format of the application package name is \textit{<namespace>.<appName>} and contains the application as \textit{base.apk}.
-The \gls{apk} can be extracted to the current folder using \textit{adb pull /data/app/<namespace>.<appName>/base.apk} on the computer's console.
+The \textit{adb shell} can be used inside the computer’s command line tool.
+The Android device must be connect to the computer via USB and USB debugging has to be activated in the device’s developer settings.
+The \textit{adb shell} is used to access the filesystem of the device in order to pull the target \gls{apk} onto the computer.
+The user has no read rights on the folder and thus cannot see or list the content of the folder.
+In order to pull the desired application package, location of the application must be known to the user.
+The package manager can be used acquire location of the application by listing all installed applications and their location.
+The list is retrieved using \textit{adb shell 'pm list packages -f'} in the command line tool.
+The result looks contains one application per line, e.g. \textit{package:/data/app/com.ebay.mobile-1/base.apk=com.ebay.mobile}.
+The information is used in the \textit{adb shell} to pull the application to the computer by executing \textit{adb pull /data/app/com.ebay.mobile-1/base.apk} in the command line tool.
+\newline
+In case the user has \textit{root}, it is possible to change the permissions of the folder.
+This way the folder is visible and accessible in a suited file explorer application and can be send to the computer.

@@ -1,16 +1,8 @@
-Cracking tool have to modify the application code since it contains the license verification.
-The investigations starts with analysing the \gls{apk}'s \textit{classes.dex}.
-The goal is to identify how the circumventing of the license verification mechanism is achieved.
-This aquired knowledge is later used to find countermeasures for the crackign tools.
+Cracking tool are modifying the application code since it contains the license verification.
+In order to understand the attack, the \gls{apk}'s \textit{classes.dex} is analysed.
+The goal is to identify how the exact mechanism applied to circumvent the license verification mechanism.
+The acquired knowledge is later used to suggest countermeasures against cracking tools.
 \newline
-The reengineering has to be done by using different layers of abstraction.
-While dex and smali code reflects local changes, Java code is used to detect functional changes.
-It is possible to access the applications Java code since the dex code can be decompiled as seen in figure~\ref{fig:re1}.
-This requires different tools which will be explained in this section.
-\newline
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{data/re1.png}
-    \caption{Java .class and .dex can be transformed bidirectional \cite{andevconDalvikART}}
-    \label{fig:re1}
-\end{figure}
+The code is reverse engineered on different abstraction layers to not only identify the local bytecode change but also to retrace the change in the functionality of the code.
+While dex and smali code reflects the local changes, Java code is used to see the bigger picture.
+The tools to retrieve the different abstractions and the way the changes are discovered will be described in the following.

@@ -1,0 +1,35 @@
+\subsection{Comparison of Code using Diff} \label{subsection:forensics-tools-diff}
+The amount of code generated for the abstraction levels cannot be analysed without extra tools.
+The best way to recover the changes is to use diff.
+Diff is a standard command line tool which is used to compare two files in order to receive the differences between them.
+\newline
+The changes \gls{luckypatcherg} applied have to be identified.
+This is achieved by comparing the different code abstractions of the original \gls{apk} with the cracked application.
+Diff is used in a script to generate the result for different applications and abstraction levels at once (see code snippet~\ref{codeSnippet:diffScript}).
+Doing this automatically and using diff saves a lot of time.
+\newline
+\lstinputlisting[
+  float=h,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  numbers=left,
+  language=bash,
+  linerange={1-9},
+  firstnumber=1,
+  caption={Script to compare the original and manipulated \gls{apk} to see the modifications in the different presentations},
+  label={codeSnippet:diffScript}
+]{data/diffScript.sh}
+The result does not only contain the change as original and new code, but also the location where the change happened.
+The example diff of a dex file is presented is code snippet~\ref{codeSnippet:n1DiffDex}.
+\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={1-3},
+  caption={Diff on Dex level for N1 pattern},
+  label={codeSnippet:n1DiffDex}
+]{data/n1.diff}

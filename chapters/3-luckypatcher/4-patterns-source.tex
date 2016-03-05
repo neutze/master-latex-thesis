@@ -285,7 +285,7 @@ instead of initializing variable with result from function, it is always initial
 \subsubsection{Amazon Market Patch}
 also applies pattern N2
 
-classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside kiwi logic
+classes it attacks %GENAUER ERKLÄREN WAS SIE MACHEN, FUNKTION DIE ANGEGRIFFEN WIRD NENNEN UND ERKLÄREN%, inside \textit{Kiwi} logic
 \url{com/amazon/android/licensing/b.java}
 \url{com/amazon/android/o/d.java}
 
@@ -405,20 +405,7 @@ always returns true for checkLicenseFile and checkLicenseFilePhase2, does not ch
 S2
 always starts condition, even though input is not as supposed to start
 \url{com/samsung/zirconia/Zirconia.java}
-\begin{table}[h]
-\centering
-\begin{tabular}{l|cccccccc}
-                           & \multicolumn{8}{c}{Patterns}           \\
-\multicolumn{1}{c|}{Modus} & N1 & n3 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
-Auto                       & X  & X  & X  &     & X  &    &    &    \\
-Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
-Extreme                    &    &    &    &     &    & X  & X  & X  \\
-Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
-Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
-\end{tabular}
-\caption{Overview of License Verification Library patching patterns applied by each modus}
-\label{table:patterns}
-\end{table}
+
 
 
 

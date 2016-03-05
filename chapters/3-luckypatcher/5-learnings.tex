@@ -1,8 +1,14 @@
 \section{Conclusion and Learnings} \label{section:luckypatcher-learnings}
-
+detail auf höheres level
 
 Results for applications, was ist wenn auf handy ohne store/mit store root/ohne root etc - ringschluss blackmarket da man installieren kann
 
+
+As described in section~\ref{section:lvl}, the license verification is implemented as client-server connection.
+The server communication is secure against man in the middle attacks or spoofing, as messages are encrypted \cite{munteanLicense}.
+\gls{luckypatcherg} is taking a different approach by directly modifying the library.
+
+Code is modified, signature has changed, manifest update, new signing key since developer key not present, different signature as original\cite{codeSigning} \cite{androidSigning}
 
 \begin{table}[h]
 \centering

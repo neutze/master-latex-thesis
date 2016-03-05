@@ -1,18 +1,17 @@
 \section{Code Analysis} \label{section:luckypatcher-analysis}
-The code analysis was done using Lucky Patcher in version 6.0.4 using the two decompilers DAD and JADX, which are described in subsection~\ref{subsection:forensics-tools-java}.
-The reverse engineered code was inspected using a text editor like Atom \cite{atom}.
-Before analysing the code, a look is taken at the structure.
+The inspection of \gls{luckypatcherg}'s source code of version 6.0.4 was performed using the two decompilers DAD and JADX, which are described in subsection~\ref{subsection:reengineering-abstraction}.
+The reverse engineered code was analysed using a text editor, like Atom \cite{atom}.
 \newline
-The folder containing the decompiled application is loaded into the editor.
+First, the folder structure was inspected by loading the reverse engineered code into the editor.
 On the first look, different folders can be spotted in the applications tructure.
 These folders contain the resources, different libraries and the actual \gls{luckypatcherg} code.
 The folders containing code can be divided into four categories.
 \begin{enumerate}
 \item Android Support Library v4 with many of it's modules -
-It is used to provide downward compatibility of Android related functions.
-\item Lucky Patcher code -
-They are located in two places.
-Utility functions, like \textit{copy file} and \textit{rename}, are stored in the package com.chelpus utility functions
+The library is used to provide downward compatibility of Android related functions.
+\item Lucky Patcher -
+Code containing the \gls{luckypatcherg} logic are located in two places.
+Classes containing utility methods are stored in the package com.chelpus.
 The application code itself can be found in the package
 \textit{com.android.vending.billing.InApp- BillingService.LACK}.
 It contains the activities and functions which are used for cracking applications.
@@ -25,7 +24,9 @@ In the resources folder, different predefined custom patches can be found.
 \newline
 \newline
 \gls{luckypatcherg} tries to hide the way it works.
-The developer uses heavy obfuscation and a flat code structure to make reverse engineering time consuming.
-It is applied effective since \gls{luckypatcherg} is dealing with applications which use this to fight off attacks.
-For this reason a blackbox analysis is choosen.
-The different modes are applied on a variety of applications and the outcome is analysed in order to identify how \gls{luckypatcherg} works.
+The developer uses heavy obfuscation and a flat code structure for the \gls{luckypatcherg} core logic.
+The goal is to make reverse engineering as time consuming as possible.
+These techniques are applied very effectively since \gls{luckypatcherg} itself is attacking such applications.
+For this reason a blackbox approach is choosen.
+This analysis focuses on gathering information from the output of a mechanism which should be analysed.
+\gls{luckypatcherg}'s different modes are applied on a variety of applications. A lot of data and edge cases is generated this way to identify how \gls{luckypatcherg} works.

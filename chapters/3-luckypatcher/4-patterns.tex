@@ -7,16 +7,34 @@ The names of the patterns are taken from the patching result output in figure~\r
 The number next to the pattern indicates how often it was applied to the application.
 This number is not always correct.
 The patterns N\textit{x} are used to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to do the same with the library of the respective store.
+The patching mode is responsible for the patterns applied when patching the \gls{lvl}.
+Table~\ref{table:patterns} gives an overview.
+Amazon and Samsung are always patched the same way.
+\begin{table}[h]
+\centering
+\begin{tabular}{l|cccccccc}
+                           & \multicolumn{8}{c}{Patterns}           \\
+\multicolumn{1}{c|}{Modus} & N1 & n3 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
+Auto                       & X  & X  & X  &     & X  &    &    &    \\
+Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
+Extreme                    &    &    &    &     &    & X  & X  & X  \\
+Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
+Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
+\end{tabular}
+\caption{Overview of License Verification Library patching patterns applied by each modus}
+\label{table:patterns}
+\end{table}
 Additional knowledge on the patterns was was gained in the analysis.
 \newline
-Before explaining the patterns in detail, some information has to be provided.
-When analyzing \gls{dex} files, instead of using hexadecimal values like \textit{0x0a}, a simplified presentation as \textit{0a} for improved overview in the diff files is chosen.
-The opcodes used by the \gls{dvm} are taken from on of the documentations \cite{opcodes}.
+\newline
+Before explaining the patterns in detail, additional information has to be provided.
+In the \gls{dex} file analysis, a simplified presentation as \textit{0a} instead of hexadecimal values like \textit{0x0a} is chosen for improved overview in the diff files.
 When converting \gls{dex} files to smali files, the arguments of the opcodes are transfered to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
 \newline
-Since changing the dex code of an application results in a new checksum, the code has to be resigned as well.
+\newline
+When the dex code of an application is modified, the checksum has to be recalculated and the file has to be signed again.
 This changes can be seen in the diff of the dex files.
-They are not explicit mentioned in the analysis since it is no direct change of the attack.
+They are not explicit mentioned in the analysis since they do not change the logic of the code.
 
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
@@ -341,7 +359,7 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  & X
 
 \subsubsection{Amazon Market Patch}
 Amazon does not have different pattern.
-Since the Kiwi library is injected by Amazon and cannot be customized by the developer, only one pattern is necessary.
+Since the \textit{Kiwi} library is injected by Amazon and cannot be customized by the developer, only one pattern is necessary.
 The pattern is applied twice.
 The first class tageted is \textit{com/amazon/android/licensing/b.java} while the second class is \textit{com/amazon/android/o/d.java}.
 Since the injected library is obfuscated, no meaningful names for the methods can be presented.
@@ -393,10 +411,10 @@ The result is forced to be always true and thus the license verification always 
 
 
 \subsubsection{Samsung Market Patch}
-Similiar to the Amazon's Kiwi library, Samsung's Zirconia library cannot be modified as well.
+Similiar to the Amazon's \textit{Kiwi} library, Samsung's Zirconia library cannot be modified as well.
 Thus cracking the library only requires one patch as well.
 The patch is applied on the \textit{LicenseRetriever} and \textit{Zirconia} class in the \textit{com/samsung/zirconia} package.
-Unlike Amazon's Kiwi \gls{drm}, Zirconia is not obfuscated and thus better to understand.
+Unlike Amazon's \textit{Kiwi} \gls{drm}, Zirconia is not obfuscated and thus better to understand.
 The Samsung patch uses two patterns, called S1 and S2 in order to distinguish between them.
 While S1 is applied on both classes, S2 is applied twice but only on the \textit{Zirconia} class.
 \newline

@@ -1,6 +1,6 @@
 \subsection{Android Application Package (APK)} \label{subsection:foundation-android-package}
 Android applications are distributed and installed using the \gls{apk} file format.
-They can either be obtained from an application store, like Google Play, or downloaded and installed, manually or by using \gls{adb}, from any other source.
+They can either be obtained from an application store like Google Play, or downloaded and installed manually or by using \gls{adb}, from any other source.
 The \gls{apk} format is based on the ZIP file archive format and contains the code and resources of the application.
 \newline
 The build process of \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
@@ -34,7 +34,9 @@ The \textit{apkBuilder} combines these files into one archive file.
 \newline
 Before releasing the application, it has to be signed and zipaligned.
 The \textit{jarsigner} is used to sign the application with the private key of the developer.
-It enables Android to identify the developer and support future updates for the application.
+It is done similar to the Java code signing \cite{codeSigning}.
+It ensures the integrity and authenticity of the \gls{apk}.
+Tampering can be detected and updates for applications with the same name and certificate can be installed.
 Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign} \cite{andevconDalvikART}
 \newline
 \newline
@@ -45,8 +47,8 @@ The structure of a final \gls{apk} file has at least the following content seen 
     \caption{\gls{apk} folder structure}
     \label{fig:apkfolder}
 \end{figure}
-The AndroidManfiest.xml and the \textit{classes.dex}, which have been covered already.
-The META-INF folder, which is inherited from Java and used to store package and extension configuration data, e.g. the signature \cite{metaJava}.
+The \textit{AndroidManfiest.xml} and the \textit{classes.dex}, which have been covered already.
+The \textit{META-INF} folder, which is inherited from Java and used to store package and extension configuration data, e.g. the signature \cite{metaJava}.
 While the static resources, like drawables and layouts, are in the res folder, the resources.arsc contains the compiled resources.
 Natice libraries is stored as \textit{*.so} files in the libs folder, split by the different processor types, like armeabi-v7a for ARM or x86 for Intel processors.
 They are written in C or C++ in order to boost performance and allow low level interaction between applications and the kernel by using the \gls{jni}. \cite{kovachevaMaster} \cite{ehringerDalvik}

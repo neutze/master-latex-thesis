@@ -1,21 +1,22 @@
-\section{Analysis of Patched Applications} \label{section:luckypatcher-operation}
-Since the analysis of the code is hard and does not uncover its functionality  voluntarily, an additional analysis of the reverse engineered code of the outcome of \gls{luckypatcherg} is done.
-The analysis is done to identify the parts of the code manipulated by \gls{luckypatcherg} and later on find solutions to protect these weak points.
-Different applications are used to get a variety of results and see how different implementations are attacked.
-They are patched and output as modified \gls{apk} by \gls{luckypatcherg} as described in section~\ref{section:luckypatcher-explain}.
-Since the code itself is modified, a static analysis is sufficient.
-Afterwards they are analysed according to the methodology shown in  section~\ref{section:reengineering}.
-The analysis is done with modified \gls{apk}s and not on the device directly since the resulting \gls{odex} files are device specific and cannot be used for a general conclusion.
+\section{Blackbox Analysis of Patched Applications} \label{section:luckypatcher-operation}
+The blackbox approach is done to identify the parts of the code manipulated by \gls{luckypatcherg} and to suggest solutions to protect these weak points.
+Different applications are used to get a variety of results and see how the different implementations are attacked.
 \newline
-The goal of reverse engineering the code and comparing it to the original application is to see the changes on different levels.
-This includes the \gls{dex} level, on which Lucky Patcher works, the smali level, which makes the \gls{dex} code human readable friendly, as well as Java level, on which the functionality chance can be identified.
-On each level the modified and original code will be compared using diff to retrieve the changes in an easy way as well as ignoring the unchanged code.
+The applications are patched using the \textit{Auto Modes}.
+The approach for creating a modified \gls{apk} was chosen since \gls{odex} files are device specific and cannot be used for a general conclusion of an attack.
+The outcome is analysed using the methodologies described in  section~\ref{section:reengineering}.
+Since the only the bytecode is modified, a static analysis is sufficient.
 \newline
-In order to have a reference application with known source code and an implementation according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, a test application is created.
+The goal of reverse engineering the code and comparing it to the original application is to discover the changes and analyse them on different abstraction levels.
+This includes the \gls{dex} level, on which Lucky Patcher works, the smali level, which makes the \gls{dex} code human readable, as well as Java level, on which the functionality change can be identified.
+On each level, the modified and original code are compared using diff to retrieve the changes in an easy way as well as ignoring the unchanged code.
+\newline
+\newline
+Besides circumventing the Google \gls{lvl}, \gls{luckypatcherg} supports the the removing of Amazon's and Samsung's license verification library.
+A reference application with known source code and an implementation, according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, is created.
 This application is called \textit{LicenseTest}.
-It makes it possible to analyse how Lucky Patcher works on the most basic version.
-Besides circumventing the Google \gls{lvl}, \gls{luckypatcherg} supports the cracking applications from Amazon and Samsung as well.
-For Amazon's Kiwi \gls{drm}, the same application, with deactivated \gls{lvl}, is uploaded to Amazon and injected with their \gls{drm}.
+It gives full control and knowledge of the code and allows the analyse of \gls{luckypatcherg} attack on the most basic version.
+The same application is uploaded with deactivated \gls{lvl} to the Amazon store and injected with the \textit{Kiwi} \gls{drm}.
 The analysis for Samsung’s Zirconia \gls{drm} is only done by using \textit{LicenseTest} with deactivated \gls{lvl} as well, since the library is implemented the same way into all applications.
 This can be assumed since the library is included as a \gls{jar} and cannot be modified.
 In addition to the basic application, other applications were analysed as well,to see how \gls{luckypatcherg} handles different implementations.

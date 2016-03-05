@@ -4,8 +4,17 @@ The installation consists of two major steps.
 The first step is primarily about verification, while the second step is the bytecode optimization and, in case of \gls{art}, the code compilation (see figure~\ref{fig:install}).
 The differences will be explained in the following subsections.
 \newline
-Before initiating the installation, the \gls{apk} is checked for a legitimate checksum, the signature is checked and the \textit{classes.dex} structure is validated.
-In case one action fails to validate, the installation is rejected by the OS.
+Before initiating the installation, the \gls{apk} is checked for its integrity and authenticity.
+The \textit{META-INF} folder contains the necessary files for performing the signature verification process.
+The three files are the \textit{MANIFEST.MF}, the \textit{MANIFEST.SF} und the \textit{CERT.RSA}.
+The manifest, \textit{MANIFEST.MF}, contains the name and the digest of each file inside the \gls{apk}, e.g. \textit{classes.dex} and its signature.
+The the signature file, \textit{MANIFEST.MF} which is used for the code signing.
+It is similar to the manifest and contains the SHA1 digest of the manifest and the digests of each entry inside the manifest.
+The \textit{CERT.RSA} is the digital signature, called signature block, which is used to sign the files.
+While the manifest files are used to detect tampering while the digital signature is used to identify the code signer.
+In order to apply updates, the old and the new \gls{apk} need to have the same package name and code signer.
+Since Android allows self-signed certificates, no connection of whether the \gls{apk} was signed by the right person nor whether the application is allowed to be installed can be closed from the digital signature
+\cite{codeSigning} \cite{androidSigning}
 \newline
 The installation can be performed in two ways depending on the runtime of the Android \gls{os}.
 In case the \gls{dvm}, optimisation is applied to the \textit{classes.dex} file and the corresponding \gls{odex} file is generated and moved to the Dalvik cache.

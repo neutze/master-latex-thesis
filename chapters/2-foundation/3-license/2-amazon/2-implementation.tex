@@ -1,4 +1,4 @@
-\subsubsection{Implementation of Kiwi} \label{section:license-amazon-implementation}
+\subsubsection{Implementation of \textit{Kiwi}} \label{section:license-amazon-implementation}
 kind of wrapper
 no sample implementation to add by developer but inject own logic in each app (same for every app)
 
@@ -20,9 +20,9 @@ drm logic not interweaved with app logic, could only be done by a human develope
   language=Java,
   linerange={77-80},
   firstnumber=77,
-  caption={Amazon's onCreate() injection to call Kiwi license verification as well},
+  caption={Amazon's onCreate() injection to call \textit{Kiwi} license verification as well},
   label={codeSnippet:amazonCreate}
 ]{data/amazon.java}
 
 rename onCreate to onCreateMainActivity
-start in new onCreate, also start Kiwi.onCreate((Activity) this, true); which handles the
+start in new onCreate, also start \textit{Kiwi}.onCreate((Activity) this, true); which handles the

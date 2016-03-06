@@ -1,29 +1,34 @@
 \section{Conclusion and Learnings} \label{section:luckypatcher-learnings}
-detail auf höheres level
-
-\subsubsection{Overview for Patching the \gls{lvl}}
 The summary of the \gls{lvl} patterns and their use in the patching modes can be seen in table~\ref{table:patterns}.
-The auto mode and inversed auto mode are applying patches at the important parts of the \gls{lvl}.
-They are effective as long as the library is not modified by the developer.
+Amazon and Samsung are always successful since not the developer implementation is attacked but the library itself, which is always the same.
 \newline
-In contrast to the determined patching of the automatic modes, the extreme mode tries to apply patterns to different places as well as to more complex methods.
+When patching Amazon, Samsung and the \gls{lvl} with the auto and inversed auto mode, the patches are applied determined to the important parts of the application.
+They are effective as long as the library is not modified by the developer.
+In contrast to the determined patching of the automatic modes, the extreme mode tries to apply patterns to files in other locations as well as to more complex methods.
 This might cause instability, as seen in pattern N6, since it alters the syntax of the dex file.
-
-
-Results for applications, was ist wenn auf handy ohne store/mit store root/ohne root etc - ringschluss blackmarket da man installieren kann
-
-
-As described in section~\ref{section:lvl}, the license verification is implemented as client-server connection.
-The server communication is secure against man in the middle attacks or spoofing, as messages are encrypted \cite{munteanLicense}.
-\gls{luckypatcherg} is taking a different approach by directly modifying the library.
-
-Code is modified, signature has changed, manifest update, new signing key since developer key not present, different signature as original\cite{codeSigning} \cite{androidSigning}
-
-\begin{table}[h]
+\newline
+\newline
+Table~\ref{table:functionality} gives an overview of patched applications.
+\gls{luckypatcherg} does not guarantee to be successful with one or more patching modes.
+\newline
+The first example is \textit{LicenseTest}.
+While circumventing the license verification with the auto mode alone and combined with the extreme mode is possible, it does not work with the other modes.
+One reason is due to the inversed auto mode tailored to the opposed configuration of the \textit{allowAccess()} method implemented.
+Another reason is that the extreme mode is an addition to counter modified license verification implementations.
+\newline
+The second example is \textit{Runtastic Pro}.
+This implementation is altered in a bad way which makes it vulnerable to all patching modes.
+In the pirated and unmodified application, the user is told that the application is under maintenance.
+When the patches are applied, the user can login as if the application was bought in the store.
+\newline
+The third example is \textit{Teamspeak 3}.
+Their interpretation for the license verification is able to withstand all attacks.
+\newline
+\begin{table}
 \centering
 \begin{tabular}{llll}
                                              & \multicolumn{3}{c}{Application}             \\
-\multicolumn{1}{c|}{Modus}                   & LicenseTester & Runtastic Pro & Teamspeak 3 \\ \hline
+\multicolumn{1}{c|}{Modus}                   & LicenseTest & Runtastic Pro & Teamspeak 3 \\ \hline
 \multicolumn{1}{l|}{Purchased}               & yes           & yes           & yes         \\
 \multicolumn{1}{l|}{Pirated}                 & no            & no            & no          \\
 \multicolumn{1}{l|}{Auto}                    & yes           & yes           & no          \\
@@ -35,55 +40,27 @@ Code is modified, signature has changed, manifest update, new signing key since 
 \caption{Functionality for the test apps before and after patching}
 \label{table:functionality}
 \end{table}
-
-lvl cracked app was always workign (test)
-
-Amazon cracked app was always working (no client needed)
-samsung app also working
-
-applies it directly to the librabry since first patching point could be the initial call, in case modified lvl patching initial call would be not enough since the on success block could contain important code (like ui creation) then it would be useless, target on specific points where decisions are made to alter as few code as possible
-
-since automated customizations have to be implemented to trick it
-make false checks to detect tampering -see- user patch
-
-amazon/samsung not much to do since from company, beyond control of developer since injection after developer and a library provided by samsung which is only called, that is why the following not simple methods target lvl
-
-known bytecode patterns, replace with custom, makes mechanism useless
-
-following present ways of protecting against patching attempts, especially predefined recipes circumventing the LVL
-high motivation, the patterns/patching modes cover many apps, more than custom
-
-should not use one but many methods
-solution for current version of lucky patcher, future might be different, arms race scenario
-\cite{munteanLicense}
-%
-
+\gls{luckypatcherg} is carrying out the attack by modifying the logic of the license verification libraries.
+The circumvention of the verification process is achieved by apply only minor changes.
+Single opcodes are changed to alter checks.
+The resulting code evaluates a constant with desired outcome instead of the result of the initial method.
+This way bad response codes can be ignored while the outcome is enforced.
+It is very difficult to avoid this kind of attack since the license verification process is dependent on the binary \textit{yes/no} evaluation.
+An abstraction of the unary verification mechanism is presented in figure~\ref{fig:verificationNow}.
+\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/verificationNowAttack.png}
     \caption{Abstraction of the current attack on the license verification mechanism}
     \label{fig:verificationNowAttack}
 \end{figure}
-
-UNARY KOMMT HIER VOR
-
-Es muss generell immer abgewogen werden zwischen Reichweite und Sicherheit. Von Output den Lucky Patcher gibt, sind die auto patching modes für Google, Amazon und Samsung, die großen Player. Ein Developer muss seine App dort anbieten um Aufmerksamkeit zu bekommen. Deswegen sind diese Stores auch so gut "maintained" von Lucky Patcher.
-Im Falle, dass ein Developer "Sicherheit" vorzieht und seine App in einem alternativen Store anbietet, gibt es zwei Scenarien. Entweder entwickelt jemand einen Custom Patch (dex oder native Angriff) wenn ein "allgemeines Interesse" besteht oder die App ist uninteressant und erhält keine Aufmerksamkeit, weder von LP noch Kunden.
-
-
-Aamzon + Samsung
-Wenn man sich slide.me anschaut, ist dies eine simple Variante von Zirconia und ist theoretisch noch einfacher zu cracken. Anstatt auf einen Callback zu setzen welchen man in der jar modifizieren müsste, kann man bei slide.me einfach den Code Block
- if(someRights != null){
-        // you have granted rights.
-    } else {
-        // You don't have any rights for the feature in cause. Try
-        // some features. (Currently not supporting multiple 'features')
-    }
-modifizieren und immer in den "you have granted rights" Block springen. Dies ist besonders einfach, da durch die statische jar auch kein modifiziertes Verhalten zu erwarten ist.
-
-
-nur ja/nein test bzw ergebnis zuweisung und drauf folgender test kann IMMER geskippt werden, vergleich figure~\ref{fig:verificationNow}
-
-unary outcome beschreiben
-
-fügt keinen code hinzu sondern ersetzt commands => checksum/signature
+The changes are applied by extracting, modifying and repacking the \textit{class.dex} similar to the build process of subsection~\ref{subsection:foundation-android-package}.
+The modification of the file entails that its checksum and signature have to be recalculated.
+Since Android can detect tampering of the \gls{apk}, the digest of the file in the \textit{META-INF} folder and its manifest files has to be adjusted as well \cite{androidSigning}.
+\gls{luckypatcherg} does not have the developer's private key to sign the files accordingly.
+This causes problems when certificate is checked for its origin but since Android allows self-signed certificates it does not matter \cite{codeSigning}.
+Android just compares the certificates in case an application is updated with a \gls{apk} containing the same package name or when trust relationships between applications are about to be established. \cite{androidSigning}
+The only limitation is the installation of the modified \gls{apk} is only possible when the original application is removed and future updates are not possible as long as the new \gls{apk} contains the same certificate.
+\newline
+The creation of the modified \gls{apk} does not require \textit{root} and the cracked \gls{apk} can be distributed without limitations.
+This makes piracy easy for users and is a huge threat to developers.

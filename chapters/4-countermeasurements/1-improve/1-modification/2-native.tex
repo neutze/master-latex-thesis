@@ -1,13 +1,12 @@
-\subsection{Native Implementation of \gls{lvl}} \label{subsection:counter-modifications-dynamic}
-
-\gls{luckypatcherg}'s automatic patching modes, as described in chapter~\ref{chapter:luckypatcher}, target the application's \gls{dex} file.
-Since Android supports the \gls{ndk}, it is possible to implement parts of the application using native code.
+\subsection{Native Implementation} \label{subsection:counter-modifications-dynamic}
+\gls{luckypatcherg}'s automatic patching modes, as described in chapter~\ref{chapter:luckypatcher}, target the application's bytecode inside the \textit{classes.dex}.
+Since Android supports the \gls{ndk}, parts of the application can be implemented using native code.
 \newline
 Usually the \gls{ndk} targets CPU intensive taks, such as game engines and signal processing, but it can be used for any other purposes as well.
 Google suggests using it only if necessary since it increases the complexity of an application \cite{androidNdk}.
-In case of the \gls{lvl} this is a desired side effect.
-Native code, in opposite of byte-code, does not contain a lot of meta-data, such as local variable types, class structure.
-It information discared when the code is compiled and thus makes it harder to understand the code.
+This is a desired side effect when implementing the \gls{lvl} natively.
+Native code, in opposite of byte-code, does not contain much meta-data, such as local variable types or class structure.
+Its information is discared on compilation and thus the code is harder to understand.
 \newline
 There are two scenarios for creating a native implementation of the \gls{lvl}.
 \begin{itemize}

@@ -12,5 +12,8 @@
 ??+??    if-eq ??v0??, ??v0??, :cond_e
 
 *@@ Pattern N6 @@*
-!!-!! if (!!responseCode == 0 || responseCode == NOT_LICENSED || responseCode == LICENSED_OLD_KEY)  {...}!! return;
-??+?? if (??null == null || broken code?? return;
+!!-!! if (!!responseCode != LICENSED || responseCode != NOT_LICENSED || responseCode != LICENSED_OLD_KEY!!) {
+!!-!! switch (!!responseCode!!) {
+??+ responseCode = LICENSED??;
+??+?? if (??(LICENSED != LICENSED??) && (LICENSED?? != LICENSED_OLD_KEY??)??) {
+??+?? switch (??LICENSED??) {

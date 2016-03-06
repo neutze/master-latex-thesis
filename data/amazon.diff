@@ -8,4 +8,4 @@
 
 *@@ Pattern A @@*
 !!-!! if(!! ! !!v0.equals("LICENSED")) {...}
-??+?? if(v0.equals("LICENSED" ??!= v0.equals("LICENSED"??) {...}
+??+?? if(v0.equals("APPLICATION_LICENSE" ??!= v0.equals("APPLICATION_LICENSE"??) {...}

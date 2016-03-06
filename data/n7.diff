@@ -1,0 +1,4 @@
+*@@ Pattern N7 @@*
+!!-!! this.verifyLicense(!!p7.readInt()!!, p7.readString(), p7.readString());
+??+ p7.readInt();??
+??+?? this.verifyLicense(??0??, p7.readString(), p7.readString());

@@ -1,19 +1,10 @@
 \subsubsection{Allatori} \label{subsection:counter-obfuscation-solution-allatori}
-%START TEXT INPUT
-This is my real text! Rest might be copied or not be checked!
-%START TEXT INPUT
-
-commercial Android obfuscator
-name obfuscation, control flow flattening/obfuscation, debug info obfuscation, string encryption
-the result is a decreases dex size, memory, increases speed, removed debug code+
-like Proguard+string encryption
-\cite{strazzareLevel0}
-
-
-commercial product from Smardec
-addition to what Proguard does it offeres methods to provide program code, loops are modified so reengineering tools do not recognize it as a loop
-adds complexity to algorithms and increases their size
-string obuscation
-
-\cite{allatori}
-\cite{allatoriDoc}
+\textit{Allatori} is acommercial Android obfuscator from Smardec.
+Similar to \textit{DexGuard} it provides a superset of \textit{ProGuard}'s methods. \cite{allatori}
+\newline
+The features of \textit{Allatori} include name obfuscation, string encryption and debug information obfuscation.
+Even flattening of the structure and obfuscationof the control flow are possible.
+Another feature is the addition of complexity to algorithms, e.g. loops are modified in a way that reverse engineering tool do not recognize them as such.
+\cite{strazzareLevel0} \cite{allatoriDoc}
+\newline
+Overall, the resulting application has a decreased \gls{dex} file and memory footprint while having increased speed.

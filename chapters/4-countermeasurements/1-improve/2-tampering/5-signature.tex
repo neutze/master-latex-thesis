@@ -1,8 +1,9 @@
 \subsubsection{Signature} \label{subsection:counter-improve-tampering-signature}
-Application code is signed to connect a developer to an application and enable him to provide updates for the application.
-Since the checksum and signature have to be rewritten when cracking the application, this can be used to detect attacks.
-This is similar to Google Maps inside an application.
-The Maps library sends the signature and the API key to the server which. similar to the license verification, decides wether the application is allowed to show the map.
+Application code is signed to authenticate an application developer and enable him to provide updates for the application \cite{androidSigning}.
+Since the signature has to be rewritten when cracking the application, it is used as an indicator for attacks \cite{tamperSignature}.
+\newline
+The approach is similar to Google Maps inside an application.
+When launching the map the applications sends the SHA1 signature and the API key to the server which verifies whether the application is allowed to display the map \cite{maps}.
 \newline
 \lstinputlisting[
   float=h,

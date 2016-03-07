@@ -1,7 +1,8 @@
 \subsubsection{Root} \label{subsection:counter-improve-tampering-root}
-Root is the foundation to cracking applications and thus when the device is rooted it possible to alter the application.
-The developer can check whether root is available on the device and evtually exclude users accordingly.
-When using this feature, the developer has to communicate the users the reasons for this strict policy since there are a lot of users who use root for other reasons than cracking applications.
+\textit{Root} can be used to alter applications or extract protected data.
+The developer can check whether \textit{root} is available on the device and eventually exclude users which use it.
+The developer needs to communicate the users the reasons for this strict policy since there are a lot of users who use root for other reasons than cracking applications.
+\newline
 Google has introduced a similar \gls{api}, called SafetyNet \cite{safetynetPay}, which is said to be used in security critical applications like Android Pay \cite{safetynetGoogle} \cite{safetynetPayx}.
 \newline
 \lstinputlisting[
@@ -18,5 +19,5 @@ Google has introduced a similar \gls{api}, called SafetyNet \cite{safetynetPay},
   caption={Example code for checking for root},
   label={codeSnippet:tamperingRoot}
 ]{data/4-countermeasurements/1-tampering/2-root.java}
-Since root is achieved by moving the \textit{su} file to the file system, the application can search in the common locations for it.
+Since \textit{root} is achieved by the \textit{su} file in the filesystem, the application can search for its existance in the common locations.
 In case the search is successful, the execution of the application can be terminated.

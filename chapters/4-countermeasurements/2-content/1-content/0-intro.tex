@@ -1,3 +1,12 @@
-Encryption can be applied on different levels inside the application.
-It has to be decided to which extend it should be applied.
-The thesis introduces three different approaches on encryption.
+Since not all application suit the server client model, encryption is introduced as another countermeasure to prevent piracy.
+Encryption has two advantages in the fight against cracking applications since it is more complex.
+The first advantage is that the cryptographic keys are not predictable.
+\gls{luckypatcherg} is not able to patch the application in a way that a certain outcome is enforced.
+The second advantage is that the application does not work in the way it is intended when the decryption key is not present or the decryption methods are patched.
+\newline
+\newline
+Before encryption is applied, two choices have to be made.
+The first choice is the content which has to be encrypted.
+The second choice is the storage location of the decryption key.
+\newline
+The following will present three approaches for encryption and key storage.

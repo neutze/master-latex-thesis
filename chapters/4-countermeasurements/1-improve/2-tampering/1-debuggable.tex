@@ -1,8 +1,9 @@
 \subsubsection{Debuggability} \label{subsection:section:counter-improve-tampering-debuggable}
 Enabling debugging allows the developer to use aditional features for analysing the app at runtime, like printing out logs \cite{androidDebugging}.
 This features are used to gain information about the flow of the app and to reenginer functionality.
-From the results of this analysis weak points in the application can be identified and custom patches for cracking tools can be derived from them.
-This is the reason for disabling the debug flag in release builds on the application stores, but since the flag for debugging is included inside the \gls{dex} file, it can be enabled by attacks
+With the results of this analysis weak points are identified and custom patches are developed.
+\newline
+The debug flag is not set in release builds on the application stores, but it can be activated by chaning it in the \textit{classes.dex}.
 In order to prevent attackers taking advantage from this possiblity, the developer should check whether this flag is activated und thus the application is tampered.
 \newline
 \lstinputlisting[

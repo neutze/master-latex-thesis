@@ -1,7 +1,8 @@
-\subsubsection{Communication} \label{section:counter-replace-encryption-content-communication}
+\subsubsection{Encryption - Communication} \label{section:counter-replace-encryption-content-communication}
 The third approach is to use encryption on the server response as seen in figure~\ref{fig:encryptionComm}.
-This is an additional security feature which is applied in combination with a content server described in subsection~\ref{section:counter-replace-server}.
-When the user does the login on the server, additional unique device specific paramters have be passed as well.
+This additional security feature is applied in combination with a content server as described in subsection~\ref{section:counter-replace-server}.
+\newline
+When the user does the login on the server, additional unique device specific paramters have be passed as well, e.g. the \textit{ANDROID\_ID}.
 On the first login, the server generates a cryptographic key which is used for communication with the user on this specific device.
 The corresponding key can either be generated on the device or be shared by the server.
 This mechanism allows only authorized users on a specific device to decrypt the communication.
@@ -12,8 +13,3 @@ This mechanism allows only authorized users on a specific device to decrypt the 
     \caption{Encrypted communication with a server}
     \label{fig:encryptionComm}
 \end{figure}
-
-A similar approach is used for streaming \gls{drm} protected content on Android.
-The encrypted content can only be decrypted by a native interface provided by the \gls{os} which stores the decryption key. \cite{androidDrm}
-\newline
-This methodology focuses on the security of the content instead of the application itself.

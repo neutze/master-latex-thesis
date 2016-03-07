@@ -76,42 +76,42 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCreate(Bundle bundle) {
         onCreateMainActivity(bundle);
-        \textit{Kiwi}.onCreate((Activity) this, true);
+        Kiwi.onCreate((Activity) this, true);
     }
 
     public Dialog onCreateDialog(int i) {
-        Dialog dialog = \textit{Kiwi}.onCreateDialog(this, i);
+        Dialog dialog = Kiwi.onCreateDialog(this, i);
         return dialog != null ? dialog : super.onCreateDialog(i);
     }
 
     public Dialog onCreateDialog(int i, Bundle bundle) {
-        Dialog dialog = \textit{Kiwi}.onCreateDialog(this, i);
+        Dialog dialog = Kiwi.onCreateDialog(this, i);
         return dialog != null ? dialog : super.onCreateDialog(i, bundle);
     }
 
     public void onDestroy() {
         onDestroyMainActivity();
-        \textit{Kiwi}.onDestroy((Activity) this);
+        Kiwi.onDestroy((Activity) this);
     }
 
     public void onPause() {
         super.onPause();
-        \textit{Kiwi}.onPause(this);
+        Kiwi.onPause(this);
     }
 
     public void onResume() {
         super.onResume();
-        \textit{Kiwi}.onResume(this);
+        Kiwi.onResume(this);
     }
 
     public void onStart() {
         super.onStart();
-        \textit{Kiwi}.onStart(this);
+        Kiwi.onStart(this);
     }
 
     public void onStop() {
         super.onStop();
-        \textit{Kiwi}.onStop(this);
+        Kiwi.onStop(this);
     }
 
     static {

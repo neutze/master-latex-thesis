@@ -1,35 +1,69 @@
 \section{Patching Patterns} \label{section:luckypatcher-patterns}
-In order to identify the structure of the single patterns, the code of the original code was compared to the cracked output.
-The changes in the code were inspected on dex, smali and Java level with the tools explained in Section~\ref{section:reengineering}.
-After analysing same patterns in the different modes it was identified that these patterns can be summed up as one.
+In order to identify the changes of each individual pattern, the code of the original and cracked \gls{apk} are compared.
+The changes were inspected on dex, smali and Java level with the tools explained in section~\ref{section:reengineering}.
 \newline
 The names of the patterns are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
-The number next to the pattern indicates how often it was applied to the application.
-This number is not always correct.
-The patterns N\textit{x} are used to circumvent the \gls{lvl} while the Amazon and Samsung patterns are tailored to do the same with the library of the respective store.
-The patching mode is responsible for the patterns applied when patching the \gls{lvl}.
-Table~\ref{table:patterns} gives an overview.
-Amazon and Samsung are always patched the same way.
+While there are seven different patterns for the \gls{lvl}, called N1..N7, Amazon and Samsung each have a patch.
+Some similar changes are applied in different locations in the code.
+These changes are summed up as part of one pattern.
+\newline
+When patching the \gls{lvl}, the choice of patterns is dependent on the selected modus.
+Table~\ref{table:patterns} gives an overview based on the black box test.
+It shows the patching modes and the patterns applied.
+\newline
 \begin{table}[h]
 \centering
-\begin{tabular}{l|cccccccc}
-                           & \multicolumn{8}{c}{Patterns}           \\
-\multicolumn{1}{c|}{Modus} & N1 & n3 & N3 & N3i & N4 & N5 & N6 & N7 \\ \hline
-Auto                       & X  & X  & X  &     & X  &    &    &    \\
-Auto (Inversed)            & X  & X  &    & X   & X  &    &    &    \\
-Extreme                    &    &    &    &     &    & X  & X  & X  \\
-Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X  \\
-Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &
+\begin{tabular}{l|cccccccccc}
+                           & \multicolumn{10}{c}{Patterns}           \\
+\multicolumn{1}{c|}{Modus} & N1 & N2 & N3 & N3i & N4 & N5 & N6 & N7 & A & S \\ \hline
+Auto                       & X  & X  & X  &     & X  &    &    &  &&  \\
+Auto (Inversed)            & X  & X  &    & X   & X  &    &    &  &&  \\
+Extreme                    &    &    &    &     &    & X  & X  & X && \\
+Auto+Extreme               & X  & X  & X  &     & X  & X  & X  & X && \\
+Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &X &&\\
+Amazon               &   &  X&   &     &   &   &   &  &X&\\
+Samsung               &   &   &   &     &   &   &   &   &&X
 \end{tabular}
 \caption{Overview of License Verification Library patching patterns applied by each modus}
 \label{table:patterns}
 \end{table}
-Additional knowledge on the patterns was gained from the black box analysis.
+The changes observed in the black box test are only the visible part of the bytecode pattern that is used to modify the dex file.
+The pattern is too generic when it only looks at one opcode.
+Since the pattern is targeting a specific method inside a specific class, the assumption is made that knowledge of the context is required.
+The resulting bytecode pattern consists of a context part, the visible part that is changed and another context part.
+In addition there should be fixpoints and placeholders.
+Fixpoints are knowledge that is available about the context of the target.
+An example is a specific structure the target is part of, like a switch case
+
+The placeholders are used for dynamic bytecode which is not always the same in every application’s \gls{dex} file, e.g. variable registers.
+\newline
+The decompiled code of \gls{luckypatcherg} is searched for strings with an opcode like signature in order to confirm the assumption.
+\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={65-66},
+  caption={Bytecode patterns for N2},
+  label={codeSnippet:example}
+]{data/patterns.diff}
+This string pair in code snippet~\ref{codeSnippet:example} matches the assumption.
+It provides even additional information.
+Both strings have the same structure except for one bytecode tupel.
+The assumption is that one is the search pattern while the other one is the replacement pattern containing the visible change.
+There is additional bytecode before and after the unequal tupel which consists of fixpoints and placeholders.
+\newline
+In order to verify the assumption, each of the found bytecode patterns is tested on the \gls{dex} files.
+The bytecode strings inside the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} can be verified as the bytecode patterns used by \gls{luckypatcherg}’s auto patching modes.
+In addition, the can be verified that the strings next to the bytecode pattern are the pattern the bytecode pattern belongs to.
+This information can be used for assigning not occurred patterns with a name to their patching pattern while neglecting patterns with neither a name nor appearance in the black box analysis.
 \newline
 \newline
 Before explaining the patterns in detail, additional information has to be provided.
 In the \gls{dex} file analysis, a simplified presentation as \textit{0a} instead of hexadecimal values like \textit{0x0a} is chosen for improved overview in the diff files.
-When converting \gls{dex} files to smali files, the arguments of the opcodes are transfered to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
+When converting \gls{dex} files to smali files, the arguments of the opcodes are transferred to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
 \newline
 \newline
 When the dex code of an application is modified, the checksum has to be recalculated and the file has to be signed again.
@@ -38,8 +72,8 @@ They are not explicit mentioned in the analysis since they do not change the log
 
 \subsubsection{Patch Pattern N1}
 Pattern N1 is present in all patching modes except the solo extreme mode.
-It tagets the \textit{verify()} method of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
-This method is responsible for dectypting and verifying the response from the license server \cite{developersLicensingReference}.
+It targets the \textit{verify()} method of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
+This method is responsible for decrypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
 In can be seen in the dex code in code snippet~\ref{codeSnippet:n1DiffDex} that \textit{1a} and \textit{0f} are swapped in their order.
 \newline
@@ -49,10 +83,12 @@ In can be seen in the dex code in code snippet~\ref{codeSnippet:n1DiffDex} that 
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={1-3},
+  linerange={3-5},
   caption={Diff on Dex level for N1 pattern},
   label={codeSnippet:n1DiffDex}
-]{data/n1.diff}
+]{data/patterns.diff}
+When analysing \gls{luckypatcherg}, no bytecode pattern for pattern N1 is identified, neither by name nor by verification.
+\newline
 When looking at the smali code, the two variables can be identified as blocks of a switch statement.
 Due to the internal mapping by the language, variables have different names.
 The swap of switch cases \textit{0x1} und \textit{0x2} can be seen in the diff of code snippet~\ref{codeSnippet:n1DiffSmali}.
@@ -107,8 +143,20 @@ The instruction \textit{0a 05} is replaced by \textit{12 15}.
   caption={Diff on Dex level for N2 pattern},
   label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={3-4},
+  caption={Bytecode patterns for N2},
+  label={codeSnippet:n2patterns}
+]{data/patterns.diff}
+The search in the
+\newline
 The smali in code snippet~\ref{codeSnippet:n2DiffSmali} names the target opcode.
-Instead of moving the result of the predecessing function to \textit{v5}, the varibale is always set to \textit{true}.
+Instead of moving the result of the preceding function to variable \textit{v5}, it is always set to \textit{true}.
 \newline
 \lstinputlisting[
   style=diff,
@@ -227,7 +275,7 @@ Since the value is \textit{0} in the \gls{dex} file, it is interpreted as \texti
 ]{data/n4.diff}
 The Java code in code snippet~\ref{codeSnippet:n4DiffSmali} shows the result of the changes.
 In the original code, the result of \textit{mPolicy.allow()} was checked.
-In case the policy did not allow to continue adn thus the result was \textit{false}, the condition block was executed.
+In case the policy did not allow to continue and thus the result was \textit{false}, the condition block was executed.
 The changes of the pattern result in the check for inequality of the result of \textit{mPolicy.allow()}.
 Since the result of the method is the same and thus the condition is never fulfilled, the condition block is never called.
 \newline
@@ -319,11 +367,10 @@ It voids the impact of those reponse codes.
 Instead it proceeds successfully since the reponse code is set to \textit{LICENSED}.
 
 \subsubsection{Patch Pattern N7}
-The final pattern for the \gls{lvl} is pattern N7.
-It is applied in the extreme mode and as this mode indicates, it takes a harsh approach on applying itself.
-It does not only patch the \textit{ILicenseResultListener} class's \textit{onTransact()} method, which is the implementation for the callback for interprocess communication and receives the async response from the license server \cite{developersLicensingReference}.
-In addition, the pattern is applied to all classes eligable in the \url{com/android/}.
-It is the bruteforce version of pattern N2.
+The final pattern for the \gls{lvl} is pattern N7, a brute force version of pattern N2.
+Inside the lvl, it patches the \textit{ILicenseResultListener} class's \textit{onTransact()} method, which is the implementation for the callback for interprocess communication and receives the async response from the license server \cite{developersLicensingReference}.
+In addition to the lvl classes, the pattern is applied to all classes residing in the \url{com/android/} package.
+
 The outcome might not be stable anymore and thus should only applied when the other modes are not successfully .
 \newline
 Similar to pattern N2, pattern N7 attacks by initializing the variable with \textit{false} instead of moving a result of a method into it.
@@ -334,13 +381,13 @@ Similar to pattern N2, pattern N7 attacks by initializing the variable with \tex
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={1-4},
+  linerange={13-15},
   caption={Diff on Java level for N7 patch},
   label={codeSnippet:n7DiffJava}
 ]{data/n7.diff}
-The goal of this attack is to patch the \textit{onTransact}, where ever it may be located.
+The goal of this attack is to patch the \textit{onTransact}, wherever it may be located.
 This methods is responsible for calling the \textit{verifyLicense()} implementation of the \textit{ILicenseResultListener}.
-Instead of passing the reponse code from the server, the method is called using the initialized \textit{0}.
+Instead of passing the response code from the server, the method is called using the initialized \textit{0}.
 This way the server's reponse code is ignored since it is replaced by the code for \textit{LICENSED}.
 
 \subsubsection{Amazon Market Patch}
@@ -432,7 +479,7 @@ Pattern S2 has the effect that \textit{v0} does not return the result of the pre
 ]{data/samsung.diff}
 The presentation in code snippet~\ref{codeSnippet:samsungDiffJava} contains the changes in Java code.
 Instead of checking the reponse code for validity, \textit{LicenseRetriever}'s \textit{receiveResponse()} method always skips the check, when pattern S1 is applied, and executes as if it was valid.
-In the method \textit{checkerThreadWorker()} of the \textit{Zirconia} class, pattern S1 voids the check of the response code and always continues as if the resposne code was valid.
+In the method \textit{checkerThreadWorker()} of the \textit{Zirconia} class, pattern S1 voids the check of the response code and always continues as if the response code was valid.
 \newline
 Pattern S2 works on the methods \textit{checkLicenseFile()} and \textit{checkLicenseFilePhase2()} of the \textit{Zirconia} class.
 Instead of returning the result of the license check, the methods return always \textit{true}.

@@ -1,10 +1,9 @@
-\subsection{Comparison of Code using Diff} \label{subsection:forensics-tools-diff}
-The amount of code generated for the abstraction levels cannot be analysed without extra tools.
-The best way to recover the changes is to use diff.
-Diff is a standard command line tool which is used to compare two files in order to receive the differences between them.
+\subsection{Code Comparison} \label{subsection:forensics-tools-diff}
+The amount of code of the abstraction levels is huge.
+Most of the code base of an abstraction layer stays the same after the attack and the changes are only punctually.
+Diff a standard command line tool used to compare two files with little differences in an overall unchanged file.
 \newline
-The changes \gls{luckypatcherg} applied have to be identified.
-This is achieved by comparing the different code abstractions of the original \gls{apk} with the cracked application.
+By comparing the different code abstractions of the original \gls{apk} with the cracked application, changes done by \gls{luckypatcherg} are identified.
 Diff is used in a script to generate the result for different applications and abstraction levels at once (see code snippet~\ref{codeSnippet:diffScript}).
 Doing this automatically and using diff saves a lot of time.
 \newline

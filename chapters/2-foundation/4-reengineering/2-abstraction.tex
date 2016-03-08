@@ -1,15 +1,16 @@
-\subsection{Code Abstraction Levels} \label{subsection:reengineering-abstraction}
+\subsection{Code Abstraction Levels}
 The code of the application will be inspected on three different abstraction levels.
 \newline
 The first level is the original dex bytecode contained in the \textit{classes.dex}.
 It is target of the attack and is used to detect the changes done by \gls{luckypatcherg} on bytecode level.
 \newline
 The second level is the smali code.
-It is used to represent the dex bytecode in a readable way and to identify the the result of the changes.
+It is used to represent the dex bytecode in a readable way and to identify the result of the changes.
 \newline
 The third level is the Java code.
 It gives the best overview of the code.
-The result of the changes in the context of then method or class can be best identified in this presentation.
+The code is optimized by the decompiler, e.g. removing an empty if statement.
+The changes in the code can be interpreted and understood in the context of the method or class in this presentation.
 \newline
 The Java code can be decompiled from the dex bytecode since the build process can be reversed as seen in figure~\ref{fig:re1}.
 \newline
@@ -21,7 +22,7 @@ The Java code can be decompiled from the dex bytecode since the build process ca
 \end{figure}
 \subsubsection{dex Analysis} \label{subsection:tools-dex}
 The \textit{classes.dex} contains the application code and has to be modified by the cracking tool to carry out the attack.
-Analysing the dex bytecode allows to point out which characters in the bytecode have been modified.
+Analysing the dex bytecode allows to point out the places in the bytecode that have been modified.
 \newline
 The extraction of the \textit{classes.dex} is done using a simple script shown in code snippet~\ref{codeSnippet:dexScript}.
 \newline
@@ -39,7 +40,7 @@ The extraction of the \textit{classes.dex} is done using a simple script shown i
 ]{data/extractScript.sh}
 The \gls{apk} is an archive file and can be unpacked using \textit{unzip}.
 The content is unpacked to the destination which is added with the parameter \textit{-d destination} as seen in line 3.
-The extracted \textit{classes.dex} is still contains the code in binary.
+The extracted \textit{classes.dex} contains the code in binary.
 Hexdump is used to convert the code into a hexadecimal view.
 \newline
 The output contains the line number, the bytecode and the ASCII translation.
@@ -70,9 +71,9 @@ The smali code is disassembled from dex bytecode using \textit{baksmali} \cite{s
 This is done in order to interpret the changes in the bytecode regarding functionality.
 \newline
 Assembling and disassembling of dex and smali is possible without the loss information since they have a bijective mapping\cite{smali}.
-The syntax is loosely based on Jasmin's syntax
-It takes the \gls{apk} and disassembles its \textit{classes.tex} file.
-The output is a file smali file for each class.
+The syntax is loosely based on the Jasmin syntax \cite{smali}.
+Smali takes the \gls{apk} and disassembles its \textit{classes.dex} file.
+The output is a smali file for each class.
 Smali has two advantages over dex bytecode.
 The first advantage is the replacing of opcodes with their actual opcode name.
 The second advantage is the reconstruction of the class and method structure.
@@ -116,21 +117,21 @@ This enables the reader analyse the application's work flow similar to the sourc
 .end method
 \end{lstlisting}
 \subsubsection{Java Analysis} \label{subsection:forensics-tools-java}
-The goal of the Java code is to reverse engineer the original code including the changes of the attacl.
-It suits best for the analysis of the new behavior since it contains the most information, such as variable and method names.
+Java code suits best for the analysis of the new behavior since its presentation is close to the what people are programming.
+It has names variable and method which makes it better understandable.
 The representation is close to how the developer implemented the application.
 \newline
 As seen in figure~\ref{fig:re1}, the .dex files are isomorphic to the corresponding Java \gls{classg} files.
 This makes it possible to decompile the dex bytecode into Java code.
 The decompilation to the exact source code cannot be achieved since in the compilation process some information is lost.
-Another problem is the otimization of the dex bytecode for mobile usage.
-The specific mobile patterns are unknown to the Java decompiler.
+Another problem is the optimization for the \gls{dvm}.
+The dex bytecode may contain Dalvik patterns that are unknown to the Java decompiler.
 The outcome is not always sufficient and for this reason two different decompilers, DAD and JADX, are used.
 \newline
-DAD, short name of "DAD is A Decompiler".
-It is part of Androguard \cite{androguard}.
-It works with the dex bytecode and does not require third aprty tools like dex2jar \cite{dex2jar}.
-Code snippet~\ref{codeSnippet:androguardScript} shows how it is used to decompile the \gls{apk} into Java code.
+DAD, is a short name of "DAD is A Decompiler".
+It is part of Androguard \cite{androguard}, a reverse engineering tool for Android.
+It works with the dex bytecode and does not require third party tools like dex2jar \cite{dex2jar}.
+Code snippet~\ref{codeSnippet:androguardScript} shows how it is used in the command line interface to decompile the \gls{apk} into Java code.
 \newline
 \lstinputlisting[
   float=h,
@@ -144,9 +145,8 @@ Code snippet~\ref{codeSnippet:androguardScript} shows how it is used to decompil
   caption={Script to decompile to Java using androguard},
   label={codeSnippet:androguardScript}
 ]{data/extractScript.sh}
-JADX \cite{jadx} is the second compiler.
-THe decompilation is directly done from the \gls{apk}'s dex bytecode to Java code.
-It is the command line as seen in Code snippet~\ref{codeSnippet:jadxScript}.
+JADX \cite{jadx} is the second decompiler.
+The decompilation is directly done from the \gls{apk}'s dex bytecode to Java code and can be performed in the command line interface as seen in Code snippet~\ref{codeSnippet:jadxScript}.
 \lstinputlisting[
   float=h,
   breaklines=true,

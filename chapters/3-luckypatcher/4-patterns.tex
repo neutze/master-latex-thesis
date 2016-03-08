@@ -62,17 +62,17 @@ This information can be used for assigning not occurred patterns with a name to 
 \newline
 \newline
 Before explaining the patterns in detail, additional information has to be provided.
-In the \gls{dex} file analysis, a simplified presentation as \textit{0a} instead of hexadecimal values like \textit{0x0a} is chosen for improved overview in the diff files.
+In the \gls{dex} file analysis, a simplified presentation of the binary data as as \textit{0a} instead of hexadecimal values like \textit{0x0a} is chosen for improved overview in the diff files.
 When converting \gls{dex} files to smali files, the arguments of the opcodes are transferred to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
 \newline
 \newline
 When the dex code of an application is modified, the checksum has to be recalculated and the file has to be signed again.
-This changes can be seen in the diff of the dex files.
-They are not explicit mentioned in the analysis since they do not change the logic of the code.
+These changes can be seen in the diff of the dex files but not explicitly shown in this text.
+They are required by Android to make the \gls{dex} file valid but do not change the application logic.
 
 \subsubsection{Patch Pattern N1}
-Pattern N1 is present in all patching modes except the solo extreme mode.
-It targets the \textit{verify()} method of \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
+Pattern N1 is present in all patching modes, except the solo extreme mode.
+It targets the \textit{verify()} method of the \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
 This method is responsible for decrypting and verifying the response from the license server \cite{developersLicensingReference}.
 \newline
 In can be seen in the dex code in code snippet~\ref{codeSnippet:n1DiffDex} that \textit{1a} and \textit{0f} are swapped in their order.
@@ -104,9 +104,9 @@ The swap of switch cases \textit{0x1} und \textit{0x2} can be seen in the diff o
   label={codeSnippet:n1DiffSmali}
 ]{data/n1.diff}
 In the Java code snippet~\ref{codeSnippet:n1DiffJava}, the changes can be seen in their context.
-Before the patch, \textit{LICENSED} and \textit{LICENSED\_OLD\_KEY} both were handled as valid since \textit{LICENSED} jumps into the next case.
+Before the patch, \textit{LICENSED} and \textit{LICENSED\_OLD\_KEY} both were handled as valid, since \textit{LICENSED} jumps into the next case.
 After the patch, \textit{NOT\_LICENSED} starts where \textit{LICENSED\_OLD\_KEY} started before.
-Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which means even though the response code is \textit{NOT\_LICENSED} it is valid.
+Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which means even though the response code is \textit{NOT\_LICENSED}, it is treated as valid.
 \newline
 \lstinputlisting[
   style=diff,
@@ -143,6 +143,8 @@ The instruction \textit{0a 05} is replaced by \textit{12 15}.
   caption={Diff on Dex level for N2 pattern},
   label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
+The search for bytecode patterns used by pattern N2 return one bytecode pattern as seen in code snippet~\ref{codeSnippet:n2patterns}.
+\newline
 \lstinputlisting[
   style=diff,
   breakatwhitespace=false,
@@ -150,11 +152,9 @@ The instruction \textit{0a 05} is replaced by \textit{12 15}.
   captionpos=b,
   frame=single,
   linerange={3-4},
-  caption={Bytecode patterns for N2},
+  caption={Bytecode patterns for N3},
   label={codeSnippet:n2patterns}
 ]{data/patterns.diff}
-The search in the
-\newline
 The smali in code snippet~\ref{codeSnippet:n2DiffSmali} names the target opcode.
 Instead of moving the result of the preceding function to variable \textit{v5}, it is always set to \textit{true}.
 \newline
@@ -206,6 +206,28 @@ In case of pattern N3, \textit{01} is replaced with \textit{11}, while in case o
   caption={Diff on Dex level for N3 pattern},
   label={codeSnippet:n3DiffDex}
 ]{data/n3.diff}
+The bytecode patterns that are used by pattern N3.
+They can be divided into three categories.
+The first categories are the auto mode bytecode patterns, containing the bytecode \textit{S1} in the replacement pattern.
+The second categories are the inverse auto patching mode bytecode patterns, replacing with bytecode \textit{S2}.
+The third category the patterns which cannot be assigned to one of these categories.
+They contain the variables \textit{R0} and \textit{W0}
+\newline
+As seen in the dex analysis, the bytecode is not replaced completely, but the source argument is altered.
+Category one and two patch the 4 bit value using variable S\textit{x} while the bytecode patterns of the third category are patching the same logic but for different implementations.
+The first pattern of category three is used for implementations when the variable is initialized  with a 6 bit source value (\textit{13 \#\# \#\# \#\#}) instead of a 4 bit source value (\textit{12 \#\#}).
+The second pattern of category three is applied in implementations where the variable is initialized by getting the the value from an object (\textit{44 \#\# \#\# \#\#}).
+\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={7-38},
+  caption={Bytecode patterns for N2},
+  label={codeSnippet:n3patterns}
+]{data/patterns.diff}
 When looking at the smali diff in code snippet~\ref{codeSnippet:n3DiffDex}, the dex code is translated to the initialization of \textit{v1}.
 While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
 \newline
@@ -220,7 +242,7 @@ While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
   label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
 The resulting Java code is shown in code snippet~\ref{codeSnippet:n3DiffJava}.
-The pattern attacks the result of the \textit{allowAccess()} method.
+The pattern enforces the result of the \textit{allowAccess()} method by already initializing the result value with the desired outcome.
 While N3 is targeted towards code where the default return value is \textit{false}, pattern N3i is used when the default value is \textit{true}.
 \newline
 \lstinputlisting[
@@ -259,6 +281,18 @@ As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} wit
   caption={Diff on Dex level for N4 patch},
   label={codeSnippet:n4DiffDex}
 ]{data/n4.diff}
+asdasda
+\newline
+\lstinputlisting[
+  style=diff,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  frame=single,
+  linerange={40-42},
+  caption={Bytecode patterns for N4},
+  label={codeSnippet:n4patterns}
+]{data/patterns.diff}
 In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \textit{if-eqz} with \textit{if-ne}.
 The opcode \textit{if-eqz} takes one argument \textit{v0} while \textit{if-ne} takes two arguments.
 Since the value is \textit{0} in the \gls{dex} file, it is interpreted as \textit{v0} for the second argument.
@@ -381,7 +415,7 @@ Similar to pattern N2, pattern N7 attacks by initializing the variable with \tex
   breaklines=true,
   captionpos=b,
   frame=single,
-  linerange={13-15},
+  linerange={1-4},
   caption={Diff on Java level for N7 patch},
   label={codeSnippet:n7DiffJava}
 ]{data/n7.diff}

@@ -1,9 +1,14 @@
 \subsection{Encryption} \label{subsection:counter-replace-encryption-content}
+Since not all application suit the server client model, encryption is introduced as another countermeasure to prevent piracy.
+Encryption has two advantages in the fight against cracking applications since it is more complex.
+The first advantage is that the cryptographic keys are not predictable.
+\gls{luckypatcherg} is not able to patch the application in a way that a certain outcome is enforced.
+The second advantage is that the application does not work in the way it is intended when the decryption key is not present or the decryption methods are patched.
 \input{chapters/4-countermeasurements/2-content/1-content/0-intro}
 \input{chapters/4-countermeasurements/2-content/1-content/1-resource}
 \input{chapters/4-countermeasurements/2-content/1-content/2-action}
 \input{chapters/4-countermeasurements/2-content/1-content/3-communication}
-
+\input{chapters/4-countermeasurements/2-content/2-key/0-intro}
 \input{chapters/4-countermeasurements/2-content/2-key/1-online}
 \input{chapters/4-countermeasurements/2-content/2-key/2-local}
 \input{chapters/4-countermeasurements/2-content/2-key/3-tee}

@@ -1,13 +1,13 @@
 \section{Patch Patterns} \label{section:luckypatcher-patterns}
-In order to identify the changes done by each individual Patch Pattern, the code of the original and cracked \gls{apk} are compared.
+In order to identify the changes done by each individual \textit{Patch Pattern}, the code of the original and cracked \gls{apk} are compared.
 The changes are inspected on dex, smali and Java level with the tools explained in section~\ref{section:reengineering}.
 \newline
-The names \gls{luckypatcherg} assigns to the Patch Patterns and Patches are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
-While \gls{luckypatcherg} provides seven different patterns for the \gls{lvl}, called Patch Pattern N1..N7, it gives to Amazon and Samsung one patch each and calls them Amazon Market Patch and SamsungApps Patch, respectively.
+The names \gls{luckypatcherg} assigns to the \textit{Patch Patterns} and Patches are taken from the patching result output in figure~\ref{fig:luckyScreen} on the right.
+While \gls{luckypatcherg} provides seven different patterns for the \gls{lvl}, called \textit{Patch Pattern} N1..N7, it gives to Amazon and Samsung one patch each and calls them Amazon Market Patch and SamsungApps Patch, respectively.
 \newline
-When patching the \gls{lvl}, \gls{luckypatcherg}’s choice of patterns is dependent on the selected modus.
+When patching the \gls{lvl}, \gls{luckypatcherg}'s choice of patterns is dependent on the selected modus.
 Table~\ref{table:patterns} gives an overview based on the black box test.
-It shows the patching modes and the Patch Patterns or Patches applied.
+It shows the patching modes and the \textit{Patch Patterns} or \textit{Patches} applied.
 \newline
 \begin{table}[h]
 \centering
@@ -22,17 +22,27 @@ Auto (Inversed)+Extreme    & X  & X  &    & X   & X  & X  & X  &X &&\\
 Amazon               &   &  X&   &     &   &   &   &  &X&\\
 Samsung               &   &   &   &     &   &   &   &   &&X
 \end{tabular}
-\caption{Overview of Patch Patterns/Patches applied by each mode}
+\caption{Overview of \textit{Patch Patterns}/\textit{Patches} applied by each mode}
 \label{table:patterns}
 \end{table}
 As shown in the following, the changes observed in the black box test are only replacements of bytecode and very limited in scope and number.
-They do not add or remove bytecode, i.e. they do not add or remove logic blocks. Instead \gls{luckypatcherg} enforces a certain control flow, by forcing an evaluation to be true or false as needed and ignoring actual results of method calls. This is done by manipulating a single instruction, either opcode or argument. The surrounding context remains untouched.
+They do not add or remove bytecode, i.e. they do not add or remove logic blocks.
+Instead \gls{luckypatcherg} enforces a certain control flow, by forcing an evaluation to be \textit{true} or \textit{false} as needed and ignoring actual results of method calls.
+This is done by manipulating a single instruction, either opcode or argument.
+The surrounding context remains untouched.
 \newline
-All this is done on the dex byte code level which opens the question on how the target to be changed is located. As will be shown,  \gls{luckypatcherg} uses bytecode search patterns to locate where the change should be placed and bytecode replace pattern to execute it.
+All this is done on the dex bytecode level which opens the question on how the target to be changed is located.
+As will be shown, \gls{luckypatcherg} uses bytecode search patterns to locate where the change should be placed and bytecode replace pattern to execute it.
 \newline
-The search pattern consists of the target instruction to be manipulated and the context, while the replace pattern has the same context with the target instruction changed. A look at the \gls{luckypatcherg} sources shows that it contains strings, which are formatted like bytecode, include the target instructions and the context in a masked form. These strings are located in the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} and appear in the context of the Patch Pattern they belong to. Each Patch Pattern can have multiple byte code patterns, implementing the same change in different contexts, which are tried when the Patch Pattern is used.
+The search pattern consists of the target instruction to be manipulated and the context, while the replace pattern has the same context with the target instruction changed.
+A look at the \gls{luckypatcherg} sources shows that it contains strings, which are formatted like bytecode, include the target instructions and the context in a masked form.
+These strings are located in the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} and appear in the context of the \textit{Patch Pattern} they belong to.
+Each \textit{Patch Pattern} can have multiple byte code patterns, implementing the same change in different contexts, which are tried when the \textit{Patch Pattern} is used.
 \newline
-The context in a search pattern is given as a mask of a fixed length with fix points given as explicit byte code tuples and placeholders. When \gls{luckypatcherg} tries to position a search pattern, it searches for a sequence of bytecodes matching the fix points and the target instruction as given by the mask. On success, it substitutes that sequence with the replace pattern.
+The context in a search pattern is given as a mask of a fixed length with fix points given as explicit byte code tuples and placeholders.
+When \gls{luckypatcherg} tries to position a search pattern, it searches for a sequence of bytecodes matching the fix points and the target instruction as given by the mask.
+On success, it substitutes that sequence with the replace pattern.
+\newline
 \newline
 \lstinputlisting[
   style=diff,
@@ -44,18 +54,6 @@ The context in a search pattern is given as a mask of a fixed length with fix po
   caption={Bytecode patterns - Target instructions are colored and placeholders given as \#\#},
   label={codeSnippet:example}
 ]{data/patterns.diff}
-This string pair in code snippet~\ref{codeSnippet:example} matches the assumption.
-It provides even additional information.
-Both strings have the same structure except for one bytecode tupel.
-The assumption is that one is the search pattern while the other one is the replacement pattern containing the visible change.
-There is additional bytecode before and after the unequal tupel which consists of fixpoints and placeholders.
-\newline
-In order to verify the assumption, each of the found bytecode patterns is tested on the \gls{dex} files.
-The bytecode strings inside the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} can be verified as the bytecode patterns used by \gls{luckypatcherg}’s auto patching modes.
-In addition, the can be verified that the strings next to the bytecode pattern are the pattern the bytecode pattern belongs to.
-This information can be used for assigning not occurred patterns with a name to their patching pattern while neglecting patterns with neither a name nor appearance in the black box analysis.
-\newline
-\newline
 Before explaining the patterns in detail, additional information has to be provided.
 In the \gls{dex} file analysis, a simplified presentation of the binary data as as \textit{0a} instead of hexadecimal values like \textit{0x0a} is chosen for improved overview in the diff files.
 When converting \gls{dex} files to smali files, the arguments of the opcodes are transferred to variables, e.g. \textit{x} in dex code is v\textit{x} in smali.
@@ -65,7 +63,7 @@ When the dex code of an application is modified, the checksum has to be recalcul
 These changes can be seen in the diff of the dex files but not explicitly shown in this text.
 They are required by Android to make the \gls{dex} file valid but do not change the application logic.
 
-\subsubsection{Patch Pattern N1}
+\subsubsection{\textit{Patch Pattern} N1}
 Pattern N1 is present in all patching modes, except the solo extreme mode.
 It targets the \textit{verify()} method of the \textit{LicenseValidator} class in the \textit{com/google/android/vending/licensing/} folder.
 This method is responsible for decrypting and verifying the response from the license server \cite{developersLicensingReference}.
@@ -116,7 +114,7 @@ Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which m
 The result is the voiding of the \textit{verify()} switch case.
 Despite the input, it always handles it as if the user is verified.
 
-\subsubsection{Patch Pattern N2}
+\subsubsection{\textit{Patch Pattern} N2}
 Like pattern N1, pattern N2 is applied in all patching modes, except the solo extreme mode.
 It is more aggressive, since it does not only attack the \gls{lvl} library, but extends it attacks to other Google Mobile Service (\textit{gms}) libraries, e.g.  \textit{com/google/android/gms/ads/}, as well.
 The extended analysis of different applications shows custom libraries are attacked as well.
@@ -170,7 +168,7 @@ The Java code looks different since the decompiler collapses the \textit{if(true
 The consequence is that the result of the signature validation is ignored.
 \textit{verify()} is continued as if the signature was valid.
 
-\subsubsection{Patch Pattern N3}
+\subsubsection{\textit{Patch Pattern} N3}
 Pattern N3 is different than the other patterns, since there are two versions of it.
 The first version, N3, is used in auto mode while pattern N3i is used in the inversed auto mode.
 The name N3i is chosen since it is used in the \textit{inversed} mode.
@@ -250,7 +248,7 @@ The pattern changes the default value to the allowing result.
 This makes the result of the evaluation negligible since the desired result is already set.
 There are two versions of the pattern to counter inversed logic which can be inplemented easily.
 
-\subsubsection{Patch Pattern N4}
+\subsubsection{\textit{Patch Pattern} N4}
 Pattern N4 was only applied once in the test sample and is part of the auto and auto inverse patching modes.
 The target of the pattern is the \textit{LicenseChecker} class of the \gls{lvl}.
 It is responsible for initializing the license check in its \textit{checkAccess()} method \cite{developersLicensingReference}.
@@ -311,7 +309,7 @@ Since the result of the method is the same and thus the condition is never fulfi
 ]{data/n4.diff}
 The result of patching with pattern N4 is that in the \textit{checkAccess()} method the result, whether the policy allows to continue, is never considered.
 
-\subsubsection{Patch Pattern N5}
+\subsubsection{\textit{Patch Pattern} N5}
 As part of the extreme mode, pattern N5 changes the \gls{dex} file similar to pattern N2 and targets the \textit{LicenseValidator}'s \textit{verify()} method.
 It cannot be applied on the standard implementation of the \gls{lvl}.
 \newline
@@ -332,7 +330,7 @@ After applying the patch, the entry is still parsed but ignored and \textit{v0\_
 The pattern sets the response code of the object to \textit{LICENSED}.
 The real reponse code is ignored and the code continues even though the server did not verify the license.
 
-\subsubsection{Patch Pattern N6}
+\subsubsection{\textit{Patch Pattern} N6}
 Pattern N6 is part of the extreme mode and, similar to the pattern N1, N2 and N5, it attacks the \textit{verify()} method in the \gls{lvl}'s \textit{LicenseValidator} class.
 \newline
 This pattern changes three values of the \gls{dex} file which can be seen in code snippet~\ref{codeSnippet:n6DiffDex}.
@@ -386,7 +384,7 @@ This pattern prevents the execution for cases where the \textit{verify()} has to
 It voids the impact of those reponse codes.
 Instead it proceeds successfully since the reponse code is set to \textit{LICENSED}.
 
-\subsubsection{Patch Pattern N7}
+\subsubsection{\textit{Patch Pattern} N7}
 The final pattern for the \gls{lvl} is pattern N7, a brute force version of pattern N2.
 Inside the lvl, it patches the \textit{ILicenseResultListener} class's \textit{onTransact()} method, which is the implementation for the callback for interprocess communication and receives the async response from the license server \cite{developersLicensingReference}.
 In addition to the lvl classes, the pattern is applied to all classes residing in the \url{com/android/} package.

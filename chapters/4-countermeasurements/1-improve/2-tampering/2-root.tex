@@ -1,9 +1,11 @@
 \subsubsection{Root} \label{subsection:counter-improve-tampering-root}
 \textit{Root} can be used to alter applications or extract protected data.
-The developer can check whether \textit{root} is available on the device and eventually exclude users which use it.
-The developer needs to communicate the users the reasons for this strict policy since there are a lot of users who use root for other reasons than cracking applications.
+The developer can check whether \textit{root} is available on the device and eventually exclude these devices from running the application.
+The developer needs to communicate to the users the reasons for this strict policy, since there are a lot of users who use root for other reasons than cracking applications.
 \newline
-Google has introduced a similar \gls{api}, called SafetyNet \cite{safetynetPay}, which is said to be used in security critical applications like Android Pay \cite{safetynetGoogle} \cite{safetynetPayx}.
+Google has introduced a similar \gls{api}t, called SafetyNet \cite{safetynetGoogle}.
+It is used to check the “health and safety of an Android”\cite{safetynetDev}.
+It is said to be used in security critical applications like Android Pay and the reason for excluding rooted devices from the service \cite{safetynetGoogle} \cite{safetynetPay} \cite{safetynetPayx}.
 \newline
 \lstinputlisting[
   float=h,

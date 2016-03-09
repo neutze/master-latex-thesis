@@ -1,8 +1,9 @@
-\subsubsection{Modify the Library} \label{subsection:counter-modifications-library}
+\subsubsection{Unique Implementation} \label{subsection:counter-modifications-library}
 \gls{luckypatcherg}'s attack is reliant on successfully applying the patching patterns.
-For this reason, going actively against these patterns should always be the first step to challenge \gls{luckypatcherg}.
-Modifying and improving the \gls{lvl} does not only protect from patterns.
-Increasing complexity of the application's bytecode makes it unique and harder to reengineer. \cite{developersSecuring}
+For this reason, actively avoiding these patterns should always be the first step to challenge \gls{luckypatcherg}.
+This approach is only possible when using the \gls{lvl}, as it requires access to the source code of the license verification mechanism.
+Modifying and improving the \gls{lvl} does not only protect from patterns used by \gls{luckypatcherg}, increasing complexity of the application's bytecode makes it unique and harder to reengineer.
+In fact, modifying the lvl is what google strongly suggests.\cite{developersSecuring}
 \newline
 There are three areas the developer should focus on when modifying the \gls{lvl}  \cite{developersSecuring}.
 \begin{enumerate}
@@ -10,35 +11,33 @@ There are three areas the developer should focus on when modifying the \gls{lvl}
 \item entry and exit points of the licensing library
 \item invocation and handling of the response
 \end{enumerate}
-The core logic two main classes are the \textit{LicenseChecker} and the \textit{LicenseValidator}.
+The core logic’s two main classes are the \textit{LicenseChecker} and the \textit{LicenseValidator}.
 As seen in section~\ref{section:luckypatcher-patterns}, these two classes are the primary target of \gls{luckypatcherg} and thus should be altered as hard as possible while retaining the original function.
-The isomorphic code changes can include:
+Isomorphic code changes can include:
 \begin{itemize}
-\item replace the switch statement with an if statement and add additional code between the if statements (see pattern N1)
-\item use functions to create new values for constants used and check for these values in the further proceeding (see pattern N3)
-\item remove unused code, e.g. implement the \textit{LicenseValidator} online (see patterns N2, N4, N5 and N6)
+\item replacing the switch statement with an if statement and add additional code between the if statements (see pattern N1)
+\item deriving new values for constants and check for these values in the further proceeding (see pattern N3)
+\item removing unused code for interfaces, e.g. implementing the policy verification inline in the \textit{LicenseValidator} instead over an interface (see patterns N2, N4, N5 and N6)
 \item move the \gls{lvl} package into the application (see patterns N2 and N7)
-\item use additional threads to handle different steps in the license verification process
-\item implement functions inline where possible (see patterns N2, N5 and N7)
-\item make actions in the decompiled code difficult to trace by removing functions or moving routines to unrelated code, counter intuitive from traditional software engineering
-\item implement radical response handling, e.g. kill the application as soon as a invalid response can be detected, results in bad user experience
+\item implementing functions inline where possible (see patterns N2, N5 and N7)
+\item making actions in the decompiled code difficult to trace by moving routines to unrelated code, counter intuitive from traditional software engineering
+\item implement radical response handling, e.g. killing the application without a hint as soon as an invalid server response is detected, results in bad user experience
 \end{itemize}
 These are only examples and creativity is welcome since the resulting implementation should be unique. \cite{developersSecuring}
 \newline
-The entry and exit points can be attacked by creating a counterfeit version of the \gls{lvl} that implements same interface.
-An unique implementation provides resilience against this attack.
+The entry and exit points can be attacked by creating a counterfeit version of the \gls{lvl} that implements the same interface.
+A unique implementation provides resilience against this attack.
 It can be achieved by adding additional arguments to the \textit{LicenseChecker} constructor as well as the \textit{allow()} and the \textit{dontAllow()} methods. \cite{developersSecuring}
 \newline
-Attackers do not only target the \gls{lvl} but the handling of the result in the application as well.
+Attackers do not only target the \gls{lvl}, but the handling of the result in the application.
 This can be prevented by handling the mechanism in a separate activity.
-In the original activity \textit{finish()} will be called and the attacker will be stuck in the new activity.
-This prevents from scenarios where the attacker voids methods which would prevent further proceeding.
-In addition the license verification can be postponed to a later point in time since attackers are expecting it on the the applications launch. \cite{developersSecuring}
+This prevents from scenarios where the attacker voids methods which would prevent further proceeding, e.g. the
+In addition, the license verification can be postponed to a later point in time since attackers are expecting it on the the applications launch. \cite{developersSecuring}
 \newline
 These modifications are easy to apply and make the implementation unique.
 There are unlimited ways to implement them.
-This makes it hard to attack automatically with an universal solution.
-This does not ensure total protection against \gls{luckypatcherg} since every application is patchable in some way.
-A determined attacker, willing to invest a lot of time and work in disassembling and reassembling, can eventually find a weakness in the code.
-The gained knowledge can be used to create a custom patch cracking the application.
+It needs to be stated, that they are as easily reengineered and patched, but this makes it hard to attack automatically with an universal solution.
+A determined attacker, willing to invest time and work in disassembling and reassembling, can eventually find a weakness in the code.
+This is the usual race of arms between making things secure and finding new ways to break them.
+The gained knowledge can be used to create a custom patch for \gls{luckypatcherg}, cracking the application.
 The aim of the developer is to make the work of the attacker as hard as possible to the point where the profit is not worth the time. \cite{developersSecuring}

@@ -1,3 +1,5 @@
-The first action is to fortify the spots identified in section~\ref{section:luckypatcher-patterns} when being attacked by \gls{luckypatcherg}.
-The goal is to prevent the success of automatic patching and stop execution in case tampering was detected.
-Since additional checks can be voided after analysing the code manually and adding them to the patching procedure, obfuscation is introduced as a tool to make reverse engineering more time consuming.
+The first suggestion is to fortify the spots attacked by \gls{luckypatcherg} and identified in section~\ref{section:luckypatcher-patterns}.
+The goal is to prevent the application of the bytecode pattern and thus the success of automatic patching.
+This is done by changing the bytecode of the application, i.e. by modifying the \gls{lvl} implementation.
+Additional checks are introduced and stop execution in case tampering was detected.
+Since it is possible to alter code manually after analysing the it, obfuscation is introduced as a tool to make reverse engineering more time consuming.

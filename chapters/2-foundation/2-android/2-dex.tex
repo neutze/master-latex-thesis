@@ -6,10 +6,8 @@ Dalvik bytecode is suited to run on the ARM architecture.
 It supports direct mapping from dex registers to the 32 bit registers of the ARM processor.
 The opcodes are 16 bit, which makes the dex bytecode less compact than Java bytecode with its 8 bit instructions.
 The 16 bit opcodes result in 218 valid opcodes which have a source-dest ordering for its arguments.
-Instructions are 16 bit multiples and at least 32 bit large with opcode and argument combined.
-An example is the hex presentation of instruction to move a 4 bit constant into a variable,  \textit{12 iv}.
-It is 32 bit long and contains the 16 bit opcode \textit{12}, \textit{const/4}, the source 4 bit constant \textit{i} and the destination variable \textit{v}  \cite{opcodes}.
-In case there are larger than 32 bit instructions, adjacent registers are used to store it. \cite{androidDalvik}
+The complete instructions with arguments are 32 bit multiples.
+In case the instruction is larger than 32 bit instructions, adjacent registers are used to store it. \cite{androidDalvik}
 \newline
 Similar to Java bytecode, values are not stored inside the method but as a reference pointing to the location.
 While in Java each class has its constants, like numbers, strings and identifier names, grouped together in heterogenous pool (see figure figure~\ref{fig:java}, left side), Dalvik bytecode uses one pool for each type.

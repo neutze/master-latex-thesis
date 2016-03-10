@@ -1,24 +1,37 @@
-*@@ Pattern S1 @@*
-!!-!! 08 00 0c 08 6e 10 66 4a  08 00 0a 06 32 !!d6!! 0a 00  |....n.fJ....2...|
-??+?? 08 00 0c 08 6e 10 66 4a  08 00 0a 06 32 ??00?? 0a 00  |....n.fJ....2...|
+*@@ Patch Result S1 @@*
+*#* QQ13QQ 08 QQ09 00 6eQQ 30 b9 4a  85 0c QQ0cQQ 08 QQ71QQ 10 6d 4a
+!!-!! 08 00 QQ0cQQ 08 QQ6eQQ 10 66 4a  08 00 QQ0aQQ 06 QQ32QQ !!d6!! 0a 00
+XX+XX 08 00 QQ0cQQ 08 QQ6eQQ 10 66 4a  08 00 QQ0aQQ 06 QQ32QQ XX00XX 0a 00
+*#* QQ59QQ e6 fd 20 QQ22QQ 08 9f 08  QQ70QQ 30 c1 49 e8 0b QQ27QQ *08*
 
-*@@ Pattern S2 @@*
-!!-!! 10 02 !!0a!! 00 0f 00 00 00  03 00 01 00 02 00 00 00  |................|
-??+?? 10 02 ??12?? 10 0f 00 00 00  03 00 01 00 02 00 00 00  |................|
+*@@ Bytecode Pattern S1 @@*
+QQ13QQ ## QQ09 00 6EQQ ## ## ## ## ## QQ0CQQ ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ6EQQ ## ## ## ## ## QQ0AQQ ## QQ32QQ !!##!! ## ## QQ59QQ ## ## ## QQ22QQ ## ## ## QQ70QQ ## ## ## ## ## QQ27QQ
+QQ13QQ ## QQ09 00 6EQQ ## ## ## ## ## QQ0CQQ ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ6EQQ ## ## ## ## ## QQ0AQQ ## QQ32QQ XX00XX ## ## QQ59QQ ## ## ## QQ22QQ ## ## ## QQ70QQ ## ## ## ## ## QQ27QQ
 
-*@@ Pattern S1 @@*
+*@@ Patch Result S2 @@*
+*#* *a6 dc 1e 00 17 00 00 00*  QQ54QQ 30 07 21 QQ71QQ 10 ea 49
+*#* 00 00 QQ0cQQ 00 QQ54QQ 31 07 21  QQ71QQ 10 e5 49 01 00 QQ0cQQ 01
+*#* QQ54QQ 32 07 21 QQ71QQ 10 e6 49  02 00 QQ0cQQ 02 QQ71QQ 30 ce 49
+!!-!! 10 02 !!0a 00!! 0f 00 00 00  03 00 01 00 02 00 00 00
+XX+XX 10 02 XX12 10XX QQ0fQQ 00 QQ00 00QQ  *03 00 01 00 02 00 00 00*
+
+*@@ Bytecode Pattern S2 @@*
+QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ71QQ ## ## ## ## ## !!0A ##!! QQ0FQQ ## QQ00 00QQ
+QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ54QQ ## ## ## QQ71QQ ## ## ## ## ## QQ0CQQ ## QQ71QQ ## ## ## ## ## XX12 S1XX QQ0FQQ ## QQ00 00QQ
+
+*@@ Patch Result S1 @@*
 !!-!! if-eq !!v6!!, !!v13!!, :cond_52
-??+?? if-eq ??v0??, ??v0??, :cond_52
+XX+XX if-eq XXv0XX, XXv0XX, :cond_52
 
-*@@ Pattern S2 @@*
+*@@ Patch Result S2 @@*
 !!- move-result v0!!
-??+ const/4 v0, 0x1??
+XX+ const/4 v0, 0x1XX
 
-*@@ Pattern S1 @@*
+*@@ Patch Result S1 @@*
 !!-!! if (!!v6!! == !!foo()!!) {...}
-??+ foo()??
-??+?? if (??v0?? == ??v0??) {...}
+XX+ foo()XX
+XX+XX if (XXv0XX == XXv0XX) {...}
 
-*@@ Pattern S2 @@*
+*@@ Patch Result S2 @@*
 !!-!! return !!foo()!!;
-??+?? return ??true??;
+XX+XX return XXtrueXX;

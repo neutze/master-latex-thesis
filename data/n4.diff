@@ -1,11 +1,16 @@
-*@@ Pattern N4 @@*
-!!-!! d5 70 00 00 0a 00 !!38!! 00  0e 00 1a 00 5a 20 1a 01
-??+?? d5 70 00 00 0a 00 ??33?? 00  0e 00 1a 00 5a 20 1a 01
+*@@ Patch Result N4 @@*
+!!-!! *d5 70 00 00* QQ0aQQ 00 !!38!! 00  QQ0e 00 1aQQ 00 5a 20 QQ1aQQ 01
+XX+XX *d5 70 00 00* QQ0aQQ 00 XX33 00XX  0e 00 QQ1aQQ 00 5a 20 QQ1aQQ 01
+*#* 6c 29 QQ71QQ 20 74 34 10 00  QQ72QQ *10 c6 70 08 00 1e 07*
 
-*@@ Pattern N4 @@*
+*@@ Bytecode Pattern N4 @@*
+QQ0aQQ ?? !!38!! ?? QQ0e 00 1aQQ ?? ?? ?? QQ1AQQ ?? ?? ?? QQ71QQ ?? ?? ?? ?? ?? QQ72QQ
+QQ0aQQ ?? XX33 00XX ?? ?? QQ1aQQ ?? ?? ?? QQ1AQQ ?? ?? ?? QQ71QQ ?? ?? ?? ?? ?? QQ72QQ
+
+*@@ Patch Result N4 @@*
 !!-!! if-!!eqz!! v0, :cond_15
-??+?? if-??ne?? v0, ??v0,?? :cond_15
+XX+XX if-XXneXX v0, XXv0,XX :cond_15
 
-*@@ Pattern N4 @@*
+*@@ Patch Result N4 @@*
 !!-!! if(!! ! !!mPolicy.allow()) {...}
-??+?? if(mPolicy.allow() ??!=?? mPolicy.allow()) {...}
+XX+XX if(mPolicy.allow() XX!= XXmPolicy.allow()) {...}

@@ -1,16 +1,16 @@
-*@@ Pattern N1 @@*
+*@@ Patch Result N1 @@*
 !!-!! 03 01 00 00 0f 00 00 00  !!1a!! 00 00 00 !!0f!! 00 00 00
-??+?? 03 01 00 00 0f 00 00 00  ??0f?? 00 00 00 ??1a?? 00 00 00
+XX+XX 03 01 00 00 0f 00 00 00  XX0fXX 00 00 00 XX1aXX 00 00 00
 
-*@@ Pattern N1 @@*
+*@@ Patch Result N1 @@*
 !!-!! 0x1 -> !!:sswitch_e0!!
 !!-!! 0x2 -> !!:sswitch_d5!!
-??+?? 0x1 -> ??:sswitch_d5??
-??+?? 0x2 -> ??:sswitch_e0??
+XX+XX 0x1 -> XX:sswitch_d5XX
+XX+XX 0x2 -> XX:sswitch_e0XX
 
-*@@ Pattern N1 @@*
+*@@ Patch Result N1 @@*
 case LICENSED:
 !!-!! case !!LICENSED_OLD_KEY!!: handleResponse(); break;
 !!-!! case !!NOT_LICENSED!!: handleError(); break;
-??+?? case ??NOT_LICENSED??: handleResponse(); break;
-??+?? case ??LICENSED_OLD_KEY??: handleError(); break;
+XX+XX case XXNOT_LICENSEDXX: handleResponse(); break;
+XX+XX case XXLICENSED_OLD_KEYXX: handleError(); break;

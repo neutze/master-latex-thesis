@@ -1,11 +1,16 @@
-*@@ Pattern A @@*
-!!-!! 0a 00 !!38!! 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..8...b.V ..NIn |
-??+?? 0a 00 ??33?? 00 0a 00 62 00  56 20 1a 01 4e 49 6e 20  |..3...b.V ..NIn |
+*@@ Patch Result Amazon @@*
+!!-!! *1d 01* QQ6e 20QQ c4 2e 21 00  QQ0c 00QQ !!38!! QQ00 05 00 12 10QQ
+XX+XX *1d 01* QQ6e 20QQ c4 2e 21 00  QQ0c 00QQ XX33XX QQ00QQ 05 00 QQ12 10QQ
+*#* 1e 01 QQ0f 00 12 00QQ 28 fd  QQ0d 00QQ 1e 01 QQ27 00QQ *00 00*
 
-*@@ Pattern A @@*
+*@@ Bytecode Pattern Amazon @@*
+QQ6E 20QQ ## ## ## ## QQ0C 00QQ !!38!! QQ00 05 00 12 10QQ ## ## QQ0F 00 12 00QQ ## ## QQ0D 00QQ ## ## QQ27 00QQ
+QQ6E 20QQ ## ## ## ## QQ0C 00QQ XX33XX QQ00QQ ## ## QQ12 10QQ ## ## QQ0F 00 12 00QQ ## ## QQ0D 00QQ ## ## QQ27 00QQ
+
+*@@ Patch Result Amazon @@*
 !!-!! if-!!eqz!! v0, :cond_1f
-??+?? if-??ne?? v0, ??v0,?? :cond_1f
+XX+XX if-XXneXX v0, XXv0,XX :cond_1f
 
-*@@ Pattern A @@*
+*@@ Patch Result Amazon @@*
 !!-!! if(!! ! !!v0.equals("LICENSED")) {...}
-??+?? if(v0.equals("APPLICATION_LICENSE" ??!= v0.equals("APPLICATION_LICENSE"??) {...}
+XX+XX if(v0.equals("APPLICATION_LICENSE") XX!= v0.equals("APPLICATION_LICENSE")XX) {...}

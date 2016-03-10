@@ -1,4 +1,20 @@
-*@@ Pattern N7 @@*
-!!-!! this.verifyLicense(!!p7.readInt()!!, p7.readString(), p7.readString());
-??+ p7.readInt();??
-??+?? this.verifyLicense(??0??, p7.readString(), p7.readString());
+*@@ Patch Result N7 @@*
+*# 00 00 00 00 2e 00 00 00  12 10* QQ2cQQ 05 23 00 00 00
+*#* 6f 58 3e 03 54 76 QQ0aQQ 00  QQ0fQQ 00 QQ1aQQ 01 cb 1d 6e 20
+*#* 94 03 17 00 QQ28QQ fa QQ1aQQ 01  cb 1d 6e 20 83 03 16 00
+!!-!! 6e 10 87 03 06 00 !!0a!! 01  6e 10 8a 03 06 00 0c 02
+XX+XX 6e 10 87 03 06 00 XX12XX 01  6e 10 8a 03 06 00 QQ0cQQ 02
+*#* 6e 10 8a 03 06 00 QQ0cQQ 03  6e 40 1c 14 14 32 QQ28QQ *e5*
+
+*@@ Bytecode Pattern N7 @@*
+QQ2CQQ ## ## ## ## ## ## ## ## ## ## ## QQ0AQQ ## QQ0FQQ ## QQ1AQQ ## ## ## ## ## ## ## ## ## QQ28QQ ## QQ1AQQ ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## !!0A!! ## ## ## ## ## ## ## QQ0CQQ ## ## ## ## ## ## ## QQ0CQQ ## ## ## ## ## ## ## QQ28QQ
+QQ2CQQ ## ## ## ## ## ## ## ## ## ## ## QQ0AQQ ## QQ0FQQ ## QQ1AQQ ## ## ## ## ## ## ## ## ## QQ28QQ ## QQ1AQQ ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## XX12XX ## ## ## ## ## ## ## QQ0CQQ ## ## ## ## ## ## ## QQ0CQQ ## ## ## ## ## ## ## QQ28QQ
+
+*@@ Patch Result N7 @@*
+!!-    move-result v1!!
+XX+    const/4 v1, 0x0XX
+
+*@@ Patch Result N7 @@*
+!!-!! this.verifyLicense(!!data.responseCode!!, data.signedData, data.signature);
+XX+ data.responseCode;XX
+XX+XX this.verifyLicense(XXLICENSEDXX, data.signedData, data.signature);

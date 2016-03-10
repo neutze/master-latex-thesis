@@ -1,19 +1,19 @@
-*@@ Pattern N2 @@*
-!!-!! 0c 05 6e 20 9d 4a 53 00  !!0a 0!!5 *39* 05 2d *00* 1a 05
-??+?? 0c 05 6e 20 9d 4a 53 00  ??12 1??5 *39* 05 2d *00* 1a 05
+*@@ Patch Result N2 @@*
+!!-!! *0c 05 6e 20 9d 4a 53 00*  !!0a 05!! QQ39QQ 05 2d QQ00QQ *1a 05*
+XX+XX *0c 05 6e 20 9d 4a 53 00*  XX12 15XX QQ39QQ 05 2d QQ00QQ *1a 05*
 
 *@@ Bytecode Pattern N2 @@*
-!!0A ##!! 39 ## ## 00
-??12 S1?? 39 ## ## 00
+!!0A ??!! QQ39QQ ?? ?? QQ00QQ
+XX12 S1XX QQ39QQ ?? ?? QQ00QQ
 
-*@@ Pattern N2 @@*
+*@@ Patch Result N2 @@*
 !!-    move-result v5!!
-??+    const/4 v5, 0x1??
+XX+    const/4 v5, 0x1XX
 
-*@@ Pattern N2 @@*
-!!- if (!!sig.verify(Base64.decode(signature))!!)!! {...;}
-??+?? sig.verify(Base64.decode(signature); ...;
+*@@ Patch Result N2 @@*
+!!- if (!!sig.verify(Base64.decode(signature))!!)!! !!{!!...;!!}!!
+XX+XX sig.verify(Base64.decode(signature); ...;
 
-*@@ Pattern N7 @@*
+*@@ Patch Result N7 @@*
 !!-!! x = !!foo()!!;
-??+?? x = ??false??;
+XX+XX x = XXfalseXX;

@@ -1,33 +1,27 @@
 The first steps to fortify the \gls{lvl} have been made.
 The library is modified and the environment's integrity is checked.
-This helps against \gls{luckypatcherg}'s automatic patching modes but is still vulnerable to manual attacks.
-Android applications are at high risk of being reverse engineered as it is much easier to decompile the simple bytecode over native code.
+This helps against \gls{luckypatcherg}'s automatic patching modes, but is still vulnerable to manual attacks and \gls{luckypatcherg} developing and mutating.
+Android applications are at high risk of being reverse engineered, as it is much easier to decompile the simple bytecode over native code.
 In order to hinder reverse engineering and prevent the development of custom patches, obfuscation is introduced.
 \newline
-The obfuscator is an easy to apply protection and should be used in every application.
-It does not protect against automated attacks since it does not alter the program itself.
-Obfuscation can be applied to the standard version of the \gls{lvl} as well but it is no protection since the source code is known.
-Its full potential is unleashed when combined with the unique implementation.
-The goal is to make the attackers work much more time consuming up to the point where the effort is no longer profitable.
-When the attacker does not have proper class and method naming it is harder to identify the purpose of the particular part which is analysed.
-It makes it much harder to develop a custom patch. \cite{developersSecuring}
-\newline
+An obfuscator is an easy to apply protection and should be used in every application.
 The obfuscator can either be applied to the source code or bytecode.
 There are open-source and commercial Java obfuscators available that are also working on Android, e.g. \textit{ProGuard} \cite{proguard}.
-It is applied in an addtional step in the build process.
-The \gls{classg} files are transformed right after the Java compiler and before \textit{dx} converts to the \textit{classes.dex}. \cite{proguard} \cite{androidProguard}
 Some dex obfuscators exist as well, like \textit{DexProtector} \cite{dexProtector}.
-These obfuscators are applied after the \textit{classes.dex} has been created.
+Three obfuscators are explained in the following below.
 \newline
-Three obfuscators are explained in detail. will be explained in the following. \cite{developersSecuring}
+Basic obfuscators do not protect against automated attacks since they do not alter the bytecode.
+They can be applied to the standard version of the \gls{lvl} but it is no protection since the source code is known.
+The full potential of obfuscation is unleashed when combined with a unique implementation that has to be reengineered in order to be understood.
+It makes the attackers' work much more time consuming, up to the point where the effort is no longer profitable.
+When the attacker does not find proper class and method naming, it is harder to identify the purpose of the particular part analysed.
+It makes it much harder to develop a custom patch. \cite{developersSecuring}
 \newline
-\newline
-There are limitations since certain methods cannot be obfuscated.
-They rely on the Android framework, e.g. \textit{onCreate()} which has to callable by the Android system.
-The developer should avoid implementing license verification related code inside these methods since attackers will look into these methods.
+Some methods cannot be obfuscated, as the Android framework relies on them, e.g. \textit{onCreate()} which has to callable by the Android system.
+The developer should avoid implementing license verification related code inside these unobfuscated methods, since attackers will look into these methods.
 \cite{developersSecuring}
 \newline
 \newline
-Applying obfuscators does not directly protect from \gls{luckypatcherg}.
-When the implementation of the \gls{lvl} is unique the analysis is much more time consuming and thus provides an additional protection layer for the application.
+Applying obfuscators does not directly protect from \gls{luckypatcherg} attacks.
+When the implementation of the \gls{lvl} is unique and obfuscated, the analysis is much more time consuming and thus provides an additional protection layer for the application.
 It forces attackers to invest more effort in order to understand the application and thus reduces the likelihood of attackers targeting the application.

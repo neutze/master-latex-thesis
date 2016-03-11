@@ -188,7 +188,7 @@ The first category are the four bytecode patterns for \textit{Patch Pattern N3}.
 It replaces the target instructions arguments with the the placeholder \textit{S1}, i.e. the sources of the target instructions are set to \textit{1}.
 \newline
 The second category are the four bytecode patterns for \textit{Patch Pattern N3i}.
-Instead of setting the sources to \textit{1}, the bytecode patterns replace the two target instructions’ sources with \textit{0}, as the placeholder \textit{S0} indicates.
+Instead of setting the sources to \textit{1}, the bytecode patterns replace the two target instructions' sources with \textit{0}, as the placeholder \textit{S0} indicates.
 \newline
 While the four patterns of \textit{N3} and \textit{N3i} have the same context but different variables, the two patterns of \textit{N3x} are different in their structure but enforce the same logic as the other patterns.
 The first bytecode pattern of \textit{N3x} targets implementations using \textit{13}, a move for a wide constant.
@@ -265,7 +265,7 @@ This is the reason for the inverse auto mode since it is the only difference bet
 The target of the \textit{Patch Pattern} is the \textit{LicenseChecker} class of the \gls{lvl}, which is responsible for initializing the license check in its \textit{checkAccess()} method \cite{developersLicensingReference}.
 \newline
 As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} with \textit{33}.
-The one bytecode pattern found in \gls{luckypatcherg}’s source code shows that the arguments of \textit{33} are set to \textit{00} instead of the original bytecode tupel.
+The one bytecode pattern found in \gls{luckypatcherg}'s source code shows that the arguments of \textit{33} are set to \textit{00} instead of the original bytecode tupel.
 \newline
 \lstinputlisting[
  style=diff,
@@ -393,7 +393,7 @@ The third change is the replacing arguments \textit{p2} and \textit{v4} of the \
 ]{data/n6.diff}
 The changes on Java level of the \textit{Patch Pattern} are presented in code snippet~\ref{codeSnippet:n6DiffJava}.
 In the original code the if statement tests whether the response code is not one of the desired values.
-After patching, the evaluation is always false and the code block inside is never used.
+After patching, the evaluation is always \textit{false} and the code block inside is never used.
 \newline
 \lstinputlisting[
  style=diff,
@@ -476,7 +476,7 @@ The \textit{Amazon Market Patch} has two bytecode pattern to replaces (\textit{3
 The patch replaces \textit{if-eqz} with \textit{if-ne} as seen in code snippet~\ref{codeSnippet:n4DiffSmali}.
 The opcode \textit{if-eqz} evaluates only the one argument, comparing it to zero.
 \textit{if-ne} takes two arguments, comparing them for non-equality.
-Having both arguments the same always yields false and the condition code block is never executed.
+Having both arguments the same always yields \textit{false} and the condition code block is never executed.
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -491,7 +491,7 @@ The Java code presentation helps to interpret the changes of the attack.
 Since the if statement is now always wrong the code block for response codes not \textit{APPLICATION\_LICENSE} is never called.
 The same changes are applied to the \text{d.java} class.
 Analysis of the dependencies shows the function checks whether the given string is not null and then returns \textit{true}.
-After patching, the result of \textit{v0.equals(...)} always \textit{true} and the entire if condition is always \textit{false}.
+After patching, the result of \textit{v0.equals()} always \textit{true} and the entire if condition is always \textit{false}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -551,7 +551,7 @@ The result of this comparison is always \textit{true}.
  label={codeSnippet:samsungDiffSmali}
 ]{data/samsung.diff}
 The presentation in code snippet~\ref{codeSnippet:samsungDiffJava} contains the changes in Java code.
-Instead of continuing execution based on the result of \textit{foo()} (\textit{LicenseRetriever}'s \textit{receiveResponse()}), it executes \textit{foo()}, but ignores the result and proceeds as if it was true.
+Instead of continuing execution based on the result of \textit{foo()} (\textit{LicenseRetriever}'s \textit{receiveResponse()}), it executes \textit{foo()}, but ignores the result and proceeds as if it was \textit{true}.
 Instead of checking the response code for validity, \textit{LicenseRetriever}'s \textit{receiveResponse()} method always skips the check, when \textit{Patching Pattern S1} is applied, and executes as if it was valid.
 In the method \textit{checkerThreadWorker()} of the \textit{Zirconia} class, \textit{Patching Pattern S1} voids the check of the response code and always continues as if the response code was valid.
 \newline

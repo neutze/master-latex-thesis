@@ -35,9 +35,9 @@ Before releasing the application, it has to be signed and zipaligned.
 The \textit{jarsigner} is used to sign the application.
 
 It is done similar to the Java code signing \cite{codeSigning} by adding a manifest, a signed manifest and the certificate.
-It is signed by the developer's private key and thus ensures the integrity and authenticity of the \gls{apk}.
+It is signed by the developer’s private key and thus ensures the integrity and authenticity of the \gls{apk}.
 Tampering can be detected and updates for applications with the same name and certificate can be installed.
-Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign}  \cite{androidSigning} \cite{andevconDalvikART}
+Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign} \cite{androidSigning} \cite{andevconDalvikART}
 \newline
 \newline
 The structure of a final \gls{apk} file has the following content as minimum seen in figure~\ref{fig:apkfolder}.

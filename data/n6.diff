@@ -4,8 +4,8 @@ XX+XX XX12XX 0a XX00XX QQ00 32QQ XX00XX QQ04 00  33QQ 5a 21 01 1a 00 ab 15
 *#* QQ71QQ *10 ed 21 00 00 0c 00  6e 20 ee 21 90 00 6e 10*
 
 *@@ Bytecode Pattern N6 @@*
-!!38!! ## !!06!! QQ00 32QQ !!##!! QQ04 00 33QQ ## ## ## QQ1AQQ ## ## ## QQ71QQ
-XX12XX ## XX00XX QQ00 32QQ XX00XX QQ04 00 33QQ ## ## ## ## ## ## ## ##
+!!38!! ?? !!06!! QQ00 32QQ !!??!! QQ04 00 33QQ ?? ?? ?? QQ1AQQ ?? ?? ?? QQ71QQ
+XX12XX ?? XX00XX QQ00 32QQ XX00XX QQ04 00 33QQ ?? ?? ?? ?? ?? ?? ?? ??
 
 *@@ Patch Result N6 @@*
 !!-    if-eqz p2, :cond_e!!

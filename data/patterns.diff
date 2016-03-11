@@ -111,3 +111,73 @@ QQ2CQQ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? QQ0AQQ ?? QQ0FQQ ?? QQ1AQQ ?? ?? ?? ?? ?
 
 13 ## 32 00 33 ## ## ## 70 ## ## ## ## ## 0A ## 38 ## ## ## 54 ## ## ## 59 ## ## ## ## ## 28
 13 ## 32 00 32 00 ## ## 70 ## ## ## ## ## 0A ## 38 ## ## ## 54 ## ## ## 59 ## ## ## ## ## 28
+
+byte[] bArr = new byte[29];
+bArr = new byte[]{(byte) 5, (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 1, (byte) 0, (byte) 0, (byte) 2, (byte) 1, (byte) 0, (byte) 0, (byte) 3, (byte) 1, (byte) 0, (byte) 0, (byte) 15, (byte) 0, (byte) 0, (byte) 0, (byte) 26, (byte) 0, (byte) 0, (byte) 0, (byte) 15, (byte) 0, (byte) 0, (byte) 0, (byte) 89};
+byte[] bArr2 = new byte[29];
+bArr2 = new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 0, (byte) 0, (byte) 0, (byte) 1};
+byte[] bArr3 = new byte[29];
+bArr3 = new byte[]{(byte) 5, (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 1, (byte) 0, (byte) 0, (byte) 2, (byte) 1, (byte) 0, (byte) 0, (byte) 3, (byte) 1, (byte) 0, (byte) 0, (byte) 15, (byte) 0, (byte) 0, (byte) 0, (byte) 15, (byte) 0, (byte) 0, (byte) 0, (byte) 15, (byte) 0, (byte) 0, (byte) 0, (byte) 89};
+byte[] bArr4 = new byte[29];
+bArr4 = new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 2, (byte) 0, (byte) 0, (byte) 0, (byte) 3, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
+
+while (fileBytes.hasRemaining()) {
+    int i;
+    byte prufbyte;
+    if (!createAPK && fileBytes.position() - period > 149999) {
+        Utils.sendFromRoot("Progress size:" + fileBytes.position());
+        period = fileBytes.position();
+    }
+    int curentPos = fileBytes.position();
+    byte curentByte = fileBytes.get();
+    if (mark5 || false) {
+        curentPos2++;
+    }
+    if (curentPos2 > 380) {
+        mark5 = false;
+        curentPos2 = 0;
+    }
+    if (curentByte == bArr[0] && pattern1) {
+        if (bArr4[0] == (byte) 0) {
+            bArr3[0] = curentByte;
+        }
+        i = 1;
+        int c_no_license = 1000;
+        int c_license = 1000;
+        fileBytes.position(curentPos + 1);
+        prufbyte = fileBytes.get();
+        byte repbyte_no_license = (byte) 0;
+        byte repbyte_license = (byte) 0;
+        while (true) {
+            if (prufbyte != bArr[i] && bArr2[i] == (byte) 0) {
+                break;
+            }
+            if (bArr4[i] == (byte) 2 && prufbyte == fileBytes.get(fileBytes.position() + 7)) {
+                c_license = i;
+                repbyte_no_license = prufbyte;
+            }
+            if (bArr4[i] == (byte) 0 || bArr4[i] == (byte) 2) {
+                bArr3[i] = prufbyte;
+            }
+            if (bArr4[i] == (byte) 3) {
+                repbyte_license = prufbyte;
+                c_no_license = i;
+            }
+            i++;
+            if (i == bArr.length) {
+                break;
+            }
+            prufbyte = fileBytes.get();
+        }
+        if (c_no_license < 1000 && repbyte_license != (byte) 0) {
+            bArr3[c_no_license] = repbyte_no_license;
+            if (c_license + 7 < 1000 && repbyte_no_license != (byte) 0) {
+                bArr3[c_license + 8] = repbyte_license;
+                fileBytes.position(curentPos);
+                fileBytes.put(bArr3);
+                fileBytes.force();
+                Utils.sendFromRoot("lvl patch N1!\n");
+                print.print("lvl patch N1!\n");
+            }
+        }
+    }

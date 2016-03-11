@@ -9,7 +9,7 @@ XX+XX 0x1 -> XX:sswitch_d5XX
 XX+XX 0x2 -> XX:sswitch_e0XX
 
 *@@ Patch Result N1 @@*
-case LICENSED:
+*#* case LICENSED: continue;
 !!-!! case !!LICENSED_OLD_KEY!!: handleResponse(); break;
 !!-!! case !!NOT_LICENSED!!: handleError(); break;
 XX+XX case XXNOT_LICENSEDXX: handleResponse(); break;

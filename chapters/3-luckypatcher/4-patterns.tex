@@ -51,7 +51,7 @@ On success, it substitutes that sequence with the replace pattern.
  captionpos=b,
  frame=single,
  linerange={65-69},
- caption={Bytecode patterns - Target instructions are colored in green and red, fixpoints in blue and placeholders given as ??},
+ caption={Bytecode patterns - Target instructions are colored in green and red, fixpoints in blue and placeholders given as \textit{??}},
  label={codeSnippet:example}
 ]{data/patterns.diff}
 Before explaining the patterns in detail, additional information has to be provided.
@@ -80,7 +80,7 @@ No matching bytecode pattern for \textit{Patch Pattern N1} is identified in the 
  captionpos=b,
  frame=single,
  linerange={1-3},
- caption={ Diff on dex level for \textit{Patch Pattern N1}},
+ caption={Diff on dex level for \textit{Patch Pattern N1}},
  label={codeSnippet:n1DiffDex}
 ]{data/n1.diff}
 When looking at the smali code, the two switched bytecode tuples can be identified as blocks of a switch statement.
@@ -142,7 +142,7 @@ The placeholder indicates the source is set to \textit{1}.
  captionpos=b,
  frame=single,
  linerange={1-7},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N2}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N2}},
  label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
 The smali in code snippet~\ref{codeSnippet:n2DiffSmali} shows the altered instruction.
@@ -181,7 +181,7 @@ It targets the \textit{allowAccess()} method inside the \textit{APKExpansionPoli
 These two classes are the policies examples provided by Google and located \textit{com/google/android/vending/licensing/} folder \cite{developersLicensingReference}.
 \newline
 The \textit{Patch Patterns} have an opposing result.
-While \textit{Patch Pattern N3}is replacing the \textit{01} with \textit{11}, \textit{Patch Pattern N3i} does the opposite by replacing \textit{11} with \textit{01} (see code snippet~\ref{codeSnippet:n3DiffDex}).
+While \textit{Patch Pattern N3}is replacing the \textit{01} with \textit{11}, \textit{Patch Pattern N3i} does the opposite by replacing \textit{11} with \textit{01} (see code snippet~\ref{codeSnippet:n3DiffDex} and code snippet~\ref{codeSnippet:n3iDiffDex}).
 \newline
 The source code of \gls{luckypatcherg} contains three categories of patterns.
 The first category are the four bytecode patterns for \textit{Patch Pattern N3}.
@@ -203,7 +203,7 @@ The instruction is replaced by \textit{12 10} and a \textit{00 00}.
  captionpos=b,
  frame=single,
  linerange={1-8},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3}},
  label={codeSnippet:n3DiffDex}
 ]{data/n3.diff}
 \lstinputlisting[
@@ -213,8 +213,8 @@ The instruction is replaced by \textit{12 10} and a \textit{00 00}.
  captionpos=b,
  frame=single,
  linerange={10-17},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3i}},
- label={codeSnippet:n3DiffDex}
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3i}},
+ label={codeSnippet:n3iDiffDex}
 ]{data/n3.diff}
 \lstinputlisting[
  style=diff,
@@ -223,8 +223,8 @@ The instruction is replaced by \textit{12 10} and a \textit{00 00}.
  captionpos=b,
  frame=single,
  linerange={19-24},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3x}},
- label={codeSnippet:n3DiffDex}
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3x}},
+ label={codeSnippet:n3xDiffDex}
 ]{data/n3.diff}
 When looking at the smali diff in code snippet~\ref{codeSnippet:n3DiffDex}, the dex code is translated to the initialization of \textit{v1}.
 While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
@@ -274,7 +274,7 @@ The one bytecode pattern found in \gls{luckypatcherg}'s source code shows that t
  captionpos=b,
  frame=single,
  linerange={1-8},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N4}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N4}},
  label={codeSnippet:n4DiffDex}
 ]{data/n4.diff}
 In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \textit{if-eqz} with \textit{if-ne}.
@@ -323,7 +323,7 @@ The location of the change is dependent the eight fixpoints of each search patte
  captionpos=b,
  frame=single,
  linerange={1-9},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N5}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N5}},
  label={codeSnippet:n5DiffDex}
 ]{data/n5.diff}
 The modification done by \textit{Patching Pattern N5} is moving to a variable a constant (\textit{const/4}) instead of a result (\textit{move-result}).
@@ -370,7 +370,7 @@ The third change is the replacing of \textit{4a} by \textit{00}.
  captionpos=b,
  frame=single,
  linerange={1-8},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N6}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N6}},
  label={codeSnippet:n6DiffDex}
 ]{data/n6.diff}
 The change of the code structure is more visible in the code snippet~\ref{codeSnippet:n6DiffSmali}.
@@ -422,7 +422,7 @@ In addition to the lvl classes, the \textit{Patch Pattern} is applied to all cla
  captionpos=b,
  frame=single,
  linerange={1-11},
- caption={Diff on dex level for N7 patch},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for the \textit{Patch Pattern N7}},
  label={codeSnippet:n7DiffDex}
 ]{data/n7.diff}
 In smali, this shows to be the replacement of moving a result into \textit{v1} by initializing \textit{v1}  to \textit{0}.
@@ -434,7 +434,7 @@ In smali, this shows to be the replacement of moving a result into \textit{v1} b
  captionpos=b,
  frame=single,
  linerange={13-15},
- caption={Diff on Smali level for N7 patch},
+ caption={Diff on Smali level for \textit{Patch Pattern N7}},
  label={codeSnippet:n7DiffSmali}
 ]{data/n7.diff}
 Similar to \textit{Patch Pattern N2}, \textit{Patch Pattern N7} attacks by initializing a variable with \textit{false} instead of moving a result of a method into it.
@@ -449,7 +449,7 @@ This can result in changes in unknown classes and thus lead to instability.
  captionpos=b,
  frame=single,
  linerange={17-20},
- caption={Diff on Java level for N7 patch},
+ caption={Diff on Java level for \textit{Patch Pattern N7}},
  label={codeSnippet:n7DiffJava}
 ]{data/n7.diff}
 This \textit{Patch Pattern} ensures the \textit{verifyLicense()} method is always executed with the constant \textit{LICENSED} instead of the result of the licensing check.
@@ -470,7 +470,7 @@ The \textit{Amazon Market Patch} has two bytecode pattern to replaces (\textit{3
  captionpos=b,
  frame=single,
  linerange={1-8},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for the \textit{Amazon Market Patch}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for the \textit{Amazon Market Patch}},
  label={codeSnippet:amazonDiffDex}
 ]{data/amazon.diff}
 The patch replaces \textit{if-eqz} with \textit{if-ne} as seen in code snippet~\ref{codeSnippet:n4DiffSmali}.
@@ -522,7 +522,7 @@ While the bytecode patterns \textit{S1} replace \textit{d6} with \textit{00}, th
  captionpos=b,
  frame=single,
  linerange={1-9},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for the \textit{Patch Pattern S1}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for the \textit{Patch Pattern S1}},
  label={codeSnippet:samsungDiffDex1}
 ]{data/samsung.diff}
 \lstinputlisting[
@@ -532,7 +532,7 @@ While the bytecode patterns \textit{S1} replace \textit{d6} with \textit{00}, th
  captionpos=b,
  frame=single,
  linerange={11-20},
- caption={ Diff on dex level and search and replace bytecode pattern to apply for the \textit{Patch Pattern S2}},
+ caption={Diff on dex level and search and replace bytecode pattern to apply for the \textit{Patch Pattern S2}},
  label={codeSnippet:samsungDiffDex2}
 ]{data/samsung.diff}
 The result of \textit{Patching Pattern S1} is that the \textit{if-eq} statement instead of comparing two variables only compares \textit{v0} to itself.

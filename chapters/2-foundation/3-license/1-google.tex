@@ -1,4 +1,4 @@
-\subsection{Google's License Verification Library (LVL)} \label{section:license-google}
+\subsection{Google's License Verification Library} \label{section:license-google}
 In order to tackle the copy protection problematic and to give the developer community a possibility to fight piracy, Google introduced the \gls{lvl} on the 07/27/2010 \cite{developersLicensingBlog}.
 It is easy to use and free of charge.
 The documentation can be found on the Android developers website \cite{developersLicensingOverview}.
@@ -47,7 +47,7 @@ When the application tries to contact the server for license verification and th
   language=Java,
   linerange={7-9},
   firstnumber=7,
-  caption={Include permission to check the license in \textit{AndroidManifest.xml} \cite{developersLicensingAdding}},
+  caption={Permission to check the license in \textit{AndroidManifest.xml} \cite{developersLicensingAdding}},
   label={codeSnippet:lvlPermission}
 ]{data/permission.xml}
 The second extension is the implementation for the asynchronous handling of the callback the license verification call when the process is completed.
@@ -111,7 +111,7 @@ The response is encrypted to ensure integrity and detect tampering.
 The Google Play Service client passes it back to the \gls{lvl} which decrypts the response, evaluates it and triggers callback accordingly. \cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
 \newline
 The \gls{lvl} mechanism replaces the old copy protection with a new approach.
-Instead of preventing the distribution of the application, the \gls{lvl} prevents the execution of the application.
+Instead of preventing the distribution of the application, the \gls{lvl} prevents the execution of the application without a license.
 \newline
 It's goal is to provide a simple solution by handling the complicated process, like networking and web services, for the developer.
 The developer is in full control of what happens with the response and whether access is granted.

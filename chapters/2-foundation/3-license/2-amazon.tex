@@ -50,9 +50,9 @@ When the application is launched, not only the application is initiated as befor
   label={codeSnippet:amazonCreate}
 ]{data/amazon.java}
 The license verification requires the Amazon's Appstore application to be installed on the device.
-Similar to the Google Play Server, the store application has the knowledge of whether the user has purchased the application and thus is allowed to execute it or not.
-As soon as the user logged in once with the Appstore application the information is on the device.
+Similar to the Google Play server, the store application has the knowledge of whether the user has purchased the application and thus is allowed to use it or not.
+As soon as the user logs in once into the Appstore application, the information is downloaded to the device.
 In case Amazon's store is installed on the device, but the user is not signed in, the application prompts the user to sign in.
-Since signing in requires an connection to the internet, \textit{Kiwi} indirectly depending on it as well.
+Since signing in requires an online connection to the Amazon server, \textit{Kiwi} is depending on an internet connection as well.
 It is different when the wrong user is signed in or the store is not even installed.
 In this case, the application shows a warning that the app is not owned by the current user, respectively that the Amazon Appstore is required and cannot be found.

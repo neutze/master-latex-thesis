@@ -1,39 +1,7 @@
-\subsection{Android Runtime} \label{subsection:android-art}
+\subsection{ART - Android Runtime} \label{subsection:android-art}
 In Android version 4.4 \textit{Kitkat} Google introduced \gls{art}, designed to replace the \gls{dvm}.
-It was optional first and only available as a preview through the developer options.
-\newline
-For backwards compatibility, \gls{art} still works with bytecode in the \gls{dex} files format \cite{androidArt}.
-With the release of version 5.0 \textit{Lollipop} \gls{art} it became the runtime of choice since \gls{dvm} had some major flaws.
-Throughout the Android 6.0 \textit{Marshmallow} previews it was constantly evolving and sometimes breaking compatibility with older versions.
-In addition, almost no documentation was available.
-\newline
-\gls{art} is designed to address the shortcomings of the \gls{dvm}.
-\begin{itemize}
-\item expensive \gls{vm} maintenance - wasteful \gls{jit} and too many CPU cycles by background threads
-\item frequent hangs and jitters caused by the \gls{gc}
-\end{itemize}
-This can be directly translated to increased battery usage and slower performance.
-The 32 bit support of the \gls{dvm} look like a disadvantage because iOS already supports 64 bit, but it is not.
-\newline
-The improvements in \gls{art} make the maintenance less expensive, like replacing \gls{jit} with \gls{aot} and reducing overhead cycles.
-The \gls{gc} is also non-blocking now and and can run parallel in fore- and background.
-\newline
-The main idea of \gls{art} and \gls{aot} is to compile the application to one of two types, either native code or \gls{llvm} code.
-Each of the types has its purpose and advantage.
-The native code runs directly on the hardware it was created for and offers improved execution performance while the \gls{llvm} code offers portability.
-In practice the preference is to compile to native since adding \gls{llvm} bitcode adds another layer of complexity to the architecture.
-\newline
-Different from \gls{dvm}, \gls{art} uses not one but two file formats.
-Similar to the zygote of \gls{dvm}, \gls{art} offers an image of pre-initialized classes and related objects at run time, the boot.art file.
-It is poorly documented and still changing a lot.
-The boot.art file is mapped in memory before the linked .oat file
-It is mapped to the memory upon zygote startup to provide improved application starting time .
-In addition to the boot.art file, there are two different .oat files.
-The boot.oat contains around fourteen of the most used Android framework \gls{jar}s.
-The other .oat files are the former \gls{odex} files.
-They are still located in the Dalvik cache, but they are now \gls{elf} files with the odex file embedded.
-Instead of \textit{dexopt}, \textit{dex2oat} is used to create these files. \cite{andevconDalvikART} \cite{developersConfigureArt} \cite{androidArt} \cite{intelArt}
-\newline
-In general, there is still room for improvement since not all code is guaranteed to be compiled.
-Since the base code is still dex and thus the \gls{vm} is still 32 bit, \gls{art} is not fully 64 bit.
-The generated code is also not always as efficient as from a native compiler. The \gls{art} compilation process is likely to be improved as \gls{art} evolves.
+Among other things, it does away with \gls{dex} files and replaces them with native code.
+This refutes all attempts to attack the reengineerable dex bytecode.
+For compatibility reasons, \gls{apk}s still have to provide the \textit{classes.dex}.
+With the release of version 5.0 \textit{Lollipop} \gls{art} became the runtime of choice.
+Throughout the Android 6.0 \textit{Marshmallow} previews, it was constantly evolving and sometimes breaking compatibility with older versions. \cite{andevconDalvikART} \cite{androidArt}

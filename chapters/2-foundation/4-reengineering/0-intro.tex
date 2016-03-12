@@ -1,8 +1,4 @@
-Cracking tools are modifying the application code where the license verification is done.
-In order to understand the attack, the attacked \gls{apk}'s \textit{classes.dex} is analysed.
-The goal is to identify how the exact mechanism applied to circumvent the license verification mechanism.
-The acquired knowledge is later used to suggest countermeasures against cracking tools.
-\newline
-The code is reverse engineered on different abstraction layers to not only identify the local bytecode change but also to retrace the change in the functionality of the code.
-While dex and smali code reflects the local changes, Java code is used to see the bigger picture.
-The tools to retrieve the different abstractions and the way the changes are discovered will be described in the following.
+For the approach chosen, the code needs to be reverse engineered on different abstraction layers.
+First, it is described how to extract \gls{apk} from the device.
+Then the extraction of the \textit{classes.dex}, the conversion to smali and the reverse engineering of the Java code are shown.
+Finally, the use of diff is explained.

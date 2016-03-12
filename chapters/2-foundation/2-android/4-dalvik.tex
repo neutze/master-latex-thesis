@@ -1,4 +1,4 @@
-\subsection{Dalvik Virtual Machine} \label{subsection:android-dalvik}
+\subsection{DVM - Dalvik Virtual Machine} \label{subsection:android-dalvik}
 The original \gls{vm} powering Android is the \gls{dvm}.
 It was designed by Dan Bornstein and named after an Icelandic town and introduced along with Android in 2008 \cite{developersRelease}.
 \newline
@@ -13,4 +13,4 @@ The advantage of register-based architecture is that it needs less instructions 
 The downside of this architecture is the fact that it has an approximately 25\% larger codebase for the same application and negligible larger fetching times for instructions.
 In addition to the lower level changes in the \gls{dvm}, e.g. optimizations for memory sharing between different processes \cite{vecShare} and uses zygotes. \cite{ehringerDalvik} \cite{andevconDalvikART}
 \newline
-The last big change made to the \gls{dvm} was the introduction of \gls{jit}, which will be part of the discussion in subsection~\ref{subsection:android-art}, in Android version 2.2 "Froyo".
+The last big change made to the \gls{dvm} was the introduction of \gls{jit} compilation, which will be part of the discussion in subsection~\ref{subsection:android-art}, in Android version 2.2 "Froyo".

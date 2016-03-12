@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         final Zirconia zirconia = new Zirconia(this);
         final MyLicenseCheckListener listener = new MyLicenseCheckListener();
         listener.mHandler = mHandler;
-        listener.mTextView = mStatusText;
         zirconia.setLicenseCheckListener(listener);
         zirconia.checkLicense(false, false);
     }
@@ -64,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
     }
 
     private void displayResult(final String result) {

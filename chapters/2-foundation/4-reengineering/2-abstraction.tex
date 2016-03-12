@@ -1,16 +1,14 @@
-\subsection{Code Abstraction Levels}
-The code of the application will be inspected on three different abstraction levels.
+\subsection{Abstraction Levels}
+Code analysis is performed on three different abstraction levels.
 \newline
 The first level is the original dex bytecode contained in the \textit{classes.dex}.
-It is target of the attack and is used to detect the changes done by \gls{luckypatcherg} on bytecode level.
+As will be shown chapter~\ref{chapter:luckypatcher}, it is target of the attack.
 \newline
 The second level is the smali code.
 It is used to represent the dex bytecode in a readable way and to identify the result of the changes.
 \newline
 The third level is the Java code.
-It gives the best overview of the code.
-The code is optimized by the decompiler, e.g. removing an empty if statement.
-The changes in the code can be interpreted and understood in the context of the method or class in this presentation.
+It is the best presentation to interpret and understand the changes in the context of methods or classes.
 \newline
 The Java code can be decompiled from the dex bytecode since the build process can be reversed as seen in figure~\ref{fig:re1}.
 \newline
@@ -20,6 +18,7 @@ The Java code can be decompiled from the dex bytecode since the build process ca
     \caption{Java .class and .dex can be transformed bidirectional \cite{andevconDalvikART}}
     \label{fig:re1}
 \end{figure}
+
 \subsubsection{dex Analysis} \label{subsection:tools-dex}
 The \textit{classes.dex} contains the application code and has to be modified by the cracking tool to carry out the attack.
 Analysing the dex bytecode allows to point out the places in the bytecode that have been modified.
@@ -121,12 +120,10 @@ Java code suits best for the analysis of the new behavior since its presentation
 It has names variable and method which makes it better understandable.
 The representation is close to how the developer implemented the application.
 \newline
-As seen in figure~\ref{fig:re1}, the .dex files are isomorphic to the corresponding Java \gls{classg} files.
-This makes it possible to decompile the dex bytecode into Java code.
-The decompilation to the exact source code cannot be achieved since in the compilation process some information is lost.
-Another problem is the optimization for the \gls{dvm}.
-The dex bytecode may contain Dalvik patterns that are unknown to the Java decompiler.
-The outcome is not always sufficient and for this reason two different decompilers, DAD and JADX, are used.
+As seen in figure~\ref{fig:re1}, the .dex files can be reengineered to Java \gls{classg} files.
+The reengineered Java code maintains the semantics, but does not exactly match the source code.
+As we will see, code attacked may contain instructions that are removed by the decompiler.
+Sometimes a decompiler does not deliver an acceptable result, that is why DAD and JADX are used alternatively.
 \newline
 DAD, is a short name of "DAD is A Decompiler".
 It is part of Androguard \cite{androguard}, a reverse engineering tool for Android.

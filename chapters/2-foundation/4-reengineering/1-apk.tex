@@ -1,10 +1,10 @@
 \subsection{APK Extraction} \label{subsection:tools-apk}
-The analysis of the cracked code is performed using different tools on a desktop computer.
-The \gls{apk} has to be extracted from the phone and transferred onto the computer, because the tools cannot analyse the application while it is still on the phone.
+Code analysis is performed on a desktop computer using various tools.
+The \gls{apk} has to be extracted from the device and transferred onto the computer, because the tools cannot analyse the application while it is still on the device.
 This is done using the \textit{adb shell} which is part of the Android \gls{sdk}.
 \newline
-The \textit{adb shell} can be used inside the computer's command line tool.
-The Android device must be connect to the computer via USB and USB debugging has to be activated in the device's developer settings.
+The \textit{adb shell} can be used inside the computer’s command line tool.
+The Android device must be connect to the computer via USB and USB debugging has to be activated in the device’s developer settings.
 The \textit{adb shell} is used to access the filesystem of the device when pulling the target \gls{apk} onto the computer.
 The user has no read rights on the folder and thus cannot see or list the content of the folder.
 In order to pull the desired application package, the location of the application must be known to the user.
@@ -14,7 +14,4 @@ The result contains one application per line, e.g. \textit{package:/data/app/com
 The information is used in the \textit{adb shell} to pull the application to the computer by executing \textit{adb pull /data/app/com.ebay.mobile-1/base.apk} in the command line tool.
 \newline
 In case the user has \textit{root}, it is possible to change the permissions of the folder.
-This way the folder is visible and accessible in a suited file explorer application and can be send to the computer.
-\newline
-\newline
-\textbf{Note:} \textit{Root} is neither a prerequisite to access the \gls{apk}s nor to alter their \textit{classes.dex} file.
+This way the folder is visible and accessible in a suited file explorer application and can be send to the computer.\footnote[1]{\textit{Root} is neither a prerequisite to access the \gls{apk}s nor to alter their \textit{classes.dex} file}

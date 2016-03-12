@@ -1,7 +1,7 @@
-\subsection{Code Comparison} \label{subsection:forensics-tools-diff}
-The amount of code of the abstraction levels is huge.
-Most of the code base of an abstraction layer stays the same after the attack and the changes are only punctually.
-Diff a standard command line tool used to compare two files with little differences in an overall unchanged file.
+\subsection{Pinpointing the Attack} \label{subsection:forensics-tools-diff}
+The amount of code on each abstraction levels is quite substantial.
+In a code altering attack, most of the code stays the same, i.e. changes are only punctually.
+Diff, a standard command line tool, is used to compare two sources with little differences.
 \newline
 By comparing the different code abstractions of the original \gls{apk} with the cracked application, changes done by \gls{luckypatcherg} are identified.
 Diff is used in a script to generate the result for different applications and abstraction levels at once (see code snippet~\ref{codeSnippet:diffScript}).

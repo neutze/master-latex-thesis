@@ -4,15 +4,12 @@ Now that the underlying architecture is portrayed, \textit{rooting} and the orig
 The name \textit{root} comes from the Linux \gls{os} world where the user \textit{root} has all privileges.
 Rooting allows to overcome limitations set by carriers and manufacturers, like removing pre-installed applications, extending system functionality or upgrading to custom versions of Android.
 Manufacturers and carriers do not approve of rooting, but they cannot prevent it as the access is usually gained by exploiting vulnerabilities in the system's code or device drivers.
-Vulnerabilities which can be exploited to gain privileges are quite common.
-As seen in figure~\ref{fig:root}, there have been over 30 vulnerabilities making it possible gain root rights since February 2015.
 Details and references of \gls{os} vulnerabilities can be accessed on pages like Common Vulnerabilities and Exposures or similar \cite{cveAndroidPriv} \cite{cveDetails}.
 These details are relevant for those creating rooting instructions or tools, but not for their users.
 \newline
 Today it is easy to exploit these vulnerabilities in order to gain root rights, even for non-techies.
 There are videos and tutorials available on the internet, even tools to automate the process, like Wugfresh's Rootkits \cite{wugfresh}.
-Rooting is usually bundled with installing a program called \textit{su}.
-Unlike it in UNIX it does not mean \textit{super user} but \textit{switch user}.
+Rooting is usually bundled with installing a program called \textit{Super User}.
 It is used to manage the root access for applications requesting it.
 The exploitation is not without risk, since installing bad files can result in the so called \textit{bricking}.
 The phone is then nonfunctional and no software cannot be executed anymore, even the \gls{os} itself.
@@ -20,17 +17,10 @@ The phone is then nonfunctional and no software cannot be executed anymore, even
 \newline
 Now that the application is installed and ready to run.
 Copy protection is applied to prevent unauthorized usage of the app.
-The downloaded \gls{apk}, purchased from an application store, is moved to the secure installation folder on the phone.
+The downloaded \gls{apk}, purchased from an application store, is moved to the secure folder on the phone.
 The user has no rights to access the \gls{apk} in this folder and thus cannot copy it, unless they have rooted the device.
 This mechanism was only an effective measure in the early days of Android when rooting was not easily facilitated.
 \newline
 Since rooting voids the copy protection, it is declared as deprecated.
 All applications are now stored in \textit{/data/app/} to which the user has access.
 Additional ways to protect the applications from piracy have to be applied.
-\newpage
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{data/timeline.png}
-    \caption{Timeline of market share of evolving Android versions and dates of root exploits recorded \cite{distributionRoot} \cite{androidVulnerabilities} \cite{cveAndroidPriv} \cite{cveDetails}}
-    \label{fig:root}
-\end{figure}

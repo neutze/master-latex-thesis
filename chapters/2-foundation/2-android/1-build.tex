@@ -38,7 +38,7 @@ The \textit{apkBuilder} combines these files into one archive file, which is sig
 The \textit{jarsigner} uses the developer’s private key to sign the application similar to the Java code signing \cite{codeSigning}.
 This signing process ensures integrity and authenticity using a self-signed certificate, i.e. it provides a key usable to decrypt and authenticates the entity it claims to comes from.
 As there is no certificate authority (CA), this entity cannot be linked, trusted or not, to a person or entity in the real world.
-Upon update the entities previous and current version can be compared and the update prevented on mismatch.
+Upon update the entities previous and current version can be compared and the update prevented on mismatch. \cite{nelenkovSelf}
 Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign} \cite{androidSigning} \cite{andevconDalvikART}
 \newline
 \newline

@@ -63,3 +63,13 @@ Both devices needed even additional plugins to read the \gls{otg} mounted microS
 The third problem is the lack of standards.
 An application written to use \gls{se} would need to have variants for each device type and manufacturer.
 The SD Association has proposed a standard, if adopted the usage of \gls{se} might increase \cite{smartSD}.
+\newline
+\newline
+A similar approach is the \gls{tee}.
+The \gls{tee} offers a secure virtualized instance on the CPU of a smartphone.
+The environment is isolated from the rest of the smartphone and used to protect sensitive data and processes.
+Since it is on the main processor, it has more computational power than a \gls{se} and requires no additional hardware.
+There is already an Android implementation called \textit{Trusty} \cite{trusty}.
+The  \gls{drm} framework is already making use of the benefits
+The \gls{tee} is used to decrypt the protected content in a location where the key cannot be stolen.
+At the moment, there is no support for third party applications since the applications have to be packaged with the \textit{Trusty} kernel, signed and verified by the bootloader. \cite{trusty} \cite{teeGlobal}

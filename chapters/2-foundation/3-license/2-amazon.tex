@@ -1,9 +1,9 @@
-\subsection{Amazon DRM (Kiwi)} \label{section:license-amazon}
-Amazon started its own application store in October 2010 \cite{amazonBeta} as an alternative go Google Play.
+\subsection{Amazon DRM} \label{section:license-amazon}
+Amazon started its own application store in October 2010 \cite{amazonBeta} as an alternative to Google Play.
 The Amazon appstore opened to the public on the 03/22/2011 \cite{amazonRelease}.
-It can be used on Android and \textit{Fire} tablets.
+It can be used on all Android devices and \textit{Fire} tablets.
 The store comes with its own \gls{drm} since the Google LVL only works with the Google Play Store.
-The \gls{drm} is called \textit{Kiwi} as seen in the reverse engineered code in figure~\ref{fig:amazonFolder}.
+The \gls{drm} is called Kiwi as seen in the reverse engineered code in figure~\ref{fig:amazonFolder}.
 \newline
 \begin{figure}[h]
     \centering
@@ -20,7 +20,7 @@ The developer can chose in the developer console whether this should be done or 
 In order to implement the library, the \gls{apk} is decompiled on the server side, the library is added and the application is compiled again.
 This requires the package to be signed with a new signature as described in subsection~\ref{subsection:foundation-android-package}.
 Instead of using the developer's own key, Amazon uses a developer specific key.
-The information about the key can be retrieved from the developer platform as seen in figure~\ref{fig:amazon}. \cite{amazonDeveloper}
+The key itself is available on the developer platform as seen in figure~\ref{fig:amazon}. \cite{amazonDeveloper}
 \newline
 \begin{figure}[h]
     \centering
@@ -46,11 +46,13 @@ When the application is launched, not only the application is initiated as befor
   language=Java,
   linerange={77-80},
   firstnumber=77,
-  caption={Amazon's onCreate() injection to call \textit{Kiwi} license verification as well},
+  caption={Amazon's onCreate() injection to call Kiwi license verification as well},
   label={codeSnippet:amazonCreate}
 ]{data/amazon.java}
-The license verification works in combination with Amazon's Appstore application which acts similar to the Google Play Server.
+The license verification requires the Amazon's Appstore application to be installed on the device.
+Similar to the Google Play Server, the store application has the knowledge of whether the user has purchased the application and thus is allowed to execute it or not.
+As soon as the user logged in once with the Appstore application the information is on the device.
 In case Amazon's store is installed on the device, but the user is not signed in, the application prompts the user to sign in.
-Since signing in requires an connection to the internet , \textit{Kiwi} indirectly depending on it as well.
+Since signing in requires an connection to the internet, \textit{Kiwi} indirectly depending on it as well.
 It is different when the wrong user is signed in or the store is not even installed.
 In this case, the application shows a warning that the app is not owned by the current user, respectively that the Amazon Appstore is required and cannot be found.

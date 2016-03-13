@@ -174,7 +174,7 @@ The consequence is that \textit{verify()} of the signature still executed but th
 The program flow continues after  \textit{verify()} as if the signature was valid.
 
 \subsubsection{Patch Pattern N3}
-\textit{Patch Pattern N3} is applied differently in the auto, \textit{N3}, and the auto inversed auto mode, \textit{N3i}.
+\textit{Patch Pattern N3} has two variants. While is applied \textit{N3} is applied in the \textit{Auto Mode}, \textit{N3i} is applied in the \textit{Auto Mode (inversed)}.
 It targets the \textit{allowAccess()} method inside the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy}.
 These two classes are the policy examples provided by Google and located \textit{com/google/android/vending/licensing/} folder \cite{developersLicensingReference}.
 \newline
@@ -258,7 +258,7 @@ Both \textit{Patch Patterns} attack the class's \textit{allowAccess()} method wh
 Both variables, which can be returned as result, are initialized with the same value.
 This makes the result independent of the outcome of the verification.
 As LP cannot predict if the answer \textit{true} or \textit{false} allows continuation of the license verification process, it offers both versions and the user has to try which is the right one.
-This is the reason for the inverse auto mode since it is the only difference between that mode and the auto mode.
+This is the reason for the \textit{Auto Mode(inversed)} since it is the only difference between that mode and the \textit{Auto Mode}.
 
 \subsubsection{Patch Pattern N4}
  \textit{Patch Pattern N4} is part of the auto and auto inverse patching modes.

@@ -1,6 +1,6 @@
 \subsection{Content Server} \label{section:counter-replace-server}
-This appraoch enforces users to login on a server, but not to get their verification response but to get part or all of the content of the application.
-Content cannot be guessed by \gls{luckypatcherg}.
+This approach enforces users to log into a server and not relying on the verification response itself, but the returned content for the application, only accessible on successful verification.
+This content cannot be guessed by \gls{luckypatcherg}.
 \newline
 \begin{figure}[h]
     \centering
@@ -13,8 +13,8 @@ Instead of verifying the license locally on the device, the user has to enter hi
 In case the credentials are valid, the user has the right to receive content.
 The content, the music in this case, is no longer on the phone itself, but streamed from the server.
 The attacker still can circumvent the login process inside the application by manipulating the code.
-Since the content is on the server and the user has to be authorized on it, no content is available inside the application.
-Thus attacks on the applications itself do not work anymore.
+Since the content is on the server, this content is not available inside the application until the user is authorized on the server.
+Thus attacks on the application itself do not work anymore.
 \newline
 \newline
 In general, a content server is a solution against piracy, but it has downsides as well.

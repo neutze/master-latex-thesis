@@ -1,24 +1,16 @@
 \section{Future Work}\label{section:conclusion-future}
-until lvl see major update custom improvements have to be done
-
-Den user sich was überlegen lassen ist nur zu einem gewissen maße nützlich, google muss etwas allgemeines erfinden
-
-ART
-Improve ART, \gls{apk} still dex, dex also inside ART, move to compiled machine code, harter to debug and modify
-art promising but not root issue, dex is distributed and art compilation to native on device
-needs to become relevant so developers can release art only apps, native code and no issue with reverse engineering stop/less important
-\cite{andevconDalvikART}
-
-SE
-se/tee muss es eine lösung geben sonst braucht man für verschiedene apps verscheidene se, gemeinsame kraft um die eine lösung zu verbessern und nicht lauter schweizer käse zu ahben
-google hat schon sowas wie google vault
-\url{http://techcrunch.com/2015/05/29/googles-project-vault-is-a-secure-computing-environment-on-a-micro-sd-card-for-any-platform/}
-
-TRUSTY TEE
-Although the Trusty OS enables the development of new applications, doing so must be exercised with extreme care; each new application increases the area of the trusted computing base (TCB) of the system. Trusted applications can access device secrets and can perform computations or data transformations using them.\cite{trusty} \cite{teeGlobal}
-The ability to develop new applications that run in the TEE opens up many possibilities for innovation. However, due to the very definition of TEE, these applications cannot be distributed without some form of trust attached. Typically this comes in the form of a digital signature by an entity trusted by the user of the product on which the application runs.
-
-
-
-Generell kann man von der malware lernen
-all papers with malware and copyright protection is interesting since they also want to hide their code
+There are several developments going on that will change the security landscape in the Android world.
+\newline
+\newline
+Every version of Android closes several vulnerabilities but also opens new ones.
+Sometimes the whole architecture is updated, e.g. the introduction of \gls{art}.
+With regards to \gls{luckypatcherg}, it has the ability to do away with dex bytecode entirely, but in the real world, compatibility needs to be observed and non \gls{art} need to be supported for the foreseeable future.
+This means \gls{apk}s cannot omit \gls{dex} files.
+\newline
+\newline
+At the moment, \gls{se} are not standardized and universal support not guaranteed by a reasonable number of devices.
+\gls{se} open whole range of possibilities which can only tapped when reach a critical level of availability.
+\newline
+\newline
+As seen, \gls{apk}s are signed and protected on a certain level by self-signed certificates.
+Between this level and a walled garden, e.g. total control by Google, there has to be a viable trade off to make use of certification and certification authorities.

@@ -1,47 +1,15 @@
 \section{Discussion} \label{section:conclusion-discussion}
-
-as long as self signing is allowed, applications can be changes, signed and installed, but google does not want a walled garden as apple on iOS, allowing only applications they approve\cite{codeSigning} \cite{androidSigning} walled garden
-
-
-clear in beginnign that lvl not sufficiently safe with current technology
-unclear degree and fixavle
-
-shortly after start insufficient reilience against reverse engineering, not explusivly to lvl
-thus shift from lvl protection to general protection against reverse engineering, decompilation and patching
-
-eternal arms race
-no winning solution against all cases, jsut small pieces quantitative improvement
-no qualitatively improve resilience
-limited to quantitative resilience, matter of time until small steps
-generate more work for reengineering, ggf lower motivation for cracker
-only matter of time until patching tools catch up, completely new protection schemes need to be devised to counter those
-\cite{munteanLicense}
-%
-research and also a valuable market for companies\newline
-Because source code can be easier recovered from an application in comparison
-to x86, there is a strong need for code protection and adoption of existing reverse engineering methods. Main parts of Android application functionalities are realized in Dalvik bytecode. So Dalvik bytecode is of main interest for this topic
-\cite{schulzLabCourse}
-%
-not a question of if but of when
-bytecode tool to generate the licens elibrary on the fly, using random  permutations and injecting it everywhere into the bytecode
-with an open platform we have to accept a crack will happen
-\cite{digipomLvl}
-%
-
-
-um das ganze zu umgehen content driven, a la spotify, jedoch ist dies nicht mit jeder geschäftsidee machbar
-
-alles hilft gegen lucky patcher auf den ersten blick, jedoch custom patches, welche Lucky Patcher anbietet\cite{munteanLicense}, können es einfach umgehen,
-deswegen hilft nur reengineering schwerer zu machen
-viele piraten sind nicht mehr motiviert wenn es zu schwer ist\newline
-every new layer of obfuscation/modifcation adds another level complexity\newline
-
-solange keine bessere lösung vorhanden unique machen um custom analysis und reengineering zu enforcen und dann
-viele kleine teile um die schwierigkeit des reengineeren und angriffs zu erschweren und viel zeit in anspruch zu nehmen um die motivation der angreifer zu verringern und somit die app zu schützen
-
-close down free installations
-
-
-Es muss generell immer abgewogen werden zwischen Reichweite und Sicherheit. Von Output den Lucky Patcher gibt, sind die auto patching modes für Google, Amazon und Samsung, die großen Player. Ein Developer muss seine App dort anbieten um Aufmerksamkeit zu bekommen. Deswegen sind diese Stores auch so gut "maintained" von Lucky Patcher.
-Im Falle, dass ein Developer "Sicherheit" vorzieht und seine App in einem alternativen Store anbietet, gibt es zwei Scenarien. Entweder entwickelt jemand einen Custom Patch (dex oder native Angriff) wenn ein "allgemeines Interesse" besteht oder die App ist uninteressant und erhält keine Aufmerksamkeit, weder von LP noch Kunden.
-Nur weil ein kopeirschutz nicht gekackt ist heißt es noch ncith dass er nciht knackbar ist, sobald genügend interesse besteht wird es jemand versuchen
+The chosen black box approach is effective, focusing the view on the one vulnerability attacked - single verification decisions that can be voided to be unary.
+\newline
+\newline
+There are several levels of the race of arms between developers protecting and pirates stealing \gls{ip}.
+\newline
+On the lowest level, attack vectors of a specific search pattern can be blocked, but \gls{luckypatcherg} will implement an answer and the general problem of the unary vulnerability is not fixed.
+\newline
+On another level, dex bytecode is always reengineerable, opening a plethora of attack vectors which are fixed by replacing it by native code, but native code will be attacked in different ways.
+\newline
+Even higher concepts of protection will be cracked as part of the race of arms, e.g. encryption, \gls{se}s or \gls{tee}s.
+\newline
+\newline
+Security is always part of a trade off against openness, for instance prevention of tampering \gls{apk}s with self-signed signatures could be improved by introducing a certification authority.
+Thinking this further would lead to a walled garden, contradicting Android’s philosophy of openness.

@@ -1,4 +1,13 @@
-\subsubsection{Unique Implementation} \label{subsection:counter-modifications-library}
+\subsection{Unique Implementation} \label{subsection:counter-modifications-library}
+Attacking with \gls{luckypatcherg} is often successful because developers do not customize the \gls{lvl} at all.
+One reason for not customizing the \gls{lvl} is that protection against casual piracy feels sufficient for the developer.
+Casual piracy is the copying of \gls{apk}s from one device to another.
+\newline
+Another reason is that the developers do not know how to fortify the library and thus they do not want to spend additional effort \cite{developersSecuring}.
+\newline
+While the idea of the approaches is valid for all license verification libraries, the implementation is only possible for the \gls{lvl}.
+It requires access to the source code, which is available for the \gls{lvl}, as opposed to Samsung's and Amazon's libraries.
+\newline
 \gls{luckypatcherg}'s attack is reliant on successfully applying the patching patterns.
 For this reason, actively avoiding these patterns should always be the first step to challenge \gls{luckypatcherg}.
 This approach is only possible when using the \gls{lvl}, as it requires access to the source code of the license verification mechanism.
@@ -11,17 +20,17 @@ There are three areas the developer should focus on when modifying the \gls{lvl}
 \item entry and exit points of the licensing library
 \item invocation and handling of the response
 \end{enumerate}
-The core logic's two main classes are the \textit{LicenseChecker} and the \textit{LicenseValidator}.
+The core logic’s two main classes are the \textit{LicenseChecker} and the \textit{LicenseValidator}.
 As seen in section~\ref{section:luckypatcher-patterns}, these two classes are the primary target of \gls{luckypatcherg} and thus should be altered as hard as possible while retaining the original function.
 Isomorphic code changes can include:
 \begin{itemize}
-\item replacing the switch statement with an if statement and add additional code between the if statements (see pattern N1)
-\item deriving new values for constants and check for these values in the further proceeding (see pattern N3)
-\item removing unused code for interfaces, e.g. implementing the policy verification inline in the \textit{LicenseValidator} instead over an interface (see patterns N2, N4, N5 and N6)
-\item move the \gls{lvl} package into the application (see patterns N2 and N7)
+\item replacing a switch statement with a set of if statements and adding additional code between them (see pattern N1)
+\item deriving new values for response codes and checking for these values in the further proceeding (see pattern N6)
+\item removing unused code for interfaces, e.g. implementing the policy verification inline in the \textit{LicenseValidator} instead of over an interface (see patterns N2, N4, N5 and N6)
+\item moving the \gls{lvl} package into the application (see patterns N2 and N7)
 \item implementing functions inline where possible (see patterns N2, N5 and N7)
-\item making actions in the decompiled code difficult to trace by moving routines to unrelated code, counter intuitive from traditional software engineering
-\item implement radical response handling, e.g. killing the application without a hint as soon as an invalid server response is detected, results in bad user experience
+\item making actions in the decompiled code difficult to trace by moving routines to unrelated code (counter intuitive from traditional software engineering)
+\item implementing radical response handling, e.g. killing the application without a hint as soon as an invalid server response is detected (results in bad user experience)
 \end{itemize}
 These are only examples and creativity is welcome since the resulting implementation should be unique. \cite{developersSecuring}
 \newline

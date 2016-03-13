@@ -1,32 +1,66 @@
-\section{Code Analysis} \label{section:luckypatcher-analysis}
-The inspection of \gls{luckypatcherg}'s source code of version 6.0.4 was performed using the two decompilers DAD and JADX, which are described in subsection~\ref{subsection:reengineering-abstraction}.
-The reverse engineered code was analysed using a text editor, like Atom \cite{atom}.
+\section{Selecting the Approach} \label{section:luckypatcher-analysis}
+When analysing software applications, a white box or black box approach can be taken.
+The white box approach looks inside the software and uses knowledge obtained from the code.
+The black box approach makes no assumptions about the content of software, but only observes inputs and outputs of the application.
 \newline
-First, the folder structure was inspected by loading the reverse engineered code into the editor.
-On the first look, different folders can be spotted in the applications tructure.
-These folders contain the resources, different libraries and the actual \gls{luckypatcherg} code.
-The folders containing code can be divided into four categories.
-\begin{enumerate}
-\item Android Support Library v4 with many of it's modules -
-The library is used to provide downward compatibility of Android related functions.
-\item Lucky Patcher -
-Code containing the \gls{luckypatcherg} logic are located in two places.
-Classes containing utility methods are stored in the package com.chelpus.
-The application code itself can be found in the package
-\textit{com.android.vending.billing.InApp- BillingService.LACK}.
-It contains the activities and functions which are used for cracking applications.
-\item The third category are support libraries required by Lucky Patcher to apply it's patches -
-This includes libraries, e.g. axml \cite{axml} for serializing the AndroidManifest.xml from Android binary into an ASCII formatted, human readable xml and zip4j \cite{zip4j}, a Java library to handle ZIP files.
-\item The fourth is a modified billing and license library -
-It is applied in combination with a proxy to redirect inapp billing and licensing calls.
-\end{enumerate}
-In the resources folder, different predefined custom patches can be found.
+First general pros and cons of each approach have to be listed, then they are evaluated for the scenario of this work and finally an approach is chosen.
+\subsection{White Box vs Black Box}
+In order to prepare a decision on which approach to take, the following pros and cons are considered for each of the two.
+\begin{table}
+  \centering
+\begin{tabular}[]
+  {|l|p{0.4\textwidth}|p{0.4\textwidth}|}
+  \hline
+   & White Box & Black Box \\ \hline
+  Pro &
+  \begin{itemize}
+    \item ability to find edge cases
+    \item the deeper the understanding of the code, the better the understanding of attack vectors
+  \end{itemize} & \begin{itemize}
+    \item strong when dealing with large code base
+    \item clear view on effects allows abstract view on mechanisms
+  \end{itemize} \\ \hline
+  Con&
+  \begin{itemize}
+    \item requires intimate knowledge of the code
+    \item requires full understanding of the algorithms
+  \end{itemize} & \begin{itemize}
+    \item potentially difficult to define proper test cases
+    \item edge cases might not be triggered
+  \end{itemize} \\ \hline
+\end{tabular}
+\caption{Pros and cons of white and black box analysis}
+\label{my-label}
+\end{table}
+
+\subsection{Evaluation}
+There is no source code available for \gls{luckypatcherg}.
+For this reason, the code has to be reconstructed from the \textit{classes.dex} of the \gls{apk}.
+After testing several decompilers, DAD and JADX are both selected to decompile the dex bytecode to Java code in order to get the best possible starting point.
+Most notable are the following two points:
+\begin{itemize}
+\item some blocks failed to successfully decompiled to Java
+\item flat structure and unusually large classes, e.g. \textit{listAppsFragment.java} has over 17.000 lines of code
+\end{itemize}
+While decompiled code is always obscure, there are indicators that the developer has purposely taken steps to obfuscate the meaning of the code of \gls{luckypatcherg}.
+Examples are the launcher activity residing in a package looking like provided by Google or the flat hierarchy without clear architectural patterns.
 \newline
+In order to get familiar with the functionality of \gls{luckypatcherg}, an application containing license verification is cracked.
+\gls{luckypatcherg} reports the use of seven named \textit{Patch Patterns} and two \textit{Patches}.
+Trying to identify the changes to application done by \gls{luckypatcherg}, the dex bytecode of before and after patching is compared.
+Most notable are the following two points:
+\begin{itemize}
+\item confined and understandable changes between original and cracked \textit{classes.dex} are identified
+\item presence of six patching modes suggest a manageable amount of test cases
+\end{itemize}
+
+\subsection{Selection}
+The goal of the analysis is the deep understanding of the mechanisms applied by \gls{luckypatcherg}.
+In order to propose countermeasures, an abstract understanding of these mechanisms has to be achieved.
+The chosen approach needs to go deep enough and reveal essence of what \gls{luckypatcherg} does.
 \newline
-\gls{luckypatcherg} tries to hide the way it works.
-The developer uses heavy obfuscation and a flat code structure for the \gls{luckypatcherg} core logic.
-The goal is to make reverse engineering as time consuming as possible.
-These techniques are applied very effectively since \gls{luckypatcherg} itself is attacking such applications.
-For this reason a blackbox approach is choosen.
-This analysis focuses on gathering information from the output of a mechanism which should be analysed.
-\gls{luckypatcherg}'s different modes are applied on a variety of applications. A lot of data and edge cases is generated this way to identify how \gls{luckypatcherg} works.
+While the look into the white box approach was discouraging, the black box immediately revealed remarkably confined changes traceable to a purpose.
+When continuing with the black box analysis, the changes are starting to fall into recurring patterns.
+\newline
+The conclusion is to choose the black box test.
+Additional insight into the code is sought where appropriate.

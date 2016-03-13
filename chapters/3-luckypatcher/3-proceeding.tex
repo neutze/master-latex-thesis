@@ -1,48 +1,33 @@
 \section{Blackbox Analysis} \label{section:luckypatcher-blackbox}
-The blackbox approach looks at the parts of the code manipulated by \gls{luckypatcherg}.
-Lucky Patcher is used on different applications to get a variety of results and identify how the different implementations are attacked.
-This is done with applications implementing the three libraries in the scope of this thesis, \gls{lvl}, \textit{Zirconia} and \textit{Kiwi}.
+One of the difficulties of black box analysis is the definition of the right test cases.
+As a reminder, the scope of the analysis in this thesis are the five universal modes and two universal patches for removing the license verification and creating an modified \gls{apk}.
+The five modes and two patches form the first dimension in the variations of test cases.
+Different applications will trigger different reactions in the black box and form a second dimension.
 \newline
-The applications are patched using the \textit{Auto Modes}.
-The approach for creating a modified \gls{apk} was chosen since \gls{odex} files are device specific and cannot be used for a general conclusion of an attack (see subsection~\ref{subsection:android-dex}).
-The outcome is analysed using the methodologies described in  section~\ref{section:reengineering}.
-Since only the bytecode is modified, a static analysis is sufficient.
+Initially, fourteen applications are selected for the analysis, but quickly it becomes apparent that only a limited number of reactions is triggered.
+For every test case run, \gls{luckypatcherg} announces success and failure of each of nine applied patterns and patches.
 \newline
-The goal of reverse engineering the code and comparing it to the original application is to pinpoint changes and analyse them on different abstraction levels.
-This includes the \gls{dex} level, on which Lucky Patcher works, the smali level, which makes the \gls{dex} code human readable and the Java level, as the highest level of abstraction and human readability.
-On each level, the modified and original code are compared.
-The utility diff is used to retrieve the changes in an easy way, ignoring the unchanged code.
-\newline
-\newline
-Besides circumventing the Google \gls{lvl}, \gls{luckypatcherg} supports the the voiding of Amazon's and Samsung's license verification library.
-A reference application with known source code and an implementation, according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, is created in order to have a reference application.
-This application is called \textit{LicenseTest}.
-It gives full control and knowledge of the code and allows the analyse of \gls{luckypatcherg} attack on the most comprehensive version.
-The same application, including the Google \gls{lvl}, is uploaded to the Play Store, Amazon and Samsung. Of course, for Amazon and Samsung, the \gls{lvl} has to be disabled because it is not supported on those platforms.
-For Samsung, \textit{Zirconia} is implemented according to subsection~\ref{section:license-samsung} while Amazon injects \textit{Kiwi} as discussed in subsection~\ref{section:license-amazon}.
-\newline
-To see how \gls{luckypatcherg} handles different implementations, other applications than \gls{luckypatcherg} were analysed as well.
-The applications, are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
-These apps were chosen since they were already owned and approved to be included into the thesis by their developers.
-They include Google's \gls{lvl} and Amazon \gls{drm}.
-The analysis for Samsung is done by using only one application.
-The \gls{jar} of \textit{Zirconia} cannot be changed by the developer and thus has to be implemented the same way into all applications.
-\newline
-Run time tests were done on the author's device as well as several others in order to proof LP's ability to target different configurations, e.g. Android version or \textit{root}.
-This test is necessary since the modified application can be installed on any device.
-It verifieds whether the crack works even though the corresponding store, root or internet connection are not available.
-\newline
-As described before, \gls{luckypatcherg} offers different modes to patch applications.
-Each mode offers a set of patterns to be used of which each change a piece of binary.
-These patterns are shown in figure~\ref{fig:luckyScreen} on the right.
-A pattern is identified by a name (N1, N2, …) and consists of a set of predefined sequences of bytecode in which certain values are modified.
-For the black box test each mode is applied in order to discover patterns applied.
-\newline
-These are the different modes and what Lucky Patcher describes them as.
+\gls{luckypatcherg}’s different modes and patches are described in figure~\ref{fig:luckyScreen} on the right.
 \begin{itemize}
 \item The Auto Mode - "The minimal number of patches. Suitable for most applications with simple protection".
-\item Auto Mode (Inversed) "There are a few differences from the "Auto mode". It may help you, if "Auto mode" was unsuccessful."
-\item Other Patches (Extreme Mode!) - "Additional patches (may cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with "Auto mode" or "Auto mode (Inversed)"."
+\item Auto Mode (Inversed) "There are a few differences from the ”Auto mode”. It may help you, if ”Auto mode” was unsuccessful."
+\item Other Patches (Extreme Mode!) - "Additional patches (may cause instability). Apply only if the other patterns were unsuccessful. Requires internet. Try to use together with ”Auto mode” or ”Auto mode (Inversed)”."
 \item Auto Mode (Amazon Market) - "Removes License Verification for applications from Amazon Market"
 \item Auto Mode (SamsungApps) - "Removes License Verification for Apps from SamsungApps" (Note: SamsungApps is called GalaxyApps, see subsection~\ref{section:license-samsung})
 \end{itemize}
+The \textit{Extreme Mode!} can either be applied on its own or combined with the the /textit{Auto Mode} or the \textit{Auto Mode (Inversed)}.
+This accounts for the five universal modes for the \gls{lvl} while the patches for Amazon and Samsung are in addition.
+\newline
+A reference application with an implementation according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, is created for the black box test.
+This application is called \textit{LicenseTest}.
+It gives full control and knowledge as the source code is available and allows an analyse of \gls{luckypatcherg}’s attacks in the most comprehensive way.
+When testing Amazon and Samsung, \textit{LicenseTest} is uploaded including the \gls{lvl}.
+Of course,  the \gls{lvl} is disabled because it is not supported on those platforms.
+For Samsung, \textit{Zirconia} is implemented according to subsection~\ref{section:license-samsung} while Amazon injects \textit{Kiwi} as discussed in subsection~\ref{section:license-amazon}.
+Among the other applications are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
+These apps were chosen since they were already owned by the author and, upon request, the developers approved them to be mentioned in this thesis.
+The rest of the applications is not mentioned here, since the approval was not able to be obtained.
+\newline
+While initially the test was organized by executing each application in each mode, it becomes immediately apparent that each mode triggers specific patterns and patches and they drive the behaviour.
+As patterns can be triggered intentionally in a test case, the whole test is finally organized to analyse one pattern at a time.
+This will be described in the next section.

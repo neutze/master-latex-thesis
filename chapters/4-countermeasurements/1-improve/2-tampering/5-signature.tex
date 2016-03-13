@@ -1,9 +1,9 @@
 \subsubsection{Signature} \label{subsection:counter-improve-tampering-signature}
-Application code is signed to authenticate an application developers and enable them to provide updates for the application \cite{androidSigning}.
-Since the signature has to be rewritten when cracking the application, it is an indicator for attacks \cite{tamperSignature}.
+When modifying an application, it has to be signed again as described in subsection~\ref{subsection:android-install}.
+Since \gls{luckypatcherg} does not have the developer’s key, it has to sign the application using a different key.
 \newline
-The approach is similar to Google Maps inside an application.
-When launching the map, the application sends the SHA1 signature and the API key to the server which verifies whether the application is allowed to display the map \cite{maps}.
+When storing the original key’s hash in the code, it can be compared to the current one.
+In case they differ, execution can be interrupted.
 \newline
 \lstinputlisting[
   float=h,
@@ -19,6 +19,9 @@ When launching the map, the application sends the SHA1 signature and the API key
   label={codeSnippet:tamperingSignature}
 ]{data/4-countermeasurements/1-tampering/5-signature.java}
 The code for the signature check can be seen in code snippet~\ref{codeSnippet:tamperingSignature}.
-In order to check the application's signature, the original signature has to be provided (see line 53).
-The application's signature fetched from the package information (line 57ff).
-In case the signature cannot be retrieved or the signature do not match, the check terminates the application.
+The original key’s hash has to be provided (see line 53).
+The application signing key’s hash is fetched from the package information (line 57ff).
+In case it cannot be retrieved or the they do not match, the check terminates the application.
+\newline
+The approach is similar to Google Maps inside an application.
+When launching the map, the application sends the SHA1 signature and the API key to the server which verifies whether the application is allowed to display the map \cite{maps}.

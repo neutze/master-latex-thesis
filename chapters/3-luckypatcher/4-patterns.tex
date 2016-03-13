@@ -55,7 +55,7 @@ On success, it substitutes that sequence with the replace pattern.
  captionpos=b,
  frame=single,
  linerange={65-69},
- caption={Bytecode patterns - Target instructions are colored in green and red, fixpoints in blue and placeholders given as \textit{??}},
+ caption={Bytecode patterns - Target instructions are green (search) and red (replace), fixpoints are blue and placeholders are given as \textit{??}},
  label={codeSnippet:example}
 ]{data/patterns.diff}
 Before explaining the patterns in detail, additional information has to be provided.
@@ -223,7 +223,7 @@ The original instruction is replaced by a move of a 4 bit constant \textit{12 10
  captionpos=b,
  frame=single,
  linerange={19-24},
- caption={Diff on dex level and search and replace bytecode pattern to apply for \textit{Patch Pattern N3x}},
+ caption={Search and replace bytecode pattern to apply for \textit{Patch Pattern N3x}},
  label={codeSnippet:n3xDiffDex}
 ]{data/n3.diff}
 When looking at the smali diff in code snippet~\ref{codeSnippet:n3DiffDex}, the dex code is translated to the initialization of \textit{v1}.
@@ -488,10 +488,10 @@ Having both arguments the same always yields \textit{false} and the condition co
  label={codeSnippet:amazonDiffSmali}
 ]{data/amazon.diff}
 The Java code presentation helps to interpret the changes of the attack.
-Since the if statement is now always wrong the code block for response codes not \textit{APPLICATION\_LICENSE} is never called.
-The same changes are applied to the \text{d.java} class.
-Analysis of the dependencies shows the function checks whether the given string is not null and then returns \textit{true}.
-After patching, the result of \textit{v0.equals()} always \textit{true} and the entire if condition is always \textit{false}.
+In the class \textit{b.java}, the if block, formerly repsonsible for reponse codes not \textit{APPLICATION\_LICENSE}, is now never called as the condition is always \textit{false}.
+\newline
+The method modified in the \text{d.java} class tests whether a string is not \textit{null}.
+After the patching, the functions returns always \textit{true}.
 \newline
 \lstinputlisting[
  style=diff,

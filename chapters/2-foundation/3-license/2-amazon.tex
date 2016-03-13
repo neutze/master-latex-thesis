@@ -3,12 +3,12 @@ Amazon started its own application store in October 2010 \cite{amazonBeta} as an
 The Amazon appstore opened to the public on the 03/22/2011 \cite{amazonRelease}.
 It can be used on all Android devices and \textit{Fire} tablets.
 The store comes with its own \gls{drm} since the Google LVL only works with the Google Play Store.
-The \gls{drm} is called Kiwi as seen in the reverse engineered code in figure~\ref{fig:amazonFolder}.
+The \gls{drm} is called \textit{Kiwi} as seen in the reverse engineered code in figure~\ref{fig:amazonFolder}.
 \newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.3\textwidth]{data/amazonFolder.png}
-    \caption{Amazon library structure in decompiled application}
+    \caption{Amazon DRM structure of a decompiled application}
     \label{fig:amazonFolder}
 \end{figure}
 The prerequisites for using \textit{Kiwi} are similar to the ones of the \gls{lvl}, since the developer requires a developer account on the Amazon Developer Service platform.
@@ -46,7 +46,7 @@ When the application is launched, not only the application is initiated as befor
   language=Java,
   linerange={77-80},
   firstnumber=77,
-  caption={Amazon's onCreate() injection to call Kiwi license verification as well},
+  caption={Amazon DRM injection in the \textit{onCreate()}},
   label={codeSnippet:amazonCreate}
 ]{data/amazon.java}
 The license verification requires the Amazon's Appstore application to be installed on the device.

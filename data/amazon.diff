@@ -12,5 +12,5 @@ QQ6E 20QQ ?? ?? ?? ?? QQ0C 00QQ XX33XX QQ00QQ ?? ?? QQ12 10QQ ?? ?? QQ0F 00 12 0
 XX+XX if-XXneXX v0, XXv0,XX :cond_1f
 
 *@@ Patch Result Amazon @@*
-!!-!! if(!! ! !!v0.equals("LICENSED")) {...}
+!!-!! if(!! ! !!v0.equals("APPLICATION_LICENSE")) {...}
 XX+XX if(v0.equals("APPLICATION_LICENSE") XX!= v0.equals("APPLICATION_LICENSE")XX) {...}

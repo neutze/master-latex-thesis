@@ -85,18 +85,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void licenseCheckedAsValid() {
             mHandler.post(new Runnable() {
-                public void run() {
-                  ...
-                }
+                public void run() {...}
             });
         }
 
         @Override
         public void licenseCheckedAsInvalid() {
             mHandler.post(new Runnable() {
-                public void run() {
-                  ...
-                }
+                public void run() {...}
             });
         }
     }

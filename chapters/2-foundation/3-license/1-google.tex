@@ -3,7 +3,7 @@ In order to tackle the copy protection problematic and to give the developer com
 It is easy to use and free of charge.
 The documentation can be found on the Android developers website \cite{developersLicensingOverview}.
 \newline
-Google's approach is based on a network service.
+Google's approach is based on a network service (see figure~\ref{fig:lvl}).
 It allows to query the trusted Google Play license server in order to determine whether the user has a valid license.
 \newline
 \begin{figure}[h]
@@ -12,7 +12,7 @@ It allows to query the trusted Google Play license server in order to determine 
     \caption{Google's implementation of license checking \cite{developersLicensingOverview}}
     \label{fig:lvl}
 \end{figure}
-\newline
+\newpage
 The source code for the \gls{lvl} is provided by Google inside the Android \gls{sdk}.
 It has to be manually integrated into the application by the developer.
 Since the structure and the way it works can be analysed in the source code, it is vulnerable to attacks.
@@ -20,16 +20,16 @@ For this reason, Google instructs the developer to change the library.
 Creating a unique implementation by changing its code, structure and control flow makes it more difficult target.
 \newline
 The \gls{lvl} can be integrated in only a few steps.
-It is called and based on the result, the normal processing continues or the app terminates.
+It is called and based on the result, the normal processing continues or the application terminates.
 The logic of the application itself has not to be altered.
 \newline
 It is necessary to have a Google Publisher Account in order to take advantage of the \gls{lvl}.
 It is used to publish applications on the Google Play Store.
 The \gls{lvl} does only work when implemented in an application that is distributed in Google's application store and does license verification there.
-When an app is registered in Google Developer Console and the entry is created, an application specific public/private key pair is generated.
+When an application is registered in Google Developer Console and the entry is created, an application specific public/private key pair is generated.
 The use is explained later on. \cite{developersLicensingSetup}
 \newline
-After an App is registered with the Play Store and the set of keys has been received, \gls{lvl} can be implemented into the application.
+After an application is registered with the Play Store and the set of keys has been received, \gls{lvl} can be implemented into the application.
 The source code of the \gls{lvl} has to be extracted from the Android \gls{sdk} and moved to the application project.
 In order to make use of the library inside an application, three extensions to the application's source code have to be made.
  \cite{digipomLvl} \cite{developersLicensingOverview}

@@ -11,14 +11,12 @@ The third level is the Java code.
 It is the best presentation to interpret and understand the changes in the context of methods or classes.
 \newline
 The Java code can be decompiled from the dex bytecode since the build process can be reversed as seen in figure~\ref{fig:re1}.
-\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{data/re1.png}
     \caption{Bidirectional relation between Java .class and .dex bytecode \cite{andevconDalvikART}}
     \label{fig:re1}
 \end{figure}
-\newline
 
 \subsubsection{dex Analysis} \label{subsection:tools-dex}
 The \textit{classes.dex} contains the application code and has to be modified by the cracking tool to carry out the attack.
@@ -93,6 +91,7 @@ This process is done using the script in code snippet~\ref{codeSnippet:smaliScri
   caption={Script to generate the corresponding smali code for a given \gls{apk}},
   label={codeSnippet:smaliScript}
 ]{data/extractScript.sh}
+\newline
 An example of smali code can be seen in code snippet~\ref{codeSnippet:smaliOutput}.
 It is easier to understand than the dex presentation.
 The content of variables, as in line 3, can be identified without big effort.
@@ -145,8 +144,10 @@ Code snippet~\ref{codeSnippet:androguardScript} shows how it is used in the comm
   caption={Script to decompile to Java using androguard},
   label={codeSnippet:androguardScript}
 ]{data/extractScript.sh}
+\newline
 JADX \cite{jadx} is the second decompiler.
 The decompilation is directly done from the \gls{apk}'s dex bytecode to Java code and can be performed in the command line interface as seen in Code snippet~\ref{codeSnippet:jadxScript}.
+\newline
 \lstinputlisting[
   float=h,
   breaklines=true,

@@ -19,6 +19,7 @@ The server does a verification of the user and when the check is successful, the
     \caption{Retrieving the key after successful identification from the server and store it local on device}
     \label{fig:encryptionKeyServer}
 \end{figure}
+\newline
 A cached key can be stolen \cite{memoryDump} and the encryption cracked this way.
 A key needs to be protected against theft and should be changed periodically, e.g. when updating the version of the application.
 When running a content server, the key can be user or device specific and changed more often.
@@ -49,6 +50,7 @@ An abstract presentation for a \gls{se} that contains an applet to decrypt the i
     \caption{Decryption by using a smartcard}
     \label{fig:encryptionKeySmart}
 \end{figure}
+\newline
 At the moment, there are some problems with the integration of \gls{se}s.
 \begin{itemize}
   \item the user has to buy extra hardware

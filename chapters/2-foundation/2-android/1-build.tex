@@ -9,13 +9,13 @@ Yet other application stores are less trusted.
 In addition, the \gls{apk} can be obtained from anywhere and installed manually.
 The build process of an \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
 \newline
-\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{data/apk.png}
     \caption{\gls{apk} build process \cite{andevconDalvikART}}
     \label{fig:apk}
 \end{figure}
+\newline
 Since Android applications are usually written in Java, there are similarities to the Java program build process.
 Upon compilation, the source code is transformed into \gls{classg} files by the Java Compiler javac.
 Each Java class is stored as bytecode in the corresponding \gls{classg} file.
@@ -41,7 +41,6 @@ As there is no certificate authority (CA), this entity cannot be linked to a per
 Upon update the entities previous and current version can be compared and the update prevented on mismatch. \cite{nelenkovSelf}
 Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign} \cite{androidSigning} \cite{andevconDalvikART}
 \newline
-\newline
 The structure of a final \gls{apk} file has the following content as minimum as seen in figure~\ref{fig:apkfolder}.
 \begin{figure}[h]
     \centering
@@ -49,6 +48,7 @@ The structure of a final \gls{apk} file has the following content as minimum as 
     \caption{\gls{apk} folder structure}
     \label{fig:apkfolder}
 \end{figure}
+\newline
 The \textit{AndroidManifest.xml} and the \textit{classes.dex} have already been covered.
 \newline
 The \gls{apk} has the same code signing mechanism as Java .

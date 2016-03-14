@@ -1,6 +1,6 @@
 \section{Blackbox Analysis} \label{section:luckypatcher-blackbox}
-One of the difficulties of black box analysis is the definition of the right test cases.
-As a reminder, the scope of the analysis in this thesis are the five \textit{universal} modes and two \textit{universal} patches for removing the license verification and creating an modified \gls{apk}.
+One of the difficulties of black box analysis, is the definition of the right test cases.
+As a reminder, the scope of the analysis in this thesis are the five \textit{universal} modes and two \textit{universal} patches for removing the license verification and creating a modified \gls{apk}.
 The five modes and two patches form the first dimension in the variations of test cases.
 Different applications will trigger different reactions in the black box and form a second dimension.
 \newline
@@ -15,15 +15,17 @@ For every test case run, \gls{luckypatcherg} announces success and failure of ea
 \item \textit{Auto Mode (Amazon Market)} - \grqq{Removes License Verification for applications from Amazon Market}\grqq
 \item \textit{Auto Mode (SamsungApps\footnote[1]{SamsungApps is called GalaxyApps, see subsection~\ref{section:license-samsung}})} - \grqq{Removes License Verification for Apps from SamsungApps}\grqq
 \end{itemize}
-The \textit{Extreme Mode!} can either be applied on its own or combined with the the /textit{Auto Mode} or the \textit{Auto Mode (Inversed)}.
-This accounts for the five \textit{universal} modes for the \gls{lvl} while the patches for Amazon and Samsung are in addition.
+The \textit{Extreme Mode!} can either be applied on its own or combined with the the \textit{Auto Mode} or the \textit{Auto Mode (Inversed)}.
+This accounts for the five \textit{universal} modes for the \gls{lvl}, while the patches for Amazon and Samsung are in addition.
 \newline
 A reference application with an implementation according to the tutorial of \gls{lvl} \cite{developersLicensingAdding}, is created for the black box test.
 This application is called \textit{LicenseTest}.
-It gives full control and knowledge as the source code is available and allows an analyse of \gls{luckypatcherg}’s attacks in the most comprehensive way.
-When testing Amazon and Samsung, \textit{LicenseTest} is uploaded including the \gls{lvl}.
-Of course,  the \gls{lvl} is disabled because it is not supported on those platforms.
+It gives full control and knowledge, as the source code is available and allows an analysis of \gls{luckypatcherg}’s attacks in the most comprehensive way.
+\newline
+When testing Amazon and Samsung, \textit{LicenseTest} is uploaded to the stores, including the \gls{lvl}.
+Of course, the \gls{lvl} is disabled because it is not supported on those platforms.
 For Samsung, \textit{Zirconia} is implemented according to subsection~\ref{section:license-samsung} while Amazon injects \textit{Kiwi} as discussed in subsection~\ref{section:license-amazon}.
+\newline
 Among the other applications are Runtastic Pro\cite{runtasticApp}, version 6.3, and Teamspeak 3\cite{teamspeakApp}, version 3.0.20.2, for the \gls{lvl} and A Better Camera \cite{abettercamera}, version 3.35, for the Amazon DRM.
 These apps were chosen since they were already owned by the author and, upon request, the developers approved them to be mentioned in this thesis.
 The rest of the applications is not mentioned here, since the approval was not able to be obtained.

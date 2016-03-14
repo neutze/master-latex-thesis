@@ -11,6 +11,7 @@ The \gls{drm} is called \textit{Kiwi} as it can be seen in the reverse engineere
     \caption{Amazon DRM structure of a decompiled application}
     \label{fig:amazonFolder}
 \end{figure}
+\newline
 The prerequisites for using \textit{Kiwi} are similar to the ones of the \gls{lvl}, since the developer requires a developer account on the Amazon Developer Service platform.
 According to the description, library is aimed to \grqq{Protect your application from unauthorized use. Without DRM, your app can be used without restrictions by any user.}\grqq \cite{amazonDeveloper}.
 \newline
@@ -28,6 +29,7 @@ The key itself is available on the developer platform as seen in figure~\ref{fig
     \caption{Developer preferences in the Amazon developer console \cite{amazonDeveloper}}
     \label{fig:amazon}
 \end{figure}
+\newline
 The implementation can be analysed with reverse engineering.
 The license verification library is wrapped around the original launcher activity of the application.
 Its logic is not interweaved with application logic.

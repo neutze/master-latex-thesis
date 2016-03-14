@@ -3,7 +3,7 @@ When executing test cases, \gls{luckypatcherg} offers a full report of what it c
 While \gls{luckypatcherg} provides seven different patterns for the \gls{lvl}, called \textit{Patch Pattern N1..N7}, it gives to Amazon and Samsung one patch each and calls them \textit{Amazon Market Patch} and \textit{SamsungApps Patch}, respectively.
 \newline
 When patching the \gls{lvl}, \gls{luckypatcherg}'s choice of patterns is dependent on the selected mode.
-Table~\ref{table:patterns} shows the patching modes and the \textit{Patch Patterns} or \textit{Patches} applied.
+Table~\ref{table:patterns} shows the patching modes and the \textit{Patch Patterns} or \textit{Patches} applied by \gls{luckypatcherg}.
 \newline
 \begin{table}[h]
 \centering
@@ -21,6 +21,7 @@ Samsung        &  &  X&  &   &  &  &  &  & & X
 \caption{Overview of \textit{Patch Patterns}/\textit{Patches} applied by each mode}
 \label{table:patterns}
 \end{table}
+\newline
 In order to identify the changes done by each individual \textit{Patch Pattern} and \textit{Patch}, the code of the original and cracked \gls{apk} are compared using diff.
 The changes are inspected on dex, smali and Java level with the tools explained in section~\ref{section:reengineering}.
 \newline
@@ -35,13 +36,13 @@ Instead \gls{luckypatcherg} enforces a certain control flow, by forcing an evalu
 This is done by manipulating a single instruction, either opcode or argument.
 The surrounding context remains untouched.
 \newline
-All this is done on the dex bytecode level, which opens the question on how the target to be changed is located.
+All this is done on the dex bytecode level, which opens the question on how the target of the change is located.
 As will be shown, \gls{luckypatcherg} uses bytecode search patterns to locate where the change should be placed and bytecode replace pattern to execute it.
-\newline
 The search pattern consists of the target instruction to be manipulated and the context, while the replace pattern has the same context with the target instruction changed.
-A look at the \gls{luckypatcherg} sources shows that it contains strings, which are formatted like bytecode, include the target instructions and the context in a masked form.
-These strings are located in the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} and appear in the context of the \textit{Patch Pattern} they belong to.
-Each \textit{Patch Pattern} can have multiple bytecode patterns, implementing the same change in different contexts, which are tried when the \textit{Patch Pattern} is used.
+\newline
+A look at the \gls{luckypatcherg} sources shows that it contains strings, which are formatted like bytecode, and include the target instructions and the context in a masked form.
+These strings are located in the Java class \textit{com/chelpus/root/utils/odexrunpatch.java} of \gls{luckypatcherg} and appear in the context of the \textit{Patch Pattern} they belong to.
+Each \textit{Patch Pattern} can have multiple search and replace bytecode pattern pairs, implementing the same change in different contexts, which are tried when the \textit{Patch Pattern} is used.
 \newline
 The context in a search pattern is given as a mask of a fixed length with fixpoints given as explicit bytecode tuples and placeholders.
 When \gls{luckypatcherg} tries to position a search pattern, it searches for a sequence of bytecodes matching the fix points and the target instruction as given by the mask.
@@ -73,7 +74,7 @@ This method is responsible for decrypting and verifying the response from the li
 The \textit{Patch Pattern} swaps \textit{1a} and \textit{0f} in their order, as seen in the dex code in code snippet~\ref{codeSnippet:n1DiffDex}.
 \newline
 As seen the following, all other \textit{Patch Patterns} make use of search and replace patterns as described in section~\ref{section:luckypatcher-patterns}.
-\textit{Patch Patterns N1} is the only case which does not make use of this mechanism.
+\textit{Patch Pattern N1} is the only one which does not make use of this mechanism.
 Instead a logic inside the code is used to determine the position and apply the change.
 As this is a one off and the focus is on the result, this is not described in detail.
 \newline
@@ -117,7 +118,7 @@ Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which m
 ]{data/n1.diff}
 The result is the voiding of the \textit{verify()} switch case.
 It handles the user as verified even though the response code is \textit{NOT\_LICENSED} at the cost of the response code \textit{LICENSED\_OLD\_KEY}.
-This response code is send when the developer changes the signature of the license verification process and updates the application.
+This response code is sent when the developer changes the signature of the license verification process and updates the application.
 This happens rarely but when it does, a newer version of the application has to be cracked.
 
 \subsubsection{Patch Pattern N2}
@@ -128,10 +129,10 @@ The changes in the \gls{dex} file can be seen in code snippet~\ref{codeSnippet:n
 First, the mask of the search pattern has to match with the fixpoints on the dex bytecode.
 When a matching is successful, the replace pattern is applied.
 The result of \textit{Patching Pattern N2} is the replacing of the instruction \textit{0a 05} with the instruction \textit{12 15}.
-\gls{luckypatcherg} uses the placeholder \textit{S1} for the second bytecode.
-The target of the opcode altered remains the same while the source is modified while the source of the opcode is modified.
-The placeholder indicates the source is set to \textit{1}.
 \textit{Patch Pattern N2} has one pair of search and replace pattern in the code of \gls{luckypatcherg}.
+\gls{luckypatcherg} uses the variable \textit{S1} for the second bytecode tuple.
+The target of the opcode altered remains the same, while the source argument is modified.
+The placeholder indicates the source is set to \textit{1}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -144,7 +145,7 @@ The placeholder indicates the source is set to \textit{1}.
  label={codeSnippet:n2DiffDex}
 ]{data/n2.diff}
 The smali in code snippet~\ref{codeSnippet:n2DiffSmali} shows the altered instruction.
-Instead of moving the result of the preceding function to variable \textit{v5}, it is always set to \textit{true}.
+Instead of moving the result of the preceding function to variable \textit{v5}, \textit{v5} is set to \textit{true}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -170,7 +171,7 @@ The Java code looks different since the decompiler collapses the \textit{if(true
  caption={Diff on Java level for \textit{Patch Pattern N2}},
  label={codeSnippet:n2DiffJava}
 ]{data/n2.diff}
-The consequence is that \textit{verify()} of the signature still executed but the result is ignored.
+The consequence is that \textit{verify()} of the signature is still executed but the result is ignored.
 The program flow continues after  \textit{verify()} as if the signature was valid.
 
 \subsubsection{Patch Pattern N3}
@@ -178,13 +179,13 @@ The program flow continues after  \textit{verify()} as if the signature was vali
 It targets the \textit{allowAccess()} method inside the \textit{APKExpansionPolicy} and \textit{ServerManagedPolicy}.
 These two classes are the policy examples provided by Google and located \textit{com/google/android/vending/licensing/} folder \cite{developersLicensingReference}.
 \newline
-The \textit{Patch Patterns} have an opposing result.
+Both \textit{Patch Patterns} have an opposing result.
 One bets on \textit{true} being a positive result to ensure execution of the application, while the other one bets on \textit{false}.
-While \textit{Patch Pattern N3}is replacing the \textit{01} with \textit{11}, \textit{Patch Pattern N3i} does the opposite by replacing \textit{11} with \textit{01} (see code snippet~\ref{codeSnippet:n3DiffDex} and code snippet~\ref{codeSnippet:n3iDiffDex}).
+While \textit{Patch Pattern N3} is replacing the \textit{01} with \textit{11}, \textit{Patch Pattern N3i} does the opposite by replacing \textit{11} with \textit{01} (see code snippet~\ref{codeSnippet:n3DiffDex} and code snippet~\ref{codeSnippet:n3iDiffDex}).
 \newline
-The source code of \gls{luckypatcherg} contains three categories of patterns.
+The source code of \gls{luckypatcherg} contains three categories of search and replace bytecode patterns for \textit{Patch Pattern N3}.
 The first category are the four bytecode patterns for \textit{Patch Pattern N3}.
-It replaces the target instructions arguments with the the placeholder \textit{S1}, i.e. the sources of the target instructions are set to \textit{1}.
+They replace the target instruction's arguments with the the variable \textit{S1}, i.e. the source arguments of the target instructions are set to \textit{1}.
 This category is betting on \textit{true} to continue.
 \newline
 The second category are the four bytecode patterns for \textit{Patch Pattern N3i}.
@@ -240,7 +241,7 @@ While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
  label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
 The resulting Java code is shown in code snippet~\ref{codeSnippet:n3DiffJava}.
-The \textit{Patch Pattern} enforces the result of the \textit{allowAccess()} method by already initializing the result value with the desired outcome.
+\textit{Patch Pattern N3} voids the result of the \textit{allowAccess()} method by already initializing the result value with the desired outcome.
 While N3 is targeted towards code where the default return value is \textit{false}, \textit{Patch Pattern N3i} is used when the default value is \textit{true}.
 \newline
 \lstinputlisting[
@@ -255,17 +256,17 @@ While N3 is targeted towards code where the default return value is \textit{fals
  label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
 Both \textit{Patch Patterns} attack the class's \textit{allowAccess()} method which evaluates whether the verification result is according to the policy or not.
-Both variables, which can be returned as result, are initialized with the same value.
+Both return variables are initialized with the same value.
 This makes the result independent of the outcome of the verification.
 As LP cannot predict if the answer \textit{true} or \textit{false} allows continuation of the license verification process, it offers both versions and the user has to try which is the right one.
-This is the reason for the \textit{Auto Mode(inversed)} since it is the only difference between that mode and the \textit{Auto Mode}.
+This is the reason for the \textit{Auto Mode(inversed)}.
 
 \subsubsection{Patch Pattern N4}
  \textit{Patch Pattern N4} is part of the auto and auto inverse patching modes.
-The target of the \textit{Patch Pattern} is the \textit{LicenseChecker} class of the \gls{lvl}, which is responsible for initializing the license check in its \textit{checkAccess()} method \cite{developersLicensingReference}.
+The target of the \textit{Patch Pattern} is the \textit{LicenseChecker} class of the \gls{lvl}, which is responsible for initiating the license check in its \textit{checkAccess()} method \cite{developersLicensingReference}.
 \newline
 As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} with \textit{33}.
-The one bytecode pattern found in \gls{luckypatcherg}'s source code shows that the arguments of \textit{33} are set to \textit{00} instead of the original bytecode tupel.
+In addition, the one bytecode pattern found in \gls{luckypatcherg}'s source code reveals that the arguments of \textit{33} are set to \textit{00} instead of the original bytecode tupel.
 \newline
 \lstinputlisting[
  style=diff,
@@ -293,8 +294,8 @@ The opcode \textit{if-eqz} takes one argument \textit{v0} and implicitly fills t
 The Java code in code snippet~\ref{codeSnippet:n4DiffSmali} shows the result of the change.
 In the original code, the result of \textit{mPolicy.allow()} was checked.
 In case the policy did not allow to continue, i.e. the result was \textit{false}, the condition block was executed.
-The change results in the check for inequality of the result of \textit{mPolicy.allow()}.
-Since the result of the method is identical, if called twice, and thus the condition is never fulfilled and the condition block is never called.
+The change results in the check for inequality of the result of \textit{mPolicy.allow()} to itself.
+Since the result of the method is identical if called twice, the condition is never fulfilled and the condition block is never called.
 \newline
 \lstinputlisting[
  style=diff,
@@ -338,9 +339,9 @@ The modification done by \textit{Patching Pattern N5} is moving to a variable a 
  caption={Diff on Smali level for \textit{Patch Pattern N5}},
  label={codeSnippet:n5DiffSmali}
 ]{data/n5.diff}
-The result of patching can be seen in the Java diff in code snippet~{codeSnippet:n5DiffJava} .
+The result of patching can be seen in the Java diff in code snippet~\ref{codeSnippet:n5DiffJava}.
 The original code parses the response code from the data record of the server.
-After applying the patch, the response data is still parsed but the result is ignored and the response code is set to \textit{0}.
+After applying the patch, the response data is still parsed, but the result is ignored and the response code is set to \textit{LICENSED}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -352,8 +353,6 @@ After applying the patch, the response data is still parsed but the result is ig
  caption={Diff on Java level for \textit{Patch Pattern N5}},
  label={codeSnippet:n5DiffJava}
 ]{data/n5.diff}
-The \textit{Patch Pattern} sets the response code of the object to \textit{LICENSED}.
-The real response code is ignored and the code continues even though the server did not positively verify the license.
 
 \subsubsection{Patch Pattern N6}
  \textit{Patch Pattern N6} is part of the extreme mode and, similar to the \textit{Patch Pattern N1}, \textit{N2} and \textit{N5}, it attacks the \textit{verify()} method in the \gls{lvl}'s \textit{LicenseValidator} class.
@@ -440,7 +439,7 @@ In smali, this shows to be the replacement of moving a result into \textit{v1} b
 Similar to \textit{Patch Pattern N2}, \textit{Patch Pattern N7} attacks by initializing a variable with \textit{false} instead of moving a result of a method into it.
 \newline
 \gls{luckypatcherg} uses the search pattern for this \textit{Patch Pattern} on a broader scope and it is applied when the context matches.
-This can result in changes in unknown classes and thus lead to instability.
+This can result in undesured changes in other classes and thus lead to instability.
 \newline
 \lstinputlisting[
  style=diff,
@@ -461,7 +460,7 @@ The \textit{Amazon Market Patch} has two bytecode patterns, each is applied once
 The first class targeted is \textit{com/amazon/android/licensing/b.java} while the second class is \textit{com/amazon/android/o/d.java}.
 While \textit{b.java} is responsible for the verification of the license, \textit{d.java} is reponsible for handling the expiration of the license.
 \newline
-The \textit{Amazon Market Patch} has two bytecode pattern to replaces (\textit{38}) with (\textit{33}).
+The \textit{Amazon Market Patch} has two bytecode pattern to replace \textit{38} with \textit{33}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -508,7 +507,7 @@ The result is forced to be always \textit{true} and thus the license verificatio
 
 \subsection{SamsungApps Patch}
 Similar to the Amazon \textit{Kiwi} library, Samsung's \textit{Zirconia} library cannot be modified by the developer.
-For this reason cracking the library requires only one \textit{Patch}, consisting of two \textit{Patch Pattern}, \textit{S1} and \textit{S2}.
+For this reason, cracking the library requires only one \textit{Patch}, consisting of the two \textit{Patch Pattern} \textit{S1} and \textit{S2}.
 The \textit{SamsungApps Patch} is applied on the \textit{LicenseRetriever} and \textit{Zirconia} class in the \textit{com/samsung/zirconia} package.
 \textit{S1} is applied on both classes once and \textit{Patch Pattern S2} is applied twice but only on the \textit{Zirconia} class.
 \newline
@@ -538,7 +537,7 @@ While the bytecode patterns \textit{S1} replace \textit{d6} with \textit{00}, th
 The result of \textit{Patching Pattern S1} is that the \textit{if-eq} statement instead of comparing two variables only compares \textit{v0} to itself.
 The result of this comparison is always \textit{true}.
 \newline
-\textit{Patching Pattern S2} has the effect that \textit{v0} does not return the result of the preceding method but always \textit{true}.
+\textit{Patching Pattern S2} has the effect that \textit{v0} does not return the result of the previous method but always \textit{true}.
 \newline
 \lstinputlisting[
  style=diff,
@@ -563,9 +562,9 @@ Instead of returning the result of the license check, the methods return always 
  breaklines=true,
  captionpos=b,
  frame=single,
- linerange={30-37},
+ linerange={30-39},
  caption={Diff on Java level for the \textit{SamsungApps Patch}},
  label={codeSnippet:samsungDiffJava}
 ]{data/samsung.diff}
-The result of applying the patch is that not only the license file checks are voided and return the verification as \textit{true}.
+The result of applying the patch is that the license file checks are voided and return the verification as \textit{true}.
 In addition, response codes other than \textit{LICENSED} are accepted since they are neither checked for validity nor to the stored one, which should be valid since it was stored.

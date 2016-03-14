@@ -1,14 +1,14 @@
 \section{Selecting the Approach} \label{section:luckypatcher-analysis}
 When analysing software applications, a white box or black box approach can be taken.
 The white box approach looks inside the software and uses knowledge obtained from the code.
-The black box approach makes no assumptions about the content of software, but only observes inputs and outputs of the application.
+The black box approach makes no assumptions about the content of the software, but only observes inputs and outputs of the application.
 \newline
-First general pros and cons of each approach have to be listed, then they are evaluated for the scenario of this work and finally an approach is chosen.
+First general pros and cons of each approach are listed, then they are evaluated for the scenario of this work and finally an approach is chosen.
 \subsection{White Box vs Black Box}
 In order to prepare a decision on which approach to take, the following pros and cons are considered for each of the two.
-\begin{table}
+\begin{table}[h]
   \centering
-\begin{tabular}[]
+\begin{tabular}
   {|l|p{0.4\textwidth}|p{0.4\textwidth}|}
   \hline
    & White Box & Black Box \\ \hline
@@ -36,10 +36,10 @@ In order to prepare a decision on which approach to take, the following pros and
 \subsection{Evaluation}
 There is no source code available for \gls{luckypatcherg}.
 For this reason, the code has to be reconstructed from the \textit{classes.dex} of the \gls{apk}.
-After testing several decompilers, DAD and JADX are both selected to decompile the dex bytecode to Java code in order to get the best possible starting point.
+After testing several decompilers, DAD and JADX are both selected to decompile the dex bytecode to Java code, in order to get the best possible starting point to gain an understanding.
 Most notable are the following two points:
 \begin{itemize}
-\item some blocks failed to successfully decompiled to Java
+\item some blocks fail to successfully decompile to Java
 \item flat structure and unusually large classes, e.g. \textit{listAppsFragment.java} has over 17.000 lines of code
 \end{itemize}
 While decompiled code is always obscure, there are indicators that the developer has purposely taken steps to obfuscate the meaning of the code of \gls{luckypatcherg}.
@@ -47,7 +47,7 @@ Examples are the launcher activity residing in a package looking like provided b
 \newline
 In order to get familiar with the functionality of \gls{luckypatcherg}, an application containing license verification is cracked.
 \gls{luckypatcherg} reports the use of seven named \textit{Patch Patterns} and two \textit{Patches}.
-Trying to identify the changes to application done by \gls{luckypatcherg}, the dex bytecode of before and after patching is compared.
+Trying to identify the changes to the application done by \gls{luckypatcherg}, the dex bytecode of before and after patching is compared.
 Most notable are the following two points:
 \begin{itemize}
 \item confined and understandable changes between original and cracked \textit{classes.dex} are identified
@@ -57,7 +57,7 @@ Most notable are the following two points:
 \subsection{Selection}
 The goal of the analysis is the deep understanding of the mechanisms applied by \gls{luckypatcherg}.
 In order to propose countermeasures, an abstract understanding of these mechanisms has to be achieved.
-The chosen approach needs to go deep enough and reveal essence of what \gls{luckypatcherg} does.
+The chosen approach needs to go deep enough and reveal the essence of what \gls{luckypatcherg} does.
 \newline
 While the look into the white box approach was discouraging, the black box immediately revealed remarkably confined changes traceable to a purpose.
 When continuing with the black box analysis, the changes are starting to fall into recurring patterns.

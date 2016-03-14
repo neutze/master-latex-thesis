@@ -12,6 +12,7 @@ It allows to query the trusted Google Play license server in order to determine 
     \caption{Google's implementation of license checking \cite{developersLicensingOverview}}
     \label{fig:lvl}
 \end{figure}
+\newline
 The source code for the \gls{lvl} is provided by Google inside the Android \gls{sdk}.
 It has to be manually integrated into the application by the developer.
 Since the structure and the way it works can be analysed in the source code, it is vulnerable to attacks.
@@ -107,7 +108,7 @@ The developer is free to implement the license verification anywhere it is neede
 ]{data/lvl.java}
 Upon execution, the information is passed to the Google Play Service client residing on the device.
 The Google Play Service client then adds the primary Google account username and other information and sends the license check request to the server.
-On the Google Play server, it is checked whether the user has purchased the application and a corresponding response is send back to the Google Play Service client.
+On the Google Play server, it is checked whether the user has purchased the application and a corresponding response is sent back to the Google Play Service client.
 The response is encrypted to ensure integrity and detect tampering.
 The Google Play Service client passes it back to the \gls{lvl} which decrypts the response, evaluates it and triggers callback accordingly. \cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
 \newline

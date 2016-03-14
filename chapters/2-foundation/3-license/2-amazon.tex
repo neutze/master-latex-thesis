@@ -5,12 +5,6 @@ It can be used on all Android devices and \textit{Fire} tablets.
 The store comes with its own \gls{drm} since the Google LVL only works with the Google Play Store.
 The \gls{drm} is called \textit{Kiwi} as it can be seen in the reverse engineered code in figure~\ref{fig:amazonFolder}.
 \newline
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.3\textwidth]{data/amazonFolder.png}
-    \caption{Amazon DRM structure of a decompiled application}
-    \label{fig:amazonFolder}
-\end{figure}
 The prerequisites for using \textit{Kiwi} are similar to the ones of the \gls{lvl}, since the developer requires a developer account on the Amazon Developer Service platform.
 According to the description, library is aimed to \grqq{Protect your application from unauthorized use. Without DRM, your application can be used without restrictions by any user.}\grqq \cite{amazonDeveloper}.
 \newline
@@ -22,6 +16,12 @@ This requires the package to be signed with a new signature as described in subs
 Instead of using the developer's own key, Amazon uses a developer specific key.
 The key itself is available on the developer platform as seen in figure~\ref{fig:amazon}. \cite{amazonDeveloper}
 \newline
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{data/amazonFolder.png}
+    \caption{Amazon DRM structure of a decompiled application}
+    \label{fig:amazonFolder}
+\end{figure}
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{data/amazon.png}
@@ -37,7 +37,6 @@ The new method can be seen in code snippet~\ref{codeSnippet:amazonCreate}.
 When the application is launched, not only the application is initiated as before, but also the \textit{Kiwi} \gls{drm} functionality is started by calling \textit{Kiwi.onCreate((Activity) this, true)}.
 \newline
 \lstinputlisting[
-  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -50,6 +49,7 @@ When the application is launched, not only the application is initiated as befor
   caption={Amazon DRM injection in the \textit{onCreate()}},
   label={codeSnippet:amazonCreate}
 ]{data/amazon.java}
+\newpage
 The license verification requires the Amazon's Appstore application to be installed on the device.
 Similar to the Google Play server, the store application has the knowledge of whether the user has purchased the application and thus is allowed to use it or not.
 As soon as the user logs in once into the Appstore application, the information is downloaded to the device.

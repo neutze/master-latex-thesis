@@ -45,6 +45,7 @@ Each \textit{Patch Pattern} can have multiple search and replace bytecode patter
 \newline
 The context in a search pattern is given as a mask of a fixed length with fixpoints given as explicit bytecode tuples and placeholders.
 When \gls{luckypatcherg} tries to position a search pattern, it searches for a sequence of bytecodes matching the fix points and the target instruction as given by the mask.
+An example is shown in code snippet~\ref{codeSnippet:example}.
 On success, it substitutes that sequence with the replace pattern.
 \newline
 \lstinputlisting[
@@ -103,7 +104,7 @@ In the Java code snippet~\ref{codeSnippet:n1DiffJava}, the changes can be seen i
 Before the patch, \textit{LICENSED} and \textit{LICENSED\_OLD\_KEY} both were handled as valid, since \textit{LICENSED} jumps into the next case.
 After the patch, \textit{NOT\_LICENSED} starts where \textit{LICENSED\_OLD\_KEY} started before.
 Now, \textit{LICENSED} and \textit{NOT\_LICENSED} have the same behavior which means even though the response code is \textit{NOT\_LICENSED}, it is treated as valid.
-\newline
+\newpage
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -131,7 +132,6 @@ The result of \textit{Patching Pattern N2} is the replacing of the instruction \
 \gls{luckypatcherg} uses the variable \textit{S1} for the second bytecode tuple.
 The target of the opcode altered remains the same, while the source argument is modified.
 The placeholder indicates the source is set to \textit{1}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -144,7 +144,6 @@ The placeholder indicates the source is set to \textit{1}.
 ]{data/n2.diff}
 The smali in code snippet~\ref{codeSnippet:n2DiffSmali} shows the altered instruction.
 Instead of moving the result of the preceding function to variable \textit{v5}, \textit{v5} is set to \textit{true}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -158,7 +157,6 @@ Instead of moving the result of the preceding function to variable \textit{v5}, 
 The result in the Java code (see code snippet~\ref{codeSnippet:n2DiffJava}) shows more than just the setting of a variable to \textit{true}.
 Instead of proceeding according to the result of the verification of the signature, the result is ignored and the execution is continued inside the condition.
 The Java code looks different since the decompiler collapses the \textit{if(true)} statement.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -189,12 +187,7 @@ This category is betting on \textit{true} to continue.
 The second category are the four bytecode patterns for \textit{Patch Pattern N3i}.
 Instead of setting the sources to \textit{1}, the bytecode patterns replace the two target instructions' sources with \textit{0}, as the placeholder \textit{S0} indicates.
 This category is betting on \textit{false} to continue.
-\newline
-While the four patterns of \textit{N3} and \textit{N3i} have the same context but different guesses, the two patterns of \textit{N3x} are different in their structure but enforce the same logic.
-The first bytecode pattern of \textit{N3x} targets implementations using \textit{13}, an opcode to move a 16 bit constant instead of a 4 bit constant.
-The second bytecode pattern of \textit{N3x} is applied when the value is retrieved from an array (opcode \textit{44}).
-The original instruction is replaced by a move of a 4 bit constant \textit{12 10}.
-\newline
+\newpage
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -225,9 +218,14 @@ The original instruction is replaced by a move of a 4 bit constant \textit{12 10
  caption={Search and replace bytecode pattern to apply for \textit{Patch Pattern N3x}},
  label={codeSnippet:n3xDiffDex}
 ]{data/n3.diff}
+While the four patterns of \textit{N3} and \textit{N3i} have the same context but different guesses, the two patterns of \textit{N3x} are different in their structure but enforce the same logic.
+The first bytecode pattern of \textit{N3x} targets implementations using \textit{13}, an opcode to move a 16 bit constant instead of a 4 bit constant.
+The second bytecode pattern of \textit{N3x} is applied when the value is retrieved from an array (opcode \textit{44}).
+The original instruction is replaced by a move of a 4 bit constant \textit{12 10}.
+\newline
+\newline
 When looking at the smali diff in code snippet~\ref{codeSnippet:n3DiffDex}, the dex code is translated to the initialization of \textit{v1}.
 While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -238,10 +236,6 @@ While N3 sets \textit{v1} to \text{1}, N3i sets \textit{v1} to \textit{0}.
  caption={Diff on Smali level for \textit{Patch Pattern N3} and \textit{N3i}},
  label={codeSnippet:n3DiffSmali}
 ]{data/n3.diff}
-The resulting Java code is shown in code snippet~\ref{codeSnippet:n3DiffJava}.
-\textit{Patch Pattern N3} voids the result of the \textit{allowAccess()} method by already initializing the result value with the desired outcome.
-While N3 is targeted towards code where the default return value is \textit{false}, \textit{Patch Pattern N3i} is used when the default value is \textit{true}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -253,6 +247,10 @@ While N3 is targeted towards code where the default return value is \textit{fals
  caption={Diff on Java level for \textit{Patch Pattern N3} and \textit{N3i}},
  label={codeSnippet:n3DiffJava}
 ]{data/n3.diff}
+The resulting Java code is shown in code snippet~\ref{codeSnippet:n3DiffJava}.
+\textit{Patch Pattern N3} voids the result of the \textit{allowAccess()} method by already initializing the result value with the desired outcome.
+While N3 is targeted towards code where the default return value is \textit{false}, \textit{Patch Pattern N3i} is used when the default value is \textit{true}.
+\newline
 Both \textit{Patch Patterns} attack the class's \textit{allowAccess()} method which evaluates whether the verification result is according to the policy or not.
 Both return variables are initialized with the same value.
 This makes the result independent of the outcome of the verification.
@@ -265,7 +263,6 @@ The target of the \textit{Patch Pattern} is the \textit{LicenseChecker} class of
 \newline
 As seen in code snippet~\ref{codeSnippet:n4DiffDex}, it replaces \textit{38} with \textit{33}.
 In addition, the one bytecode pattern found in \gls{luckypatcherg}'s source code reveals that the arguments of \textit{33} are set to \textit{00} instead of the original bytecode tupel.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -278,7 +275,6 @@ In addition, the one bytecode pattern found in \gls{luckypatcherg}'s source code
 ]{data/n4.diff}
 In the smali code snippet~\ref{codeSnippet:n4DiffSmali} this change can be identified as replacing \textit{if-eqz} with \textit{if-ne}.
 The opcode \textit{if-eqz} takes one argument \textit{v0} and implicitly fills the remainder of the tuple with \textit{0}, while \textit{if-ne} takes two arguments and interprets the implicit \textit{0} as \textit{v0}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -289,12 +285,11 @@ The opcode \textit{if-eqz} takes one argument \textit{v0} and implicitly fills t
  caption={Diff on Smali level for \textit{Patch Pattern N4}},
  label={codeSnippet:n4DiffSmali}
 ]{data/n4.diff}
-The Java code in code snippet~\ref{codeSnippet:n4DiffSmali} shows the result of the change.
+The Java code in code snippet~\ref{codeSnippet:n4DiffJava} shows the result of the change.
 In the original code, the result of \textit{mPolicy.allow()} was checked.
 In case the policy did not allow to continue, i.e. the result was \textit{false}, the condition block was executed.
 The change results in the check for inequality of the result of \textit{mPolicy.allow()} to itself.
 Since the result of the method is identical if called twice, the condition is never fulfilled and the condition block is never called.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -314,7 +309,6 @@ It targets implementations with other context than the basic implementation of t
 The diff of the dex code in code snippet~\ref{codeSnippet:n5DiffDex} shows the replacing of \textit{0a} with \text{12}.
 \textit{Patch Pattern N5} makes use of three bytecode patterns with different context, found in the source code of \gls{luckypatcherg}.
 The location of the change is dependent the eight fixpoints of each search pattern mask.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -326,7 +320,6 @@ The location of the change is dependent the eight fixpoints of each search patte
  label={codeSnippet:n5DiffDex}
 ]{data/n5.diff}
 The modification done by \textit{Patching Pattern N5} is moving to a variable a constant (\textit{const/4}) instead of a result (\textit{move-result}).
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -340,7 +333,6 @@ The modification done by \textit{Patching Pattern N5} is moving to a variable a 
 The result of patching can be seen in the Java diff in code snippet~\ref{codeSnippet:n5DiffJava}.
 The original code parses the response code from the data record of the server.
 After applying the patch, the response data is still parsed, but the result is ignored and the response code is set to \textit{LICENSED}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -359,7 +351,6 @@ This \textit{Patch Pattern} has only one bytecode pattern pair, which targets th
 The first changes value is \textit{38} to \textit{12}.
 The second value is \textit{06} which is replaced by \textit{00}.
 The third change is the replacing of \textit{4a} by \textit{00}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -377,7 +368,6 @@ The opcode \textit{const/4} has two bytecode tuples as argument, while the origi
 The difference is fixed by changing the third and fourth bytecode tuple to a \textit{nop} operation (\textit{00 00}).
 It is presented as \textit{nop} and an empty line.
 The third change is the replacing arguments \textit{p2} and \textit{v4} of the \textit{if-eq} evaluation with \textit{v0} for each.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -391,7 +381,6 @@ The third change is the replacing arguments \textit{p2} and \textit{v4} of the \
 The changes on Java level of the \textit{Patch Pattern} are presented in code snippet~\ref{codeSnippet:n6DiffJava}.
 In the original code the if statement tests whether the response code is not one of the desired values.
 After patching, the evaluation is always \textit{false} and the code block inside is never used.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -404,14 +393,13 @@ After patching, the evaluation is always \textit{false} and the code block insid
 ]{data/n6.diff}
 This \textit{Patch Pattern} prevents the execution for cases where the \textit{verify()} has to handle response codes that are neither \textit{LICENSED}, \textit{NOT\_LICENSED} or \textit{LICENSED\_OLD\_KEY}.
 Instead the method proceeds as if the response code is valid.
-
+\newpage
 \subsubsection{Patch Pattern N7}
 The final \textit{Patch Pattern} for the \gls{lvl} is \textit{Patch Pattern N7}.
 Inside the lvl, it patches the \textit{ILicenseResultListener} class's \textit{onTransact()} method, which receives the asynchronous response from the license server \cite{developersLicensingReference}.
 In addition to the lvl classes, the \textit{Patch Pattern} is applied to all classes residing in the \url{com/android/} package.
 \newline
 \textit{Patch Pattern N7} has seven bytecode pattern pairs, which all replace \textit{0a} with \textit{12}, but in different contexts.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -423,7 +411,6 @@ In addition to the lvl classes, the \textit{Patch Pattern} is applied to all cla
  label={codeSnippet:n7DiffDex}
 ]{data/n7.diff}
 In smali, this shows to be the replacement of moving a result into \textit{v1} by initializing \textit{v1}  to \textit{0}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -438,7 +425,6 @@ Similar to \textit{Patch Pattern N2}, \textit{Patch Pattern N7} attacks by initi
 \newline
 \gls{luckypatcherg} uses the search pattern for this \textit{Patch Pattern} on a broader scope and it is applied when the context matches.
 This can result in undesured changes in other classes and thus lead to instability.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -459,7 +445,6 @@ The first class targeted is \textit{com/amazon/android/licensing/b.java} while t
 While \textit{b.java} is responsible for the verification of the license, \textit{d.java} is reponsible for handling the expiration of the license.
 \newline
 The \textit{Amazon Market Patch} has two bytecode pattern to replace \textit{38} with \textit{33}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -470,10 +455,11 @@ The \textit{Amazon Market Patch} has two bytecode pattern to replace \textit{38}
  caption={Diff on dex level and search and replace bytecode pattern to apply for the \textit{Amazon Market Patch}},
  label={codeSnippet:amazonDiffDex}
 ]{data/amazon.diff}
-The patch replaces \textit{if-eqz} with \textit{if-ne} as seen in code snippet~\ref{codeSnippet:n4DiffSmali}.
+The patch replaces \textit{if-eqz} with \textit{if-ne} as seen in code snippet~\ref{codeSnippet:amazonDiffSmali}.
 The opcode \textit{if-eqz} evaluates only the one argument, comparing it to zero.
 \textit{if-ne} takes two arguments, comparing them for non-equality.
 Having both arguments the same always yields \textit{false} and the condition code block is never executed.
+\newpage
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -489,7 +475,6 @@ In the class \textit{b.java}, the if block, formerly repsonsible for reponse cod
 \newline
 The method modified in the \text{d.java} class tests whether a string is not \textit{null}.
 After the patching, the functions returns always \textit{true}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -511,7 +496,7 @@ The \textit{SamsungApps Patch} is applied on the \textit{LicenseRetriever} and \
 \newline
 \textit{S1} uses six bytecode pattern pairs while \textit{S2} has two bytecode pattern pairs.
 While the bytecode patterns \textit{S1} replace \textit{d6} with \textit{00}, the ones for \textit{S2} use \textit{12} instead of \textit{0a}.
-\newline
+\newpage
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -536,7 +521,7 @@ The result of \textit{Patching Pattern S1} is that the \textit{if-eq} statement 
 The result of this comparison is always \textit{true}.
 \newline
 \textit{Patching Pattern S2} has the effect that \textit{v0} does not return the result of the previous method but always \textit{true}.
-\newline
+\newpage
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,
@@ -553,7 +538,6 @@ In the method \textit{checkerThreadWorker()} of the \textit{Zirconia} class, \te
 \newline
 \textit{Patching Pattern S2} works on the methods \textit{checkLicenseFile()} and \textit{checkLicenseFilePhase2()} of the \textit{Zirconia} class.
 Instead of returning the result of the license check, the methods return always \textit{true}.
-\newline
 \lstinputlisting[
  style=diff,
  breakatwhitespace=false,

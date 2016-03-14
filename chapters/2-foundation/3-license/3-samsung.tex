@@ -15,14 +15,14 @@ First, the required permissions have to be added to the \textit{AndroidManifest.
 \textit{Zirconia} needs access to the internet and the device information.
 The implementation can be seen in code snippet~\ref{codeSnippet:zirconiaPermission}.
 \newline
-The second addition is the implementation of the \textit{LicenseCheckListener} in figure~\ref{codeSnippet:zirconiaCallback}.
+The second addition is the implementation of the \textit{LicenseCheckListener} in code snippet~\ref{codeSnippet:zirconiaCallback}.
 It has methods for the two possible results, valid or invalid license verification.
 While \textit{licenseCheckedAsValid()} contains the code for success, \textit{licenseCheckedAsInvalid()} is used when the license cannot be validated.
 \newline
-The third addition is initialization of the license check in figure~\ref{codeSnippet:zirconiaSetup}.
+The third addition is initialization of the license check in code snippet~\ref{codeSnippet:zirconiaSetup}.
 \textit{Zirconia} handles everything on its own.
 The developer just has to call the \textit{checkLicense()} method.
-\newline
+\newpage
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,

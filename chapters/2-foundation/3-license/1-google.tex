@@ -5,7 +5,6 @@ The documentation can be found on the Android developers website \cite{developer
 \newline
 Google's approach is based on a network service (see figure~\ref{fig:lvl}).
 It allows to query the trusted Google Play license server in order to determine whether the user has a valid license.
-\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{data/lvl.png}
@@ -39,7 +38,6 @@ It is necessary for the \gls{lvl} to work.
 When the application tries to contact the server for license verification and the permission is not set, an exception is thrown. \cite{developersLicensingSetup} \cite{developersLicensingAdding}
 \newline
 \lstinputlisting[
-  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -57,9 +55,8 @@ The callback has to cover the possible outcomes, \textit{allow()}, \textit{dontA
 The implementation can be seen in code snipped~\ref{codeSnippet:lvlCallback}.
 The \textit{applicationError()} is used when the license verification cannot be made, e.g. because no internet connection could be established or because the application is not registered with the Google Play server.
 For each of the methods the developer has to implement the code for how the result should be handled. \cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
-\newline
+\newpage
 \lstinputlisting[
-  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -72,28 +69,7 @@ For each of the methods the developer has to implement the code for how the resu
   caption={LVL callback},
   label={codeSnippet:lvlCallback}
 ]{data/lvl.java}
-The third extension is the license verification call which can be seen in code snippet~\ref{codeSnippet:lvlSetup}.
-The \textit{LicenseChecker}, is initiated by passing three arguments.
-The first argument is the application which is provided by Android.
-The second argument is the public encryption key.
-It is retrieved from the Google Developer console and has to be stored in the code by the developer.
-\newline
-The third argument is the policy.
-The policy decides what happens with the response data, e.g. if it should be cached or requested every time.
-The developer has to define the policy.
-Google provides two example policies as part of the \gls{lvl}.
-Policies require obfuscation to prevent root users from manipulating or reusing the license response data.
-An example obfuscator is included in the \gls{lvl}.
-It is generated using a salt, the package name and the \textit{ANDROID\_ID}.
-The ID is created randomly when the user sets up the device for the first time.
-It is unique and remains the same for the lifetime of the user's device.
-\newline
-When everything is provided, the verification is started by passing the callback to the \textit{LicenseChecker}'s \textit{checkAcces()} method.
-The developer is free to implement the license verification anywhere it is needed.
-\cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
-\newline
 \lstinputlisting[
-  float=h,
   basicstyle=\footnotesize,
   breakatwhitespace=false,
   breaklines=true,
@@ -106,6 +82,25 @@ The developer is free to implement the license verification anywhere it is neede
   caption={Setting up the LVL},
   label={codeSnippet:lvlSetup}
 ]{data/lvl.java}
+The third extension is the license verification call which can be seen in code snippet~\ref{codeSnippet:lvlSetup}.
+The \textit{LicenseChecker}, is initiated by passing three arguments.
+The first argument is the application which is provided by Android.
+The second argument is the public encryption key.
+It is retrieved from the Google Developer console and has to be stored in the code by the developer.
+The third argument is the policy.
+The policy decides what happens with the response data, e.g. if it should be cached or requested every time.
+The developer has to define the policy.
+Google provides two example policies as part of the \gls{lvl}.
+Policies require obfuscation to prevent root users from manipulating or reusing the license response data.
+An example obfuscator is included in the \gls{lvl}.
+It is generated using a salt, the package name and the \textit{ANDROID\_ID}.
+The ID is created randomly when the user sets up the device for the first time.
+It is unique and remains the same for the lifetime of the user's device.
+\newpage
+When everything is provided, the verification is started by passing the callback to the \textit{LicenseChecker}'s \textit{checkAcces()} method.
+The developer is free to implement the license verification anywhere it is needed.
+\cite{developersLicensingOverview} \cite{developersLicensingSetup} \cite{developersLicensingAdding} \cite{digipomLvl}
+\newline
 Upon execution, the information is passed to the Google Play Service client residing on the device.
 The Google Play Service client then adds the primary Google account username and other information and sends the license check request to the server.
 On the Google Play server, it is checked whether the user has purchased the application and a corresponding response is sent back to the Google Play Service client.

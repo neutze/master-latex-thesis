@@ -4,7 +4,6 @@ While \gls{luckypatcherg} provides seven different patterns for the \gls{lvl}, c
 \newline
 When patching the \gls{lvl}, \gls{luckypatcherg}'s choice of patterns is dependent on the selected mode.
 Table~\ref{table:patterns} shows the patching modes and the \textit{Patch Patterns} or \textit{Patches} applied by \gls{luckypatcherg}.
-\newline
 \begin{table}[h]
 \centering
 \begin{tabular}{l|cccccccccc}
@@ -47,7 +46,6 @@ Each \textit{Patch Pattern} can have multiple search and replace bytecode patter
 The context in a search pattern is given as a mask of a fixed length with fixpoints given as explicit bytecode tuples and placeholders.
 When \gls{luckypatcherg} tries to position a search pattern, it searches for a sequence of bytecodes matching the fix points and the target instruction as given by the mask.
 On success, it substitutes that sequence with the replace pattern.
-\newline
 \newline
 \lstinputlisting[
  style=diff,

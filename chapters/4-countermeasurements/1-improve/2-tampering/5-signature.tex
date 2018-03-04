@@ -1,10 +1,10 @@
 \subsubsection{Signature} \label{subsection:counter-improve-tampering-signature}
-When modifying an application, it has to be signed again as described in subsection~\ref{subsection:android-install}.
+When modifying an application, it has to be signed once more as described in subsection~\ref{subsection:android-install}.
 Since \gls{luckypatcherg} does not have the developer’s key, it has to sign the application using a different key.
 \newline
 When storing the original key’s hash in the code, it can be compared to the current one.
 In case they differ, execution can be interrupted.
-\newline
+\newpage
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -21,7 +21,7 @@ In case they differ, execution can be interrupted.
 The code for the signature check can be seen in code snippet~\ref{codeSnippet:tamperingSignature}.
 The original key’s hash has to be provided (see line 53).
 The application signing key’s hash is fetched from the package information (line 57ff).
-In case it cannot be retrieved or the they do not match, the check terminates the application.
+In case it cannot be retrieved or does not match, the check terminates the application.
 \newline
 The approach is similar to Google Maps inside an application.
-When launching the map, the application sends the SHA1 signature and the API key to the server which verifies whether the application is allowed to display the map \cite{maps}.
+When launching the map, the application sends the SHA1 signature and the API key to the server, which verifies whether the application is allowed to display the map \cite{maps}.

@@ -33,5 +33,7 @@ XX+ foo()XX
 XX+XX if (XXv0XX == XXv0XX) {...}
 
 *@@ Patch Result S2 @@*
-!!-!! return !!foo()!!;
-XX+XX return XXtrueXX;
+!!-!! result = !!foo()!!;
+XX+XX result = XXtrueXX;
+*#* ...
+*#* return result;

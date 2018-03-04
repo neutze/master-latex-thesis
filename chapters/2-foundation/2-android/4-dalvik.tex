@@ -5,12 +5,12 @@ It was designed by Dan Bornstein and named after an Icelandic town and introduce
 In contrast to a stationary computer, a mobile device has a lot of constraints.
 Since it is powered by a battery, the processing power and RAM are limited to fit power consumption restraints.
 In addition to these hardware limitations, Android has some additional requirements, like no swap space for the RAM, the need to run on a diverse set of devices and in a sandboxed application runtime.
-In order to deliver best performance and run efficiently, it has to be designed according to these requirements.
+In order to deliver best performance and run efficiently, the \gls{dvm} has to be designed according to these requirements.
 \newline
 The \gls{dvm} is a customized and optimized version of the \gls{jvm} and based on Apache Harmony.
 Even though it is based on Java, it is not fully J2SE or J2ME compatible since it uses 16 bit opcodes and register-based architecture in contrast to the stack-based standard \gls{jvm} with 8 bit opcodes.
 The advantage of register-based architecture is that it needs less instructions for execution than stack-based architecture, which results in less CPU cycles and thus less power consumption.
 The downside of this architecture is the fact that it has an approximately 25\% larger codebase for the same application and negligible larger fetching times for instructions.
-In addition to the lower level changes in the \gls{dvm}, e.g. optimizations for memory sharing between different processes \cite{vecShare} and uses zygotes. \cite{ehringerDalvik} \cite{andevconDalvikART}
+In addition to the lower level changes in the \gls{dvm}, e.g. optimizations for memory sharing between different processes \cite{vecShare}, Android uses special concepts, like zygotes. \cite{ehringerDalvik} \cite{andevconDalvikART}
 \newline
-The last big change made to the \gls{dvm} was the introduction of \gls{jit} compilation, which will be part of the discussion in subsection~\ref{subsection:android-art}, in Android version 2.2 "Froyo".
+The last big change made to the \gls{dvm} was the introduction of \gls{jit} compilation, which will be part of the discussion in subsection~\ref{subsection:android-art}, in Android version 2.2 \textit{Froyo}.

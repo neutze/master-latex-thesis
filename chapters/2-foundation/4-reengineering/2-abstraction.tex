@@ -11,11 +11,10 @@ The third level is the Java code.
 It is the best presentation to interpret and understand the changes in the context of methods or classes.
 \newline
 The Java code can be decompiled from the dex bytecode since the build process can be reversed as seen in figure~\ref{fig:re1}.
-\newline
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{data/re1.png}
-    \caption{Java .class and .dex can be transformed bidirectional \cite{andevconDalvikART}}
+    \caption{Bidirectional relation between Java .class and .dex bytecode \cite{andevconDalvikART}}
     \label{fig:re1}
 \end{figure}
 
@@ -54,7 +53,7 @@ Translated to ASCII, the result is \textit{dex.035.}.
   breaklines=true,
   captionpos=b,
   frame=single,
-  caption={Hexadecimal view of classes.dex as classes.txt},
+  caption={Hexadecimal view of classes.dex},
   label={codeSnippet:dexOutput}
 ]
 00000000  64 65 78 0a 30 33 35 00  ae a5 51 7e 06 f7 00 84  |dex.035...Q~....|
@@ -64,6 +63,7 @@ Translated to ASCII, the result is \textit{dex.035.}.
 00000040  ad 09 00 00 40 3c 01 00  0a 0e 00 00 f4 62 01 00  |....@<.......b..|
 00000050  3d 27 00 00 6c 0b 02 00  ff 4b 00 00 54 45 03 00  |='..l....K..TE..|
 \end{lstlisting}
+\newline
 
 \subsubsection{Smali Analysis} \label{subsection:tools-baksmali}
 The smali code is disassembled from dex bytecode using \textit{baksmali} \cite{smali}.
@@ -91,6 +91,7 @@ This process is done using the script in code snippet~\ref{codeSnippet:smaliScri
   caption={Script to generate the corresponding smali code for a given \gls{apk}},
   label={codeSnippet:smaliScript}
 ]{data/extractScript.sh}
+\newline
 An example of smali code can be seen in code snippet~\ref{codeSnippet:smaliOutput}.
 It is easier to understand than the dex presentation.
 The content of variables, as in line 3, can be identified without big effort.
@@ -103,7 +104,7 @@ This enables the reader analyse the application's workflow similar to the source
   captionpos=b,
   frame=single,
   firstnumber=1,
-  caption={smali code example},
+  caption={Example of smali code},
   label={codeSnippet:smaliOutput}
 ]
 # virtual methods
@@ -115,6 +116,7 @@ This enables the reader analyse the application's workflow similar to the source
   ...
 .end method
 \end{lstlisting}
+
 \subsubsection{Java Analysis} \label{subsection:forensics-tools-java}
 Java code suits best for the analysis of the new behavior since its presentation is close to the what people are programming.
 It has names variable and method which makes it better understandable.
@@ -142,8 +144,10 @@ Code snippet~\ref{codeSnippet:androguardScript} shows how it is used in the comm
   caption={Script to decompile to Java using androguard},
   label={codeSnippet:androguardScript}
 ]{data/extractScript.sh}
+\newline
 JADX \cite{jadx} is the second decompiler.
 The decompilation is directly done from the \gls{apk}'s dex bytecode to Java code and can be performed in the command line interface as seen in Code snippet~\ref{codeSnippet:jadxScript}.
+\newline
 \lstinputlisting[
   float=h,
   breaklines=true,

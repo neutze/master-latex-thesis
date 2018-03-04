@@ -16,7 +16,7 @@ Instructions are of variable length and aligned to multiples of 16 bit.
 Instead of using actual data as arguments, references to Dalvik registers are used. \cite{androidDalvik} \cite{opcodes}
 \newline
 In the context of this work, the most important parts of the header are the checksum and the signature.
-The checksum field contains the Adler32 checksum of this \gls{dex} file.
+The checksum field contains the Adler32 checksum of the \gls{dex} file.
 It is calculated from all fields of the file except the magic field and itself.
 The checksum is used to detect whether the file is corrupt.
 The signature field contains the SHA-1 hash value of the file minus the magic field, checksum field and itself.

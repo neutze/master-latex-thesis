@@ -1,5 +1,6 @@
+\newpage
 \subsubsection{Sideload} \label{subsection:counter-improve-tampering-sideload}
-As modified \gls{apk}s can be created and installed on the device or any other, checking for \textit{root} and Lucky Patcher is not enough.
+As modified \gls{apk}s can be created and installed on the target device or any other, checking for \textit{root} and Lucky Patcher is not enough.
 Usually, applications, which include a license verification library, are purchased from the corresponding store.
 Installing them from other sources is a sign for piracy.
 For this reason, developers should enforce installation from trusted sources to ensure that the application is purchased as well.
@@ -21,7 +22,8 @@ It has a similar goal and blacklists and disables pirated applications.
   label={codeSnippet:tamperingSideload}
 ]{data/4-countermeasurements/1-tampering/4-sideload.java}
 The code snippet~\ref{codeSnippet:tamperingSideload} shows the implementation for the stores in scope for the thesis.
-Additional stores can and should be added in case the developer decides to offer the application in another store.
-In case he does not, the application will not work when retrieved from a non listed store.
+Additional stores can and should be added, in case the developer decides to offer the application in another store.
+The application will not work when retrieved from a non listed store.
 \newline
-This feature should be implemented with caution, since Google notes that this method relies on the \textit{getInstallerPackageName} which is neither documented nor supported and only working by accident \cite{developersSecuring}.
+\newline
+This feature should be implemented with caution, since Google notes that this method relies on the \textit{getInstallerPackageName} which is neither documented nor supported and \grqq only working by accident\grqq \cite{developersSecuring}.

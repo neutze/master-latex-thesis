@@ -1,16 +1,13 @@
 \section{Future Work}\label{section:conclusion-future}
 There are several developments going on that will change the security landscape in the Android world.
 \newline
-\newline
 Every version of Android closes several vulnerabilities but also opens new ones.
-Sometimes the whole architecture is updated, e.g. the introduction of \gls{art}.
-With regards to \gls{luckypatcherg}, it has the ability to do away with dex bytecode entirely, but in the real world, compatibility needs to be observed and non \gls{art} need to be supported for the foreseeable future.
-This means \gls{apk}s cannot omit \gls{dex} files.
+Sometimes, the whole architecture is updated, e.g. the introduction of \gls{art}.
+With regards to \gls{luckypatcherg}, \gls{art} has the ability to do away with dex bytecode entirely, but in the real world, compatibility needs to be observed and non \gls{art} \gls{apk}s need to be supported for the foreseeable future.
+This means \gls{apk}s cannot omit \gls{dex} files and remain vulnerable.
 \newline
+At the moment, \gls{se} are not standardized and \textit{universal} support not guaranteed by a reasonable number of devices.
+\gls{se}s open whole a range of possibilities which can only be tapped, when \gls{se}s reach a critical level of availability.
 \newline
-At the moment, \gls{se} are not standardized and universal support not guaranteed by a reasonable number of devices.
-\gls{se} open whole range of possibilities which can only tapped when reach a critical level of availability.
-\newline
-\newline
-As seen, \gls{apk}s are signed and protected on a certain level by self-signed certificates.
-Between this level and a walled garden, e.g. total control by Google, there has to be a viable trade off to make use of certification and certification authorities.
+As seen in subsection~\ref{subsection:foundation-android-package}, \gls{apk}s are signed and protected on a certain level by self-signed certificates.
+Between this level and a walled garden, e.g. total control by Google, there has to be a viable trade off, making use of certification and certification authorities.

@@ -1,7 +1,7 @@
 \subsubsection{Lucky Patcher} \label{subsection:counter-improve-tampering-luckypatcher}
-Having Lucky Patcher installed is a strong indicator that the user is pirating applications.
+Having Lucky Patcher installed, is a strong indicator that the user is pirating applications.
 The check can be extended to detect additional unwanted applications by adding their package name to the check \cite{androidCrackingTools}.
-The check is more specific as the \textit{root} check as it only excludes people who have a piracy tool.
+The check is more specific as the \textit{root} check, as it only excludes people who have a piracy tool.
 \newline
 \lstinputlisting[
   float=h,
@@ -17,6 +17,6 @@ The check is more specific as the \textit{root} check as it only excludes people
   caption={Example code for checking whether \gls{luckypatcherg} is installed on the device},
   label={codeSnippet:tamperingLucky}
 ]{data/4-countermeasurements/1-tampering/3-lucky.java}
-As shown in code snippet~\ref{codeSnippet:tamperingLucky}, the check tries to acquire whether the Lucky Patcher package is installed.
+As shown in code snippet~\ref{codeSnippet:tamperingLucky}, the check tries to acquire information whether the Lucky Patcher package is installed.
 In case information is available and thus the application is installed, the check stops the application.
-Again it might be useful to communicate up front that the app will not run, if Lucky Patcher is present.
+Again, it might be useful to communicate up front that the application will not run, if Lucky Patcher is present.

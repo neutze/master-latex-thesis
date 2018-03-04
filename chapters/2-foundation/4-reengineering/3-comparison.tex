@@ -1,3 +1,4 @@
+\newpage
 \subsection{Pinpointing the Attack} \label{subsection:forensics-tools-diff}
 The amount of code on each abstraction levels is quite substantial.
 In a code altering attack, most of the code stays the same, i.e. changes are only punctually.
@@ -16,9 +17,10 @@ Doing this automatically and using diff saves a lot of time.
   language=bash,
   linerange={1-9},
   firstnumber=1,
-  caption={Script to compare the original and manipulated \gls{apk} to see the modifications in the different presentations},
+  caption={Script to compare the original and manipulated \gls{apk} using diff},
   label={codeSnippet:diffScript}
 ]{data/diffScript.sh}
+\newline
 The result does not only contain the change as original and new code, but also the location where the change happened.
 The example diff of a dex file is presented is code snippet~\ref{codeSnippet:diffDex}.
 \newline

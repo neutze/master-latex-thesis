@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             //android.os.Process.killProcess(//android.os.Process.myPid());
         }
 
-        // since the app is not downloaded from google play this is deactivated right nao
+        // since the application is not downloaded from google play this is deactivated right nao
         if (!VerifyInstaller.verifyInstaller(this)) {
             LogToastHelper.feedback(getApplicationContext(), TAG, "VerifyInstaller.verifyInstaller==false");
             //android.os.Process.killProcess(//android.os.Process.myPid());

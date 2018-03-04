@@ -1,20 +1,28 @@
 \subsection{Samsung DRM} \label{section:license-samsung}
-Another major player in the smartphone business is Samsung \cite{comscoreMarket}.
+Another major player in the Android business is Samsung \cite{comscoreMarket}.
 With \textit{SamsungApps}, renamed to \textit{GalaxyApps} in July 2015, they offer an application store to their Android devices.
 Application distributed in that store can be protected using \textit{Zirconia} \cite{samsungZirconia}.
-Zirconia is Samsung’s implementation of a license verification library, using a server client model.
+\textit{Zirconia} is Samsung’s implementation of a license verification library, using a server client model.
 \newline
 The way the library works is similar to the \gls{lvl}.
 In order to prevent unauthorized usage of the application, the library queries the Samsung server to verify the license of the use.
 The library can be downloaded from Samsung in an archive file \cite{samsungZirconia}.
-It contains the compiled Zirconia library as a \gls{jar} and additional native libraries for the different processor architectures.
+It contains the compiled \textit{Zirconia} library as a \gls{jar} and additional native libraries for the different processor architectures.
 The integration requires both file types to be added to the application.
 The implementation in the application code is done the same way as in the \gls{lvl} which means three parts have to be added.
 \newline
 First, the required permissions have to be added to the \textit{AndroidManifest.xml}.
-Zirconia needs access to the internet and device information.
+\textit{Zirconia} needs access to the internet and the device information.
 The implementation can be seen in code snippet~\ref{codeSnippet:zirconiaPermission}.
 \newline
+The second addition is the implementation of the \textit{LicenseCheckListener} in code snippet~\ref{codeSnippet:zirconiaCallback}.
+It has methods for the two possible results, valid or invalid license verification.
+While \textit{licenseCheckedAsValid()} contains the code for success, \textit{licenseCheckedAsInvalid()} is used when the license cannot be validated.
+\newline
+The third addition is initialization of the license check in code snippet~\ref{codeSnippet:zirconiaSetup}.
+\textit{Zirconia} handles everything on its own.
+The developer just has to call the \textit{checkLicense()} method.
+\newpage
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -29,10 +37,6 @@ The implementation can be seen in code snippet~\ref{codeSnippet:zirconiaPermissi
   caption={Permission in the \textit{AndroidManifest.xml} \cite{samsungZirconia}},
   label={codeSnippet:zirconiaPermission}
 ]{data/permission.xml}
-The second addition is the implementation of the \textit{LicenseCheckListener}.
-It has methods for the two possible results, valid or invalid license verification.
-While \textit{licenseCheckedAsValid()} contains the code for success, \textit{licenseCheckedAsInvalid()} is used when the license cannot be validated.
-\textit.
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -42,15 +46,11 @@ While \textit{licenseCheckedAsValid()} contains the code for success, \textit{li
   frame=single,
   numbers=left,
   language=Java,
-  linerange={85-101},
+  linerange={85-97},
   firstnumber=85,
-  caption={Zirconia license check callback},
+  caption={\textit{Zirconia} callback},
   label={codeSnippet:zirconiaCallback}
 ]{data/samsung.java}
-The third addition is initialization of the license check.
-Zirconia handles everything in its own.
-The developer just has to call the \textit{checkLicense()} method.
-\newline
 \lstinputlisting[
   float=h,
   basicstyle=\footnotesize,
@@ -62,13 +62,13 @@ The developer just has to call the \textit{checkLicense()} method.
   language=Java,
   linerange={56-60},
   firstnumber=56,
-  caption={Setting up the Zirconia license check call},
+  caption={Setting up the Zirconia},
   label={codeSnippet:zirconiaSetup}
 ]{data/samsung.java}
-Zirconia always follows the same internal pattern when the license check is executed.
+\textit{Zirconia} always follows the same internal pattern when the license check is executed.
 First, it is queried for a stored response from previous verifications.
 If a stored response exists and is valid, the check passes and no internet connection is required.
-Otherwise Zirconia sends information to the server to verify the license.
-This includes information about the device, acquired with the phone state permission, and the application.
+Otherwise \textit{Zirconia} sends information to the server to verify the license.
+This includes information about the device and the application.
 The server evaluates whether the user is authorized to use the application and replies accordingly.
 This is stored on the device. \cite{samsungZirconia}

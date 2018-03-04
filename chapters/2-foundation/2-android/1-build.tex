@@ -5,10 +5,9 @@ They can be installed using different mechanisms.
 The prefered and most secure is the installation from the Google Play Store.
 It provides the \gls{apk} from a trusted source and installs it automatically.
 Other application stores provide the \gls{apk} from a trusted source and facilitate the manual installation.
-Yet another application stores are less trusted.
+Yet other application stores are less trusted.
 In addition, the \gls{apk} can be obtained from anywhere and installed manually.
-\newline
-The build process of \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
+The build process of an \gls{apk} contains several steps which are visualized in figure~\ref{fig:apk}.
 \newline
 \begin{figure}[h]
     \centering
@@ -16,6 +15,7 @@ The build process of \gls{apk} contains several steps which are visualized in fi
     \caption{\gls{apk} build process \cite{andevconDalvikART}}
     \label{fig:apk}
 \end{figure}
+\newline
 Since Android applications are usually written in Java, there are similarities to the Java program build process.
 Upon compilation, the source code is transformed into \gls{classg} files by the Java Compiler javac.
 Each Java class is stored as bytecode in the corresponding \gls{classg} file.
@@ -27,28 +27,28 @@ Android uses a \gls{vm} different from Java.
 It requires the Java bytecode to be converted to a different format - the Dalvik bytecode.
 The Android \gls{sdk} provides \textit{dx}, the tool used to convert \gls{classg} files to a single \textit{classes.dex} file.
 The \gls{vm} and the \gls{dex} file format will be described in the following.
-\newline
+\newpage
 The \gls{apk} itself consists of three parts.
 \begin{itemize}
 \item \textit{classes.dex}, a file containing the bytecode
 \item resource files (\textit{res/*.*}), a directory containing static content like images, the strings.xml and the layout.xml files
-\item \textit{Resources.arsc}, containing compiled resources, and \textit{AndroidManifest.xml}, containing essential information like required permissions
+\item \textit{Resources.arsc}, containing compiled resources, and \textit{AndroidManifest.xml}, providing essential information like required permissions
 \end{itemize}
 The \textit{apkBuilder} combines these files into one archive file, which is signed and zipaligned to become a valid \gls{apk}.
 The \textit{jarsigner} uses the developer’s private key to sign the application similar to the Java code signing \cite{codeSigning}.
-This signing process ensures integrity and authenticity using a self-signed certificate, i.e. it provides a key usable to decrypt and authenticates the entity it claims to comes from.
-As there is no certificate authority (CA), this entity cannot be linked, trusted or not, to a person or entity in the real world.
+This signing process ensures integrity and authenticity using a self-signed certificate, i.e. it provides a key usable to decrypt and authenticates the entity it claims to come from.
+As there is no certificate authority (CA), this entity cannot be linked to a person or entity in the real world.
 Upon update the entities previous and current version can be compared and the update prevented on mismatch. \cite{nelenkovSelf}
 Afterwards \textit{zipalign} is used to mark uncompressed data. \cite{androidPublishSign} \cite{androidSigning} \cite{andevconDalvikART}
-\newline
 \newline
 The structure of a final \gls{apk} file has the following content as minimum as seen in figure~\ref{fig:apkfolder}.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{data/apkfolder.png}
+    \includegraphics[width=0.2\textwidth]{data/apkfolder.png}
     \caption{\gls{apk} folder structure}
     \label{fig:apkfolder}
 \end{figure}
+\newline
 The \textit{AndroidManifest.xml} and the \textit{classes.dex} have already been covered.
 \newline
 The \gls{apk} has the same code signing mechanism as Java .

@@ -1,3 +1,4 @@
+\newpage
 \subsection{APK Extraction} \label{subsection:tools-apk}
 Code analysis is performed on a desktop computer using various tools.
 The \gls{apk} has to be extracted from the device and transferred onto the computer, because the tools cannot analyse the application while it is still on the device.
@@ -14,4 +15,4 @@ The result contains one application per line, e.g. \textit{package:/data/app/com
 The information is used in the \textit{adb shell} to pull the application to the computer by executing \textit{adb pull /data/app/com.ebay.mobile-1/base.apk} in the command line tool.
 \newline
 In case the user has \textit{root}, it is possible to change the permissions of the folder.
-This way the folder is visible and accessible in a suited file explorer application and can be send to the computer.\footnote[1]{\textit{Root} is neither a prerequisite to access the \gls{apk}s nor to alter their \textit{classes.dex} file}
+This way the folder is visible and accessible in a suited file explorer application and can be sent to the computer.\footnote[1]{\textit{Root} is neither a prerequisite to access the \gls{apk}s nor to alter their \textit{classes.dex} file}
